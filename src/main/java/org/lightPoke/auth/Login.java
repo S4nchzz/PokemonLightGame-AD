@@ -18,14 +18,18 @@ public class Login {
         return instance == null ? instance = new Login() : instance;
     }
 
-    public boolean login(final String username, final String password) {
+    public UserData login(final String username, final String password) {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(credentialsFile));
             String x;
             while ((x = reader.readLine()) != null) {
                 if (x.equals(username) && (reader.readLine()).equals(password)) {
                     log.writeLog("User " + username + " logged succesfully");
-                    return true;
+                    switch (reader.readLine()) {
+                        case "AT" -> {return new UserData(username, password, 1);} // Administrador de torneos
+                        case "T" -> {return new UserData(username, password, 2);} // Entrenador
+                        case "AG" -> {return new UserData(username, password, 3);} // Administrador general
+                    }
                 }
             }
 
@@ -33,6 +37,6 @@ public class Login {
         } catch (IOException e) {
             log.writeLog("Failed to read \"credenciales.txt\", make sure this file exist");
         }
-        return false;
+        return null;
     }
 }

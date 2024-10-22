@@ -32,7 +32,7 @@ public class Register {
             writer.newLine();
             writer.write(password);
             writer.newLine();
-            writer.write("trainer");
+            writer.write("T");
             writer.newLine();
             writer.close();
 
@@ -51,10 +51,13 @@ public class Register {
         try {
             reader = new BufferedReader(new FileReader(credentialsFile));
             String x;
+            int lineCount = 1;
             while ((x = reader.readLine()) != null) {
-                if (x.equals(username)) {
+                if (x.equals(username) && lineCount % 2 != 0) {
                     return true;
                 }
+
+                lineCount++;
             }
 
             reader.close();
