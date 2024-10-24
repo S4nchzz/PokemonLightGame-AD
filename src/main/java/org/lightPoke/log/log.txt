@@ -29,3 +29,36 @@
 [24/10/2024 | 19:45:16] -- User a already exist
 [24/10/2024 | 19:45:36] -- User x has been registrated
 [24/10/2024 | 19:45:39] -- Trainer menu opened with trainer info
+[24/10/2024 | 20:27:53] -- User pela has been registrated
+[24/10/2024 | 20:30:57] -- User pela has been registrated
+[24/10/2024 | 20:31:48] -- User c has been registrated
+[24/10/2024 | 20:33:59] -- User q has been registrated
+[24/10/2024 | 20:35:24] -- User f has been registrated
+[24/10/2024 | 20:37:8] -- User g has been registrated
+[24/10/2024 | 20:37:46] -- User r has been registrated
+[24/10/2024 | 20:41:3] -- User n has been registrated
+[24/10/2024 | 20:41:17] -- User u has been registrated
+[24/10/2024 | 20:44:3] -- User j has been registrated
+[24/10/2024 | 20:44:9] -- Trainer menu opened with trainer info
+[24/10/2024 | 20:44:38] -- User g already exist
+[24/10/2024 | 20:44:40] -- User g already exist
+[24/10/2024 | 20:44:43] -- User y has been registrated
+[24/10/2024 | 20:49:6] -- User k has been registrated
+[24/10/2024 | 20:50:44] -- User p has been registrated
+[24/10/2024 | 20:52:20] -- User ñ has been registrated
+[24/10/2024 | 20:53:41] -- User d has been registrated
+[24/10/2024 | 20:54:12] -- User x has been registrated
+[24/10/2024 | 20:57:8] -- User e has been registrated
+[24/10/2024 | 20:57:29] -- User g has been registrated
+[24/10/2024 | 20:57:33] -- Trainer menu opened with trainer info
+[24/10/2024 | 20:59:42] -- User t has been registrated
+[24/10/2024 | 21:7:50] -- User 4 has been registrated
+[24/10/2024 | 21:13:55] -- User t has been registrated
+[24/10/2024 | 21:17:52] -- User x has been registrated
+[24/10/2024 | 21:22:30] -- User f has been registrated
+[24/10/2024 | 21:23:3] -- User x already exist
+[24/10/2024 | 21:23:6] -- User x already exist
+[24/10/2024 | 21:23:7] -- User g has been registrated
+[24/10/2024 | 21:24:30] -- User f already exist
+[24/10/2024 | 21:24:31] -- User g already exist
+[24/10/2024 | 21:24:33] -- User h has been registrated

@@ -1,12 +1,11 @@
 package org.lightPoke.auth;
 
+import org.lightPoke.auth.nacionality.Pais;
+import org.lightPoke.auth.nacionality.PaisesLoader;
 import org.lightPoke.log.LogManagement;
-import org.lightPoke.trainerLicense.Carnet;
 import org.lightPoke.users.TRUser;
-import org.lightPoke.users.User;
 
 import java.io.*;
-import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Register {
@@ -35,6 +34,7 @@ public class Register {
                 return null;
             }
 
+            TRUser user = requestInfo(username, password);
             writer = new BufferedWriter(new FileWriter(credentialsFile, true));
             writer.write(username);
             writer.newLine();
@@ -45,7 +45,7 @@ public class Register {
             writer.close();
 
             log.writeLog("User " + username + " has been registrated");
-            return requestInfo(username, password);
+            return user;
         } catch (IOException e) {
             log.writeLog("Error while reading credentialsFile -- err register");
         }
@@ -60,18 +60,44 @@ public class Register {
         System.out.println("Nombre: ");
         final String name = sc.next();
 
-        System.out.println("Elija una de las nacionalidades que hay: ");
-        nacionalityList();
-        final String nacionality = sc.next();
+        System.out.print("Elija una de las nacionalidades que hay: ");
+        System.out.println(nacionalityList());
+
+        System.out.print("?: ");
+        String nacionality = sc.next();
+
+        while (!checkIfNacionalityExist(nacionality)){
+            System.out.println("La nacionaldad elegida no forma parte de la lista, intentelo de nuevo");
+            System.out.println(nacionalityList());
+            System.out.print("?: ");
+
+            nacionality = sc.next();
+        }
 
         TRUser trainer = new TRUser(username, password, 2);
-        trainer.generateInfo(newId, name, nacionality);
+        trainer.generateInfo(newId, name, nacionality.toUpperCase());
         newId++;
 
         return trainer;
     }
 
-    private void nacionalityList() {
+    private String nacionalityList() {
+        StringBuilder sb = new StringBuilder();
+        for (Pais c: PaisesLoader.getCountriesList()) {
+            sb.append(c.getNombre() + " | ");
+        }
+
+        return sb.toString();
+    }
+
+    private boolean checkIfNacionalityExist(final String userNacionality) {
+        for (Pais c : PaisesLoader.getCountriesList()) {
+            if (userNacionality.toUpperCase().equals(c.getNombre())) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private boolean userExist(final String username) {
