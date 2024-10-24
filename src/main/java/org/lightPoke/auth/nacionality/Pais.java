@@ -7,6 +7,8 @@ public class Pais {
     private String id;
     private String nombre;
 
+    public Pais() {}
+
     public Pais(final String id, final String nombre) {
         this.id = id;
         this.nombre = nombre;

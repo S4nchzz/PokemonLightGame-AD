@@ -84,7 +84,7 @@ public class Register {
     private String nacionalityList() {
         StringBuilder sb = new StringBuilder();
         for (Pais c: PaisesLoader.getCountriesList()) {
-            sb.append(c.getNombre() + " | ");
+            sb.append(c.getId() + " | ");
         }
 
         return sb.toString();
@@ -92,7 +92,7 @@ public class Register {
 
     private boolean checkIfNacionalityExist(final String userNacionality) {
         for (Pais c : PaisesLoader.getCountriesList()) {
-            if (userNacionality.toUpperCase().equals(c.getNombre())) {
+            if (userNacionality.toUpperCase().equals(c.getId())) {
                 return true;
             }
         }

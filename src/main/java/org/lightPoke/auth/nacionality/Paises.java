@@ -1,12 +1,11 @@
 package org.lightPoke.auth.nacionality;
 
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 
-@XmlRootElement
+@XmlRootElement(name = "paises")
 public class Paises {
     private List<Pais> paises;
 
@@ -14,7 +13,6 @@ public class Paises {
         this.paises = new ArrayList<>();
     }
 
-    @XmlElementWrapper(name = "paises")
     @XmlElement(name = "pais")
     public List<Pais> getPaises() {
         return paises;

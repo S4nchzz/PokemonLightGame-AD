@@ -11,8 +11,7 @@ public class PaisesLoader {
         try {
             JAXBContext context = JAXBContext.newInstance(Paises.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
-            Paises nacionality = (Paises) unmarshaller.unmarshal(new File("./src/main/resources/src/paises.xml"));
-            return nacionality.getPaises();
+            return ((Paises) unmarshaller.unmarshal(new File("./src/main/resources/src/paises.xml"))).getPaises();
         } catch (JAXBException e) {
             e.printStackTrace();
         }
