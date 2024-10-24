@@ -1,10 +1,14 @@
 package org.lightPoke;
 
-import com.sun.security.jgss.GSSUtil;
 import org.lightPoke.auth.Login;
 import org.lightPoke.auth.Register;
-import org.lightPoke.auth.UserData;
 import org.lightPoke.log.LogManagement;
+import org.lightPoke.menus.AdminTournamentMenu;
+import org.lightPoke.menus.GeneralAdminMenu;
+import org.lightPoke.menus.GuestMenu;
+import org.lightPoke.menus.TrainerMenu;
+import org.lightPoke.users.TRUser;
+import org.lightPoke.users.User;
 
 import java.util.Scanner;
 
@@ -13,9 +17,6 @@ import java.util.Scanner;
 public class Game {
     private static LogManagement log = LogManagement.getInstance();
     public static void main(String[] args) {
-        Login log = Login.getInstance();
-        Register reg = Register.getInstance();
-
         mainMenu();
     }
 
@@ -23,16 +24,18 @@ public class Game {
         System.out.println("------ Welcome to LightPoke ------");
         System.out.println("1. Register");
         System.out.println("2. Login");
-        System.out.println("3. Exit");
+        System.out.println("3. Unirse como invitado");
+        System.out.println("4. Exit \n");
         System.out.print("Please select an option: ");
 
         Scanner sc = new Scanner(System.in);
         int choice = sc.nextInt();
-        while (choice != 1 && choice != 2 && choice != 3) {
+        while (choice != 1 && choice != 2 && choice != 3 && choice != 4) {
             System.out.println("------ Welcome to LightPoke ------");
             System.out.println("1. Register");
             System.out.println("2. Login");
-            System.out.println("3. Exit \n");
+            System.out.println("3. Unirse como invitado");
+            System.out.println("4. Exit \n");
             System.out.print("Please select an option: ");
             choice = sc.nextInt();
 
@@ -40,50 +43,28 @@ public class Game {
 
         switch (choice) {
             case 1:
-                if (register()) {
-                    System.out.println("Registration successful!");
-                } else {
-                    System.out.println("Registration failed.");
+                TRUser user = register();
+                if (user != null) {
+                    new TrainerMenu(user); // Automatic login after registration
                 }
                 break;
             case 2:
                 login();
                 break;
             case 3:
-                System.out.println("Exiting...");
+                GuestMenu guestMenu = new GuestMenu();
                 return;
+            case 4:
+                System.out.println("Exiting...");
+                System.exit(1);
             default:
                 System.out.println("Invalid option. Please try again.");
         }
     }
 
-    private static void guestMenu() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("------ Guest menu ------");
-        System.out.println("1. Ver torneos");
-        System.out.println("2. Salir...");
-    }
-
-    private static void adminTournametMenu() {
-        System.out.println("------ Admin Tournament menu ------");
-        System.out.println("1. Exportar datos de los torneos");
-        System.out.println("2. Inscribirse");
-        System.out.println("3. Pelear");
-    }
-
-    private static void trainerMenu() {
-        System.out.println("------ Trainer menu ------");
-        System.out.println("1. Exportar carnet");
-    }
-
-    private static void generalAdminMenu() {
-        System.out.println("------ General Admin menu ------");
-        System.out.println("1. Registrar nuevo torneo");
-    }
-
     private static boolean login () {
         Scanner sc = new Scanner(System.in);
-        System.out.println("------ Registro ------");
+        System.out.println("------ Login ------");
 
         System.out.print("Usuario: ");
         final String username = sc.next();
@@ -93,28 +74,24 @@ public class Game {
 
         Login log = Login.getInstance();
 
-        UserData data = log.login(username, password);
-        if (data != null) {
+        User user = log.login(username, password);
+        if (user != null) {
             System.out.println("Login successful!");
 
-            switch (data.getRole()) {
+            switch (user.getRole()) {
                 case 1 -> {
                     System.out.println("Logged as Admin tournament");
-                    adminTournametMenu();
-                    break;
+                    new AdminTournamentMenu();
                 }
+
                 case 2 -> {
                     System.out.println("Logged as Trainer");
-                    trainerMenu();
-                    break;
+                    new TrainerMenu(null); // Values not initialized
                 }
+
                 case 3 -> {
                     System.out.println("Logged as General Admin");
-                    generalAdminMenu();
-                    break;
-                }
-                default -> {
-                    break;
+                    new GeneralAdminMenu();
                 }
             }
         } else {
@@ -126,7 +103,7 @@ public class Game {
 
             switch (guestChoice) {
                 case 'y' -> {
-                    guestMenu();
+                    new GuestMenu();
                 }
                 case 'n' -> {return false;}
             }
@@ -135,17 +112,29 @@ public class Game {
         return false;
     }
 
-    private static boolean register() {
+    private static TRUser register() {
         Scanner sc = new Scanner(System.in);
         System.out.println("------ Registro ------");
 
-        System.out.print("Usuario: ");
-        final String username = sc.next();
-
-        System.out.print("Password: ");
-        final String password = sc.next();
-
         Register reg = Register.getInstance();
-        return reg.register(username, password);
+        String username;
+        String password;
+
+        boolean anErrorOccurs = false;
+        TRUser user = null;
+        do {
+            if (anErrorOccurs) {
+                System.out.println("El usuario ya existe, prueba con otro");
+            }
+            System.out.print("Usuario: ");
+            username = sc.next();
+
+            System.out.print("Password: ");
+            password = sc.next();
+
+            anErrorOccurs = true;
+        } while ((user = reg.register(username, password)) == null);
+
+        return user;
     }
 }

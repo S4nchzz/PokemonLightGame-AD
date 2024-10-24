@@ -1,6 +1,10 @@
 package org.lightPoke.auth;
 
 import org.lightPoke.log.LogManagement;
+import org.lightPoke.users.AGUser;
+import org.lightPoke.users.ATUser;
+import org.lightPoke.users.TRUser;
+import org.lightPoke.users.User;
 
 import java.io.*;
 
@@ -18,7 +22,7 @@ public class Login {
         return instance == null ? instance = new Login() : instance;
     }
 
-    public UserData login(final String username, final String password) {
+    public User login(final String username, final String password) {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(credentialsFile));
             String x;
@@ -26,9 +30,9 @@ public class Login {
                 if (x.equals(username) && (reader.readLine()).equals(password)) {
                     log.writeLog("User " + username + " logged succesfully");
                     switch (reader.readLine()) {
-                        case "AT" -> {return new UserData(username, password, 1);} // Administrador de torneos
-                        case "T" -> {return new UserData(username, password, 2);} // Entrenador
-                        case "AG" -> {return new UserData(username, password, 3);} // Administrador general
+                        case "AT" -> {return new ATUser(username, password, 1);} // Administrador de torneos
+                        case "T" -> {return new TRUser(username, password, 2);} // Entrenador
+                        case "AG" -> {return new AGUser(username, password, 3);} // Administrador general
                     }
                 }
             }

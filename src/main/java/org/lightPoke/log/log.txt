@@ -20,3 +20,12 @@
 [22/10/2024 | 20:47:15] -- User iyan not found
 [22/10/2024 | 20:47:47] -- User iyan logged succesfully
 [22/10/2024 | 20:47:59] -- User iyan logged succesfully
+[23/10/2024 | 3:54:7] -- User iyan logged succesfully
+[23/10/2024 | 6:24:38] -- User iyan logged succesfully
+[24/10/2024 | 19:30:32] -- User iyan already exist
+[24/10/2024 | 19:40:17] -- User iyan already exist
+[24/10/2024 | 19:40:23] -- User iya has been registrated
+[24/10/2024 | 19:40:47] -- User iyan logged succesfully
+[24/10/2024 | 19:45:16] -- User a already exist
+[24/10/2024 | 19:45:36] -- User x has been registrated
+[24/10/2024 | 19:45:39] -- Trainer menu opened with trainer info
