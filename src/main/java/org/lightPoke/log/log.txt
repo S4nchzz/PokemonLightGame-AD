@@ -64,3 +64,7 @@
 [24/10/2024 | 21:24:33] -- User h has been registrated
 [24/10/2024 | 22:0:16] -- User x has been registrated
 [24/10/2024 | 22:0:16] -- Trainer menu opened with trainer info
+[25/10/2024 | 5:10:48] -- User iynaaaa has been registrated
+[25/10/2024 | 5:10:48] -- Trainer menu opened with trainer info
+[25/10/2024 | 5:11:1] -- User jj has been registrated
+[25/10/2024 | 5:11:1] -- Trainer menu opened with trainer info

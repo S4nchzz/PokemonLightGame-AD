@@ -92,7 +92,7 @@ public class Register {
 
     private boolean checkIfNacionalityExist(final String userNacionality) {
         for (Pais c : PaisesLoader.getCountriesList()) {
-            if (userNacionality.toUpperCase().equals(c.getId())) {
+            if (userNacionality.equalsIgnoreCase(c.getId()) ||userNacionality.equalsIgnoreCase(c.getNombre())) {
                 return true;
             }
         }
