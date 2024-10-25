@@ -68,3 +68,156 @@
 [25/10/2024 | 5:10:48] -- Trainer menu opened with trainer info
 [25/10/2024 | 5:11:1] -- User jj has been registrated
 [25/10/2024 | 5:11:1] -- Trainer menu opened with trainer info
+[25/10/2024 | 6:0:49] -- File tournaments.dat not or problem reading the data
+[25/10/2024 | 6:0:49] -- Tournaments.dat not found or error on reading
+[25/10/2024 | 6:0:49] -- Tournaments.dat not found or error on reading
+[25/10/2024 | 6:1:15] -- File tournaments.dat not or problem reading the data
+[25/10/2024 | 6:1:15] -- Tournaments.dat not found or error on reading
+[25/10/2024 | 6:1:15] -- Tournaments.dat not found or error on reading
+[25/10/2024 | 6:1:59] -- User 44 has been registrated
+[25/10/2024 | 6:1:59] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 6:1:59] -- File tournaments.dat not or problem reading the data
+[25/10/2024 | 6:2:32] -- User 44 has been registrated
+[25/10/2024 | 6:2:32] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 6:2:32] -- File tournaments.dat not or problem reading the data
+[25/10/2024 | 6:3:45] -- User 4s has been registrated
+[25/10/2024 | 6:3:45] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 6:4:38] -- File tournaments.dat not or problem reading the data
+[25/10/2024 | 6:4:48] -- User ss has been registrated
+[25/10/2024 | 6:4:48] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 6:6:8] -- File tournaments.dat not or problem reading the data
+[25/10/2024 | 6:7:1] -- File tournaments.dat not or problem reading the data
+[25/10/2024 | 6:7:27] -- File tournaments.dat not or problem reading the data
+[25/10/2024 | 6:7:37] -- User gg has been registrated
+[25/10/2024 | 6:7:37] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 6:12:12] -- File tournaments.dat not or problem reading the data
+[25/10/2024 | 6:12:22] -- User a has been registrated
+[25/10/2024 | 6:12:22] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 6:18:38] -- File tournaments.dat not or problem reading the data
+[25/10/2024 | 6:18:48] -- User hola has been registrated
+[25/10/2024 | 6:18:48] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 6:19:47] -- File tournaments.dat not or problem reading the data
+[25/10/2024 | 6:19:52] -- User t has been registrated
+[25/10/2024 | 6:19:52] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 6:20:57] -- File tournaments.dat not or problem reading the data
+[25/10/2024 | 6:21:2] -- User 5 has been registrated
+[25/10/2024 | 6:21:2] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 6:22:34] -- User hh has been registrated
+[25/10/2024 | 6:22:34] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 6:22:34] -- File tournaments.dat not or problem reading the data
+[25/10/2024 | 6:23:2] -- User tt has been registrated
+[25/10/2024 | 6:23:2] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 6:23:2] -- File tournaments.dat not or problem reading the data
+[25/10/2024 | 6:24:21] -- User d has been registrated
+[25/10/2024 | 6:24:21] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 6:25:23] -- File tournaments.dat not or problem reading the data
+[25/10/2024 | 6:25:39] -- File tournaments.dat not or problem reading the data
+[25/10/2024 | 6:25:55] -- User x has been registrated
+[25/10/2024 | 6:25:55] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 6:26:11] -- File tournaments.dat not or problem reading the data
+[25/10/2024 | 6:36:45] -- tournaments.dat has no data
+[25/10/2024 | 6:37:3] -- User g has been registrated
+[25/10/2024 | 6:37:3] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 6:37:14] -- User 3 has been registrated
+[25/10/2024 | 6:37:14] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 6:38:31] -- User d already exist
+[25/10/2024 | 6:38:35] -- User c has been registrated
+[25/10/2024 | 6:38:35] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 6:50:47] -- User h has been registrated
+[25/10/2024 | 6:50:47] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 6:50:48] -- Tournaments.dat not found or error on reading
+[25/10/2024 | 6:50:59] -- User 8 has been registrated
+[25/10/2024 | 6:50:59] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 6:51:42] -- User 1 has been registrated
+[25/10/2024 | 6:51:42] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 6:52:26] -- User 2 has been registrated
+[25/10/2024 | 6:52:26] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 6:56:1] -- tournaments.dat has no data
+[25/10/2024 | 6:56:16] -- User hh already exist
+[25/10/2024 | 6:56:18] -- User jj already exist
+[25/10/2024 | 6:56:23] -- User k has been registrated
+[25/10/2024 | 6:56:23] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 6:56:41] -- tournaments.dat has no data
+[25/10/2024 | 6:57:16] -- User a has been registrated
+[25/10/2024 | 6:57:16] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 7:0:30] -- User x has been registrated
+[25/10/2024 | 7:0:30] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 15:48:59] -- User f has been registrated
+[25/10/2024 | 15:48:59] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 15:50:43] -- User r has been registrated
+[25/10/2024 | 15:50:43] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 15:51:32] -- User 2 has been registrated
+[25/10/2024 | 15:51:32] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 15:52:37] -- tournaments.dat has no data
+[25/10/2024 | 15:52:47] -- User a already exist
+[25/10/2024 | 15:52:51] -- User d has been registrated
+[25/10/2024 | 15:52:51] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 15:53:5] -- User d already exist
+[25/10/2024 | 15:53:6] -- User f already exist
+[25/10/2024 | 15:53:11] -- User gg has been registrated
+[25/10/2024 | 15:53:11] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 15:53:13] -- tournaments.dat has no data
+[25/10/2024 | 15:53:47] -- User t has been registrated
+[25/10/2024 | 15:53:47] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 15:54:19] -- tournaments.dat has no data
+[25/10/2024 | 15:54:38] -- User f already exist
+[25/10/2024 | 15:54:41] -- User v has been registrated
+[25/10/2024 | 15:54:41] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 15:55:32] -- tournaments.dat has no data
+[25/10/2024 | 15:57:27] -- tournaments.dat has no data
+[25/10/2024 | 15:57:34] -- User t already exist
+[25/10/2024 | 15:57:37] -- User y has been registrated
+[25/10/2024 | 15:57:37] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 15:57:59] -- tournaments.dat has no data
+[25/10/2024 | 15:58:17] -- tournaments.dat has no data
+[25/10/2024 | 15:58:39] -- User b has been registrated
+[25/10/2024 | 15:58:39] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 16:20:29] -- tournaments.dat has no data
+[25/10/2024 | 16:20:35] -- User r already exist
+[25/10/2024 | 16:20:36] -- User t already exist
+[25/10/2024 | 16:20:39] -- User u has been registrated
+[25/10/2024 | 16:20:39] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 16:35:37] -- tournaments.dat has no data
+[25/10/2024 | 16:38:41] -- User 55 has been registrated
+[25/10/2024 | 16:38:41] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 16:39:24] -- User op has been registrated
+[25/10/2024 | 16:39:24] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 16:41:23] -- tournaments.dat has no data
+[25/10/2024 | 16:41:34] -- User fg has been registrated
+[25/10/2024 | 16:41:34] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 16:41:52] -- tournaments.dat has no data
+[25/10/2024 | 16:42:3] -- User tr has been registrated
+[25/10/2024 | 16:42:3] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 16:42:31] -- tournaments.dat has no data
+[25/10/2024 | 16:43:6] -- User fr has been registrated
+[25/10/2024 | 16:43:6] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 17:20:29] -- tournaments.dat has no data
+[25/10/2024 | 17:20:42] -- User g already exist
+[25/10/2024 | 17:20:45] -- User 67 has been registrated
+[25/10/2024 | 17:20:45] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 17:21:23] -- tournaments.dat has no data
+[25/10/2024 | 17:21:35] -- User sd has been registrated
+[25/10/2024 | 17:21:35] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 17:22:1] -- tournaments.dat has no data
+[25/10/2024 | 17:38:18] -- tournaments.dat has no data
+[25/10/2024 | 17:38:27] -- tournaments.dat has no data
+[25/10/2024 | 17:43:41] -- tournaments.dat has no data
+[25/10/2024 | 17:43:52] -- tournaments.dat has no data
+[25/10/2024 | 17:44:11] -- tournaments.dat has no data
+[25/10/2024 | 21:55:15] -- Tournament showdown added.
+[25/10/2024 | 21:55:15] -- Tournament showdown 2 added.
+[25/10/2024 | 21:55:36] -- tournaments.dat has no data
+[25/10/2024 | 21:55:36] -- Tournament showdown added.
+[25/10/2024 | 21:55:36] -- Tournament showdown 2 added.
+[25/10/2024 | 21:56:16] -- User ggfgf has been registrated
+[25/10/2024 | 21:56:16] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 21:56:31] -- User fff has been registrated
+[25/10/2024 | 21:56:31] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 21:58:12] -- User hhg has been registrated
+[25/10/2024 | 21:58:12] -- Trainer has info (he has registered and autoLogged)
+[25/10/2024 | 21:58:58] -- User gkg has been registrated
+[25/10/2024 | 21:58:58] -- Trainer has info (he has registered and autoLogged)
+[26/10/2024 | 1:27:55] -- User 12312 has been registrated
+[26/10/2024 | 1:27:55] -- Trainer has info (he has registered and autoLogged)
+[26/10/2024 | 1:29:4] -- User ffs has been registrated
+[26/10/2024 | 1:29:4] -- Trainer has info (he has registered and autoLogged)

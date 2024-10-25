@@ -1,6 +1,8 @@
 package org.lightPoke.users;
 
-public abstract class User {
+import java.io.Serializable;
+
+public abstract class User implements Serializable {
     protected final String username;
     protected final String password;
     protected final int role;

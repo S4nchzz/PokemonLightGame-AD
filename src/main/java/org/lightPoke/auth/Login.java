@@ -30,8 +30,8 @@ public class Login {
                 if (x.equals(username) && (reader.readLine()).equals(password)) {
                     log.writeLog("User " + username + " logged succesfully");
                     switch (reader.readLine()) {
-                        case "AT" -> {return new ATUser(username, password, 1);} // Administrador de torneos
-                        case "T" -> {return new TRUser(username, password, 2);} // Entrenador
+                        case "T" -> {return new TRUser(username, password, 1);} // Entrenador
+                        case "AT" -> {return new ATUser(username, password, 2);} // Administrador de torneos
                         case "AG" -> {return new AGUser(username, password, 3);} // Administrador general
                     }
                 }

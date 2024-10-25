@@ -1,8 +1,9 @@
 package org.lightPoke.trainerLicense;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class License {
+public class License implements Serializable {
     private final long idEntrenador;
     private final LocalDate fechaExpedicion;
     private final float puntos;
