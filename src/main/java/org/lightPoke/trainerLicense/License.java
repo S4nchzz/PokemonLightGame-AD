@@ -15,4 +15,20 @@ public class License implements Serializable {
         this.puntos = puntos;
         this.numVictorias = numVictorias;
     }
+
+    public long getIdEntrenador() {
+        return idEntrenador;
+    }
+
+    public String getFechaExpedicion() {
+        return fechaExpedicion.getDayOfMonth() + "/" + fechaExpedicion.getMonthValue() + "/" + fechaExpedicion.getYear();
+    }
+
+    public float getPuntos() {
+        return puntos;
+    }
+
+    public int getNumVictorias() {
+        return numVictorias;
+    }
 }

@@ -8,26 +8,20 @@ import org.lightPoke.menus.GeneralAdminMenu;
 import org.lightPoke.menus.GuestMenu;
 import org.lightPoke.menus.TrainerMenu;
 import org.lightPoke.tournament.Tournament;
-import org.lightPoke.tournament.TournametList;
+import org.lightPoke.tournament.TournamentList;
 import org.lightPoke.users.ATUser;
 import org.lightPoke.users.TRUser;
 import org.lightPoke.users.User;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Game {
     private static LogManagement log = LogManagement.getInstance();
     public static void main(String[] args) {
-        //TournametList t = TournametList.getInstance();
-        //t.addTournament(new Tournament(new ATUser("hola", "hola", 2), 1, "showdown", 'A', 100.0f), true);
-        //t.addTournament(new Tournament(new ATUser("hola", "hola", 2), 1, "showdown 2", 'A', 100.0f), true);
-
+//        TournamentList t = TournamentList.getInstance();
+//        t.addTournament(new Tournament(new ATUser("hola", "hola", 2), 1, "showdown", 'A', 100.0f), true);
+//        t.addTournament(new Tournament(new ATUser("hola", "hola", 2), 1, "showdown 2", 'A', 100.0f), true);
         mainMenu();
     }
 

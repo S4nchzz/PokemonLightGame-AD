@@ -221,3 +221,88 @@
 [26/10/2024 | 1:27:55] -- Trainer has info (he has registered and autoLogged)
 [26/10/2024 | 1:29:4] -- User ffs has been registrated
 [26/10/2024 | 1:29:4] -- Trainer has info (he has registered and autoLogged)
+[26/10/2024 | 20:18:17] -- tournaments.dat has no data
+[26/10/2024 | 20:18:17] -- Tournament showdown added.
+[26/10/2024 | 20:18:17] -- Tournament showdown 2 added.
+[26/10/2024 | 20:18:22] -- User sdds has been registrated
+[26/10/2024 | 20:18:22] -- Trainer has info (he has registered and autoLogged)
+[26/10/2024 | 20:18:29] -- Tournament showdown added.
+[26/10/2024 | 20:18:29] -- Tournament showdown 2 added.
+[26/10/2024 | 20:18:34] -- User gh has been registrated
+[26/10/2024 | 20:18:34] -- Trainer has info (he has registered and autoLogged)
+[26/10/2024 | 20:23:0] -- tournaments.dat has no data
+[26/10/2024 | 20:23:3] -- Tournament showdown added.
+[26/10/2024 | 20:23:3] -- Tournament showdown 2 added.
+[26/10/2024 | 20:23:8] -- User dasasdasd has been registrated
+[26/10/2024 | 20:23:8] -- Trainer has info (he has registered and autoLogged)
+[26/10/2024 | 20:23:33] -- User dgfdfs has been registrated
+[26/10/2024 | 20:23:33] -- Trainer has info (he has registered and autoLogged)
+[26/10/2024 | 20:23:49] -- User df has been registrated
+[26/10/2024 | 20:23:49] -- Trainer has info (he has registered and autoLogged)
+[26/10/2024 | 20:28:37] -- User dani has been registrated
+[26/10/2024 | 20:28:37] -- Trainer has info (he has registered and autoLogged)
+[29/10/2024 | 16:11:13] -- User ert has been registrated
+[29/10/2024 | 16:11:13] -- Trainer has info (he has registered and autoLogged)
+[29/10/2024 | 16:13:28] -- tournaments.dat has no data
+[29/10/2024 | 16:13:28] -- Tournament showdown added.
+[29/10/2024 | 16:13:28] -- Tournament showdown 2 added.
+[29/10/2024 | 16:13:34] -- User asdasd has been registrated
+[29/10/2024 | 16:13:34] -- Trainer has info (he has registered and autoLogged)
+[29/10/2024 | 16:17:9] -- User 123 has been registrated
+[29/10/2024 | 16:17:9] -- Trainer has info (he has registered and autoLogged)
+[29/10/2024 | 16:18:27] -- User gfd has been registrated
+[29/10/2024 | 16:18:27] -- Trainer has info (he has registered and autoLogged)
+[29/10/2024 | 16:19:36] -- User dfs has been registrated
+[29/10/2024 | 16:19:36] -- Trainer has info (he has registered and autoLogged)
+[29/10/2024 | 16:21:22] -- User ffas has been registrated
+[29/10/2024 | 16:21:22] -- Trainer has info (he has registered and autoLogged)
+[29/10/2024 | 16:24:42] -- User rtterert has been registrated
+[29/10/2024 | 16:24:42] -- Trainer has info (he has registered and autoLogged)
+[29/10/2024 | 16:26:27] -- User sdfs has been registrated
+[29/10/2024 | 16:26:27] -- Trainer has info (he has registered and autoLogged)
+[29/10/2024 | 16:27:7] -- User asvas has been registrated
+[29/10/2024 | 16:27:7] -- Trainer has info (he has registered and autoLogged)
+[29/10/2024 | 16:27:36] -- User adsadads has been registrated
+[29/10/2024 | 16:27:36] -- Trainer has info (he has registered and autoLogged)
+[29/10/2024 | 16:28:38] -- User rfrf has been registrated
+[29/10/2024 | 16:28:38] -- Trainer has info (he has registered and autoLogged)
+[29/10/2024 | 16:29:16] -- User a has been registrated
+[29/10/2024 | 16:29:16] -- Trainer has info (he has registered and autoLogged)
+[29/10/2024 | 16:31:32] -- User gfgfg has been registrated
+[29/10/2024 | 16:31:32] -- Trainer has info (he has registered and autoLogged)
+[29/10/2024 | 16:32:50] -- User a already exist
+[29/10/2024 | 16:32:52] -- User a already exist
+[29/10/2024 | 16:32:55] -- User e has been registrated
+[29/10/2024 | 16:32:55] -- Trainer has info (he has registered and autoLogged)
+[29/10/2024 | 16:33:52] -- User x has been registrated
+[29/10/2024 | 16:33:52] -- Trainer has info (he has registered and autoLogged)
+[29/10/2024 | 17:37:30] -- User asd has been registrated
+[29/10/2024 | 17:37:30] -- Trainer has info (he has registered and autoLogged)
+[29/10/2024 | 17:39:26] -- User fdfddf has been registrated
+[29/10/2024 | 17:39:26] -- Trainer has info (he has registered and autoLogged)
+[29/10/2024 | 17:39:55] -- User re has been registrated
+[29/10/2024 | 17:39:55] -- Trainer has info (he has registered and autoLogged)
+[29/10/2024 | 17:40:39] -- User z has been registrated
+[29/10/2024 | 17:40:39] -- Trainer has info (he has registered and autoLogged)
+[29/10/2024 | 17:45:28] -- User 234 has been registrated
+[29/10/2024 | 17:45:28] -- Trainer has info (he has registered and autoLogged)
+[29/10/2024 | 17:46:14] -- User 1111 has been registrated
+[29/10/2024 | 17:46:14] -- Trainer has info (he has registered and autoLogged)
+[29/10/2024 | 17:46:50] -- User gg has been registrated
+[29/10/2024 | 17:46:50] -- Trainer has info (he has registered and autoLogged)
+[29/10/2024 | 17:47:31] -- User 999 has been registrated
+[29/10/2024 | 17:47:31] -- Trainer has info (he has registered and autoLogged)
+[29/10/2024 | 17:47:38] -- User asd already exist
+[29/10/2024 | 17:47:43] -- User dsa has been registrated
+[29/10/2024 | 17:47:43] -- Trainer has info (he has registered and autoLogged)
+[29/10/2024 | 17:47:59] -- User fff has been registrated
+[29/10/2024 | 17:47:59] -- Trainer has info (he has registered and autoLogged)
+[29/10/2024 | 17:48:36] -- User rr has been registrated
+[29/10/2024 | 17:48:36] -- Trainer has info (he has registered and autoLogged)
+[29/10/2024 | 17:49:20] -- tournaments.dat has no data
+[29/10/2024 | 17:49:20] -- Tournament showdown added.
+[29/10/2024 | 17:49:20] -- Tournament showdown 2 added.
+[29/10/2024 | 17:49:25] -- User ff has been registrated
+[29/10/2024 | 17:49:25] -- Trainer has info (he has registered and autoLogged)
+[29/10/2024 | 17:50:15] -- User r has been registrated
+[29/10/2024 | 17:50:15] -- Trainer has info (he has registered and autoLogged)
