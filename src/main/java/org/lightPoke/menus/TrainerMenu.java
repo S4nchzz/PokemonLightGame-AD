@@ -3,24 +3,16 @@ package org.lightPoke.menus;
 import org.lightPoke.log.LogManagement;
 import org.lightPoke.tournament.Tournament;
 import org.lightPoke.tournament.TournamentList;
-import org.lightPoke.trainerLicense.License;
 import org.lightPoke.users.TRUser;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Text;
-import org.xml.sax.SAXException;
-import org.xml.sax.XMLReader;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
 import javax.xml.parsers.*;
 import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
-import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Scanner;
 
@@ -108,6 +100,8 @@ public class TrainerMenu {
         eleEntrenador.appendChild(generateElement("nombre", trainer.getNombre(), docu));
         eleEntrenador.appendChild(generateElement("nacionalidad", trainer.getNacionalidad(), docu));
 
+        raiz.appendChild(eleEntrenador);
+
         LocalDate date = LocalDate.now();
         final String formatedDate = date.getDayOfMonth() + "/" + date.getMonthValue() + "/" + date.getYear();
 
@@ -123,7 +117,7 @@ public class TrainerMenu {
         TournamentList tournamentList = TournamentList.getInstance();
         for (Tournament tour : tournamentList.getTournamentList()) {
             for (TRUser truser : tour.getTrainers()) {
-                if (truser.getId() == trainer.getId()) {
+                if (truser.getId() == trainer.getId() && truser.getUsername().equalsIgnoreCase(trainer.getUsername())) {
                     eleTorneos.appendChild(generateElement("nombre", tour.getNombre(), docu));
                     eleTorneos.appendChild(generateElement("region", String.valueOf(tour.getCodRegion()), docu));
 

@@ -19,9 +19,9 @@ import java.util.Scanner;
 public class Game {
     private static LogManagement log = LogManagement.getInstance();
     public static void main(String[] args) {
-//        TournamentList t = TournamentList.getInstance();
-//        t.addTournament(new Tournament(new ATUser("hola", "hola", 2), 1, "showdown", 'A', 100.0f), true);
-//        t.addTournament(new Tournament(new ATUser("hola", "hola", 2), 1, "showdown 2", 'A', 100.0f), true);
+//       TournamentList t = TournamentList.getInstance();
+//       t.addTournament(new Tournament(new ATUser("hola", "hola", 2), 1, "showdown", 'A', 100.0f), true);
+//       t.addTournament(new Tournament(new ATUser("hola", "hola", 2), 1, "showdown 2", 'A', 100.0f), true);
         mainMenu();
     }
 
