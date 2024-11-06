@@ -4,6 +4,13 @@ import org.lightPoke.trainerLicense.License;
 
 import java.time.LocalDate;
 
+/**
+ * Clase que extiende de USER y se instancia a
+ * la hora de crear un usuario de tipo
+ * Entrenador
+ *
+ * @author Iyan Sanchez da Costa
+ */
 public class TRUser extends User{
     private long id;
     private License carnet;

@@ -2,6 +2,10 @@ package org.lightPoke.auth.nacionality;
 
 import javax.xml.bind.annotation.XmlType;
 
+/** Clase que permite a JAXB obtener los registros de un archivo XML
+ * en un orden en especifico con getters y setters
+ * @author Iyan Sanchez da Costa
+ */
 @XmlType(propOrder = {"id", "nombre"})
 public class Pais {
     private String id;

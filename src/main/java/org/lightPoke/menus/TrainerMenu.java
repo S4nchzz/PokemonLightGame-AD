@@ -1,5 +1,6 @@
 package org.lightPoke.menus;
 
+import org.lightPoke.Game;
 import org.lightPoke.log.LogManagement;
 import org.lightPoke.tournament.Tournament;
 import org.lightPoke.tournament.TournamentList;
@@ -16,8 +17,30 @@ import java.io.File;
 import java.time.LocalDate;
 import java.util.Scanner;
 
+/**
+ * Clase que solo sera accesible cuando un usuario de tipo
+ * entrenador (AGUser) inicia sesion permitiendo poder
+ * exportar su propio carnet.
+ *
+ * @author Iyan Sanchez da Costa
+ */
 public class TrainerMenu {
     private final LogManagement log;
+
+    /**
+     * Constructor que le pasan por parametro un entrenador, este
+     * entrenador sera el entrenador con el que inicio sesion ya
+     * que el metodo que instancia esta clase es el que crea dicho
+     * objeto, la comparacion de NULL es hecha ya que si un usuario
+     * se registra automaticamente inicia sesion y se le pasa un
+     * objeto de tipo TRUser para proseguir con la informacion de
+     * este usuario, en cambio si el usuario se logea con este
+     * entrenador, al no tener guardado el nombre y la nacionalidad
+     * sera de tipo null, lo cual no permitira continuar con la
+     * configuracion de este entrenador.
+     *
+     * @param trainer Entrenador que se ha iniciado sesion
+     */
     public TrainerMenu(final TRUser trainer) {
         log = LogManagement.getInstance();
 
@@ -58,13 +81,21 @@ public class TrainerMenu {
                 case 1 -> {
                     exportLicense(trainer);
                 }
-                case 2 -> {}
+                case 2 -> {
+                    Game.main(null);
+                }
             }
         } else {
             log.writeLog("Trainer has no info (login before registered)");
         }
     }
 
+    /**
+     * Este metodo permitira exportar un License.class en formato XML
+     * usando DOM
+     *
+     * @param trainer Entrenador que ha iniciado sesion y ha solicitado que se le exporte el carnet
+     */
     private void exportLicense(TRUser trainer) {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 
@@ -89,6 +120,14 @@ public class TrainerMenu {
         }
     }
 
+    /**
+     * Metodo que sera llamado cuando se quiera exportar el carnet, adquiriendo
+     * todos los datos del usuario y ecribiendolos en la raiz del XML usando
+     * Element.class
+     * @param raiz Raiz del archivo XML
+     * @param docu Documento usado para la creacion de Elementos
+     * @param trainer Entrenador con su informacion
+     */
     private void insertData(Element raiz, Document docu, TRUser trainer) {
         Element eleIdEntrenador = generateElement("id", String.valueOf(trainer.getCarnet().getIdEntrenador()), docu);
         raiz.appendChild(eleIdEntrenador);
@@ -127,6 +166,14 @@ public class TrainerMenu {
         }
     }
 
+    /**
+     * Metodo que generara un Elemento y lo importa a la raiz que se le pasa como parametro
+     *
+     * @param elementName Nombre del elemento a crear
+     * @param elementContent Contenido del elemento a crear (si es que existe)
+     * @param docu Clase document para crear elementos
+     * @return Nuevo elemento creado con las especificaciones adquiridas
+     */
     private Element generateElement(final String elementName, final String elementContent, Document docu) {
         if (elementContent != null) {
             Element ele = docu.createElement(elementName);

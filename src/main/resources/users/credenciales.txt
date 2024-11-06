@@ -1,3 +1,10 @@
-iyan
-a
-AG
+iyan a AG 12
+t1 t1 AT 13
+a a TR 14
+b b AT 15
+n n TR 16
+t t TR 17
+m m AT 18
+q q AT 19
+g g TR 20
+r r TR 21

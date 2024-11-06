@@ -3,6 +3,12 @@ package org.lightPoke.trainerLicense;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+/**
+ * Clase serializada que contiene todos los datos que
+ * puede tener un usuario entrenador (TRUser)
+ *
+ * @author Iyan Sanchez da Costa
+ */
 public class License implements Serializable {
     private final long idEntrenador;
     private final LocalDate fechaExpedicion;

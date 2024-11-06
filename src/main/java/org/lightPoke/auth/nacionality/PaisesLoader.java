@@ -6,6 +6,13 @@ import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.util.List;
 
+/**
+ * Clase que usando JAXBContext y unmarshaller lee el archivo
+ * xml descrito en el metodo getCountriesList para asi retornar
+ * un Objeto de tipo Paises el cual contiene una lista de tipo Pais
+ *
+ * @author Iyan Sanchez da Costa
+ */
 public class PaisesLoader {
     public static List<Pais> getCountriesList() {
         try {

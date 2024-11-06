@@ -5,42 +5,43 @@ import org.lightPoke.auth.Register;
 import org.lightPoke.log.LogManagement;
 import org.lightPoke.menus.AdminTournamentMenu;
 import org.lightPoke.menus.GeneralAdminMenu;
-import org.lightPoke.menus.GuestMenu;
 import org.lightPoke.menus.TrainerMenu;
-import org.lightPoke.tournament.Tournament;
-import org.lightPoke.tournament.TournamentList;
-import org.lightPoke.users.ATUser;
 import org.lightPoke.users.TRUser;
 import org.lightPoke.users.User;
 
-import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Clase Game que se encarga de gestionar toda la interaccion
+ * de un usuario invitado
+ *
+ * @author Iyan Sanchez da Costa
+ */
 public class Game {
     private static LogManagement log = LogManagement.getInstance();
     public static void main(String[] args) {
-//       TournamentList t = TournamentList.getInstance();
-//       t.addTournament(new Tournament(new ATUser("hola", "hola", 2), 1, "showdown", 'A', 100.0f), true);
-//       t.addTournament(new Tournament(new ATUser("hola", "hola", 2), 1, "showdown 2", 'A', 100.0f), true);
-        mainMenu();
+       mainMenu();
     }
 
+    /**
+     * Menu principal que servira para registrar
+     * un usuario o iniciar sesion
+     */
     private static void mainMenu() {
         System.out.println("------ Welcome to LightPoke ------");
         System.out.println("1. Register");
         System.out.println("2. Login");
-        System.out.println("3. Unirse como invitado");
         System.out.println("4. Exit \n");
         System.out.print("Please select an option: ");
 
         Scanner sc = new Scanner(System.in);
         int choice = sc.nextInt();
-        while (choice != 1 && choice != 2 && choice != 3 && choice != 4) {
+
+        while (choice != 1 && choice != 2 && choice != 3) {
             System.out.println("------ Welcome to LightPoke ------");
             System.out.println("1. Register");
             System.out.println("2. Login");
-            System.out.println("3. Unirse como invitado");
-            System.out.println("4. Exit \n");
+            System.out.println("3. Exit \n");
             System.out.print("Please select an option: ");
             choice = sc.nextInt();
 
@@ -57,9 +58,6 @@ public class Game {
                 login();
                 break;
             case 3:
-                GuestMenu guestMenu = new GuestMenu();
-                return;
-            case 4:
                 System.out.println("Exiting...");
                 System.exit(1);
             default:
@@ -67,7 +65,16 @@ public class Game {
         }
     }
 
-    private static boolean login () {
+    /**
+     * Metodo que dado un ususario y contraseña pedidos por pantalla
+     * se intentara crear usando el metodo login de Login.class
+     * si el retorno de esta clase == null significa que el usuario no
+     * se ha encontrado o ha habido algun error a la hora de iniciar
+     * sesion, en en cambio si el retorno es un objeto != null
+     * se comprobara el tipo de ese usuario y se instanciara un objeto
+     * con su propio menu segun el tipo que tenga
+     */
+    private static void login () {
         Scanner sc = new Scanner(System.in);
         System.out.println("------ Login ------");
 
@@ -108,15 +115,18 @@ public class Game {
 
             switch (guestChoice) {
                 case 'y' -> {
-                    new GuestMenu();
+                    Game.main(null);
                 }
-                case 'n' -> {return false;}
             }
         }
-
-        return false;
     }
 
+    /**
+     * Metodo que permitira al usuario invitado poder registrarse
+     * especificando el usuario y la contraseña, verificando si este
+     * no existe.
+     * @return Nuevo usuario de tipo entrenador
+     */
     private static TRUser register() {
         Scanner sc = new Scanner(System.in);
         System.out.println("------ Registro ------");
@@ -138,7 +148,7 @@ public class Game {
             password = sc.next();
 
             anErrorOccurs = true;
-        } while ((user = reg.register(username, password)) == null);
+        } while ((user = (TRUser) reg.register(username, password, "TR")) == null);
 
         return user;
     }
