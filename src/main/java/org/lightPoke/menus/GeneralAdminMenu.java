@@ -52,6 +52,22 @@ public class GeneralAdminMenu {
         System.out.print("Nombre del torneo: ");
         String tName = sc.next();
 
+        boolean correctName = true;
+        do {
+            correctName = true;
+            for (Tournament t : TournamentList.getInstance().getTournamentList()) {
+                if (t.getNombre().equals(tName)) {
+                    correctName = false;
+                }
+            }
+
+            if (!correctName) {
+                System.out.print("Nombre del torneo en uso, prueba con otro: ");
+                tName = sc.next();
+            }
+        } while (!correctName);
+
+
         System.out.print("Codigo de la region: ");
         char tCodReg = sc.next().charAt(0);
 
