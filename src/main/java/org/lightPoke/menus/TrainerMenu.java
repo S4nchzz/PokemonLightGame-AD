@@ -78,12 +78,8 @@ public class TrainerMenu {
             }
 
             switch(choice) {
-                case 1 -> {
-                    exportLicense(trainer);
-                }
-                case 2 -> {
-                    Game.main(null);
-                }
+                case 1 -> exportLicense(trainer);
+                case 2 -> Game.main(null);
             }
         } else {
             log.writeLog("Trainer has no info (login before registered)");
@@ -155,15 +151,24 @@ public class TrainerMenu {
 
         TournamentList tournamentList = TournamentList.getInstance();
         for (Tournament tour : tournamentList.getTournamentList()) {
+            Element eleTorneo = null;
             for (TRUser truser : tour.getTrainers()) {
                 if (truser.getId() == trainer.getId() && truser.getUsername().equalsIgnoreCase(trainer.getUsername())) {
-                    eleTorneos.appendChild(generateElement("nombre", tour.getNombre(), docu));
-                    eleTorneos.appendChild(generateElement("region", String.valueOf(tour.getCodRegion()), docu));
+                    eleTorneo = generateElement("torneo", null, docu);
+
+                    eleTorneo.appendChild(generateElement("nombre", tour.getNombre(), docu));
+                    eleTorneo.appendChild(generateElement("region", String.valueOf(tour.getCodRegion()), docu));
 
                     // ! Here must be added the combats
                 }
             }
+
+            if (eleTorneo != null) {
+                eleTorneos.appendChild(eleTorneo);
+            }
         }
+
+        log.writeLog("License exported");
     }
 
     /**

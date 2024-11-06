@@ -738,3 +738,30 @@
 [6/11/2024 | 18:27:37] -- Tournament tr added.
 [6/11/2024 | 18:27:43] -- User la has been registrated
 [6/11/2024 | 18:27:43] -- Trainer has info (he has registered and autoLogged)
+[6/11/2024 | 23:2:46] -- User a has been registrated
+[6/11/2024 | 23:2:46] -- Trainer has info (he has registered and autoLogged)
+[6/11/2024 | 23:2:46] -- tournaments.dat has no data
+[6/11/2024 | 23:2:48] -- License exported
+[6/11/2024 | 23:3:16] -- User iyan not found
+[6/11/2024 | 23:4:12] -- User a not found
+[6/11/2024 | 23:4:32] -- User a not found
+[6/11/2024 | 23:4:36] -- User iyan logged succesfully
+[6/11/2024 | 23:4:39] -- tournaments.dat has no data
+[6/11/2024 | 23:4:43] -- User a already exist
+[6/11/2024 | 23:4:53] -- User e has been registrated
+[6/11/2024 | 23:4:53] -- Tournament a added.
+[6/11/2024 | 23:5:1] -- User b has been registrated
+[6/11/2024 | 23:5:1] -- Trainer has info (he has registered and autoLogged)
+[6/11/2024 | 23:5:2] -- License exported
+[6/11/2024 | 23:5:2] -- Tournament a has been created
+[6/11/2024 | 23:5:16] -- User g has been registrated
+[6/11/2024 | 23:5:17] -- Trainer has info (he has registered and autoLogged)
+[6/11/2024 | 23:5:21] -- User iyan logged succesfully
+[6/11/2024 | 23:5:29] -- User t has been registrated
+[6/11/2024 | 23:5:29] -- Tournament t added.
+[6/11/2024 | 23:5:32] -- User a already exist
+[6/11/2024 | 23:5:34] -- User e already exist
+[6/11/2024 | 23:5:36] -- User w has been registrated
+[6/11/2024 | 23:5:36] -- Trainer has info (he has registered and autoLogged)
+[6/11/2024 | 23:5:38] -- License exported
+[6/11/2024 | 23:5:38] -- Tournament t has been created

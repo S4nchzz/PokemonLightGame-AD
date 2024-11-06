@@ -107,17 +107,8 @@ public class Game {
                 }
             }
         } else {
-            System.out.println("No se ha encontrado el usuario. ¿Entrar como invitado? (y/n)");
-            char guestChoice;
-            while ((guestChoice = sc.next().charAt(0)) != 'y' && guestChoice != 'n') {
-                System.out.println("Opcion invalida | No se ha encontrado el usuario. ¿Entrar como invitado? (y/n)");
-            }
-
-            switch (guestChoice) {
-                case 'y' -> {
-                    Game.main(null);
-                }
-            }
+            System.out.println("Usuario no encontrado, intentelo de nuevo");
+            Game.login();
         }
     }
 
