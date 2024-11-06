@@ -74,7 +74,10 @@ public class Register {
 
             User user = null;
             switch(type.toUpperCase()) {
-                case "TR" -> {user = requestInfo(username, password);}
+                case "TR" -> {
+                    user = requestInfo(username, password);
+                    System.out.println((TRUser)user);
+                }
                 case "AT" -> {user = new ATUser(username, password, 2);}
             }
 

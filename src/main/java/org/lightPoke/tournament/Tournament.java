@@ -45,10 +45,32 @@ public class Tournament implements Serializable {
 
         System.out.println("\n------Registro de administrador de torneo------");
         System.out.print("Usuario: ");
-        final String username = sc.next();
+
+        String username = sc.next();
         System.out.print("Contraseña: ");
-        final String password = sc.next();
-        
+        String password = sc.next();
+
+
+        System.out.print("Los datos introducidos son correctos? (y/n): ");
+        char choice;
+        while ((choice = sc.next().charAt(0)) != 'y' && choice != 'n') {
+            System.out.println("Opcion invalida (y | n)");
+        }
+
+        while (choice == 'n') {
+                System.out.println("\n------Registro de administrador de torneo------");
+                System.out.print("Usuario: ");
+
+                username = sc.next();
+                System.out.print("Contraseña: ");
+                password = sc.next();
+
+                System.out.print("Los datos introducidos son correctos? (y/n): ");
+                while ((choice = sc.next().charAt(0)) != 'y' && choice != 'n') {
+                    System.out.println("Opcion invalida (y | n)");
+                }
+            }
+
         Register reg = Register.getInstance();
         return (ATUser) reg.register(username, password, "AT");
     }

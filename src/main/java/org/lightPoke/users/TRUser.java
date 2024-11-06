@@ -59,4 +59,12 @@ public class TRUser extends User{
     public String getNacionalidad() {
         return nacionalidad;
     }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "TRUser{id=%d, username='%s', nombre='%s', nacionalidad='%s', role=%d}",
+                id, getUsername(), nombre, nacionalidad, getRole()
+        );
+    }
 }

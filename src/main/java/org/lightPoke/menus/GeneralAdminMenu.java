@@ -52,24 +52,29 @@ public class GeneralAdminMenu {
         System.out.print("Nombre del torneo: ");
         String tName = sc.next();
 
+        System.out.print("Codigo de la region: ");
+        char tCodReg = sc.next().charAt(0);
+
         boolean correctName = true;
         do {
             correctName = true;
             for (Tournament t : TournamentList.getInstance().getTournamentList()) {
-                if (t.getNombre().equals(tName)) {
+                if (t.getNombre().equals(tName) && t.getCodRegion() == tCodReg) {
                     correctName = false;
                 }
             }
 
             if (!correctName) {
-                System.out.print("Nombre del torneo en uso, prueba con otro: ");
+                System.out.println("Nombre-Region (" + tName + " | " + tCodReg + ") utilziados ya existen: ");
+                System.out.print("Nombre del torneo: ");
                 tName = sc.next();
+
+                System.out.print("Codigo de la region: ");
+                tCodReg = sc.next().charAt(0);
             }
         } while (!correctName);
 
 
-        System.out.print("Codigo de la region: ");
-        char tCodReg = sc.next().charAt(0);
 
         System.out.print("Puntos Max. para victoria: ");
         float tVictoryPoints = sc.nextFloat();

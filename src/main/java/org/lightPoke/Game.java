@@ -31,7 +31,7 @@ public class Game {
         System.out.println("------ Welcome to LightPoke ------");
         System.out.println("1. Register");
         System.out.println("2. Login");
-        System.out.println("4. Exit \n");
+        System.out.println("3. Exit \n");
         System.out.print("Please select an option: ");
 
         Scanner sc = new Scanner(System.in);
