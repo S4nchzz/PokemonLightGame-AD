@@ -765,3 +765,21 @@
 [6/11/2024 | 23:5:36] -- Trainer has info (he has registered and autoLogged)
 [6/11/2024 | 23:5:38] -- License exported
 [6/11/2024 | 23:5:38] -- Tournament t has been created
+[28/11/2024 | 20:37:39] -- Unnable to establish a connection with the DataSource on CreateTrainer function
+[28/11/2024 | 20:38:16] -- Unnable to establish a connection with the DataSource on CreateTrainer function
+[28/11/2024 | 20:38:51] -- User iyan created
+[28/11/2024 | 20:38:51] -- User aaaa has been registrated
+[28/11/2024 | 20:38:51] -- Trainer has info (he has registered and autoLogged)
+[28/11/2024 | 20:46:4] -- User essesee created
+[28/11/2024 | 20:46:4] -- User asd has been registrated
+[28/11/2024 | 20:46:4] -- Trainer has info (he has registered and autoLogged)
+[28/11/2024 | 21:0:22] -- User a logged succesfully
+[28/11/2024 | 21:0:22] -- Trainer has no info (login before registered)
+[28/11/2024 | 21:0:29] -- User iyan logged succesfully
+[28/11/2024 | 21:0:58] -- User iyan logged succesfully
+[28/11/2024 | 21:1:7] -- User g already exist
+[28/11/2024 | 21:1:8] -- Unnable to establish a connection with the DataSource on createTournament() function
+[28/11/2024 | 21:1:33] -- User iyan logged succesfully
+[28/11/2024 | 21:1:54] -- User k has been registrated
+[28/11/2024 | 21:1:55] -- Tournament rt created
+[28/11/2024 | 21:1:55] -- Tournament rt added.

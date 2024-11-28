@@ -5,3 +5,6 @@ b b TR 15
 g g TR 16
 t t AT 17
 w w TR 18
+aaaa aaaa TR 19
+asd asd TR 20
+k k AT 21

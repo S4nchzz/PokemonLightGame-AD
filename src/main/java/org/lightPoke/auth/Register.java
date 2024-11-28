@@ -2,6 +2,8 @@ package org.lightPoke.auth;
 
 import org.lightPoke.auth.nacionality.Pais;
 import org.lightPoke.auth.nacionality.PaisesLoader;
+import org.lightPoke.db.dao.implementations.TrainerDAO_IMPLE;
+import org.lightPoke.db.entities.Entity_Trainer;
 import org.lightPoke.log.LogManagement;
 import org.lightPoke.users.ATUser;
 import org.lightPoke.users.TRUser;
@@ -76,6 +78,13 @@ public class Register {
             switch(type.toUpperCase()) {
                 case "TR" -> {
                     user = requestInfo(username, password);
+
+                    // Using DAO to set the user on the database
+                    TrainerDAO_IMPLE trainerDao = TrainerDAO_IMPLE.getInstance();
+
+                    Entity_Trainer entityTrainerToDao = new Entity_Trainer(((TRUser)user).getNombre(), ((TRUser)user).getNacionalidad());
+                    trainerDao.createTrainer(entityTrainerToDao);
+
                     System.out.println((TRUser)user);
                 }
                 case "AT" -> {user = new ATUser(username, password, 2);}

@@ -1,6 +1,8 @@
 package org.lightPoke.tournament;
 
 import org.lightPoke.auth.Register;
+import org.lightPoke.db.dao.implementations.TournamentDAO_IMPLE;
+import org.lightPoke.db.entities.Entity_Tournament;
 import org.lightPoke.users.AGUser;
 import org.lightPoke.users.ATUser;
 import org.lightPoke.users.TRUser;
@@ -32,6 +34,10 @@ public class Tournament implements Serializable {
         this.puntosVictoria = puntosVictoria;
 
         trainers = new ArrayList<>();
+
+        TournamentDAO_IMPLE tournamentDao = TournamentDAO_IMPLE.getInstance();
+        Entity_Tournament entityTournament = new Entity_Tournament(nombre, codRegion, puntosVictoria);
+        tournamentDao.createTournament(entityTournament);
     }
 
     /**
