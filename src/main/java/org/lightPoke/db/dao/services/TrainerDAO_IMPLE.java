@@ -1,17 +1,19 @@
-package org.lightPoke.db.dao.implementations;
+package org.lightPoke.db.dao.services;
 
 import org.lightPoke.db.dao.interfaces.TrainerDAO_IFACE;
+import org.lightPoke.db.entities.Entity_Tournament;
 import org.lightPoke.db.entities.Entity_Trainer;
 import org.lightPoke.log.LogManagement;
 
 import javax.sql.DataSource;
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
@@ -82,6 +84,37 @@ public class TrainerDAO_IMPLE implements TrainerDAO_IFACE {
 
             st.close();
             conn.close();
+        } catch (SQLException e) {
+            log.writeLog("Unnable to establish a connection with the DataSource on CreateTrainer function");
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public Entity_Trainer getTrainer(final String username) {
+        try {
+            Connection conn = source.getConnection();
+            PreparedStatement st = conn.prepareStatement("SELECT * FROM TRAINER WHERE TRAINER.USERNAME = ?");
+            st.setString(1, username);
+
+            ResultSet rs = st.executeQuery();
+
+            Entity_Trainer entity = null;
+            while (rs.next()) {
+                entity = new Entity_Trainer(rs.getInt("ID"), rs.getString("NAME"), rs.getString("NATIONALITY"));
+            }
+
+            if (entity == null) {
+                log.writeLog("For some reason, the user with username: " + username + " hasn't been found on the database");
+            }
+
+            log.writeLog("User : " + username + " founded");
+
+            rs.close();
+            st.close();
+            conn.close();
+
+            return entity;
         } catch (SQLException e) {
             log.writeLog("Unnable to establish a connection with the DataSource on CreateTrainer function");
             throw new RuntimeException(e);

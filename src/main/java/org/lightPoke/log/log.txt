@@ -783,3 +783,6 @@
 [28/11/2024 | 21:1:54] -- User k has been registrated
 [28/11/2024 | 21:1:55] -- Tournament rt created
 [28/11/2024 | 21:1:55] -- Tournament rt added.
+[30/11/2024 | 16:47:25] -- User esssa created
+[30/11/2024 | 16:47:25] -- User hhh has been registrated
+[30/11/2024 | 16:47:25] -- Trainer has info (he has registered and autoLogged)

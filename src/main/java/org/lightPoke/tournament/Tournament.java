@@ -1,15 +1,13 @@
 package org.lightPoke.tournament;
 
 import org.lightPoke.auth.Register;
-import org.lightPoke.db.dao.implementations.TournamentDAO_IMPLE;
+import org.lightPoke.db.dao.services.TournamentDAO_IMPLE;
 import org.lightPoke.db.entities.Entity_Tournament;
-import org.lightPoke.users.AGUser;
 import org.lightPoke.users.ATUser;
 import org.lightPoke.users.TRUser;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 /**

@@ -2,6 +2,8 @@ package org.lightPoke;
 
 import org.lightPoke.auth.Login;
 import org.lightPoke.auth.Register;
+import org.lightPoke.db.dto.TrainerDTO;
+import org.lightPoke.db.services.TrainerService;
 import org.lightPoke.log.LogManagement;
 import org.lightPoke.menus.AdminTournamentMenu;
 import org.lightPoke.menus.GeneralAdminMenu;
@@ -93,7 +95,9 @@ public class Game {
             switch (user.getRole()) {
                 case 1 -> {
                     System.out.println("Logged as Trainer");
-                    new TrainerMenu(null); // Values not initialized
+
+                    TrainerService trainerService = TrainerService.getInstance();
+                    new TrainerMenu(trainerService.getTrainer(username));
                 }
 
                 case 2 -> {

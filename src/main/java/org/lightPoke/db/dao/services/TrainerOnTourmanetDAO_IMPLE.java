@@ -1,8 +1,9 @@
-package org.lightPoke.db.dao.implementations;
+package org.lightPoke.db.dao.services;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
-import org.lightPoke.db.dao.interfaces.TournamentDAO_IFACE;
-import org.lightPoke.db.entities.Entity_Tournament;
+import org.lightPoke.db.dto.TournamentDTO;
+import org.lightPoke.db.dto.TrainerDTO;
+import org.lightPoke.db.entities.Entity_Combat;
 import org.lightPoke.log.LogManagement;
 
 import javax.sql.DataSource;
@@ -10,15 +11,18 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
-public class TournamentDAO_IMPLE implements TournamentDAO_IFACE {
-    private static TournamentDAO_IMPLE instance;
-    private DataSource source = null;
+public class TrainerOnTourmanetDAO_IMPLE {
+    private static TrainerOnTourmanetDAO_IMPLE instance;
     private final LogManagement log;
+    private DataSource source;
 
-    private TournamentDAO_IMPLE () {
+    private TrainerOnTourmanetDAO_IMPLE() {
         Properties props = new Properties();
         FileInputStream fis = null;
         MysqlDataSource source = null;
@@ -38,37 +42,29 @@ public class TournamentDAO_IMPLE implements TournamentDAO_IFACE {
         }
     }
 
-    public static TournamentDAO_IMPLE getInstance() {
+    public static TrainerOnTourmanetDAO_IMPLE getInstance() {
         if (instance == null) {
-            instance = new TournamentDAO_IMPLE();
+            instance = new TrainerOnTourmanetDAO_IMPLE();
         }
 
         return instance;
     }
 
-    @Override
-    public void createTournament(Entity_Tournament entity) {
+    public void addTrainerToTournament(TrainerDTO trainerDTO, TournamentDTO tournamentDTO) {
         try {
             Connection conn = source.getConnection();
-            PreparedStatement st = conn.prepareStatement("INSERT INTO TOURNAMENT (NAME, COD_REGION, VICTORY_POINTS) VALUES (?, ?, ?)");
-            st.setString(1, entity.name());
-            st.setString(2, String.valueOf(entity.cod_region()));
-            st.setFloat(3, entity.victory_points());
+            PreparedStatement st = conn.prepareStatement("INSERT INTO TRAINER_ON_TOURNAMENT (ID_TOURNAMENT, ID_TRAINER) VALUES(?, ?)");
+            st.setInt(1, trainerDTO.getId());
+            st.setInt(2, tournamentDTO.getId());
 
             st.executeUpdate();
 
-            log.writeLog("Tournament " + entity.name() + " created");
+            log.writeLog("User " + trainerDTO.getName() + " succesfully added to tournament " + tournamentDTO.getName());
 
             st.close();
             conn.close();
         } catch (SQLException e) {
-            log.writeLog("Unnable to establish a connection with the DataSource on createTournament() function");
-            throw new RuntimeException(e);
+            log.writeLog("Unnable to establish a connection with the DataSource on CreateTrainer function");
         }
-    }
-
-    @Override
-    public void removeTournament(int tournamentId) {
-
     }
 }

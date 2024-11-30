@@ -1,6 +1,9 @@
 package org.lightPoke.menus;
 
 import org.lightPoke.Game;
+import org.lightPoke.db.dto.TournamentDTO;
+import org.lightPoke.db.dto.TrainerDTO;
+import org.lightPoke.db.services.TournamentService;
 import org.lightPoke.log.LogManagement;
 import org.lightPoke.tournament.Tournament;
 import org.lightPoke.tournament.TournamentList;
@@ -15,6 +18,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -39,50 +43,52 @@ public class TrainerMenu {
      * sera de tipo null, lo cual no permitira continuar con la
      * configuracion de este entrenador.
      *
-     * @param trainer Entrenador que se ha iniciado sesion
+     * @param trainerDTO Entrenador que se ha iniciado sesion
      */
-    public TrainerMenu(final TRUser trainer) {
+    public TrainerMenu(final TrainerDTO trainerDTO) {
         log = LogManagement.getInstance();
+        Scanner sc = new Scanner(System.in);
 
-        if (trainer != null) {
-            log.writeLog("Trainer has info (he has registered and autoLogged)");
+        if (trainerDTO != null) {
+            log.writeLog("Trainer " + trainerDTO.getName() + " log in succesfully");
 
-            // Show tournaments
-            Scanner sc = new Scanner(System.in);
-            TournamentList tournametList = TournamentList.getInstance();
+            if (trainerDTO.getTrainerTournamentList().isEmpty()) {
+                // Mostrar todos los torneos y decirle que se meta a uno
+                TournamentService tournamentService = TournamentService.getInstance();
+                List<TournamentDTO> tournaments = tournamentService.getAllTournaments();
 
-            if (tournametList.size() > 0) {
-                System.out.println("------ Tu Primer Torneo ------");
-                System.out.println(tournametList.listTournaments());
-                System.out.print("?: ");
+                int index = 0;
 
-                int tChoice;
-                while ((tChoice = sc.nextInt()) < 1 || tChoice > tournametList.size()) {
-                    System.out.println("Torneo no encontrado, elija un torneo entre 1 y " + tournametList.size());
-                    System.out.println(tournametList.listTournaments());
-                }
-                tournametList.addTrainer(trainer, tChoice);
+                int choice;
+                do {
+                    System.out.println("----- Your first tournament ---- \n");
+                    for (TournamentDTO dto : tournaments) {
+                        System.out.println(index + " - | " + dto.getName() + " | " + dto.getRegion() + " | " + dto.getVictoryPoints());
+                    }
+
+                    System.out.print("?: ");
+                } while (((choice = sc.nextInt()) < 1 || choice > tournaments.size()));
+
+                // Añadir usuario al torneo
+                TournamentDTO tournamentChoiced = tournaments.get(choice - 1);
+                tournamentService.addTrainerToTournament(trainerDTO, tournamentChoiced);
             }
+        }
 
-            System.out.println(tournametList);
+        System.out.println("------ Trainer menu ------");
+        System.out.println("1. Exportar carnet");
+        System.out.println("2. Logout");
 
+        int choice;
+        while ((choice = sc.nextInt()) != 1 && choice != 2) {
             System.out.println("------ Trainer menu ------");
             System.out.println("1. Exportar carnet");
             System.out.println("2. Logout");
+        }
 
-            int choice;
-            while ((choice = sc.nextInt()) != 1 && choice != 2) {
-                System.out.println("------ Trainer menu ------");
-                System.out.println("1. Exportar carnet");
-                System.out.println("2. Logout");
-            }
-
-            switch(choice) {
-                case 1 -> exportLicense(trainer);
-                case 2 -> Game.main(null);
-            }
-        } else {
-            log.writeLog("Trainer has no info (login before registered)");
+        switch(choice) {
+            case 1 -> exportLicense(null); //! MODIFICAR METODO PAR QUE FUNCIONE CON EL DTO
+            case 2 -> Game.main(null);
         }
     }
 
