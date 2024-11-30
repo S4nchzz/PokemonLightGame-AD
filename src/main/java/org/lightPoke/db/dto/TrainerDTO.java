@@ -3,14 +3,24 @@ package org.lightPoke.db.dto;
 import java.util.List;
 
 public class TrainerDTO {
-    private final int id;
+    private int id;
+    private final String username;
     private final String name;
     private final String nationality;
     private final List<TournamentDTO> trainerTournamentList;
     private final List<CombatDTO> trainerCombatList;
 
-    public TrainerDTO(final int id, final String name, final String nationality, List<TournamentDTO> trainerTournamentList, List<CombatDTO> trainerCombatList) {
+    public TrainerDTO(final int id, final String username, final String name, final String nationality, List<TournamentDTO> trainerTournamentList, List<CombatDTO> trainerCombatList) {
         this.id = id;
+        this.username = username;
+        this.name = name;
+        this.nationality = nationality;
+        this.trainerTournamentList = trainerTournamentList;
+        this.trainerCombatList = trainerCombatList;
+    }
+
+    public TrainerDTO(final String username, final String name, final String nationality, List<TournamentDTO> trainerTournamentList, List<CombatDTO> trainerCombatList) {
+        this.username = username;
         this.name = name;
         this.nationality = nationality;
         this.trainerTournamentList = trainerTournamentList;
@@ -19,6 +29,10 @@ public class TrainerDTO {
 
     public int getId() {
         return this.id;
+    }
+
+    public String getUsername() {
+        return username;
     }
 
     public String getName() {
@@ -35,5 +49,13 @@ public class TrainerDTO {
 
     public List<CombatDTO> getTrainerCombatList() {
         return trainerCombatList;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "TRUser{id=%d, username='%s', nombre='%s', nTorneos='%d', nCombates=%d}",
+                id, getUsername(), name, nationality, trainerTournamentList.size(), trainerCombatList.size()
+        );
     }
 }

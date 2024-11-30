@@ -35,7 +35,7 @@ public class TrainerService {
     }
 
     private Entity_Trainer trainerDTOtoEntity(TrainerDTO dto) {
-        return new Entity_Trainer(dto.getName(), dto.getNationality());
+        return new Entity_Trainer(dto.getUsername(), dto.getName(), dto.getNationality());
     }
 
     public void createTrainer(TrainerDTO dto) {
@@ -54,7 +54,7 @@ public class TrainerService {
             combatsFromuser.addAll(combatDao.findCombatsByTournamentId(tournament.id()));
         }
 
-        return new TrainerDTO(trainerEntity.id(), trainerEntity.name(), trainerEntity.nationality(), tournamentsDTO, combatsDTO);
+        return new TrainerDTO(trainerEntity.id(), trainerEntity.username(), trainerEntity.name(), trainerEntity.nationality(), tournamentsDTO, combatsDTO);
     }
 
     private List<CombatDTO> combatListEntityToDto(List<Entity_Combat> entityCombats) {
@@ -71,7 +71,7 @@ public class TrainerService {
         List<TournamentDTO> tournaments = new ArrayList<>();
 
         for (Entity_Tournament entity : entityTournaments) {
-            tournaments.add(new TournamentDTO(entity.name(), entity.cod_region(), entity.victory_points()));
+            tournaments.add(new TournamentDTO(entity.id(), entity.name(), entity.cod_region(), entity.victory_points()));
         }
 
         return tournaments;

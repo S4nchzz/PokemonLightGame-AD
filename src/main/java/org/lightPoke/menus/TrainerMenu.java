@@ -49,6 +49,7 @@ public class TrainerMenu {
         log = LogManagement.getInstance();
         Scanner sc = new Scanner(System.in);
 
+
         if (trainerDTO != null) {
             log.writeLog("Trainer " + trainerDTO.getName() + " log in succesfully");
 
@@ -57,21 +58,23 @@ public class TrainerMenu {
                 TournamentService tournamentService = TournamentService.getInstance();
                 List<TournamentDTO> tournaments = tournamentService.getAllTournaments();
 
-                int index = 0;
+                if (tournaments.size() > 0) {
+                    int index = 1;
+                    int choice;
+                    do {
+                        System.out.println("----- Your first tournament ---- \n");
+                        for (TournamentDTO dto : tournaments) {
+                            System.out.println(index + " - | " + dto.getName() + " | " + dto.getRegion() + " | " + dto.getVictoryPoints());
+                            index++;
+                        }
 
-                int choice;
-                do {
-                    System.out.println("----- Your first tournament ---- \n");
-                    for (TournamentDTO dto : tournaments) {
-                        System.out.println(index + " - | " + dto.getName() + " | " + dto.getRegion() + " | " + dto.getVictoryPoints());
-                    }
+                        System.out.print("?: ");
+                    } while (((choice = sc.nextInt()) < 1 || choice > tournaments.size()));
 
-                    System.out.print("?: ");
-                } while (((choice = sc.nextInt()) < 1 || choice > tournaments.size()));
-
-                // Añadir usuario al torneo
-                TournamentDTO tournamentChoiced = tournaments.get(choice - 1);
-                tournamentService.addTrainerToTournament(trainerDTO, tournamentChoiced);
+                    // Añadir usuario al torneo
+                    TournamentDTO tournamentChoiced = tournaments.get(choice - 1);
+                    tournamentService.addTrainerToTournament(trainerDTO, tournamentChoiced);
+                }
             }
         }
 

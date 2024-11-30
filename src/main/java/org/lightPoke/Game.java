@@ -53,7 +53,9 @@ public class Game {
             case 1:
                 TRUser user = register();
                 if (user != null) {
-                    new TrainerMenu(user); // Automatic login after registration
+                    TrainerService trainerService = TrainerService.getInstance();
+                    TrainerDTO trainer = trainerService.getTrainer(user.getUsername());
+                    new TrainerMenu(trainer); // Automatic login after registration
                 }
                 break;
             case 2:

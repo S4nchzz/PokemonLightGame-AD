@@ -54,8 +54,8 @@ public class TrainerOnTourmanetDAO_IMPLE {
         try {
             Connection conn = source.getConnection();
             PreparedStatement st = conn.prepareStatement("INSERT INTO TRAINER_ON_TOURNAMENT (ID_TOURNAMENT, ID_TRAINER) VALUES(?, ?)");
-            st.setInt(1, trainerDTO.getId());
-            st.setInt(2, tournamentDTO.getId());
+            st.setInt(1, tournamentDTO.getId());
+            st.setInt(2, trainerDTO.getId());
 
             st.executeUpdate();
 
@@ -65,6 +65,7 @@ public class TrainerOnTourmanetDAO_IMPLE {
             conn.close();
         } catch (SQLException e) {
             log.writeLog("Unnable to establish a connection with the DataSource on CreateTrainer function");
+            System.out.println(e.getMessage());
         }
     }
 }

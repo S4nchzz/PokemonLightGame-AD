@@ -55,9 +55,11 @@ public class TrainerDAO_IMPLE implements TrainerDAO_IFACE {
     public void createTrainer(Entity_Trainer entity) {
         try {
             Connection conn = source.getConnection();
-            PreparedStatement st = conn.prepareStatement("INSERT INTO TRAINER (NAME, NATIONALITY) VALUES (?, ?)");
-            st.setString(1, entity.name());
-            st.setString(2, entity.nationality());
+            PreparedStatement st = conn.prepareStatement("INSERT INTO TRAINER (USERNAME, NAME, NATIONALITY) VALUES (?, ?, ?)");
+
+            st.setString(1, entity.username());
+            st.setString(2, entity.name());
+            st.setString(3, entity.nationality());
 
             st.executeUpdate();
 
@@ -101,7 +103,7 @@ public class TrainerDAO_IMPLE implements TrainerDAO_IFACE {
 
             Entity_Trainer entity = null;
             while (rs.next()) {
-                entity = new Entity_Trainer(rs.getInt("ID"), rs.getString("NAME"), rs.getString("NATIONALITY"));
+                entity = new Entity_Trainer(rs.getInt("ID"), rs.getString("USERNAME"), rs.getString("NAME"), rs.getString("NATIONALITY"));
             }
 
             if (entity == null) {

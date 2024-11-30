@@ -82,7 +82,7 @@ public class Register {
 
                     TrainerService trainerService = TrainerService.getInstance();
 
-                    TrainerDTO trainerDto = new TrainerDTO(((TRUser)user).getNombre(), ((TRUser)user).getNacionalidad(), new ArrayList<>(), new ArrayList<>());
+                    TrainerDTO trainerDto = new TrainerDTO(((TRUser)user).getUsername(), ((TRUser)user).getNombre(), ((TRUser)user).getNacionalidad(), new ArrayList<>(), new ArrayList<>());
                     trainerService.createTrainer(trainerDto);
 
                     System.out.println((TRUser)user);

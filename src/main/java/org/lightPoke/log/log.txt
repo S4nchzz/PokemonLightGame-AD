@@ -786,3 +786,145 @@
 [30/11/2024 | 16:47:25] -- User esssa created
 [30/11/2024 | 16:47:25] -- User hhh has been registrated
 [30/11/2024 | 16:47:25] -- Trainer has info (he has registered and autoLogged)
+[30/11/2024 | 20:55:31] -- User gg created
+[30/11/2024 | 20:55:31] -- User gg has been registrated
+[30/11/2024 | 20:56:10] -- User gt created
+[30/11/2024 | 20:56:10] -- User gt has been registrated
+[30/11/2024 | 20:56:10] -- Unnable to establish a connection with the DataSource on CreateTrainer function
+[30/11/2024 | 20:56:49] -- User rr created
+[30/11/2024 | 20:56:49] -- User rr has been registrated
+[30/11/2024 | 20:56:49] -- User : rr founded
+[30/11/2024 | 20:56:49] -- Trainer rr log in succesfully
+[30/11/2024 | 20:58:16] -- User iyan logged succesfully
+[30/11/2024 | 20:58:28] -- User hh has been registrated
+[30/11/2024 | 20:58:28] -- Tournament yy created
+[30/11/2024 | 20:58:28] -- Tournament yy added.
+[30/11/2024 | 20:58:36] -- User asd already exist
+[30/11/2024 | 20:58:42] -- User eee created
+[30/11/2024 | 20:58:42] -- User fg has been registrated
+[30/11/2024 | 20:58:42] -- For some reason, the user with username: fg hasn't been found on the database
+[30/11/2024 | 20:58:42] -- User : fg founded
+[30/11/2024 | 20:59:26] -- User gg already exist
+[30/11/2024 | 20:59:32] -- User es created
+[30/11/2024 | 20:59:32] -- User gjj has been registrated
+[30/11/2024 | 20:59:32] -- For some reason, the user with username: gjj hasn't been found on the database
+[30/11/2024 | 20:59:32] -- User : gjj founded
+[30/11/2024 | 20:59:50] -- User ty created
+[30/11/2024 | 20:59:50] -- User ty has been registrated
+[30/11/2024 | 20:59:50] -- User : ty founded
+[30/11/2024 | 20:59:50] -- Trainer ty log in succesfully
+[30/11/2024 | 20:59:58] -- Unnable to establish a connection with the DataSource on CreateTrainer function
+[30/11/2024 | 21:0:31] -- User 4 created
+[30/11/2024 | 21:0:31] -- User 4 has been registrated
+[30/11/2024 | 21:0:31] -- User : 4 founded
+[30/11/2024 | 21:0:31] -- Trainer 4 log in succesfully
+[30/11/2024 | 21:0:33] -- Unnable to establish a connection with the DataSource on CreateTrainer function
+[30/11/2024 | 21:1:34] -- User ty already exist
+[30/11/2024 | 21:1:40] -- User yu created
+[30/11/2024 | 21:1:40] -- User yu has been registrated
+[30/11/2024 | 21:1:40] -- User : yu founded
+[30/11/2024 | 21:1:40] -- Trainer yu log in succesfully
+[30/11/2024 | 21:2:48] -- Unnable to establish a connection with the DataSource on CreateTrainer function
+[30/11/2024 | 21:2:58] -- User tew created
+[30/11/2024 | 21:2:58] -- User tt has been registrated
+[30/11/2024 | 21:2:58] -- For some reason, the user with username: tt hasn't been found on the database
+[30/11/2024 | 21:2:58] -- User : tt founded
+[30/11/2024 | 21:3:42] -- User esesss created
+[30/11/2024 | 21:3:42] -- User ytyty has been registrated
+[30/11/2024 | 21:3:44] -- For some reason, the user with username: ytyty hasn't been found on the database
+[30/11/2024 | 21:3:44] -- User : ytyty founded
+[30/11/2024 | 21:4:6] -- User 1 created
+[30/11/2024 | 21:4:6] -- User 1 has been registrated
+[30/11/2024 | 21:4:7] -- User : 1 founded
+[30/11/2024 | 21:4:7] -- Trainer 1 log in succesfully
+[30/11/2024 | 21:4:9] -- Unnable to establish a connection with the DataSource on CreateTrainer function
+[30/11/2024 | 21:4:35] -- User t5 created
+[30/11/2024 | 21:4:35] -- User t5 has been registrated
+[30/11/2024 | 21:4:35] -- User : t5 founded
+[30/11/2024 | 21:4:35] -- Trainer t5 log in succesfully
+[30/11/2024 | 21:4:58] -- User r2 created
+[30/11/2024 | 21:4:58] -- User 23 has been registrated
+[30/11/2024 | 21:5:3] -- For some reason, the user with username: 23 hasn't been found on the database
+[30/11/2024 | 21:5:3] -- User : 23 founded
+[30/11/2024 | 21:6:21] -- User es created
+[30/11/2024 | 21:6:21] -- User 45 has been registrated
+[30/11/2024 | 21:6:28] -- For some reason, the user with username: 45 hasn't been found on the database
+[30/11/2024 | 21:6:28] -- User : 45 founded
+[30/11/2024 | 21:7:8] -- User fwe created
+[30/11/2024 | 21:7:8] -- User fwe has been registrated
+[30/11/2024 | 21:7:13] -- User : fwe founded
+[30/11/2024 | 21:7:31] -- Trainer fwe log in succesfully
+[30/11/2024 | 21:7:38] -- Unnable to establish a connection with the DataSource on CreateTrainer function
+[30/11/2024 | 21:7:53] -- User t5 already exist
+[30/11/2024 | 21:7:55] -- User t5 already exist
+[30/11/2024 | 21:7:59] -- User rere created
+[30/11/2024 | 21:7:59] -- User y6 has been registrated
+[30/11/2024 | 21:8:1] -- For some reason, the user with username: y6 hasn't been found on the database
+[30/11/2024 | 21:8:1] -- User : y6 founded
+[30/11/2024 | 21:8:26] -- User hy created
+[30/11/2024 | 21:8:26] -- User hy has been registrated
+[30/11/2024 | 21:8:26] -- User : hy founded
+[30/11/2024 | 21:8:26] -- Trainer hy log in succesfully
+[30/11/2024 | 21:8:28] -- Unnable to establish a connection with the DataSource on CreateTrainer function
+[30/11/2024 | 21:8:34] -- User tr created
+[30/11/2024 | 21:8:34] -- User trtr has been registrated
+[30/11/2024 | 21:8:34] -- For some reason, the user with username: trtr hasn't been found on the database
+[30/11/2024 | 21:8:34] -- User : trtr founded
+[30/11/2024 | 21:11:34] -- User tgtgtgtg created
+[30/11/2024 | 21:11:34] -- User gtgttg has been registrated
+[30/11/2024 | 21:11:40] -- For some reason, the user with username: gtgttg hasn't been found on the database
+[30/11/2024 | 21:11:40] -- User : gtgttg founded
+[30/11/2024 | 21:22:16] -- User iyanin created
+[30/11/2024 | 21:22:16] -- User iyanin has been registrated
+[30/11/2024 | 21:22:16] -- User : iyanin founded
+[30/11/2024 | 21:22:16] -- Trainer iyanin log in succesfully
+[30/11/2024 | 21:22:31] -- User iyan created
+[30/11/2024 | 21:22:31] -- User dani has been registrated
+[30/11/2024 | 21:22:31] -- User : dani founded
+[30/11/2024 | 21:22:31] -- Trainer iyan log in succesfully
+[30/11/2024 | 21:23:39] -- User iyanin logged succesfully
+[30/11/2024 | 21:23:39] -- User : iyanin founded
+[30/11/2024 | 21:23:40] -- Trainer iyanin log in succesfully
+[30/11/2024 | 21:23:50] -- User iyan logged succesfully
+[30/11/2024 | 21:24:1] -- User t1a has been registrated
+[30/11/2024 | 21:24:1] -- Tournament t1 created
+[30/11/2024 | 21:24:1] -- Tournament t1 added.
+[30/11/2024 | 21:24:23] -- User iyanin logged succesfully
+[30/11/2024 | 21:24:23] -- User : iyanin founded
+[30/11/2024 | 21:24:23] -- Trainer iyanin log in succesfully
+[30/11/2024 | 21:24:31] -- User iyanin succesfully added to tournament t1
+[30/11/2024 | 21:33:24] -- User y6 created
+[30/11/2024 | 21:33:24] -- User y6 has been registrated
+[30/11/2024 | 21:33:24] -- User : y6 founded
+[30/11/2024 | 21:33:24] -- Trainer y6 log in succesfully
+[30/11/2024 | 21:33:29] -- Unnable to establish a connection with the DataSource on CreateTrainer function
+[30/11/2024 | 21:33:56] -- User a not found
+[30/11/2024 | 21:33:57] -- User a not found
+[30/11/2024 | 21:33:58] -- User a not found
+[30/11/2024 | 21:33:59] -- User e not found
+[30/11/2024 | 21:34:0] -- User w not found
+[30/11/2024 | 21:37:28] -- User a created
+[30/11/2024 | 21:37:28] -- User a has been registrated
+[30/11/2024 | 21:37:28] -- User : a founded
+[30/11/2024 | 21:37:28] -- Trainer a log in succesfully
+[30/11/2024 | 21:37:30] -- Unnable to establish a connection with the DataSource on CreateTrainer function
+[30/11/2024 | 21:37:59] -- User a already exist
+[30/11/2024 | 21:38:0] -- User a already exist
+[30/11/2024 | 21:38:4] -- User es created
+[30/11/2024 | 21:38:4] -- User es has been registrated
+[30/11/2024 | 21:38:15] -- User : es founded
+[30/11/2024 | 21:38:20] -- Trainer es log in succesfully
+[30/11/2024 | 21:40:17] -- User ea created
+[30/11/2024 | 21:40:17] -- User ea has been registrated
+[30/11/2024 | 21:40:17] -- User : ea founded
+[30/11/2024 | 21:40:17] -- Trainer ea log in succesfully
+[30/11/2024 | 21:40:18] -- User ea succesfully added to tournament t1
+[30/11/2024 | 21:42:9] -- User iyan logged succesfully
+[30/11/2024 | 21:42:19] -- User t5 has been registrated
+[30/11/2024 | 21:42:19] -- Tournament 23 created
+[30/11/2024 | 21:42:20] -- Tournament 23 added.
+[30/11/2024 | 21:42:59] -- User aage created
+[30/11/2024 | 21:42:59] -- User age has been registrated
+[30/11/2024 | 21:42:59] -- User : age founded
+[30/11/2024 | 21:42:59] -- Trainer aage log in succesfully
+[30/11/2024 | 21:43:0] -- User aage succesfully added to tournament 23

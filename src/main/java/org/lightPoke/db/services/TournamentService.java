@@ -36,7 +36,7 @@ public class TournamentService {
         List<TournamentDTO> tournamentDTO = new ArrayList<>();
 
         for (Entity_Tournament t : entityTournaments) {
-            tournamentDTO.add(new TournamentDTO(t.name(), t.cod_region(), t.victory_points()));
+            tournamentDTO.add(new TournamentDTO(t.id(), t.name(), t.cod_region(), t.victory_points()));
         }
 
         return tournamentDTO;
