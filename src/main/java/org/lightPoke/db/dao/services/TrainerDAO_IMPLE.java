@@ -1,6 +1,7 @@
 package org.lightPoke.db.dao.services;
 
 import org.lightPoke.db.dao.interfaces.TrainerDAO_IFACE;
+import org.lightPoke.db.dto.TrainerDTO;
 import org.lightPoke.db.entities.Entity_Tournament;
 import org.lightPoke.db.entities.Entity_Trainer;
 import org.lightPoke.log.LogManagement;
@@ -55,11 +56,12 @@ public class TrainerDAO_IMPLE implements TrainerDAO_IFACE {
     public void createTrainer(Entity_Trainer entity) {
         try {
             Connection conn = source.getConnection();
-            PreparedStatement st = conn.prepareStatement("INSERT INTO TRAINER (USERNAME, NAME, NATIONALITY) VALUES (?, ?, ?)");
+            PreparedStatement st = conn.prepareStatement("INSERT INTO TRAINER (USERNAME, NAME, NATIONALITY, LICENSE_ID) VALUES (?, ?, ?, ?)");
 
             st.setString(1, entity.username());
             st.setString(2, entity.name());
             st.setString(3, entity.nationality());
+            st.setInt(4, entity.license());
 
             st.executeUpdate();
 
@@ -103,7 +105,7 @@ public class TrainerDAO_IMPLE implements TrainerDAO_IFACE {
 
             Entity_Trainer entity = null;
             while (rs.next()) {
-                entity = new Entity_Trainer(rs.getInt("ID"), rs.getString("USERNAME"), rs.getString("NAME"), rs.getString("NATIONALITY"));
+                entity = new Entity_Trainer(rs.getInt("ID"), rs.getString("USERNAME"), rs.getString("NAME"), rs.getString("NATIONALITY"), rs.getInt("LICENSE_ID"));
             }
 
             if (entity == null) {
@@ -121,5 +123,9 @@ public class TrainerDAO_IMPLE implements TrainerDAO_IFACE {
             log.writeLog("Unnable to establish a connection with the DataSource on CreateTrainer function");
             throw new RuntimeException(e);
         }
+    }
+
+    public Entity_Trainer dtoToEntity(TrainerDTO dto) {
+        return new Entity_Trainer(dto.getUsername(), dto.getName(), dto.getNationality(), dto.getLicense().getId());
     }
 }

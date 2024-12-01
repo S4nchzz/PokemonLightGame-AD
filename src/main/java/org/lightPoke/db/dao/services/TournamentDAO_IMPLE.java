@@ -2,6 +2,7 @@ package org.lightPoke.db.dao.services;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
 import org.lightPoke.db.dao.interfaces.TournamentDAO_IFACE;
+import org.lightPoke.db.dto.TournamentDTO;
 import org.lightPoke.db.entities.Entity_Tournament;
 import org.lightPoke.log.LogManagement;
 
@@ -47,6 +48,10 @@ public class TournamentDAO_IMPLE implements TournamentDAO_IFACE {
         }
 
         return instance;
+    }
+
+    public Entity_Tournament dtoToEntity(final TournamentDTO tournamentDTO) {
+        return new Entity_Tournament(tournamentDTO.getName(), tournamentDTO.getRegion(), tournamentDTO.getVictoryPoints());
     }
 
     @Override
@@ -155,6 +160,32 @@ public class TournamentDAO_IMPLE implements TournamentDAO_IFACE {
             conn.close();
 
             return tournaments;
+        } catch (SQLException e) {
+            log.writeLog("Unnable to establish a connection with the DataSource on createTournament() function");
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public Entity_Tournament getTournamentByNameAndRegion(final Entity_Tournament entity) {
+        Entity_Tournament newEntity = null;
+        try {
+            Connection conn = source.getConnection();
+            PreparedStatement st = conn.prepareStatement("SELECT * FROM TOURNAMENT WHERE TOURNAMENT.NAME = ? AND TOURNAMENT.COD_REGION = ?");
+            st.setString(1, entity.name());
+            st.setString(2, String.valueOf(entity.cod_region()));
+
+            ResultSet rs = st.executeQuery();
+
+            if (rs.next()) {
+                newEntity = new Entity_Tournament(rs.getInt("ID"), rs.getString("NAME"), rs.getString("COD_REGION").charAt(0), rs.getFloat("VICTORY_POINTS"), rs.getInt("T_WINNER"));
+            }
+
+            rs.close();
+            st.close();
+            conn.close();
+
+            return newEntity;
         } catch (SQLException e) {
             log.writeLog("Unnable to establish a connection with the DataSource on createTournament() function");
             throw new RuntimeException(e);

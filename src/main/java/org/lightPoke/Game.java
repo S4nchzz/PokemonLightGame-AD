@@ -55,7 +55,7 @@ public class Game {
                 if (user != null) {
                     TrainerService trainerService = TrainerService.getInstance();
                     TrainerDTO trainer = trainerService.getTrainer(user.getUsername());
-                    new TrainerMenu(trainer); // Automatic login after registration
+                    new TrainerMenu(trainer);
                 }
                 break;
             case 2:

@@ -46,4 +46,12 @@ public class TournamentService {
         TrainerOnTourmanetDAO_IMPLE trainerOnTourmanetDAO = TrainerOnTourmanetDAO_IMPLE.getInstance();
         trainerOnTourmanetDAO.addTrainerToTournament(trainerDTO, tournamentDTO);
     }
+
+    public void createTournament(final TournamentDTO tournamentDTO) {
+        tournamentDAO.createTournament(tournamentDAO.dtoToEntity(tournamentDTO));
+    }
+
+    public boolean isTournamentAvailable(TournamentDTO tournamentDTO) {
+        return tournamentDAO.getTournamentByNameAndRegion(tournamentDAO.dtoToEntity(tournamentDTO)) == null;
+    }
 }

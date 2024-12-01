@@ -2,7 +2,6 @@ package org.lightPoke.menus;
 
 import org.lightPoke.Game;
 
-import java.awt.*;
 import java.util.Scanner;
 
 /**

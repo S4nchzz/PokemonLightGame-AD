@@ -1,6 +1,9 @@
 package org.lightPoke.menus;
 
 import org.lightPoke.Game;
+import org.lightPoke.db.dao.services.TournamentDAO_IMPLE;
+import org.lightPoke.db.dto.TournamentDTO;
+import org.lightPoke.db.services.TournamentService;
 import org.lightPoke.log.LogManagement;
 import org.lightPoke.tournament.Tournament;
 import org.lightPoke.tournament.TournamentList;
@@ -14,6 +17,7 @@ import java.util.Scanner;
  * @author Iyan Sanchez da Costa
  */
 public class GeneralAdminMenu {
+    private final TournamentService tournamentService = TournamentService.getInstance();
     public GeneralAdminMenu() {
         System.out.println("------ General Admin menu ------");
         System.out.println("1. Registrar nuevo torneo");
@@ -58,10 +62,8 @@ public class GeneralAdminMenu {
         boolean correctName = true;
         do {
             correctName = true;
-            for (Tournament t : TournamentList.getInstance().getTournamentList()) {
-                if (t.getNombre().equals(tName) && t.getCodRegion() == tCodReg) {
-                    correctName = false;
-                }
+            if (!tournamentService.isTournamentAvailable(new TournamentDTO(tName, tCodReg))) {
+                correctName = false;
             }
 
             if (!correctName) {
@@ -74,10 +76,10 @@ public class GeneralAdminMenu {
             }
         } while (!correctName);
 
-
-
         System.out.print("Puntos Max. para victoria: ");
         float tVictoryPoints = sc.nextFloat();
+
+        tournamentService.createTournament(new TournamentDTO(tName, tCodReg, tVictoryPoints));
 
         Tournament t = new Tournament(tName, tCodReg, tVictoryPoints);
         while (t.getAdminTournament() == null) {

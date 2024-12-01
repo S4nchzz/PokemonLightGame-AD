@@ -10,4 +10,5 @@ public interface TournamentDAO_IFACE {
     Entity_Tournament getTournamentById(int id);
     List<Entity_Tournament> getTournamentsFromUserById(int id);
     List<Entity_Tournament> getAllTournaments();
+    Entity_Tournament getTournamentByNameAndRegion(final Entity_Tournament entity);
 }
