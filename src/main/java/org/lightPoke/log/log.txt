@@ -508,3 +508,8 @@
 [4/12/2024 | 19:27:17] -- User t2admin logged succesfully
 [4/12/2024 | 19:27:19] -- Tournament 4 founded
 [4/12/2024 | 19:27:19] -- Tournament 4 founded
+[4/12/2024 | 19:41:11] -- User iyan logged succesfully
+[4/12/2024 | 19:41:23] -- User t1admin already exist in credentialsFile or database
+[4/12/2024 | 19:41:46] -- User t3admin has been registrated
+[4/12/2024 | 19:41:46] -- Tournament t3 created
+[4/12/2024 | 19:41:46] -- Tournament t3 added.

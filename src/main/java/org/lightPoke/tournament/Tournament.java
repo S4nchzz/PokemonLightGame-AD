@@ -71,10 +71,8 @@ public class Tournament implements Serializable {
                 }
             }
 
+
         Register reg = Register.getInstance();
-
-
-
         return (ATUser) reg.register(username, password, "AT");
     }
 

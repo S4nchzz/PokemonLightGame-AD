@@ -3,6 +3,7 @@ package org.lightPoke.auth;
 import org.lightPoke.auth.nacionality.Pais;
 import org.lightPoke.auth.nacionality.PaisesLoader;
 import org.lightPoke.db.dto.TrainerDTO;
+import org.lightPoke.db.services.At_InTournamentService;
 import org.lightPoke.db.services.TrainerService;
 import org.lightPoke.log.LogManagement;
 import org.lightPoke.users.ATUser;
@@ -63,10 +64,11 @@ public class Register {
      * @return Objeto de tipo User que engloba usuarios de tipo administrador de torneo y entrenadores
      */
     public User register(final String username, final String password, final String type) {
+        At_InTournamentService atInTournamentService = At_InTournamentService.getInstance();
         BufferedWriter writer = null;
         try {
-            if (userExist(username)) {
-                log.writeLog("User " + username + " already exist");
+            if (userExistInFile(username) || atInTournamentService.userExistInDatabase(username)) {
+                log.writeLog("User " + username + " already exist in credentialsFile or database");
                 return null;
             }
 
@@ -226,7 +228,7 @@ public class Register {
      * @param username Usuario a verificar si existe o no
      * @return true si el usuario ya existe | false si el usuario no existe
      */
-    private boolean userExist(final String username) {
+    private boolean userExistInFile(final String username) {
         BufferedReader reader = null;
 
         try {

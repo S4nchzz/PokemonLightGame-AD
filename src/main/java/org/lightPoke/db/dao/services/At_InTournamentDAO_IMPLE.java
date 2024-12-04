@@ -3,8 +3,6 @@ package org.lightPoke.db.dao.services;
 import com.mysql.cj.jdbc.MysqlDataSource;
 import org.lightPoke.db.dao.interfaces.At_InTournamentDAO_IFACE;
 import org.lightPoke.db.entities.Entity_AT_InTournament;
-import org.lightPoke.db.entities.Entity_License;
-import org.lightPoke.db.entities.Entity_Tournament;
 import org.lightPoke.log.LogManagement;
 
 import javax.sql.DataSource;
@@ -14,9 +12,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
 
 public class At_InTournamentDAO_IMPLE implements At_InTournamentDAO_IFACE {
@@ -87,6 +82,28 @@ public class At_InTournamentDAO_IMPLE implements At_InTournamentDAO_IFACE {
             conn.close();
 
             return entity;
+        } catch (SQLException e) {
+            log.writeLog("Unnable to establish a connection with the DataSource on CreateTrainer function");
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public boolean userExistInDatabase(final String username) {
+        try {
+            Connection conn = source.getConnection();
+            PreparedStatement st = conn.prepareStatement("SELECT * FROM AT_IN_TOURNAMENT WHERE USERNAME = ?");
+            st.setString(1, username);
+
+            ResultSet rs = st.executeQuery();
+
+            boolean userFounded = rs.next();
+
+            rs.close();
+            st.close();
+            conn.close();
+
+            return userFounded;
         } catch (SQLException e) {
             log.writeLog("Unnable to establish a connection with the DataSource on CreateTrainer function");
             throw new RuntimeException(e);
