@@ -2,7 +2,6 @@ package org.lightPoke.db.dao.services;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
 import org.lightPoke.db.dao.interfaces.TournamentDAO_IFACE;
-import org.lightPoke.db.dto.TournamentDTO;
 import org.lightPoke.db.entities.Entity_Tournament;
 import org.lightPoke.log.LogManagement;
 
@@ -50,25 +49,23 @@ public class TournamentDAO_IMPLE implements TournamentDAO_IFACE {
         return instance;
     }
 
-    public Entity_Tournament dtoToEntity(final TournamentDTO tournamentDTO) {
-        return new Entity_Tournament(tournamentDTO.getName(), tournamentDTO.getRegion(), tournamentDTO.getVictoryPoints());
-    }
-
     @Override
-    public void createTournament(Entity_Tournament entity) {
+    public Entity_Tournament createTournament(Entity_Tournament entity) {
         try {
             Connection conn = source.getConnection();
-            PreparedStatement st = conn.prepareStatement("INSERT INTO TOURNAMENT (NAME, COD_REGION, VICTORY_POINTS) VALUES (?, ?, ?)");
-            st.setString(1, entity.name());
-            st.setString(2, String.valueOf(entity.cod_region()));
-            st.setFloat(3, entity.victory_points());
+            PreparedStatement create = conn.prepareStatement("INSERT INTO TOURNAMENT (NAME, COD_REGION, VICTORY_POINTS) VALUES (?, ?, ?)");
+            create.setString(1, entity.name());
+            create.setString(2, String.valueOf(entity.cod_region()));
+            create.setFloat(3, entity.victory_points());
 
-            st.executeUpdate();
+            create.executeUpdate();
 
             log.writeLog("Tournament " + entity.name() + " created");
 
-            st.close();
+            create.close();
             conn.close();
+
+            return getTournamentByNameAndRegion(entity);
         } catch (SQLException e) {
             log.writeLog("Unnable to establish a connection with the DataSource on createTournament() function");
             throw new RuntimeException(e);
@@ -84,7 +81,7 @@ public class TournamentDAO_IMPLE implements TournamentDAO_IFACE {
     public Entity_Tournament getTournamentById(final int id) {
         try {
             Connection conn = source.getConnection();
-            PreparedStatement st = conn.prepareStatement("SELECT * FROM TOURNAMENT WHERE TOURNAMENT = ?");
+            PreparedStatement st = conn.prepareStatement("SELECT * FROM TOURNAMENT WHERE TOURNAMENT.ID = ?");
             st.setInt(1, id);
 
             ResultSet rs = st.executeQuery();

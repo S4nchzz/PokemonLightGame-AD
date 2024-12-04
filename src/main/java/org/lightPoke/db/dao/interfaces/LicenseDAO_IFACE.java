@@ -5,6 +5,7 @@ import org.lightPoke.db.entities.Entity_License;
 
 public interface LicenseDAO_IFACE {
     Entity_License createLicense();
-    LicenseDTO entityToDto(Entity_License entity);
     Entity_License getLicenseByUsername(String username);
+
+    Entity_License getLicenseByTrainerId(int trainerId);
 }

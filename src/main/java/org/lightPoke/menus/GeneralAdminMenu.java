@@ -2,11 +2,25 @@ package org.lightPoke.menus;
 
 import org.lightPoke.Game;
 import org.lightPoke.db.dao.services.TournamentDAO_IMPLE;
+import org.lightPoke.db.dto.CombatDTO;
 import org.lightPoke.db.dto.TournamentDTO;
 import org.lightPoke.db.services.TournamentService;
 import org.lightPoke.log.LogManagement;
 import org.lightPoke.tournament.Tournament;
 import org.lightPoke.tournament.TournamentList;
+import org.w3c.dom.DOMImplementation;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Text;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.*;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import java.io.File;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -79,15 +93,17 @@ public class GeneralAdminMenu {
         System.out.print("Puntos Max. para victoria: ");
         float tVictoryPoints = sc.nextFloat();
 
-        tournamentService.createTournament(new TournamentDTO(tName, tCodReg, tVictoryPoints));
 
         Tournament t = new Tournament(tName, tCodReg, tVictoryPoints);
         while (t.getAdminTournament() == null) {
             System.out.println("El usuario ya existe.");
             t = new Tournament(tName, tCodReg, tVictoryPoints);
         }
+
+        tournamentService.createTournament(new TournamentDTO(tName, tCodReg, tVictoryPoints), t.getAdminTournament());
+
         TournamentList.getInstance().addTournament(t);
-        new AdminTournamentMenu();
+        new AdminTournamentMenu(t.getAdminTournament());
 
         LogManagement.getInstance().writeLog("Tournament " + tName + " has been created");
     }

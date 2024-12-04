@@ -89,4 +89,31 @@ public class CombatDAO_IMPLE implements CombatDAO_IFACE {
 
         return new ArrayList<>();
     }
+
+    @Override
+    public List<Entity_Combat> findCombatsByTrainerId(int trainer_id) {
+        try {
+            Connection conn = source.getConnection();
+            PreparedStatement st = conn.prepareStatement("SELECT * FROM COMBAT WHERE TRAINER_1 = ? OR TRAINER_2 = ?");
+            st.setInt(1, trainer_id);
+            st.setInt(2, trainer_id);
+
+            ResultSet rs = st.executeQuery();
+
+            List<Entity_Combat> combats = new ArrayList<>();
+            while (rs.next()) {
+                combats.add(new Entity_Combat(rs.getInt("ID"), rs.getInt("ID_TOURNAMENT"), rs.getString("DATE"), rs.getInt("TRAINER_1"), rs.getInt("TRAINER_2"), rs.getInt("C_WINNER")));
+            }
+
+            rs.close();
+            st.close();
+            conn.close();
+
+            return combats;
+        } catch (SQLException e) {
+            log.writeLog("Unnable to establish a connection with the DataSource on CreateTrainer function");
+        }
+
+        return null;
+    }
 }

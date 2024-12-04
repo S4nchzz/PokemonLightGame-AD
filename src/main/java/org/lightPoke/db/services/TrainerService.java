@@ -5,10 +5,7 @@ import org.lightPoke.db.dao.services.CombatDAO_IMPLE;
 import org.lightPoke.db.dao.services.LicenseDAO_IMPLE;
 import org.lightPoke.db.dao.services.TournamentDAO_IMPLE;
 import org.lightPoke.db.dao.services.TrainerDAO_IMPLE;
-import org.lightPoke.db.dto.CombatDTO;
-import org.lightPoke.db.dto.LicenseDTO;
-import org.lightPoke.db.dto.TournamentDTO;
-import org.lightPoke.db.dto.TrainerDTO;
+import org.lightPoke.db.dto.*;
 import org.lightPoke.db.entities.Entity_Combat;
 import org.lightPoke.db.entities.Entity_License;
 import org.lightPoke.db.entities.Entity_Tournament;
@@ -23,15 +20,9 @@ import java.util.List;
 public class TrainerService {
     private static TrainerService instance;
     private final TrainerDAO_IMPLE trainerDao;
-    private final TournamentDAO_IMPLE tournamentDao;
-    private final CombatDAO_IMPLE combatDao;
-    private final LicenseDAO_IMPLE licenseDAO;
 
     private TrainerService() {
         this.trainerDao = TrainerDAO_IMPLE.getInstance();
-        this.tournamentDao = TournamentDAO_IMPLE.getInstance();
-        this.combatDao = CombatDAO_IMPLE.getInstance();
-        this.licenseDAO = LicenseDAO_IMPLE.getInstance();
     }
 
     public static TrainerService getInstance() {
@@ -42,43 +33,30 @@ public class TrainerService {
         return instance;
     }
 
+    private TrainerDTO entityToDto(final Entity_Trainer entityTrainer) {
+        TournamentService tournamentService = TournamentService.getInstance();
+        CombatService combatService = CombatService.getInstance();
+        LicenseService licenseService = LicenseService.getInstance();
+
+        List<TournamentDTO> tournaments = tournamentService.getTournamentsByUserId(entityTrainer.id());
+        List<CombatDTO> combats = combatService.getCombatsByTrainerId(entityTrainer.id());
+        LicenseDTO license = licenseService.getLicenseByTrainerId(entityTrainer.id());
+        return new TrainerDTO(entityTrainer.id(), entityTrainer.username(), entityTrainer.name(), entityTrainer.nationality(), license, tournaments, combats);
+    }
+
     public void createTrainer(User user) {
-        Entity_License license = licenseDAO.createLicense();
-        trainerDao.createTrainer(new Entity_Trainer(((TRUser)user).getUsername(), ((TRUser)user).getNombre(), ((TRUser)user).getNacionalidad(), license.id()));
+        LicenseService licenseService = LicenseService.getInstance();
+
+        LicenseDTO license = licenseService.createLicense();
+        trainerDao.createTrainer(new Entity_Trainer(((TRUser)user).getUsername(), ((TRUser)user).getNombre(), ((TRUser)user).getNacionalidad(), license.getId()));
     }
 
-    public TrainerDTO getTrainer(final String username) {
-        Entity_Trainer trainerEntity = trainerDao.getTrainer(username);
-        List<Entity_Tournament> tournamentsFromUser = tournamentDao.getTournamentsFromUserById(trainerEntity.id());
-        List<TournamentDTO> tournamentsDTO = tournamentListEntityToDto(tournamentsFromUser);
-
-        List<Entity_Combat> combatsFromUser = new ArrayList<>();
-        List<CombatDTO> combatsDTO = combatListEntityToDto(combatsFromUser);
-
-        for (Entity_Tournament tournament : tournamentsFromUser) {
-            combatsFromUser.addAll(combatDao.findCombatsByTournamentId(tournament.id()));
-        }
-
-        return new TrainerDTO(trainerEntity.id(), trainerEntity.username(), trainerEntity.name(), trainerEntity.nationality(), licenseDAO.entityToDto(licenseDAO.getLicenseByUsername(username)),tournamentsDTO, combatsDTO);
+    public TrainerDTO getTrainerByUsername(final String username) {
+        Entity_Trainer trainerEntity = trainerDao.getTrainerByUsername(username);
+        return entityToDto(trainerEntity);
     }
 
-    private List<CombatDTO> combatListEntityToDto(List<Entity_Combat> entityCombats) {
-        List<CombatDTO> combats = new ArrayList<>();
-
-        for (Entity_Combat entity : entityCombats) {
-            combats.add(new CombatDTO(entity.date(), entity.trainer_1(), entity.trainer_2(), entity.c_winner()));
-        }
-
-        return combats;
-    }
-
-    private List<TournamentDTO> tournamentListEntityToDto(List<Entity_Tournament> entityTournaments) {
-        List<TournamentDTO> tournaments = new ArrayList<>();
-
-        for (Entity_Tournament entity : entityTournaments) {
-            tournaments.add(new TournamentDTO(entity.id(), entity.name(), entity.cod_region(), entity.victory_points()));
-        }
-
-        return tournaments;
+    public TrainerDTO getTrainerById(final int trainer_id) {
+        return entityToDto(trainerDao.getTrainerById(trainer_id));
     }
 }

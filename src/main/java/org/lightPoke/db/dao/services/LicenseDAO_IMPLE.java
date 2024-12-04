@@ -2,7 +2,6 @@ package org.lightPoke.db.dao.services;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
 import org.lightPoke.db.dao.interfaces.LicenseDAO_IFACE;
-import org.lightPoke.db.dto.LicenseDTO;
 import org.lightPoke.db.entities.Entity_License;
 import org.lightPoke.log.LogManagement;
 
@@ -71,7 +70,7 @@ public class LicenseDAO_IMPLE implements LicenseDAO_IFACE {
             addLicense.setInt(1, nextId + 1);
             addLicense.setString(2, currentDate);
             addLicense.setFloat(3, 0.0f);
-            addLicense.setInt(4,  0);
+            addLicense.setInt(4, 0);
 
             addLicense.executeUpdate();
 
@@ -85,11 +84,6 @@ public class LicenseDAO_IMPLE implements LicenseDAO_IFACE {
         }
 
         return null;
-    }
-
-    @Override
-    public LicenseDTO entityToDto(Entity_License entity) {
-        return new LicenseDTO(entity.id(), entity.expedition_date(), entity.points(), entity.n_victories());
     }
 
     @Override
@@ -109,6 +103,44 @@ public class LicenseDAO_IMPLE implements LicenseDAO_IFACE {
 
             if (idLicenseOfTrainer == -1) {
                 log.writeLog("User " + username + " doesn't have a license");
+            }
+
+            PreparedStatement findLicense = conn.prepareStatement("SELECT * FROM LICENSE WHERE ID = ?");
+            findLicense.setInt(1, idLicenseOfTrainer);
+
+            ResultSet findLicenseRs = findLicense.executeQuery();
+
+            Entity_License entityLicense = null;
+            if (findLicenseRs.next()) {
+                entityLicense = new Entity_License(findLicenseRs.getInt("ID"), findLicenseRs.getString("EXPEDITION_DATE"), findLicenseRs.getFloat("POINTS"), findLicenseRs.getInt("N_VICTORIES"));
+            }
+
+            conn.close();
+            return entityLicense;
+        } catch (SQLException e) {
+            log.writeLog("Unable to establish a connection with the DataSource on CreateTrainer function");
+        }
+
+        return null;
+    }
+
+    @Override
+    public Entity_License getLicenseByTrainerId(int trainerId) {
+        try {
+            Connection conn = source.getConnection();
+            PreparedStatement trainer = conn.prepareStatement("SELECT * FROM TRAINER WHERE TRAINER.ID = ?");
+
+            trainer.setInt(1, trainerId);
+
+            ResultSet trainerRs = trainer.executeQuery();
+
+            int idLicenseOfTrainer = -1;
+            if (trainerRs.next()) {
+                idLicenseOfTrainer = trainerRs.getInt("LICENSE_ID");
+            }
+
+            if (idLicenseOfTrainer == -1) {
+                log.writeLog("User " + trainerId + " doesn't have a license");
             }
 
             PreparedStatement findLicense = conn.prepareStatement("SELECT * FROM LICENSE WHERE ID = ?");

@@ -1,11 +1,17 @@
 package org.lightPoke.db.services;
 
+import org.lightPoke.db.dao.services.CombatDAO_IMPLE;
 import org.lightPoke.db.dao.services.TournamentDAO_IMPLE;
 import org.lightPoke.db.dao.services.TrainerOnTourmanetDAO_IMPLE;
+import org.lightPoke.db.dto.At_InTournamentDTO;
+import org.lightPoke.db.dto.CombatDTO;
 import org.lightPoke.db.dto.TournamentDTO;
 import org.lightPoke.db.dto.TrainerDTO;
+import org.lightPoke.db.entities.Entity_Combat;
 import org.lightPoke.db.entities.Entity_Tournament;
+import org.lightPoke.db.entities.Entity_Trainer;
 import org.lightPoke.db.entities.Entity_TrainerOnTournament;
+import org.lightPoke.users.ATUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,32 +32,62 @@ public class TournamentService {
         return instance;
     }
 
-    public List<TournamentDTO> getAllTournaments() {
-        List<Entity_Tournament> entity_tournaments = tournamentDAO.getAllTournaments();
-        
-        return entityTournamentListToDto(entity_tournaments);
+    private TournamentDTO entityToDto(final Entity_Tournament entityTournament) {
+        CombatService combatService = CombatService.getInstance();
+        List<CombatDTO> combats = combatService.getCombatsByTournamentId(entityTournament.id());
+        return new TournamentDTO(entityTournament.id(), entityTournament.name(), entityTournament.cod_region(), entityTournament.victory_points(), entityTournament.t_winner(), combats);
     }
 
-    private List<TournamentDTO> entityTournamentListToDto(List<Entity_Tournament> entityTournaments) {
-        List<TournamentDTO> tournamentDTO = new ArrayList<>();
+    private Entity_Tournament dtoToEntity(final TournamentDTO tournamentDTO) {
+        return new Entity_Tournament(tournamentDTO.getId(), tournamentDTO.getName(), tournamentDTO.getRegion(), tournamentDTO.getVictoryPoints(), tournamentDTO.getTWinner());
+    }
 
-        for (Entity_Tournament t : entityTournaments) {
-            tournamentDTO.add(new TournamentDTO(t.id(), t.name(), t.cod_region(), t.victory_points()));
+    public List<TournamentDTO> getAllTournaments() {
+        List<Entity_Tournament> entity_tournaments = tournamentDAO.getAllTournaments();
+
+        List<TournamentDTO> tournamentsDto = new ArrayList<>();
+
+        for (Entity_Tournament t : entity_tournaments) {
+            tournamentsDto.add(entityToDto(t));
         }
 
-        return tournamentDTO;
+        return tournamentsDto;
     }
 
     public void addTrainerToTournament(TrainerDTO trainerDTO, TournamentDTO tournamentDTO) {
-        TrainerOnTourmanetDAO_IMPLE trainerOnTourmanetDAO = TrainerOnTourmanetDAO_IMPLE.getInstance();
-        trainerOnTourmanetDAO.addTrainerToTournament(trainerDTO, tournamentDTO);
+        TrainerOnTournamentService trainerOnTournamentService = TrainerOnTournamentService.getInstance();
+        trainerOnTournamentService.addTrainerToTournament(trainerDTO, tournamentDTO);
     }
 
-    public void createTournament(final TournamentDTO tournamentDTO) {
-        tournamentDAO.createTournament(tournamentDAO.dtoToEntity(tournamentDTO));
+    /**
+     * Convertimos el tournament DTO que tiene solo el nombre la region y los puntos de victoria
+     * en una entidad y la enviamos a crear el torneo, esta creacion nos devolvera una entidad
+     * nueva con el id, la reconvertimos a DTO ya que ahora tiene constancia en la base de datos
+     * @param tournamentDTO
+     * @param atUser
+     */
+    public void createTournament(final TournamentDTO tournamentDTO, final ATUser atUser) {
+        TournamentDTO tournament = entityToDto(tournamentDAO.createTournament(dtoToEntity(tournamentDTO)));
+
+        At_InTournamentService atInTournamentService = At_InTournamentService.getInstance();
+        atInTournamentService.addTournamentAdmin(atUser.getUsername(), tournament.getId());
     }
 
     public boolean isTournamentAvailable(TournamentDTO tournamentDTO) {
-        return tournamentDAO.getTournamentByNameAndRegion(tournamentDAO.dtoToEntity(tournamentDTO)) == null;
+        return tournamentDAO.getTournamentByNameAndRegion(dtoToEntity(tournamentDTO)) == null;
+    }
+
+    public List<TournamentDTO> getTournamentsByUserId(int id) {
+        List<TournamentDTO> tournaments = new ArrayList<>();
+
+        for (Entity_Tournament e : tournamentDAO.getTournamentsFromUserById(id)) {
+            tournaments.add(entityToDto(e));
+        }
+
+        return tournaments;
+    }
+
+    public TournamentDTO getTournamentById(final int t_id) {
+        return entityToDto(tournamentDAO.getTournamentById(t_id));
     }
 }

@@ -1,10 +1,10 @@
 package org.lightPoke.db.dao.services;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
-import org.lightPoke.db.dao.interfaces.TrainerOnTournamentDAO_IFACE;
-import org.lightPoke.db.dto.TournamentDTO;
-import org.lightPoke.db.dto.TrainerDTO;
-import org.lightPoke.db.entities.Entity_TrainerOnTournament;
+import org.lightPoke.db.dao.interfaces.At_InTournamentDAO_IFACE;
+import org.lightPoke.db.entities.Entity_AT_InTournament;
+import org.lightPoke.db.entities.Entity_License;
+import org.lightPoke.db.entities.Entity_Tournament;
 import org.lightPoke.log.LogManagement;
 
 import javax.sql.DataSource;
@@ -14,16 +14,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-public class TrainerOnTourmanetDAO_IMPLE implements TrainerOnTournamentDAO_IFACE {
-    private static TrainerOnTourmanetDAO_IMPLE instance;
-    private final LogManagement log;
+public class At_InTournamentDAO_IMPLE implements At_InTournamentDAO_IFACE {
+    private static At_InTournamentDAO_IMPLE instance;
+    private LogManagement log;
     private DataSource source;
 
-    private TrainerOnTourmanetDAO_IMPLE() {
+    private At_InTournamentDAO_IMPLE() {
         Properties props = new Properties();
         FileInputStream fis = null;
         MysqlDataSource source = null;
@@ -39,62 +40,56 @@ public class TrainerOnTourmanetDAO_IMPLE implements TrainerOnTournamentDAO_IFACE
 
             this.source = source;
         } catch (IOException e) {
-            log.writeLog("Unnable to find file DB_PROPS.txt on the specified path");
+            log.writeLog("Unable to find file DB_PROPS.txt on the specified path");
         }
     }
 
-    public static TrainerOnTourmanetDAO_IMPLE getInstance() {
+    public static At_InTournamentDAO_IMPLE getInstance() {
         if (instance == null) {
-            instance = new TrainerOnTourmanetDAO_IMPLE();
+            instance = new At_InTournamentDAO_IMPLE();
         }
-
         return instance;
     }
 
     @Override
-    public void addTrainerToTournament(TrainerDTO trainerDTO, TournamentDTO tournamentDTO) {
+    public void createTournamentAdmin(final String adminUsername, final int tournament_id) {
         try {
             Connection conn = source.getConnection();
-            PreparedStatement st = conn.prepareStatement("INSERT INTO TRAINER_ON_TOURNAMENT (ID_TOURNAMENT, ID_TRAINER) VALUES(?, ?)");
-            st.setInt(1, tournamentDTO.getId());
-            st.setInt(2, trainerDTO.getId());
+            PreparedStatement st = conn.prepareStatement("INSERT INTO AT_IN_TOURNAMENT (USERNAME, TOURNAMENT_ID) VALUES (?, ?)");
+            st.setString(1, adminUsername);
+            st.setInt(2, tournament_id);
 
             st.executeUpdate();
-
-            log.writeLog("User " + trainerDTO.getName() + " succesfully added to tournament " + tournamentDTO.getName());
 
             st.close();
             conn.close();
         } catch (SQLException e) {
             log.writeLog("Unnable to establish a connection with the DataSource on CreateTrainer function");
-            System.out.println(e.getMessage());
+            throw new RuntimeException(e);
         }
     }
 
-    @Override
-    public List<Entity_TrainerOnTournament> getTrainersByTournamentId(final int t_id) {
+    public Entity_AT_InTournament getAt_InTournamentEntityByAdminUsername(String username) {
         try {
             Connection conn = source.getConnection();
-            PreparedStatement st = conn.prepareStatement("SELECT * FROM TRAINER_ON_TOURNAMENT WHERE ID_TOURNAMENT = ?");
-            st.setInt(1, t_id);
+            PreparedStatement st = conn.prepareStatement("SELECT * FROM AT_IN_TOURNAMENT WHERE USERNAME = ?");
+            st.setString(1, username);
 
             ResultSet rs = st.executeQuery();
 
-            List<Entity_TrainerOnTournament> entityTrainerOnTournaments = new ArrayList<>();
-            while (rs.next()) {
-                entityTrainerOnTournaments.add(new Entity_TrainerOnTournament(rs.getInt("ID"), rs.getInt("ID_TOURNAMENT"), rs.getInt("ID_TRAINER")));
+            Entity_AT_InTournament entity = null;
+            if (rs.next()) {
+                entity = new Entity_AT_InTournament(rs.getInt("ID"), rs.getString("USERNAME"), rs.getInt("TOURNAMENT_ID"));
             }
 
             rs.close();
             st.close();
             conn.close();
 
-            return entityTrainerOnTournaments;
+            return entity;
         } catch (SQLException e) {
             log.writeLog("Unnable to establish a connection with the DataSource on CreateTrainer function");
-            System.out.println(e.getMessage());
+            throw new RuntimeException(e);
         }
-
-        return null;
     }
 }

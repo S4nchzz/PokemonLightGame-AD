@@ -1,8 +1,6 @@
 package org.lightPoke.db.dao.services;
 
 import org.lightPoke.db.dao.interfaces.TrainerDAO_IFACE;
-import org.lightPoke.db.dto.TrainerDTO;
-import org.lightPoke.db.entities.Entity_Tournament;
 import org.lightPoke.db.entities.Entity_Trainer;
 import org.lightPoke.log.LogManagement;
 
@@ -13,8 +11,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
@@ -95,7 +91,7 @@ public class TrainerDAO_IMPLE implements TrainerDAO_IFACE {
     }
 
     @Override
-    public Entity_Trainer getTrainer(final String username) {
+    public Entity_Trainer getTrainerByUsername(final String username) {
         try {
             Connection conn = source.getConnection();
             PreparedStatement st = conn.prepareStatement("SELECT * FROM TRAINER WHERE TRAINER.USERNAME = ?");
@@ -125,7 +121,28 @@ public class TrainerDAO_IMPLE implements TrainerDAO_IFACE {
         }
     }
 
-    public Entity_Trainer dtoToEntity(TrainerDTO dto) {
-        return new Entity_Trainer(dto.getUsername(), dto.getName(), dto.getNationality(), dto.getLicense().getId());
+    @Override
+    public Entity_Trainer getTrainerById(int trainerId) {
+        try {
+            Connection conn = source.getConnection();
+            PreparedStatement st = conn.prepareStatement("SELECT * FROM TRAINER WHERE TRAINER.ID = ?");
+            st.setInt(1, trainerId);
+
+            ResultSet rs = st.executeQuery();
+
+            Entity_Trainer entity = null;
+            if (rs.next()) {
+                entity = new Entity_Trainer(rs.getInt("ID"), rs.getString("USERNAME"), rs.getString("NAME"), rs.getString("NATIONALITY"), rs.getInt("LICENSE_ID"));
+            }
+
+            rs.close();
+            st.close();
+            conn.close();
+
+            return entity;
+        } catch (SQLException e) {
+            log.writeLog("Unnable to establish a connection with the DataSource on getTrainerById function");
+            throw new RuntimeException(e);
+        }
     }
 }

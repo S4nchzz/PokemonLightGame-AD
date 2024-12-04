@@ -2,11 +2,11 @@ package org.lightPoke.db.dto;
 
 public class CombatDTO {
     private final String date;
-    private final int trainer_1;
-    private final int trainer_2;
-    private final int c_winner;
+    private final TrainerDTO trainer_1;
+    private final TrainerDTO trainer_2;
+    private final TrainerDTO c_winner;
 
-    public CombatDTO(String date, int trainer1, int trainer2, int cWinner) {
+    public CombatDTO(String date, TrainerDTO trainer1, TrainerDTO trainer2, TrainerDTO cWinner) {
         this.date = date;
         this.trainer_1 = trainer1;
         this.trainer_2 = trainer2;
@@ -17,15 +17,15 @@ public class CombatDTO {
         return date;
     }
 
-    public int getTrainer_1() {
+    public TrainerDTO getTrainer_1() {
         return trainer_1;
     }
 
-    public int getTrainer_2() {
+    public TrainerDTO getTrainer_2() {
         return trainer_2;
     }
 
-    public int getC_winner() {
+    public TrainerDTO getC_winner() {
         return c_winner;
     }
 }

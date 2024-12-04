@@ -8,6 +8,7 @@ import org.lightPoke.log.LogManagement;
 import org.lightPoke.menus.AdminTournamentMenu;
 import org.lightPoke.menus.GeneralAdminMenu;
 import org.lightPoke.menus.TrainerMenu;
+import org.lightPoke.users.ATUser;
 import org.lightPoke.users.TRUser;
 import org.lightPoke.users.User;
 
@@ -54,7 +55,7 @@ public class Game {
                 TRUser user = register();
                 if (user != null) {
                     TrainerService trainerService = TrainerService.getInstance();
-                    TrainerDTO trainer = trainerService.getTrainer(user.getUsername());
+                    TrainerDTO trainer = trainerService.getTrainerByUsername(user.getUsername());
                     new TrainerMenu(trainer);
                 }
                 break;
@@ -99,12 +100,12 @@ public class Game {
                     System.out.println("Logged as Trainer");
 
                     TrainerService trainerService = TrainerService.getInstance();
-                    new TrainerMenu(trainerService.getTrainer(username));
+                    new TrainerMenu(trainerService.getTrainerByUsername(username));
                 }
 
                 case 2 -> {
                     System.out.println("Logged as Admin tournament");
-                    new AdminTournamentMenu();
+                    new AdminTournamentMenu((ATUser) user);
                 }
 
                 case 3 -> {

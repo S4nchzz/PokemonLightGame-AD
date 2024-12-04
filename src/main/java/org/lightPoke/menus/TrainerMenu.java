@@ -70,7 +70,7 @@ public class TrainerMenu {
 
             // Update trainerDTO after the new tournament join
             TrainerService trainerService = TrainerService.getInstance();
-            trainerDTO = trainerService.getTrainer(trainerDTO.getUsername());
+            trainerDTO = trainerService.getTrainerByUsername(trainerDTO.getUsername());
         }
 
         System.out.println("------ Trainer menu ------");
