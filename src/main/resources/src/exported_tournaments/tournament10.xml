@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<x>
+    <torneo>
+        <id>10</id>
+        <name>x</name>
+        <cod_Region>x</cod_Region>
+        <victory_points>1.0</victory_points>
+        <winner/>
+    </torneo>
+</x>

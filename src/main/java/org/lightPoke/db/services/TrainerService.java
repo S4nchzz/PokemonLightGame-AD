@@ -39,9 +39,8 @@ public class TrainerService {
         LicenseService licenseService = LicenseService.getInstance();
 
         List<TournamentDTO> tournaments = tournamentService.getTournamentsByUserId(entityTrainer.id());
-        List<CombatDTO> combats = combatService.getCombatsByTrainerId(entityTrainer.id());
         LicenseDTO license = licenseService.getLicenseByTrainerId(entityTrainer.id());
-        return new TrainerDTO(entityTrainer.id(), entityTrainer.username(), entityTrainer.name(), entityTrainer.nationality(), license, tournaments, combats);
+        return new TrainerDTO(entityTrainer.id(), entityTrainer.username(), entityTrainer.name(), entityTrainer.nationality(), license, tournaments);
     }
 
     public void createTrainer(User user) {

@@ -513,3 +513,238 @@
 [4/12/2024 | 19:41:46] -- User t3admin has been registrated
 [4/12/2024 | 19:41:46] -- Tournament t3 created
 [4/12/2024 | 19:41:46] -- Tournament t3 added.
+[5/12/2024 | 19:8:1] -- User aa created
+[5/12/2024 | 19:8:1] -- User a has been registrated
+[5/12/2024 | 19:8:1] -- User : a founded
+[5/12/2024 | 19:8:1] -- Trainer aa log in succesfully
+[5/12/2024 | 19:8:1] -- User : a founded
+[5/12/2024 | 19:8:17] -- User iyan logged succesfully
+[5/12/2024 | 19:8:29] -- User t1admin has been registrated
+[5/12/2024 | 19:8:29] -- Tournament t1 created
+[5/12/2024 | 19:8:29] -- Tournament t1 added.
+[5/12/2024 | 19:10:25] -- User a logged succesfully
+[5/12/2024 | 19:10:25] -- User : a founded
+[5/12/2024 | 19:10:25] -- Trainer aa log in succesfully
+[5/12/2024 | 19:10:28] -- User aa succesfully added to tournament t1
+[5/12/2024 | 19:10:28] -- User : a founded
+[5/12/2024 | 19:21:34] -- User t1admin logged succesfully
+[5/12/2024 | 19:21:36] -- Tournament 6 founded
+[5/12/2024 | 19:21:36] -- Tournament 6 founded
+[5/12/2024 | 19:37:10] -- User t1admin logged succesfully
+[5/12/2024 | 19:37:12] -- Tournament 6 founded
+[5/12/2024 | 19:38:22] -- User t1admin logged succesfully
+[5/12/2024 | 19:38:32] -- Tournament 6 founded
+[5/12/2024 | 19:39:56] -- User t1admin logged succesfully
+[5/12/2024 | 19:40:35] -- Tournament 6 founded
+[5/12/2024 | 19:41:35] -- User t1admin logged succesfully
+[5/12/2024 | 19:41:46] -- Tournament 6 founded
+[5/12/2024 | 19:42:15] -- User t1admin logged succesfully
+[5/12/2024 | 19:42:57] -- Tournament 6 founded
+[5/12/2024 | 19:43:35] -- User t1admin logged succesfully
+[5/12/2024 | 19:46:46] -- User t1admin logged succesfully
+[5/12/2024 | 19:46:54] -- Tournament 6 founded
+[5/12/2024 | 19:47:7] -- User t1admint not found
+[5/12/2024 | 19:47:10] -- User t1admin logged succesfully
+[5/12/2024 | 19:48:5] -- Tournament 6 founded
+[5/12/2024 | 19:48:22] -- User t1admin not found
+[5/12/2024 | 19:48:25] -- User t1admin logged succesfully
+[5/12/2024 | 19:48:37] -- Tournament 6 founded
+[5/12/2024 | 19:48:44] -- User t1admin logged succesfully
+[5/12/2024 | 19:49:16] -- Tournament 6 founded
+[5/12/2024 | 19:52:9] -- User t1admin logged succesfully
+[5/12/2024 | 19:52:11] -- Tournament 6 founded
+[5/12/2024 | 19:52:11] -- Tournament 6 founded
+[5/12/2024 | 20:3:34] -- User t1admin logged succesfully
+[5/12/2024 | 20:4:10] -- User t1admin logged succesfully
+[5/12/2024 | 20:4:11] -- Tournament 6 founded
+[5/12/2024 | 20:4:11] -- Tournament 6 founded
+[5/12/2024 | 20:5:38] -- User t1admin logged succesfully
+[5/12/2024 | 20:5:38] -- Tournament 6 founded
+[5/12/2024 | 20:5:38] -- Tournament 6 founded
+[5/12/2024 | 20:6:56] -- User t1admin logged succesfully
+[5/12/2024 | 20:6:56] -- Tournament 6 founded
+[5/12/2024 | 20:6:56] -- Tournament 6 founded
+[5/12/2024 | 20:10:3] -- User t1admin logged succesfully
+[5/12/2024 | 20:10:4] -- Tournament 6 founded
+[5/12/2024 | 20:10:4] -- Tournament 6 founded
+[5/12/2024 | 20:10:58] -- User t1admin logged succesfully
+[5/12/2024 | 20:10:58] -- Tournament 6 founded
+[5/12/2024 | 20:10:59] -- Tournament 6 founded
+[5/12/2024 | 20:12:37] -- User a created
+[5/12/2024 | 20:12:37] -- User a has been registrated
+[5/12/2024 | 20:12:37] -- User : a founded
+[5/12/2024 | 20:12:37] -- Trainer a log in succesfully
+[5/12/2024 | 20:12:37] -- User : a founded
+[5/12/2024 | 20:12:52] -- User t1admin not found
+[5/12/2024 | 20:12:54] -- User a logged succesfully
+[5/12/2024 | 20:12:54] -- User : a founded
+[5/12/2024 | 20:12:54] -- Trainer a log in succesfully
+[5/12/2024 | 20:12:54] -- User : a founded
+[5/12/2024 | 20:13:22] -- User iyan logged succesfully
+[5/12/2024 | 20:14:46] -- User iyan logged succesfully
+[5/12/2024 | 20:14:57] -- User t1admin has been registrated
+[5/12/2024 | 20:14:57] -- Tournament t1 created
+[5/12/2024 | 20:19:14] -- User t1admin logged succesfully
+[5/12/2024 | 20:21:35] -- User t1admin logged succesfully
+[5/12/2024 | 20:22:47] -- User t1admin logged succesfully
+[5/12/2024 | 20:23:18] -- User t1admin not found
+[5/12/2024 | 20:23:21] -- User iyan logged succesfully
+[5/12/2024 | 20:23:32] -- User t1admin has been registrated
+[5/12/2024 | 20:23:32] -- Tournament t1 created
+[5/12/2024 | 20:23:32] -- Tournament t1 added.
+[5/12/2024 | 20:23:32] -- Tournament 8 founded
+[5/12/2024 | 20:23:32] -- Tournament 8 founded
+[5/12/2024 | 20:23:48] -- User t1admin not found
+[5/12/2024 | 20:23:52] -- User t1admin logged succesfully
+[5/12/2024 | 20:23:52] -- Tournament 8 founded
+[5/12/2024 | 20:23:52] -- Tournament 8 founded
+[5/12/2024 | 20:25:16] -- User aa created
+[5/12/2024 | 20:25:16] -- User a has been registrated
+[5/12/2024 | 20:25:16] -- User : a founded
+[5/12/2024 | 20:25:16] -- Trainer aa log in succesfully
+[5/12/2024 | 20:25:16] -- User : a founded
+[5/12/2024 | 20:25:22] -- User iyan logged succesfully
+[5/12/2024 | 20:25:33] -- User t1admin has been registrated
+[5/12/2024 | 20:25:33] -- Tournament t1 created
+[5/12/2024 | 20:25:33] -- Tournament t1 added.
+[5/12/2024 | 20:25:33] -- Tournament 9 founded
+[5/12/2024 | 20:25:33] -- Tournament 9 founded
+[5/12/2024 | 20:25:40] -- User a logged succesfully
+[5/12/2024 | 20:25:40] -- User : a founded
+[5/12/2024 | 20:25:40] -- Trainer aa log in succesfully
+[5/12/2024 | 20:25:42] -- User aa succesfully added to tournament t1
+[5/12/2024 | 20:25:42] -- User : a founded
+[5/12/2024 | 20:25:42] -- Unnable to establish a connection with the DataSource on CreateTrainer function
+[5/12/2024 | 20:26:19] -- User a logged succesfully
+[5/12/2024 | 20:26:20] -- User : a founded
+[5/12/2024 | 20:26:20] -- Trainer aa log in succesfully
+[5/12/2024 | 20:26:21] -- User aa succesfully added to tournament t1
+[5/12/2024 | 20:26:21] -- User : a founded
+[5/12/2024 | 20:26:21] -- Unnable to establish a connection with the DataSource on CreateTrainer function
+[5/12/2024 | 20:26:54] -- User a logged succesfully
+[5/12/2024 | 20:26:55] -- User : a founded
+[5/12/2024 | 20:27:12] -- Trainer aa log in succesfully
+[5/12/2024 | 20:28:56] -- User a logged succesfully
+[5/12/2024 | 20:28:57] -- User : a founded
+[5/12/2024 | 20:28:58] -- Trainer aa log in succesfully
+[5/12/2024 | 20:30:54] -- User aa succesfully added to tournament t1
+[5/12/2024 | 20:31:21] -- User : a founded
+[5/12/2024 | 20:31:21] -- Unnable to establish a connection with the DataSource on CreateTrainer function
+[5/12/2024 | 20:31:45] -- User a logged succesfully
+[5/12/2024 | 20:31:52] -- User a logged succesfully
+[5/12/2024 | 20:32:0] -- User a logged succesfully
+[5/12/2024 | 20:32:6] -- User : a founded
+[5/12/2024 | 20:32:8] -- Trainer aa log in succesfully
+[5/12/2024 | 20:32:47] -- User aa succesfully added to tournament t1
+[5/12/2024 | 20:33:8] -- User : a founded
+[5/12/2024 | 20:33:31] -- Unnable to establish a connection with the DataSource on CreateTrainer function
+[5/12/2024 | 20:34:52] -- User a logged succesfully
+[5/12/2024 | 20:34:53] -- User : a founded
+[5/12/2024 | 20:34:53] -- Trainer aa log in succesfully
+[5/12/2024 | 20:36:23] -- User a logged succesfully
+[5/12/2024 | 20:36:24] -- User : a founded
+[5/12/2024 | 20:36:24] -- Trainer aa log in succesfully
+[5/12/2024 | 20:36:25] -- User aa succesfully added to tournament t1
+[5/12/2024 | 20:36:25] -- User : a founded
+[5/12/2024 | 20:37:21] -- User a created
+[5/12/2024 | 20:37:21] -- User a has been registrated
+[5/12/2024 | 20:37:21] -- User : a founded
+[5/12/2024 | 20:37:22] -- Trainer a log in succesfully
+[5/12/2024 | 20:37:22] -- User : a founded
+[5/12/2024 | 20:37:25] -- User iyan logged succesfully
+[5/12/2024 | 20:37:52] -- User iyan logged succesfully
+[5/12/2024 | 20:38:3] -- User xadmin has been registrated
+[5/12/2024 | 20:38:3] -- Tournament x created
+[5/12/2024 | 20:38:4] -- Tournament x added.
+[5/12/2024 | 20:38:4] -- Tournament 10 founded
+[5/12/2024 | 20:38:4] -- Tournament 10 founded
+[5/12/2024 | 20:39:48] -- User b created
+[5/12/2024 | 20:39:48] -- User b has been registrated
+[5/12/2024 | 20:39:48] -- User : b founded
+[5/12/2024 | 20:39:48] -- Trainer b log in succesfully
+[5/12/2024 | 20:39:50] -- User b succesfully added to tournament x
+[5/12/2024 | 20:39:50] -- User : b founded
+[5/12/2024 | 20:39:52] -- License exported
+[5/12/2024 | 20:39:52] -- Tournament x has been created
+[5/12/2024 | 20:40:7] -- User xadmin logged succesfully
+[5/12/2024 | 20:40:8] -- Tournament 10 founded
+[5/12/2024 | 20:40:8] -- Tournament 10 founded
+[5/12/2024 | 20:41:33] -- User xadmin logged succesfully
+[5/12/2024 | 20:41:33] -- Tournament 10 founded
+[5/12/2024 | 20:41:33] -- Tournament 10 founded
+[5/12/2024 | 20:41:46] -- User xadmin logged succesfully
+[5/12/2024 | 20:41:46] -- Tournament 10 founded
+[5/12/2024 | 20:41:46] -- Tournament 10 founded
+[5/12/2024 | 20:42:22] -- User xadmin logged succesfully
+[5/12/2024 | 20:42:23] -- Tournament 10 founded
+[5/12/2024 | 20:42:35] -- User xadmin logged succesfully
+[5/12/2024 | 20:42:36] -- Tournament 10 founded
+[5/12/2024 | 20:42:53] -- User xadmin logged succesfully
+[5/12/2024 | 20:42:54] -- Tournament 10 founded
+[5/12/2024 | 20:42:59] -- User a logged succesfully
+[5/12/2024 | 20:43:0] -- User : a founded
+[5/12/2024 | 20:43:0] -- Trainer a log in succesfully
+[5/12/2024 | 20:43:17] -- Unnable to establish a connection with the DataSource on CreateTrainer function
+[5/12/2024 | 20:43:42] -- User xadmin logged succesfully
+[5/12/2024 | 20:43:42] -- Tournament 10 founded
+[5/12/2024 | 20:43:58] -- Unnable to establish a connection with the DataSource on getTrainerById function
+[5/12/2024 | 20:44:40] -- User xadmin not found
+[5/12/2024 | 20:44:49] -- User xadmin not found
+[5/12/2024 | 20:44:52] -- User xadmin logged succesfully
+[5/12/2024 | 20:44:52] -- Tournament 10 founded
+[5/12/2024 | 20:45:9] -- User a logged succesfully
+[5/12/2024 | 20:45:9] -- User : a founded
+[5/12/2024 | 20:45:9] -- Trainer a log in succesfully
+[5/12/2024 | 20:46:5] -- User a created
+[5/12/2024 | 20:46:5] -- User a has been registrated
+[5/12/2024 | 20:46:5] -- User : a founded
+[5/12/2024 | 20:46:5] -- Trainer a log in succesfully
+[5/12/2024 | 20:46:5] -- User : a founded
+[5/12/2024 | 20:46:11] -- User a logged succesfully
+[5/12/2024 | 20:46:11] -- User : a founded
+[5/12/2024 | 20:46:11] -- Trainer a log in succesfully
+[5/12/2024 | 20:46:11] -- User : a founded
+[5/12/2024 | 20:46:56] -- User iyan logged succesfully
+[5/12/2024 | 20:47:5] -- User xadmin has been registrated
+[5/12/2024 | 20:47:5] -- Tournament x created
+[5/12/2024 | 20:47:5] -- Tournament x added.
+[5/12/2024 | 20:47:5] -- Tournament 1 founded
+[5/12/2024 | 20:47:5] -- Tournament 1 founded
+[5/12/2024 | 20:47:21] -- User a logged succesfully
+[5/12/2024 | 20:47:21] -- User : a founded
+[5/12/2024 | 20:47:21] -- Trainer a log in succesfully
+[5/12/2024 | 20:47:23] -- User a succesfully added to tournament x
+[5/12/2024 | 20:47:23] -- User : a founded
+[5/12/2024 | 20:47:36] -- User xadmin logged succesfully
+[5/12/2024 | 20:47:36] -- Tournament 1 founded
+[5/12/2024 | 20:47:36] -- Tournament 1 founded
+[5/12/2024 | 20:48:36] -- User xadmin logged succesfully
+[5/12/2024 | 20:48:36] -- Tournament 1 founded
+[5/12/2024 | 20:48:51] -- User xadmin logged succesfully
+[5/12/2024 | 20:48:52] -- Tournament 1 founded
+[5/12/2024 | 20:49:9] -- User xadmin logged succesfully
+[5/12/2024 | 20:49:10] -- Tournament 1 founded
+[5/12/2024 | 20:55:48] -- User a created
+[5/12/2024 | 20:55:48] -- User a has been registrated
+[5/12/2024 | 20:55:48] -- User : a founded
+[5/12/2024 | 20:55:48] -- Trainer a log in succesfully
+[5/12/2024 | 20:55:48] -- User : a founded
+[5/12/2024 | 20:55:51] -- User iyan logged succesfully
+[5/12/2024 | 20:56:0] -- User xadmin has been registrated
+[5/12/2024 | 20:56:0] -- Tournament x created
+[5/12/2024 | 20:56:0] -- Tournament x added.
+[5/12/2024 | 20:56:0] -- Tournament 2 founded
+[5/12/2024 | 20:56:0] -- Tournament 2 founded
+[5/12/2024 | 20:56:14] -- User a logged succesfully
+[5/12/2024 | 20:56:14] -- User : a founded
+[5/12/2024 | 20:56:14] -- Trainer a log in succesfully
+[5/12/2024 | 20:56:15] -- User a succesfully added to tournament x
+[5/12/2024 | 20:56:15] -- User : a founded
+[5/12/2024 | 20:56:18] -- License exported
+[5/12/2024 | 20:56:18] -- Tournament x has been created
+[5/12/2024 | 20:56:28] -- User xadmin logged succesfully
+[5/12/2024 | 20:56:29] -- Tournament 2 founded
+[5/12/2024 | 20:56:29] -- Tournament 2 founded
+[5/12/2024 | 20:57:15] -- User xadmin not found
+[5/12/2024 | 20:57:17] -- User xadmin logged succesfully
+[5/12/2024 | 20:57:18] -- Tournament 2 founded

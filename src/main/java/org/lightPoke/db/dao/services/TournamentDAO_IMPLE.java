@@ -87,8 +87,14 @@ public class TournamentDAO_IMPLE implements TournamentDAO_IFACE {
             ResultSet rs = st.executeQuery();
             Entity_Tournament entity = null;
 
-            while (rs.next()) {
-                entity = new Entity_Tournament(rs.getInt("ID"), rs.getString("NAME"), rs.getString("COD_REGION").charAt(0), rs.getFloat("VICTORY_POINTS"), rs.getInt("T_WINNER"));
+            if (rs.next()) {
+                int winnerId = -1;
+
+                int winnerDBValue;
+                if ((winnerDBValue = rs.getInt("T_WINNER")) != 0) {
+                    winnerId = winnerDBValue;
+                }
+                entity = new Entity_Tournament(rs.getInt("ID"), rs.getString("NAME"), rs.getString("COD_REGION").charAt(0), rs.getFloat("VICTORY_POINTS"), winnerId);
             }
 
             log.writeLog("Tournament " + entity.id() + " founded");
@@ -121,7 +127,13 @@ public class TournamentDAO_IMPLE implements TournamentDAO_IFACE {
                 ResultSet rsTournaments = tournamentQuery.executeQuery();
 
                 while (rsTournaments.next()) {
-                    tournaments.add(new Entity_Tournament(rsTournaments.getInt("ID"), rsTournaments.getString("NAME"), rsTournaments.getString("COD_REGION").charAt(0), rsTournaments.getFloat("VICTORY_POINTS"), rsTournaments.getInt("T_WINNER")));
+                    int winnerId = -1;
+
+                    int winnerDBValue;
+                    if ((winnerDBValue = rsTournaments.getInt("T_WINNER")) != 0) {
+                        winnerId = winnerDBValue;
+                    }
+                    tournaments.add(new Entity_Tournament(rsTournaments.getInt("ID"), rsTournaments.getString("NAME"), rsTournaments.getString("COD_REGION").charAt(0), rsTournaments.getFloat("VICTORY_POINTS"), winnerId));
                 }
 
                 rsTournaments.close();
@@ -149,7 +161,13 @@ public class TournamentDAO_IMPLE implements TournamentDAO_IFACE {
             List<Entity_Tournament> tournaments = new ArrayList<>();
 
             while (rs.next()) {
-                tournaments.add(new Entity_Tournament(rs.getInt("ID"), rs.getString("NAME"), rs.getString("COD_REGION").charAt(0), rs.getFloat("VICTORY_POINTS"), rs.getInt("T_WINNER")));
+                int winnerId = -1;
+
+                int winnerDBValue;
+                if ((winnerDBValue = rs.getInt("T_WINNER")) != 0) {
+                    winnerId = winnerDBValue;
+                }
+                tournaments.add(new Entity_Tournament(rs.getInt("ID"), rs.getString("NAME"), rs.getString("COD_REGION").charAt(0), rs.getFloat("VICTORY_POINTS"), winnerId));
             }
 
             rs.close();
@@ -175,7 +193,13 @@ public class TournamentDAO_IMPLE implements TournamentDAO_IFACE {
             ResultSet rs = st.executeQuery();
 
             if (rs.next()) {
-                newEntity = new Entity_Tournament(rs.getInt("ID"), rs.getString("NAME"), rs.getString("COD_REGION").charAt(0), rs.getFloat("VICTORY_POINTS"), rs.getInt("T_WINNER"));
+                int winnerId = -1;
+
+                int winnerDBValue;
+                if ((winnerDBValue = rs.getInt("T_WINNER")) != 0) {
+                    winnerId = winnerDBValue;
+                }
+                newEntity = new Entity_Tournament(rs.getInt("ID"), rs.getString("NAME"), rs.getString("COD_REGION").charAt(0), rs.getFloat("VICTORY_POINTS"), winnerId);
             }
 
             rs.close();

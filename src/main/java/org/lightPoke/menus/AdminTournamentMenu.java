@@ -32,48 +32,71 @@ import java.util.Scanner;
 public class AdminTournamentMenu {
     private final ATUser tournamentAdmin;
     public AdminTournamentMenu(final ATUser tournamentAdmin) {
+        Scanner sc = new Scanner(System.in);
         this.tournamentAdmin = tournamentAdmin;
 
-        System.out.println("------ Admin Tournament menu ------");
-        System.out.println("1. Exportar torneo");
-        System.out.println("2. Inscribirse");
-        System.out.println("3. Pelear");
-        System.out.println("4. Logout");
-
-        Scanner sc = new Scanner(System.in);
+        TournamentDTO tournament = getTournament();
         int choice;
-        while ((choice = sc.nextInt()) < 0 || choice > 5) {
-            System.out.println("Opcion no valida, intentelo de nuevo\n");
+        boolean correctChoice = true;
+        boolean keepLooping = true;
 
-            System.out.println("------ Admin Tournament menu ------");
-            System.out.println("1. Exportar datos de los torneos");
-            System.out.println("2. Inscribirse");
-            System.out.println("3. Pelear");
-            System.out.println("4. Logout");
-        }
+        do {
+            if (!correctChoice) {
+                System.out.println("Opcion no valida, intentelo de nuevo\n");
+            }
 
-        switch (choice) {
-            case 1 -> {
-                exportTournamentData();
+            System.out.println("\n------ Admin Tournament menu ------");
+            System.out.println("1. Mostrar datos del torneo");
+            System.out.println("2. Exportar datos de los torneos");
+            System.out.println("3. Inscribirse");
+            System.out.println("4. Pelear");
+            System.out.println("5. Logout");
+
+            choice = sc.nextInt();
+            if (choice < 0 || choice > 6) {
+                correctChoice = false;
+            } else {
+                correctChoice = true;
             }
-            case 2 -> {}
-            case 3 -> {}
-            case 4 -> {
-                Game.main(null);
+
+            switch (choice) {
+                case 1 -> {
+                    showTournamentData(tournament);
+                }
+                case 2 -> {
+                    exportDataOfTournament(tournament);
+                }
+                case 3 -> {}
+                case 4 -> {}
+                case 5 -> {
+                    keepLooping = false; // La pila de ejecucion sigue ahi anque se entre a .main cuando la pilla acabe en este .main volvera a este loop
+                    Game.main(null);
+                }
             }
-        }
+
+        } while (keepLooping);
+
     }
 
-    private void exportTournamentData() {
-        System.out.println("----- Exportacion de datos torneo -----");
-
+    private TournamentDTO getTournament() {
         At_InTournamentService atInTournamentService = At_InTournamentService.getInstance();
         TournamentService tournamentService = TournamentService.getInstance();
 
         At_InTournamentDTO atInTournamentDTO = atInTournamentService.getTournamentIdByAdminUsername(tournamentAdmin.getUsername());
-        TournamentDTO tournament = tournamentService.getTournamentById(atInTournamentDTO.getTournamentDTO().getId());
+        return tournamentService.getTournamentById(atInTournamentDTO.getTournamentDTO().getId());
+    }
 
-        exportDataOfTournament(tournament);
+    private void showTournamentData(TournamentDTO tournament) {
+        System.out.println("----- Tournament -----");
+        System.out.println("Nombre: " + tournament.getName());
+        System.out.println("COD REGION: " + tournament.getRegion());
+        System.out.println("Puntos de victoria: " + tournament.getVictoryPoints());
+
+        if (tournament.getTWinner() == null) {
+            System.out.println("Ganador: ????");
+        } else {
+            System.out.println("Ganador: " + tournament.getTWinner().getName());
+        }
     }
 
     private void exportDataOfTournament(TournamentDTO tournamentDTO) {
@@ -89,7 +112,7 @@ public class AdminTournamentMenu {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
 
-            File resultFile = new File("./src/main/resources/users/exported_tournaments", "tournament" + tournamentDTO.getId() + ".xml");
+            File resultFile = new File("./src/main/resources/src/exported_tournaments", "tournament" + tournamentDTO.getId() + ".xml");
             Source source = new DOMSource(document);
             Result resultXML = new StreamResult(resultFile);
 
@@ -134,8 +157,12 @@ public class AdminTournamentMenu {
 
         // Elemento T_WINNER
         Element eleWinner = document.createElement("winner");
-        Text eleWinnerText = document.createTextNode(String.valueOf(tournamentDTO.getTWinner()));
-        eleWinner.appendChild(eleWinnerText);
+
+
+        if (tournamentDTO.getTWinner() != null) {
+            Text eleWinnerText = document.createTextNode(String.valueOf(tournamentDTO.getTWinner()));
+            eleWinner.appendChild(eleWinnerText);
+        }
 
         eleTorneo.appendChild(eleWinner);
 
