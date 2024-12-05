@@ -7,24 +7,21 @@ public class TrainerDTO {
     private final String username;
     private final String name;
     private final String nationality;
-    private final LicenseDTO license;
-    private final List<TournamentDTO> trainerTournamentList; // ! QUITAR PORQUE UN TORNEO TIENE UN COMBATE Y UN COMBATE TIENE UN ENTRENADOR Y UN ENTRENADOR TIENE UN TORNEO ETC....
+    private final LicenseDTO license; // ! QUITAR PORQUE UN TORNEO TIENE UN COMBATE Y UN COMBATE TIENE UN ENTRENADOR Y UN ENTRENADOR TIENE UN TORNEO ETC....
 
-    public TrainerDTO(final int id, final String username, final String name, final String nationality, LicenseDTO license, List<TournamentDTO> trainerTournamentList) {
+    public TrainerDTO(final int id, final String username, final String name, final String nationality, LicenseDTO license) {
         this.id = id;
         this.username = username;
         this.name = name;
         this.nationality = nationality;
         this.license = license;
-        this.trainerTournamentList = trainerTournamentList;
     }
 
-    public TrainerDTO(final String username, final String name, final String nationality, final LicenseDTO license, List<TournamentDTO> trainerTournamentList) {
+    public TrainerDTO(final String username, final String name, final String nationality, final LicenseDTO license) {
         this.username = username;
         this.name = name;
         this.license = license;
         this.nationality = nationality;
-        this.trainerTournamentList = trainerTournamentList;
     }
 
     public int getId() {
@@ -47,15 +44,11 @@ public class TrainerDTO {
         return license;
     }
 
-    public List<TournamentDTO> getTrainerTournamentList() {
-        return trainerTournamentList;
-    }
-
     @Override
     public String toString() {
         return String.format(
                 "TRUser{id=%d, username='%s', nombre='%s', nTorneos='%d'}",
-                id, getUsername(), name, nationality, trainerTournamentList.size()
+                id, getUsername(), name, nationality
         );
     }
 }

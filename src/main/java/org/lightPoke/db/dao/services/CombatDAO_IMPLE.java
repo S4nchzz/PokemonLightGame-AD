@@ -75,7 +75,13 @@ public class CombatDAO_IMPLE implements CombatDAO_IFACE {
 
             List<Entity_Combat> combats = new ArrayList<>();
             while (rs.next()) {
-                combats.add(new Entity_Combat(rs.getInt("ID"), rs.getInt("ID_TOURNAMENT"), rs.getString("DATE"), rs.getInt("TRAINER_1"), rs.getInt("TRAINER_2"), rs.getInt("C_WINNER")));
+                int winner = -1;
+
+                int winnerDBValue;
+                if ((winnerDBValue = rs.getInt("C_WINNER")) != 0) {
+                    winner = winnerDBValue;
+                }
+                combats.add(new Entity_Combat(rs.getInt("ID"), rs.getInt("ID_TOURNAMENT"), rs.getString("DATE"), rs.getInt("TRAINER_1"), rs.getInt("TRAINER_2"), winner));
             }
 
             rs.close();

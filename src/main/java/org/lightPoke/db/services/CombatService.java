@@ -36,7 +36,11 @@ public class CombatService {
 
         TrainerDTO trainer1 = trainerService.getTrainerById(entity.trainer_1());
         TrainerDTO trainer2 = trainerService.getTrainerById(entity.trainer_2());
-        TrainerDTO c_winner = trainerService.getTrainerById(entity.c_winner());
+        TrainerDTO c_winner = null;
+
+        if (entity.c_winner() != -1) {
+            c_winner = trainerService.getTrainerById(entity.c_winner());
+        }
 
         return new CombatDTO(entity.date(), trainer1, trainer2, c_winner);
     }

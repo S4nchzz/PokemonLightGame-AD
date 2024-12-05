@@ -34,13 +34,10 @@ public class TrainerService {
     }
 
     private TrainerDTO entityToDto(final Entity_Trainer entityTrainer) {
-        TournamentService tournamentService = TournamentService.getInstance();
-        CombatService combatService = CombatService.getInstance();
         LicenseService licenseService = LicenseService.getInstance();
 
-        List<TournamentDTO> tournaments = tournamentService.getTournamentsByUserId(entityTrainer.id());
         LicenseDTO license = licenseService.getLicenseByTrainerId(entityTrainer.id());
-        return new TrainerDTO(entityTrainer.id(), entityTrainer.username(), entityTrainer.name(), entityTrainer.nationality(), license, tournaments);
+        return new TrainerDTO(entityTrainer.id(), entityTrainer.username(), entityTrainer.name(), entityTrainer.nationality(), license);
     }
 
     public void createTrainer(User user) {

@@ -54,9 +54,9 @@ public class TrainerMenu {
         if (trainerDTO != null) {
             log.writeLog("Trainer " + trainerDTO.getName() + " log in succesfully");
 
-            if (trainerDTO.getTrainerTournamentList().isEmpty()) {
+            TournamentService tournamentService = TournamentService.getInstance();
+            if (tournamentService.getTournamentsByUserId(trainerDTO.getId()).isEmpty()) {
                 // Mostrar todos los torneos y decirle que se meta a uno
-                TournamentService tournamentService = TournamentService.getInstance();
                 List<TournamentDTO> tournaments = tournamentService.getAllTournaments();
 
                 if (!tournaments.isEmpty()) {
@@ -170,7 +170,8 @@ public class TrainerMenu {
         Element eleTorneos = generateElement("torneos", null, docu);
         raiz.appendChild(eleTorneos);
 
-        for (TournamentDTO tour : trainer.getTrainerTournamentList()) {
+        TournamentService tournamentService = TournamentService.getInstance();
+        for (TournamentDTO tour : tournamentService.getTournamentsByUserId(trainer.getId())) {
             Element eleTorneo = generateElement("torneo", null, docu);
 
             eleTorneo.appendChild(generateElement("nombre", tour.getName(), docu));

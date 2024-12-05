@@ -178,12 +178,14 @@ public class AdminTournamentMenu {
             Text dateText = document.createTextNode(c.getDate());
             Text trainer_1Text = document.createTextNode(c.getTrainer_1().getName());
             Text trainer_2Text = document.createTextNode(c.getTrainer_2().getName());
-            Text winnerText = document.createTextNode(c.getC_winner().getName());
 
             date.appendChild(dateText);
             trainer_1.appendChild(trainer_1Text);
             trainer_2.appendChild(trainer_2Text);
-            winner.appendChild(winnerText);
+            if (c.getC_winner() != null) {
+                Text winnerText = document.createTextNode(c.getC_winner().getName());
+                winner.appendChild(winnerText);
+            }
 
             combat.appendChild(date);
             combat.appendChild(trainer_1);
