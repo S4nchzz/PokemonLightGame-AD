@@ -941,3 +941,47 @@
 [6/12/2024 | 4:2:48] -- Tournament x added.
 [6/12/2024 | 4:2:48] -- Tournament 3 founded
 [6/12/2024 | 4:2:48] -- Tournament 3 founded
+[6/12/2024 | 4:12:32] -- User a created
+[6/12/2024 | 4:12:32] -- User a has been registrated
+[6/12/2024 | 4:12:32] -- User : a founded
+[6/12/2024 | 4:12:32] -- Trainer a log in succesfully
+[6/12/2024 | 4:12:32] -- User : a founded
+[6/12/2024 | 4:12:35] -- User iyan logged succesfully
+[6/12/2024 | 4:12:40] -- User x has been registrated
+[6/12/2024 | 4:12:40] -- Tournament x created
+[6/12/2024 | 4:12:40] -- Tournament x added.
+[6/12/2024 | 4:12:40] -- Tournament 1 founded
+[6/12/2024 | 4:12:40] -- Tournament 1 founded
+[6/12/2024 | 4:12:58] -- User a logged succesfully
+[6/12/2024 | 4:12:58] -- User : a founded
+[6/12/2024 | 4:12:58] -- Trainer a log in succesfully
+[6/12/2024 | 4:12:59] -- User : a founded
+[6/12/2024 | 4:13:5] -- User a logged succesfully
+[6/12/2024 | 4:13:6] -- User : a founded
+[6/12/2024 | 4:13:6] -- Trainer a log in succesfully
+[6/12/2024 | 6:12:13] -- User a created
+[6/12/2024 | 6:12:13] -- User a has been registrated
+[6/12/2024 | 6:12:13] -- User : a founded
+[6/12/2024 | 6:12:13] -- Trainer a log in succesfully
+[6/12/2024 | 6:12:13] -- User : a founded
+[6/12/2024 | 6:12:20] -- User iyan logged succesfully
+[6/12/2024 | 6:12:24] -- User x has been registrated
+[6/12/2024 | 6:12:24] -- Tournament x created
+[6/12/2024 | 6:12:24] -- Tournament x added.
+[6/12/2024 | 6:12:24] -- Tournament 1 founded
+[6/12/2024 | 6:12:25] -- Tournament 1 founded
+[6/12/2024 | 6:12:37] -- User x logged succesfully
+[6/12/2024 | 6:12:37] -- Tournament 1 founded
+[6/12/2024 | 6:12:37] -- Tournament 1 founded
+[6/12/2024 | 6:12:44] -- User a logged succesfully
+[6/12/2024 | 6:12:44] -- User : a founded
+[6/12/2024 | 6:12:44] -- Trainer a log in succesfully
+[6/12/2024 | 6:12:48] -- User : a founded
+[6/12/2024 | 6:14:2] -- User a logged succesfully
+[6/12/2024 | 6:14:2] -- User : a founded
+[6/12/2024 | 6:14:2] -- Trainer a log in succesfully
+[6/12/2024 | 6:14:3] -- User : a founded
+[6/12/2024 | 6:14:27] -- User a logged succesfully
+[6/12/2024 | 6:14:27] -- User : a founded
+[6/12/2024 | 6:14:27] -- Trainer a log in succesfully
+[6/12/2024 | 6:14:27] -- User : a founded

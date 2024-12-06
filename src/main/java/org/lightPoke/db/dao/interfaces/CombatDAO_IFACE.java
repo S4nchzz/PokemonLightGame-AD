@@ -12,4 +12,8 @@ public interface CombatDAO_IFACE {
     List<Entity_Combat> findCombatsByTrainerId(int id);
 
     void addCombatsToTournament(int tournamentId);
+
+    boolean isTrainerInAnyCombat(int trainerId);
+
+    void addTrainerToTournamentCombat(int trainerId, int tournamentId);
 }

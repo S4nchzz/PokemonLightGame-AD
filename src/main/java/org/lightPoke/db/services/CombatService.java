@@ -82,4 +82,8 @@ public class CombatService {
             combatDAO.addCombatsToTournament(tournament_id);
         }
     }
+
+    public boolean isTrainerInAnyCombat(int trainer_id) {
+        return combatDAO.isTrainerInAnyCombat(trainer_id);
+    }
 }

@@ -4,6 +4,8 @@ import org.lightPoke.Game;
 import org.lightPoke.db.dao.services.TrainerDAO_IMPLE;
 import org.lightPoke.db.dto.TournamentDTO;
 import org.lightPoke.db.dto.TrainerDTO;
+import org.lightPoke.db.services.CombatService;
+import org.lightPoke.db.services.JoinTournamentRequestService;
 import org.lightPoke.db.services.TournamentService;
 import org.lightPoke.db.services.TrainerService;
 import org.lightPoke.log.LogManagement;
@@ -54,17 +56,19 @@ public class TrainerMenu {
         if (trainerDTO != null) {
             log.writeLog("Trainer " + trainerDTO.getName() + " log in succesfully");
 
+            // Mostrar torneos y preguntar cual quiere para presentar una solicitud
             TournamentService tournamentService = TournamentService.getInstance();
-            if (true) { // ! SI EL USUARIO NO ESTA EN NINGUN COMBATE ENTRA
-               // Mostrar todos los torneos y decirle que se meta a uno
+            CombatService combatService = CombatService.getInstance();
+            if (!combatService.isTrainerInAnyCombat(trainerDTO.getId())) {
                 List<TournamentDTO> tournaments = tournamentService.getAllTournaments();
 
                 if (!tournaments.isEmpty()) {
                     int choice = retriveTournamentChoosed(tournaments);
 
-                    // Añadir usuario al torneo
+                    // Añadir request del torneo
                     TournamentDTO tournamentChoiced = tournaments.get(choice - 1);
-                    // ! AHORA EL TRAINER NO SE AÑADE A TRAINER_ON_TOURNAMENT(DELETED) EN CAMBIO SE HARA UNA SOLICITUD
+                    JoinTournamentRequestService joinTournamentRequestService = JoinTournamentRequestService.getInstance();
+                    joinTournamentRequestService.addRequestFromTrainer(trainerDTO.getId(), tournamentChoiced.getId());
                 }
             }
 
@@ -96,6 +100,7 @@ public class TrainerMenu {
         int choice;
         do {
             System.out.println("----- Your first tournament ---- \n");
+            System.out.println("*-----* Send a request *-----*");
             for (TournamentDTO dto : tournaments) {
                 System.out.println(index + " - | " + dto.getName() + " | " + dto.getRegion() + " | " + dto.getVictoryPoints());
                 index++;
