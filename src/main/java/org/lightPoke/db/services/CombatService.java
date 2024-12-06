@@ -34,9 +34,17 @@ public class CombatService {
     private CombatDTO entityToDto(final Entity_Combat entity) {
         TrainerService trainerService = TrainerService.getInstance();
 
-        TrainerDTO trainer1 = trainerService.getTrainerById(entity.trainer_1());
-        TrainerDTO trainer2 = trainerService.getTrainerById(entity.trainer_2());
+        TrainerDTO trainer1 = null;
+        TrainerDTO trainer2 = null;
         TrainerDTO c_winner = null;
+
+        if (entity.trainer_1() != -1) {
+            trainer1 = trainerService.getTrainerById(entity.trainer_1());
+        }
+
+        if (entity.trainer_2() != -1) {
+            trainer2 = trainerService.getTrainerById(entity.trainer_2());
+        }
 
         if (entity.c_winner() != -1) {
             c_winner = trainerService.getTrainerById(entity.c_winner());
@@ -67,5 +75,11 @@ public class CombatService {
         }
 
         return combatDTOS;
+    }
+
+    public void addCombatsToTournament(int tournament_id) {
+        for (int i = 0; i < 3; i++) {
+            combatDAO.addCombatsToTournament(tournament_id);
+        }
     }
 }

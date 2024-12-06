@@ -81,7 +81,20 @@ public class CombatDAO_IMPLE implements CombatDAO_IFACE {
                 if ((winnerDBValue = rs.getInt("C_WINNER")) != 0) {
                     winner = winnerDBValue;
                 }
-                combats.add(new Entity_Combat(rs.getInt("ID"), rs.getInt("ID_TOURNAMENT"), rs.getString("DATE"), rs.getInt("TRAINER_1"), rs.getInt("TRAINER_2"), winner));
+
+
+                int trainer1 = -1;
+                int trainer1DBValue;
+                if ((trainer1DBValue = rs.getInt("TRAINER_1")) != 0) {
+                    trainer1 = trainer1DBValue;
+                }
+
+                int trainer2 = -1;
+                int trainer2DBValue;
+                if ((trainer2DBValue = rs.getInt("TRAINER_2")) != 0) {
+                    trainer2 = trainer2DBValue;
+                }
+                combats.add(new Entity_Combat(rs.getInt("ID"), rs.getInt("ID_TOURNAMENT"), rs.getString("DATE"), trainer1, trainer2, winner));
             }
 
             rs.close();
@@ -121,5 +134,21 @@ public class CombatDAO_IMPLE implements CombatDAO_IFACE {
         }
 
         return null;
+    }
+
+    @Override
+    public void addCombatsToTournament(int tournamentId) {
+        try {
+            Connection conn = source.getConnection();
+            PreparedStatement st = conn.prepareStatement("INSERT INTO COMBAT (ID_TOURNAMENT) VALUES(?)");
+            st.setInt(1, tournamentId);
+
+            st.executeUpdate();
+
+            st.close();
+            conn.close();
+        } catch (SQLException e) {
+            log.writeLog("Unnable to establish a connection with the DataSource on addCmobatsToTournaments() function");
+        }
     }
 }

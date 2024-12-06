@@ -785,3 +785,159 @@
 [5/12/2024 | 21:23:4] -- User xadmin logged succesfully
 [5/12/2024 | 21:23:5] -- Tournament 1 founded
 [5/12/2024 | 21:23:5] -- Tournament 1 founded
+[6/12/2024 | 3:2:21] -- User aa created
+[6/12/2024 | 3:2:21] -- User a has been registrated
+[6/12/2024 | 3:2:21] -- User : a founded
+[6/12/2024 | 3:2:21] -- Trainer aa log in succesfully
+[6/12/2024 | 3:2:21] -- User : a founded
+[6/12/2024 | 3:2:26] -- User a logged succesfully
+[6/12/2024 | 3:2:26] -- User : a founded
+[6/12/2024 | 3:2:26] -- Trainer aa log in succesfully
+[6/12/2024 | 3:2:26] -- User : a founded
+[6/12/2024 | 3:2:31] -- User iyan logged succesfully
+[6/12/2024 | 3:2:39] -- User xadmin has been registrated
+[6/12/2024 | 3:2:39] -- Tournament x created
+[6/12/2024 | 3:2:39] -- Tournament x added.
+[6/12/2024 | 3:2:39] -- Tournament 1 founded
+[6/12/2024 | 3:2:39] -- Tournament 1 founded
+[6/12/2024 | 3:2:49] -- User a logged succesfully
+[6/12/2024 | 3:2:49] -- User : a founded
+[6/12/2024 | 3:2:49] -- Trainer aa log in succesfully
+[6/12/2024 | 3:2:51] -- User aa succesfully added to tournament x
+[6/12/2024 | 3:2:51] -- User : a founded
+[6/12/2024 | 3:2:53] -- License exported
+[6/12/2024 | 3:2:53] -- Tournament x has been created
+[6/12/2024 | 3:5:15] -- User a logged succesfully
+[6/12/2024 | 3:5:16] -- User : a founded
+[6/12/2024 | 3:5:34] -- Trainer aa log in succesfully
+[6/12/2024 | 3:5:35] -- User : a founded
+[6/12/2024 | 3:6:14] -- License exported
+[6/12/2024 | 3:7:9] -- User a logged succesfully
+[6/12/2024 | 3:7:10] -- User : a founded
+[6/12/2024 | 3:7:12] -- Trainer aa log in succesfully
+[6/12/2024 | 3:7:14] -- User : a founded
+[6/12/2024 | 3:7:20] -- License exported
+[6/12/2024 | 3:7:59] -- User a logged succesfully
+[6/12/2024 | 3:8:0] -- User : a founded
+[6/12/2024 | 3:8:3] -- Trainer aa log in succesfully
+[6/12/2024 | 3:8:5] -- User : a founded
+[6/12/2024 | 3:9:11] -- User a logged succesfully
+[6/12/2024 | 3:9:12] -- User : a founded
+[6/12/2024 | 3:9:14] -- Trainer aa log in succesfully
+[6/12/2024 | 3:9:15] -- User : a founded
+[6/12/2024 | 3:10:7] -- License exported
+[6/12/2024 | 3:31:24] -- User a created
+[6/12/2024 | 3:31:24] -- User a has been registrated
+[6/12/2024 | 3:31:24] -- User : a founded
+[6/12/2024 | 3:31:24] -- Trainer a log in succesfully
+[6/12/2024 | 3:31:24] -- User : a founded
+[6/12/2024 | 3:31:28] -- User a logged succesfully
+[6/12/2024 | 3:31:28] -- User : a founded
+[6/12/2024 | 3:31:28] -- Trainer a log in succesfully
+[6/12/2024 | 3:31:28] -- User : a founded
+[6/12/2024 | 3:31:38] -- User iyan logged succesfully
+[6/12/2024 | 3:31:56] -- User xadmin has been registrated
+[6/12/2024 | 3:31:56] -- Tournament x created
+[6/12/2024 | 3:31:56] -- Tournament x added.
+[6/12/2024 | 3:31:56] -- Tournament 1 founded
+[6/12/2024 | 3:31:57] -- Tournament 1 founded
+[6/12/2024 | 3:32:36] -- User a logged succesfully
+[6/12/2024 | 3:32:36] -- User : a founded
+[6/12/2024 | 3:32:36] -- Trainer a log in succesfully
+[6/12/2024 | 3:32:37] -- User : a founded
+[6/12/2024 | 3:32:50] -- License exported
+[6/12/2024 | 3:32:50] -- Tournament x has been created
+[6/12/2024 | 3:48:2] -- User a created
+[6/12/2024 | 3:48:2] -- User a has been registrated
+[6/12/2024 | 3:48:2] -- User : a founded
+[6/12/2024 | 3:48:2] -- Trainer a log in succesfully
+[6/12/2024 | 3:48:2] -- Unnable to establish a connection with the DataSource on CreateTrainer function
+[6/12/2024 | 3:49:32] -- User aa created
+[6/12/2024 | 3:49:32] -- User a has been registrated
+[6/12/2024 | 3:49:32] -- User : a founded
+[6/12/2024 | 3:49:37] -- Trainer aa log in succesfully
+[6/12/2024 | 3:49:55] -- Unnable to establish a connection with the DataSource on CreateTrainer function
+[6/12/2024 | 3:51:4] -- User a logged succesfully
+[6/12/2024 | 3:51:4] -- User : a founded
+[6/12/2024 | 3:51:4] -- Trainer aa log in succesfully
+[6/12/2024 | 3:51:4] -- User : a founded
+[6/12/2024 | 3:51:8] -- User iyan logged succesfully
+[6/12/2024 | 3:51:14] -- User xadmin has been registrated
+[6/12/2024 | 3:51:14] -- Tournament x created
+[6/12/2024 | 3:51:14] -- Unnable to establish a connection with the DataSource on addCmobatsToTournaments() function
+[6/12/2024 | 3:51:14] -- Unnable to establish a connection with the DataSource on addCmobatsToTournaments() function
+[6/12/2024 | 3:51:14] -- Unnable to establish a connection with the DataSource on addCmobatsToTournaments() function
+[6/12/2024 | 3:51:14] -- Tournament x added.
+[6/12/2024 | 3:51:14] -- Tournament 1 founded
+[6/12/2024 | 3:51:14] -- Tournament 1 founded
+[6/12/2024 | 3:51:17] -- User a logged succesfully
+[6/12/2024 | 3:51:17] -- User : a founded
+[6/12/2024 | 3:51:17] -- Trainer aa log in succesfully
+[6/12/2024 | 3:51:18] -- User : a founded
+[6/12/2024 | 3:51:21] -- User a logged succesfully
+[6/12/2024 | 3:51:21] -- User : a founded
+[6/12/2024 | 3:51:21] -- Trainer aa log in succesfully
+[6/12/2024 | 3:51:23] -- User : a founded
+[6/12/2024 | 3:52:53] -- User a created
+[6/12/2024 | 3:52:53] -- User A has been registrated
+[6/12/2024 | 3:52:53] -- User : A founded
+[6/12/2024 | 3:52:53] -- Trainer a log in succesfully
+[6/12/2024 | 3:52:54] -- User : A founded
+[6/12/2024 | 3:52:58] -- User iyan logged succesfully
+[6/12/2024 | 3:53:6] -- User x has been registrated
+[6/12/2024 | 3:53:6] -- Tournament x created
+[6/12/2024 | 3:53:6] -- Unnable to establish a connection with the DataSource on addCmobatsToTournaments() function
+[6/12/2024 | 3:53:6] -- Unnable to establish a connection with the DataSource on addCmobatsToTournaments() function
+[6/12/2024 | 3:53:6] -- Unnable to establish a connection with the DataSource on addCmobatsToTournaments() function
+[6/12/2024 | 3:53:6] -- Tournament x added.
+[6/12/2024 | 3:53:6] -- Tournament 1 founded
+[6/12/2024 | 3:53:6] -- Tournament 1 founded
+[6/12/2024 | 3:53:9] -- User a not found
+[6/12/2024 | 3:53:10] -- User A logged succesfully
+[6/12/2024 | 3:53:10] -- User : A founded
+[6/12/2024 | 3:53:10] -- Trainer a log in succesfully
+[6/12/2024 | 3:53:12] -- User : A founded
+[6/12/2024 | 3:53:44] -- User iyan logged succesfully
+[6/12/2024 | 3:53:52] -- User x already exist in credentialsFile or database
+[6/12/2024 | 3:54:1] -- User x has been registrated
+[6/12/2024 | 3:54:4] -- Tournament x created
+[6/12/2024 | 3:55:9] -- Unnable to establish a connection with the DataSource on addCmobatsToTournaments() function
+[6/12/2024 | 3:55:13] -- User a not found
+[6/12/2024 | 3:55:16] -- User iyan logged succesfully
+[6/12/2024 | 3:55:22] -- User x has been registrated
+[6/12/2024 | 3:55:22] -- Tournament xx created
+[6/12/2024 | 3:55:22] -- Tournament xx added.
+[6/12/2024 | 3:55:22] -- Tournament 1 founded
+[6/12/2024 | 3:59:42] -- User iyan logged succesfully
+[6/12/2024 | 3:59:48] -- User g has been registrated
+[6/12/2024 | 3:59:48] -- Tournament g created
+[6/12/2024 | 3:59:48] -- Tournament g added.
+[6/12/2024 | 3:59:48] -- Tournament 2 founded
+[6/12/2024 | 3:59:48] -- Tournament 2 founded
+[6/12/2024 | 4:0:42] -- User a created
+[6/12/2024 | 4:0:42] -- User a has been registrated
+[6/12/2024 | 4:0:42] -- User : a founded
+[6/12/2024 | 4:0:42] -- Trainer a log in succesfully
+[6/12/2024 | 4:0:42] -- User : a founded
+[6/12/2024 | 4:0:46] -- User a logged succesfully
+[6/12/2024 | 4:0:46] -- User : a founded
+[6/12/2024 | 4:0:46] -- Trainer a log in succesfully
+[6/12/2024 | 4:0:46] -- User : a founded
+[6/12/2024 | 4:0:55] -- User iyan logged succesfully
+[6/12/2024 | 4:1:1] -- User x has been registrated
+[6/12/2024 | 4:1:1] -- Tournament x created
+[6/12/2024 | 4:1:1] -- Tournament x added.
+[6/12/2024 | 4:1:1] -- Tournament 1 founded
+[6/12/2024 | 4:1:1] -- Tournament 1 founded
+[6/12/2024 | 4:1:13] -- User iyan logged succesfully
+[6/12/2024 | 4:1:24] -- User d has been registrated
+[6/12/2024 | 4:1:24] -- Tournament x created
+[6/12/2024 | 4:1:24] -- Tournament x added.
+[6/12/2024 | 4:1:24] -- Tournament 2 founded
+[6/12/2024 | 4:1:24] -- Tournament 2 founded
+[6/12/2024 | 4:1:28] -- User iyan logged succesfully
+[6/12/2024 | 4:2:48] -- User h has been registrated
+[6/12/2024 | 4:2:48] -- Tournament x created
+[6/12/2024 | 4:2:48] -- Tournament x added.
+[6/12/2024 | 4:2:48] -- Tournament 3 founded
+[6/12/2024 | 4:2:48] -- Tournament 3 founded

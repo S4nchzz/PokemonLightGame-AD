@@ -55,8 +55,8 @@ public class TrainerMenu {
             log.writeLog("Trainer " + trainerDTO.getName() + " log in succesfully");
 
             TournamentService tournamentService = TournamentService.getInstance();
-            if (tournamentService.getTournamentsByUserId(trainerDTO.getId()).isEmpty()) {
-                // Mostrar todos los torneos y decirle que se meta a uno
+            if (true) { // ! SI EL USUARIO NO ESTA EN NINGUN COMBATE ENTRA
+               // Mostrar todos los torneos y decirle que se meta a uno
                 List<TournamentDTO> tournaments = tournamentService.getAllTournaments();
 
                 if (!tournaments.isEmpty()) {
@@ -64,7 +64,7 @@ public class TrainerMenu {
 
                     // Añadir usuario al torneo
                     TournamentDTO tournamentChoiced = tournaments.get(choice - 1);
-                    tournamentService.addTrainerToTournament(trainerDTO, tournamentChoiced);
+                    // ! AHORA EL TRAINER NO SE AÑADE A TRAINER_ON_TOURNAMENT(DELETED) EN CAMBIO SE HARA UNA SOLICITUD
                 }
             }
 

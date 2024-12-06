@@ -10,4 +10,6 @@ public interface CombatDAO_IFACE {
     void deleteCombat(Entity_Combat entity);
     List<Entity_Combat> findCombatsByTournamentId(int t_id);
     List<Entity_Combat> findCombatsByTrainerId(int id);
+
+    void addCombatsToTournament(int tournamentId);
 }

@@ -2,15 +2,12 @@ package org.lightPoke.db.services;
 
 import org.lightPoke.db.dao.services.CombatDAO_IMPLE;
 import org.lightPoke.db.dao.services.TournamentDAO_IMPLE;
-import org.lightPoke.db.dao.services.TrainerOnTourmanetDAO_IMPLE;
 import org.lightPoke.db.dto.At_InTournamentDTO;
 import org.lightPoke.db.dto.CombatDTO;
 import org.lightPoke.db.dto.TournamentDTO;
 import org.lightPoke.db.dto.TrainerDTO;
 import org.lightPoke.db.entities.Entity_Combat;
 import org.lightPoke.db.entities.Entity_Tournament;
-import org.lightPoke.db.entities.Entity_Trainer;
-import org.lightPoke.db.entities.Entity_TrainerOnTournament;
 import org.lightPoke.users.ATUser;
 
 import java.util.ArrayList;
@@ -66,11 +63,6 @@ public class TournamentService {
         return tournamentsDto;
     }
 
-    public void addTrainerToTournament(TrainerDTO trainerDTO, TournamentDTO tournamentDTO) {
-        TrainerOnTournamentService trainerOnTournamentService = TrainerOnTournamentService.getInstance();
-        trainerOnTournamentService.addTrainerToTournament(trainerDTO, tournamentDTO);
-    }
-
     /**
      * Convertimos el tournament DTO que tiene solo el nombre la region y los puntos de victoria
      * en una entidad y la enviamos a crear el torneo, esta creacion nos devolvera una entidad
@@ -80,6 +72,9 @@ public class TournamentService {
      */
     public void createTournament(final TournamentDTO tournamentDTO, final ATUser atUser) {
         TournamentDTO tournament = entityToDto(tournamentDAO.createTournament(dtoToEntity(tournamentDTO)));
+
+        CombatService combatService = CombatService.getInstance();
+        combatService.addCombatsToTournament(tournament.getId());
 
         At_InTournamentService atInTournamentService = At_InTournamentService.getInstance();
         atInTournamentService.addTournamentAdmin(atUser.getUsername(), tournament.getId());

@@ -7,7 +7,7 @@ public class TrainerDTO {
     private final String username;
     private final String name;
     private final String nationality;
-    private final LicenseDTO license; // ! QUITAR PORQUE UN TORNEO TIENE UN COMBATE Y UN COMBATE TIENE UN ENTRENADOR Y UN ENTRENADOR TIENE UN TORNEO ETC....
+    private final LicenseDTO license;
 
     public TrainerDTO(final int id, final String username, final String name, final String nationality, LicenseDTO license) {
         this.id = id;
