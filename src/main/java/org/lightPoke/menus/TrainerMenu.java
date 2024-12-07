@@ -71,10 +71,6 @@ public class TrainerMenu {
                     joinTournamentRequestService.addRequestFromTrainer(trainerDTO.getId(), tournamentChoiced.getId());
                 }
             }
-
-            // Update trainerDTO after the new tournament join
-            TrainerService trainerService = TrainerService.getInstance();
-            trainerDTO = trainerService.getTrainerByUsername(trainerDTO.getUsername());
         }
 
         System.out.println("------ Trainer menu ------");

@@ -985,3 +985,10 @@
 [6/12/2024 | 6:14:27] -- User : a founded
 [6/12/2024 | 6:14:27] -- Trainer a log in succesfully
 [6/12/2024 | 6:14:27] -- User : a founded
+[7/12/2024 | 3:11:0] -- User a logged succesfully
+[7/12/2024 | 3:11:1] -- User : a founded
+[7/12/2024 | 3:11:1] -- Trainer a log in succesfully
+[7/12/2024 | 3:11:9] -- User x logged succesfully
+[7/12/2024 | 3:11:9] -- Tournament 1 founded
+[7/12/2024 | 3:11:9] -- Tournament 1 founded
+[7/12/2024 | 3:11:11] -- Tournament 1 founded

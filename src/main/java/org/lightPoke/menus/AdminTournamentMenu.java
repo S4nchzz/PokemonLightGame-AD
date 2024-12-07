@@ -3,8 +3,10 @@ package org.lightPoke.menus;
 import org.lightPoke.Game;
 import org.lightPoke.db.dto.At_InTournamentDTO;
 import org.lightPoke.db.dto.CombatDTO;
+import org.lightPoke.db.dto.JoinTournamentRequestDTO;
 import org.lightPoke.db.dto.TournamentDTO;
 import org.lightPoke.db.services.At_InTournamentService;
+import org.lightPoke.db.services.JoinTournamentRequestService;
 import org.lightPoke.db.services.TournamentService;
 import org.lightPoke.users.ATUser;
 import org.w3c.dom.DOMImplementation;
@@ -48,7 +50,7 @@ public class AdminTournamentMenu {
             System.out.println("\n------ Admin Tournament menu ------");
             System.out.println("1. Mostrar datos del torneo");
             System.out.println("2. Exportar datos de los torneos");
-            System.out.println("3. Inscribirse");
+            System.out.println("3. Ver solicitudes de union");
             System.out.println("4. Pelear");
             System.out.println("5. Logout");
 
@@ -66,7 +68,9 @@ public class AdminTournamentMenu {
                 case 2 -> {
                     exportDataOfTournament(tournament);
                 }
-                case 3 -> {}
+                case 3 -> {
+                    viewTournamentRequest(tournament);
+                }
                 case 4 -> {}
                 case 5 -> {
                     keepLooping = false; // La pila de ejecucion sigue ahi anque se entre a .main cuando la pilla acabe en este .main volvera a este loop
@@ -76,6 +80,15 @@ public class AdminTournamentMenu {
 
         } while (keepLooping);
 
+    }
+
+    private void viewTournamentRequest(TournamentDTO tournament) {
+        JoinTournamentRequestService joinTournamentRequestService = JoinTournamentRequestService.getInstance();
+        List<JoinTournamentRequestDTO> requests = joinTournamentRequestService.getRequestsFromTournament(tournament);
+
+        for (JoinTournamentRequestDTO dto : requests) {
+            System.out.println("Trainer request: " + dto.getTrainer().getName());
+        }
     }
 
     private TournamentDTO getTournament() {

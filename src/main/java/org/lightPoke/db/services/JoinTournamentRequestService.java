@@ -1,6 +1,13 @@
 package org.lightPoke.db.services;
 
 import org.lightPoke.db.dao.services.JoinTournamentRequestDAO_IMPLE;
+import org.lightPoke.db.dto.JoinTournamentRequestDTO;
+import org.lightPoke.db.dto.TournamentDTO;
+import org.lightPoke.db.dto.TrainerDTO;
+import org.lightPoke.db.entities.Entity_JoinTournamentRequest;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class JoinTournamentRequestService {
     private static JoinTournamentRequestService instance;
@@ -8,6 +15,16 @@ public class JoinTournamentRequestService {
 
     private JoinTournamentRequestService() {
         joinTournamentRequestDAO = JoinTournamentRequestDAO_IMPLE.getInstance();
+    }
+
+    private JoinTournamentRequestDTO entityToDto(Entity_JoinTournamentRequest entity) {
+        TournamentService tournamentService = TournamentService.getInstance();
+        TournamentDTO tournament = tournamentService.getTournamentById(entity.tournament_id());
+
+        TrainerService trainerService = TrainerService.getInstance();
+        TrainerDTO trainer = trainerService.getTrainerById(entity.trainer_id());
+
+        return new JoinTournamentRequestDTO(entity.id(), trainer, tournament);
     }
 
     public static JoinTournamentRequestService getInstance() {
@@ -21,5 +38,17 @@ public class JoinTournamentRequestService {
 
     public void addRequestFromTrainer(int trainer_id, int tournament_id) {
         joinTournamentRequestDAO.addRequestFromUser(trainer_id, tournament_id);
+    }
+
+    public List<JoinTournamentRequestDTO> getRequestsFromTournament(TournamentDTO tournament) {
+        List<Entity_JoinTournamentRequest> entityList = joinTournamentRequestDAO.getRequestsByTournamentId(tournament.getId());
+
+        List<JoinTournamentRequestDTO> dtoList = new ArrayList<>();
+
+        for (Entity_JoinTournamentRequest e : entityList) {
+            dtoList.add(entityToDto(e));
+        }
+
+        return dtoList;
     }
 }
