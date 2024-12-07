@@ -6,6 +6,7 @@ import org.lightPoke.db.dto.CombatDTO;
 import org.lightPoke.db.dto.JoinTournamentRequestDTO;
 import org.lightPoke.db.dto.TournamentDTO;
 import org.lightPoke.db.services.At_InTournamentService;
+import org.lightPoke.db.services.CombatService;
 import org.lightPoke.db.services.JoinTournamentRequestService;
 import org.lightPoke.db.services.TournamentService;
 import org.lightPoke.users.ATUser;
@@ -86,8 +87,47 @@ public class AdminTournamentMenu {
         JoinTournamentRequestService joinTournamentRequestService = JoinTournamentRequestService.getInstance();
         List<JoinTournamentRequestDTO> requests = joinTournamentRequestService.getRequestsFromTournament(tournament);
 
-        for (JoinTournamentRequestDTO dto : requests) {
-            System.out.println("Trainer request: " + dto.getTrainer().getName());
+        if (joinTournamentRequestService.tournamentRequestsIsEmpty(tournament.getId())) {
+            System.out.println("Este torneo no tiene ninguna solicitud...");
+            return;
+        }
+
+        Scanner sc = new Scanner(System.in);
+        boolean choiced = false;
+        int choice = -1;
+        do {
+            int index = 1;
+            for (JoinTournamentRequestDTO dto : requests) {
+                System.out.println(index + " :" + dto.getTrainer().getName());
+                index++;
+            }
+            System.out.print("?:");
+            choice = sc.nextInt();
+
+            if (choice > 0 || choice < requests.size()) {
+                choiced = true;
+            }
+        } while (!choiced);
+
+        boolean operationMaded = false;
+        String operation = "";
+        do {
+            System.out.println("Accept / Decline");
+            System.out.print("?: ");
+            operation = sc.next();
+
+            if (operation.equalsIgnoreCase("Accept") || operation.equalsIgnoreCase("Decline")) {
+                operationMaded = true;
+            } else {
+                System.out.println("Opcion invalida \n");
+            }
+        } while (!operationMaded);
+
+        if (operation.equalsIgnoreCase("Accept")) {
+            CombatService combatService = CombatService.getInstance();
+            combatService.addTrainerToTournamentCombat(requests.get(choice - 1).getTrainer().getId(), requests.get(choice - 1).getTournament().getId());
+        } else {
+            // ! Remove request
         }
     }
 

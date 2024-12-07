@@ -992,3 +992,29 @@
 [7/12/2024 | 3:11:9] -- Tournament 1 founded
 [7/12/2024 | 3:11:9] -- Tournament 1 founded
 [7/12/2024 | 3:11:11] -- Tournament 1 founded
+[7/12/2024 | 3:52:2] -- User x logged succesfully
+[7/12/2024 | 3:52:3] -- Tournament 1 founded
+[7/12/2024 | 3:52:3] -- Tournament 1 founded
+[7/12/2024 | 3:56:14] -- User x logged succesfully
+[7/12/2024 | 3:56:15] -- Tournament 1 founded
+[7/12/2024 | 3:56:15] -- Tournament 1 founded
+[7/12/2024 | 3:56:27] -- User x logged succesfully
+[7/12/2024 | 3:56:28] -- Tournament 1 founded
+[7/12/2024 | 3:56:28] -- Tournament 1 founded
+[7/12/2024 | 3:56:40] -- User f created
+[7/12/2024 | 3:56:40] -- User f has been registrated
+[7/12/2024 | 3:56:40] -- User : f founded
+[7/12/2024 | 3:56:40] -- Trainer f log in succesfully
+[7/12/2024 | 3:56:44] -- User x logged succesfully
+[7/12/2024 | 3:56:44] -- Tournament 1 founded
+[7/12/2024 | 3:56:44] -- Tournament 1 founded
+[7/12/2024 | 3:56:45] -- Tournament 1 founded
+[7/12/2024 | 3:57:22] -- User xx not found
+[7/12/2024 | 3:57:22] -- User x logged succesfully
+[7/12/2024 | 3:57:23] -- Tournament 1 founded
+[7/12/2024 | 3:57:23] -- Tournament 1 founded
+[7/12/2024 | 3:57:24] -- Tournament 1 founded
+[7/12/2024 | 3:58:42] -- User x logged succesfully
+[7/12/2024 | 3:58:42] -- Tournament 1 founded
+[7/12/2024 | 3:58:42] -- Tournament 1 founded
+[7/12/2024 | 3:58:43] -- Tournament 1 founded

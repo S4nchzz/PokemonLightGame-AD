@@ -51,4 +51,9 @@ public class JoinTournamentRequestService {
 
         return dtoList;
     }
+
+    public boolean tournamentRequestsIsEmpty(final int t_id) {
+        List<Entity_JoinTournamentRequest> requests = joinTournamentRequestDAO.getRequestsByTournamentId(t_id);
+        return requests == null || requests.isEmpty();
+    }
 }
