@@ -2,6 +2,7 @@ package org.lightPoke.menus;
 
 import org.lightPoke.Game;
 import org.lightPoke.db.dao.services.TrainerDAO_IMPLE;
+import org.lightPoke.db.dto.CombatDTO;
 import org.lightPoke.db.dto.TournamentDTO;
 import org.lightPoke.db.dto.TrainerDTO;
 import org.lightPoke.db.services.CombatService;
@@ -59,7 +60,9 @@ public class TrainerMenu {
             // Mostrar torneos y preguntar cual quiere para presentar una solicitud
             TournamentService tournamentService = TournamentService.getInstance();
             CombatService combatService = CombatService.getInstance();
-            if (!combatService.isTrainerInAnyCombat(trainerDTO.getId())) {
+            JoinTournamentRequestService requestService = JoinTournamentRequestService.getInstance();
+
+            if (!combatService.isTrainerInAnyCombat(trainerDTO.getId()) && !requestService.trainerHasPendingRequests(trainerDTO.getId())) {
                 List<TournamentDTO> tournaments = tournamentService.getAllTournaments();
 
                 if (!tournaments.isEmpty()) {
@@ -178,10 +181,38 @@ public class TrainerMenu {
             eleTorneo.appendChild(generateElement("nombre", tour.getName(), docu));
             eleTorneo.appendChild(generateElement("region", String.valueOf(tour.getRegion()), docu));
 
-                // ! Here must be added the combat
-
             eleTorneos.appendChild(eleTorneo);
         }
+
+        Element eleCombats = generateElement("combates", null, docu);
+
+        CombatService combatService = CombatService.getInstance();
+        for (CombatDTO c : combatService.getCombatsFinishedByTrainerId(trainer.getId())) {
+            Element combat = generateElement("combat", null, docu);
+
+            String oponentName = "none";
+
+            if (c.getTrainer_1().getId() != trainer.getId() && c.getTrainer_2().getId() == trainer.getId()) {
+                oponentName = c.getTrainer_1().getUsername();
+            } else if (c.getTrainer_2().getId() != trainer.getId() && c.getTrainer_1().getId() == trainer.getId()) {
+                oponentName = c.getTrainer_2().getUsername();
+            }
+
+            combat.appendChild(generateElement("id", String.valueOf(c.getId()), docu));
+            combat.appendChild(generateElement("oponente", oponentName, docu));
+            combat.appendChild(generateElement("fecha", c.getDate(), docu));
+
+            String didHeWon = "no";
+            if (c.getC_winner().getId() == trainer.getId()) {
+                didHeWon = "si";
+            }
+
+            combat.appendChild(generateElement("victoria", didHeWon, docu));
+
+            eleCombats.appendChild(combat);
+        }
+
+        raiz.appendChild(eleCombats);
 
         log.writeLog("License exported");
         }

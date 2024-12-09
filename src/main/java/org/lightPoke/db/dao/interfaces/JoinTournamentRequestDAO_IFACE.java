@@ -8,4 +8,8 @@ public interface JoinTournamentRequestDAO_IFACE {
     void addRequestFromUser(int trainerId, int tournamentId);
 
     List<Entity_JoinTournamentRequest> getRequestsByTournamentId(int t_id);
+
+    List<Entity_JoinTournamentRequest> getRequestsByTrainerId(int trainerId);
+
+    void deleteRequest(int trainerId, int tournamentId);
 }

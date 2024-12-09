@@ -56,4 +56,12 @@ public class JoinTournamentRequestService {
         List<Entity_JoinTournamentRequest> requests = joinTournamentRequestDAO.getRequestsByTournamentId(t_id);
         return requests == null || requests.isEmpty();
     }
+
+    public boolean trainerHasPendingRequests(int trainer_id) {
+        return joinTournamentRequestDAO.getRequestsByTrainerId(trainer_id) != null && !joinTournamentRequestDAO.getRequestsByTrainerId(trainer_id).isEmpty();
+    }
+
+    public void deleteRequest(int trainer_id, int tournament_id) {
+        joinTournamentRequestDAO.deleteRequest(trainer_id, tournament_id);
+    }
 }

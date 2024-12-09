@@ -8,7 +8,6 @@ public class TournamentDTO {
     private final char region;
     private float victoryPoints;
     private TrainerDTO t_winner;
-    private List<CombatDTO> combats;
 
     public TournamentDTO(String name, char region, float victoryPoints) {
         this.name = name;
@@ -16,13 +15,12 @@ public class TournamentDTO {
         this.victoryPoints = victoryPoints;
     }
 
-    public TournamentDTO(int id, String name, char region, float victoryPoints, TrainerDTO t_winner, List<CombatDTO> combats) {
+    public TournamentDTO(int id, String name, char region, float victoryPoints, TrainerDTO t_winner) {
         this.id = id;
         this.name = name;
         this.region = region;
         this.victoryPoints = victoryPoints;
         this.t_winner = t_winner;
-        this.combats = combats;
     }
 
     public TournamentDTO(String name, char region) {
@@ -48,9 +46,5 @@ public class TournamentDTO {
 
     public TrainerDTO getTWinner() {
         return this.t_winner;
-    }
-
-    public List<CombatDTO> getCombats() {
-        return combats;
     }
 }

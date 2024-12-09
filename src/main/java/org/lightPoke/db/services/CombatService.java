@@ -4,6 +4,7 @@ import com.mysql.cj.jdbc.MysqlDataSource;
 import org.lightPoke.db.dao.services.CombatDAO_IMPLE;
 import org.lightPoke.db.dao.services.TrainerDAO_IMPLE;
 import org.lightPoke.db.dto.CombatDTO;
+import org.lightPoke.db.dto.TournamentDTO;
 import org.lightPoke.db.dto.TrainerDTO;
 import org.lightPoke.db.entities.Entity_Combat;
 import org.lightPoke.log.LogManagement;
@@ -50,7 +51,9 @@ public class CombatService {
             c_winner = trainerService.getTrainerById(entity.c_winner());
         }
 
-        return new CombatDTO(entity.date(), trainer1, trainer2, c_winner);
+        TournamentService tournamentService = TournamentService.getInstance();
+
+        return new CombatDTO(entity.id(), entity.date(), tournamentService.getTournamentById(entity.id_tournament()), trainer1, trainer2, c_winner);
     }
 
     public List<CombatDTO> getCombatsByTournamentId(final int t_id) {
@@ -65,8 +68,8 @@ public class CombatService {
         return combats;
     }
 
-    public List<CombatDTO> getCombatsByTrainerId(int id) {
-        List<Entity_Combat> combats = combatDAO.findCombatsByTrainerId(id);
+    public List<CombatDTO> getCombatsFinishedByTrainerId(int id) {
+        List<Entity_Combat> combats = combatDAO.getCombatsFinishedByTrainerId(id);
 
         List<CombatDTO> combatDTOS = new ArrayList<>();
 
@@ -89,5 +92,17 @@ public class CombatService {
 
     public void addTrainerToTournamentCombat(int trainer_id, int tournament_id) {
         combatDAO.addTrainerToTournamentCombat(trainer_id, tournament_id);
+    }
+
+    public List<CombatDTO> getCombatsByWinnerId(int trainer_id) {
+        List<Entity_Combat> entityCombats = combatDAO.getCombatByWinnerId(trainer_id);
+
+        List<CombatDTO> combatsDto = new ArrayList<>();
+
+        for (Entity_Combat c : entityCombats) {
+            combatsDto.add(entityToDto(c));
+        }
+
+        return combatsDto;
     }
 }

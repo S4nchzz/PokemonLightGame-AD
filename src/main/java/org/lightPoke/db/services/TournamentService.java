@@ -30,17 +30,14 @@ public class TournamentService {
     }
 
     private TournamentDTO entityToDto(final Entity_Tournament entityTournament) {
-        CombatService combatService = CombatService.getInstance();
         TrainerService trainerService = TrainerService.getInstance();
-
-        List<CombatDTO> combats = combatService.getCombatsByTournamentId(entityTournament.id());
 
         TrainerDTO winner = null;
         if (entityTournament.t_winner() != -1) {
             winner = trainerService.getTrainerById(entityTournament.t_winner());
         }
 
-        return new TournamentDTO(entityTournament.id(), entityTournament.name(), entityTournament.cod_region(), entityTournament.victory_points(), winner, combats);
+        return new TournamentDTO(entityTournament.id(), entityTournament.name(), entityTournament.cod_region(), entityTournament.victory_points(), winner);
     }
 
     private Entity_Tournament dtoToEntity(final TournamentDTO tournamentDTO) {

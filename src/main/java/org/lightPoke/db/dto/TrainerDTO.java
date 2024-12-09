@@ -47,7 +47,7 @@ public class TrainerDTO {
     @Override
     public String toString() {
         return String.format(
-                "TRUser{id=%d, username='%s', nombre='%s', nTorneos='%d'}",
+                "TRUser{id=%d, username='%s', nombre='%s', nTorneos='%s'}",
                 id, getUsername(), name, nationality
         );
     }

@@ -111,40 +111,42 @@ public class TournamentDAO_IMPLE implements TournamentDAO_IFACE {
     }
 
     @Override
-    public List<Entity_Tournament> getTournamentsFromUserById(final int id) {
+    public List<Entity_Tournament> getTournamentsFromUserById(final int trainer_id) {
         try {
             Connection conn = source.getConnection();
-            PreparedStatement st = conn.prepareStatement("SELECT ID_TOURNAMENT FROM TRAINER_ON_TOURNAMENT WHERE ID_TRAINER = ?");
-            st.setInt(1, id);
+            PreparedStatement searchCombatsByTrainerId = conn.prepareStatement("SELECT DISTINCT TOURNAMENT_ID FROM COMBAT WHERE TRAINER_1 = ? OR TRAINER_2 = ? OR C_WINNER = ?");
+            searchCombatsByTrainerId.setInt(1, trainer_id);
+            searchCombatsByTrainerId.setInt(2, trainer_id);
+            searchCombatsByTrainerId.setInt(3, trainer_id);
 
-            ResultSet rs = st.executeQuery();
+            ResultSet searchCombats = searchCombatsByTrainerId.executeQuery();
+            List<Entity_Tournament> entities = new ArrayList<>();
 
-            List<Entity_Tournament> tournaments = new ArrayList<>();
-            while (rs.next()) {
-                PreparedStatement tournamentQuery = conn.prepareStatement("SELECT * FROM TOURNAMENT WHERE ID = ?");
-                tournamentQuery.setInt(1, rs.getInt("ID_TOURNAMENT"));
+            while (searchCombats.next()) {
+                PreparedStatement searchTournamentByUsingCombatId = conn.prepareStatement("SELECT * FROM TOURNAMENT WHERE ID = ?");
+                searchTournamentByUsingCombatId.setInt(1, searchCombats.getInt("TOURNAMENT_ID"));
 
-                ResultSet rsTournaments = tournamentQuery.executeQuery();
+                ResultSet tournamentsRs = searchTournamentByUsingCombatId.executeQuery();
 
-                while (rsTournaments.next()) {
-                    int winnerId = -1;
+                while (tournamentsRs.next()) {
+                    int winner = -1;
 
                     int winnerDBValue;
-                    if ((winnerDBValue = rsTournaments.getInt("T_WINNER")) != 0) {
-                        winnerId = winnerDBValue;
+                    if ((winnerDBValue = tournamentsRs.getInt("T_WINNER")) != 0) {
+                        winner = winnerDBValue;
                     }
-                    tournaments.add(new Entity_Tournament(rsTournaments.getInt("ID"), rsTournaments.getString("NAME"), rsTournaments.getString("COD_REGION").charAt(0), rsTournaments.getFloat("VICTORY_POINTS"), winnerId));
+                    entities.add(new Entity_Tournament(tournamentsRs.getInt("ID"), tournamentsRs.getString("NAME"), tournamentsRs.getString("COD_REGION").charAt(0), tournamentsRs.getFloat("VICTORY_POINTS"), winner));
                 }
 
-                rsTournaments.close();
+                tournamentsRs.close();
+                searchTournamentByUsingCombatId.close();
             }
 
-
-            rs.close();
-            st.close();
+            searchCombats.close();
+            searchCombatsByTrainerId.close();
             conn.close();
 
-            return tournaments;
+            return entities;
         } catch (SQLException e) {
             log.writeLog("Unnable to establish a connection with the DataSource on CreateTrainer function");
             throw new RuntimeException(e);

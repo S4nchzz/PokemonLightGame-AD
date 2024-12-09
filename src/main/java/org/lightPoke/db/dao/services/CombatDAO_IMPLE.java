@@ -1,6 +1,7 @@
 package org.lightPoke.db.dao.services;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
+import com.mysql.cj.protocol.x.ReusableOutputStream;
 import org.lightPoke.db.dao.interfaces.CombatDAO_IFACE;
 import org.lightPoke.db.entities.Entity_Combat;
 import org.lightPoke.log.LogManagement;
@@ -68,7 +69,7 @@ public class CombatDAO_IMPLE implements CombatDAO_IFACE {
     public List<Entity_Combat> findCombatsByTournamentId(final int t_id) {
         try {
             Connection conn = source.getConnection();
-            PreparedStatement st = conn.prepareStatement("SELECT * FROM COMBAT WHERE ID_TOURNAMENT = ?");
+            PreparedStatement st = conn.prepareStatement("SELECT * FROM COMBAT WHERE TOURNAMENT_ID = ?");
             st.setInt(1, t_id);
 
             ResultSet rs = st.executeQuery();
@@ -94,7 +95,7 @@ public class CombatDAO_IMPLE implements CombatDAO_IFACE {
                 if ((trainer2DBValue = rs.getInt("TRAINER_2")) != 0) {
                     trainer2 = trainer2DBValue;
                 }
-                combats.add(new Entity_Combat(rs.getInt("ID"), rs.getInt("ID_TOURNAMENT"), rs.getString("DATE"), trainer1, trainer2, winner));
+                combats.add(new Entity_Combat(rs.getInt("ID"), rs.getInt("TOURNAMENT_ID"), rs.getString("DATE"), trainer1, trainer2, winner));
             }
 
             rs.close();
@@ -110,10 +111,10 @@ public class CombatDAO_IMPLE implements CombatDAO_IFACE {
     }
 
     @Override
-    public List<Entity_Combat> findCombatsByTrainerId(int trainer_id) {
+    public List<Entity_Combat> getCombatsFinishedByTrainerId(int trainer_id) {
         try {
             Connection conn = source.getConnection();
-            PreparedStatement st = conn.prepareStatement("SELECT * FROM COMBAT WHERE TRAINER_1 = ? OR TRAINER_2 = ?");
+            PreparedStatement st = conn.prepareStatement("SELECT * FROM COMBAT WHERE (TRAINER_1 IS NOT NULL AND TRAINER_2 IS NOT NULL AND C_WINNER IS NOT NULL) AND (TRAINER_1 = ? OR TRAINER_2 = ?)");
             st.setInt(1, trainer_id);
             st.setInt(2, trainer_id);
 
@@ -121,7 +122,7 @@ public class CombatDAO_IMPLE implements CombatDAO_IFACE {
 
             List<Entity_Combat> combats = new ArrayList<>();
             while (rs.next()) {
-                combats.add(new Entity_Combat(rs.getInt("ID"), rs.getInt("ID_TOURNAMENT"), rs.getString("DATE"), rs.getInt("TRAINER_1"), rs.getInt("TRAINER_2"), rs.getInt("C_WINNER")));
+                combats.add(new Entity_Combat(rs.getInt("ID"), rs.getInt("TOURNAMENT_ID"), rs.getString("DATE"), rs.getInt("TRAINER_1"), rs.getInt("TRAINER_2"), rs.getInt("C_WINNER")));
             }
 
             rs.close();
@@ -140,7 +141,7 @@ public class CombatDAO_IMPLE implements CombatDAO_IFACE {
     public void addCombatsToTournament(int tournamentId) {
         try {
             Connection conn = source.getConnection();
-            PreparedStatement st = conn.prepareStatement("INSERT INTO COMBAT (ID_TOURNAMENT) VALUES(?)");
+            PreparedStatement st = conn.prepareStatement("INSERT INTO COMBAT (TOURNAMENT_ID) VALUES(?)");
             st.setInt(1, tournamentId);
 
             st.executeUpdate();
@@ -179,87 +180,86 @@ public class CombatDAO_IMPLE implements CombatDAO_IFACE {
     public void addTrainerToTournamentCombat(final int trainerId, final int tournamentId) {
         try {
             Connection conn = source.getConnection();
-            PreparedStatement countTrainersSt = conn.prepareStatement("SELECT COUNT(*) FROM COMBAT WHERE ID_TOURNAMENT = ? AND (TRAINER_1 = ? OR TRAINER_2 = ?)");
-            countTrainersSt.setInt(1, tournamentId);
-            countTrainersSt.setInt(2, trainerId);
-            countTrainersSt.setInt(3, trainerId);
+            List<Entity_Combat> combats = findCombatsByTournamentId(tournamentId);
 
-            ResultSet countrs = countTrainersSt.executeQuery();
+            int countIdsIn = 0;
+            for (Entity_Combat e : combats) {
+                if (e.trainer_1() != -1) {
+                    countIdsIn++;
+                }
 
-            int countTrainersInCombats = 0;
-            if (countrs.next()) {
-                countTrainersInCombats = countrs.getInt(1);
-            }
-
-            if (countTrainersInCombats < 2) {
-                PreparedStatement searchCombatToAddTrainer = conn.prepareStatement("SELECT * FROM COMBAT WHERE ID_TOURNAMENT = ? AND (TRAINER_1 != ? OR TRAINER_2 != ?) AND (TRAINER_1 IS NULL OR TRAINER_2 IS NULL)");
-                searchCombatToAddTrainer.setInt(1, tournamentId);
-                searchCombatToAddTrainer.setInt(2, trainerId);
-                searchCombatToAddTrainer.setInt(3, trainerId);
-
-                ResultSet combatSearch = searchCombatToAddTrainer.executeQuery();
-
-                while (combatSearch.next()) {
-                    String date = "";
-
-                    String dateDBValue;
-                    if ((dateDBValue = combatSearch.getString("DATE")) != "") {
-                        date = dateDBValue;
-                    }
-
-                    int t1 = -1;
-
-                    int t1DBValue;
-                    if ((t1DBValue = combatSearch.getInt("TRAINER_1")) != 0) {
-                        t1 = t1DBValue;
-                    }
-
-                    int t2 = -1;
-
-                    int t2DBValue;
-                    if ((t2DBValue = combatSearch.getInt("TRAINER_2")) != 0) {
-                        t2 = t2DBValue;
-                    }
-
-                    int tw = -1;
-
-                    int twDBValue;
-                    if ((twDBValue = combatSearch.getInt("C_WINNER")) == 0) {
-                        tw = twDBValue;
-                    }
-
-
-                    Entity_Combat combat = new Entity_Combat(combatSearch.getInt("ID"), combatSearch.getInt("ID_TOURNAMENT"), combatSearch.getString("DATE"), t1, t2, tw);
-
-                    if (combat.trainer_1() != trainerId && combat.trainer_2() != trainerId) {
-                        String whereToPlaceValue = "";
-                        if (combat.trainer_1() == -1) {
-                            whereToPlaceValue = "TRAINER_1";
-                        } else if (combat.trainer_2() == -1) {
-                            whereToPlaceValue = "TRAINER_2";
-                        }
-
-                        PreparedStatement update = conn.prepareStatement("UPDATE COMBATS SET ? WHERE ID = ?");
-                        update.setString(1, whereToPlaceValue);
-                        update.setInt(2, combat.id());
-
-
-                        combatSearch.close();
-                        update.close();
-                        countrs.close();
-                        countTrainersSt.close();
-                        conn.close();
-
-                        return;
-                    }
+                if (e.trainer_2() != -1) {
+                    countIdsIn++;
                 }
             }
 
-            countrs.close();
-            countTrainersSt.close();
+            PreparedStatement update = null;
+            switch (countIdsIn) {
+                case 0:
+                    update = conn.prepareStatement("UPDATE COMBAT " +
+                                                        "SET TRAINER_1 = ? " +
+                                                        "WHERE ID = ? OR ID = ?");
+                    update.setInt(1, trainerId);
+                    update.setInt(2, combats.getFirst().id());
+                    update.setInt(3, combats.get(1).id());
+                    break;
+
+                case 2:
+                    update = conn.prepareStatement("UPDATE COMBAT " +
+                                                        "SET TRAINER_2 = CASE WHEN ID = ? THEN ? ELSE TRAINER_2 END, " +
+                                                        "TRAINER_1 = CASE WHEN ID = ? THEN ? ELSE TRAINER_1 END");
+                    update.setInt(1, combats.getFirst().id());
+                    update.setInt(2, trainerId);
+                    update.setInt(3, combats.get(2).id());
+                    update.setInt(4, trainerId);
+                    break;
+
+                case 4:
+                    update = conn.prepareStatement("UPDATE COMBAT " +
+                            "SET TRAINER_2 = CASE WHEN ID = ? THEN ? ELSE TRAINER_2 END, " +
+                            "TRAINER_2 = CASE WHEN ID = ? THEN ? ELSE TRAINER_2 END");
+                    update.setInt(1, combats.get(1).id());
+                    update.setInt(2, trainerId);
+                    update.setInt(3, combats.get(2).id());
+                    update.setInt(4, trainerId);
+                    break;
+            }
+
+            if (update != null) {
+                update.executeUpdate();
+                update.close();
+            }
+
             conn.close();
+
         } catch (SQLException e) {
-            log.writeLog("Unnable to establish a connection with the DataSource on addCmobatsToTournaments() function");
+            log.writeLog("Unable to establish a connection with the DataSource on addTrainerToTournamentCombat() function");
         }
+    }
+
+    @Override
+    public List<Entity_Combat> getCombatByWinnerId(int trainerId) {
+        try {
+            Connection conn = source.getConnection();
+            PreparedStatement st = conn.prepareStatement("SELECT * FROM COMBAT WHERE C_WINNER = ?");
+            st.setInt(1, trainerId);
+
+            ResultSet rs = st.executeQuery();
+
+            List<Entity_Combat> entities = new ArrayList<>();
+            while (rs.next()) {
+                entities.add(new Entity_Combat(rs.getInt("ID"), rs.getInt("TOURNAMENT_ID"), rs.getString("DATE"), rs.getInt("TRAINER_1"), rs.getInt("TRAINER_2"), rs.getInt("C_WINNER")));
+            }
+
+            rs.close();
+            st.close();
+            conn.close();
+
+            return entities;
+        } catch (SQLException e) {
+            log.writeLog("Unable to establish a connection with the DataSource on getCombatsByWinnerId() function");
+        }
+
+        return null;
     }
 }

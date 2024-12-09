@@ -123,11 +123,13 @@ public class AdminTournamentMenu {
             }
         } while (!operationMaded);
 
+        JoinTournamentRequestService requestService = JoinTournamentRequestService.getInstance();
         if (operation.equalsIgnoreCase("Accept")) {
             CombatService combatService = CombatService.getInstance();
             combatService.addTrainerToTournamentCombat(requests.get(choice - 1).getTrainer().getId(), requests.get(choice - 1).getTournament().getId());
+            requestService.deleteRequest(requests.get(choice - 1).getTrainer().getId(), tournament.getId());
         } else {
-            // ! Remove request
+            requestService.deleteRequest(requests.get(choice - 1).getTrainer().getId(), tournament.getId());
         }
     }
 
@@ -219,8 +221,10 @@ public class AdminTournamentMenu {
 
         eleTorneo.appendChild(eleWinner);
 
-        Element eleCombate = document.createElement("combates");
-        for (CombatDTO c : tournamentDTO.getCombats()) {
+        Element eleCombats = document.createElement("combates");
+        CombatService combatService = CombatService.getInstance();
+
+        for (CombatDTO c : combatService.getCombatsByTournamentId(tournamentDTO.getId())) {
             Element combat = document.createElement("combate");
 
             Element date = document.createElement("date");
@@ -245,9 +249,9 @@ public class AdminTournamentMenu {
             combat.appendChild(trainer_2);
             combat.appendChild(winner);
 
-            eleCombate.appendChild(combat);
+            eleCombats.appendChild(combat);
 
-            eleTorneo.appendChild(combat);
+            eleTorneo.appendChild(eleCombats);
         }
     }
 }

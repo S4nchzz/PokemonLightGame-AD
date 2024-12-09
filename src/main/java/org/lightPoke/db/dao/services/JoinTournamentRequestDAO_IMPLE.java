@@ -93,4 +93,40 @@ public class JoinTournamentRequestDAO_IMPLE implements JoinTournamentRequestDAO_
 
         return null;
     }
+
+    @Override
+    public List<Entity_JoinTournamentRequest> getRequestsByTrainerId(int trainerId) {
+        try {
+            Connection conn = source.getConnection();
+            PreparedStatement st = conn.prepareStatement("SELECT * FROM JOIN_TOURNAMENT_REQUEST WHERE TRAINER_ID = ?");
+            st.setInt(1, trainerId);
+
+            List<Entity_JoinTournamentRequest> entities = new ArrayList<>();
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                entities.add(new Entity_JoinTournamentRequest(rs.getInt("ID"), rs.getInt("TRAINER_ID"), rs.getInt("TOURNAMENT_ID")));
+            }
+
+            return entities;
+
+        } catch (SQLException e) {
+            log.writeLog("Unnable to establish a connection with the DataSource on getRequestsByTrainerId() function");
+        }
+
+        return null;
+    }
+
+    @Override
+    public void deleteRequest(int trainerId, int tournamentId) {
+        try {
+            Connection conn = source.getConnection();
+            PreparedStatement st = conn.prepareStatement("DELETE FROM JOIN_TOURNAMENT_REQUEST WHERE TRAINER_ID = ? AND TOURNAMENT_ID = ?");
+            st.setInt(1, trainerId);
+            st.setInt(2, tournamentId);
+
+            st.executeUpdate();
+        } catch (SQLException e) {
+            log.writeLog("Unnable to establish a connection with the DataSource on deleteRequest() function");
+        }
+    }
 }
