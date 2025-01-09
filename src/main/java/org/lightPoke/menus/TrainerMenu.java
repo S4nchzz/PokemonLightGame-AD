@@ -76,28 +76,32 @@ public class TrainerMenu {
             }
         }
 
-        System.out.println("------ Trainer menu ------");
-        System.out.println("1. Exportar carnet");
-        System.out.println("2. Logout");
-
         int choice;
-        while ((choice = sc.nextInt()) != 1 && choice != 2) {
+        do {
             System.out.println("------ Trainer menu ------");
             System.out.println("1. Exportar carnet");
             System.out.println("2. Logout");
-        }
 
-        switch(choice) {
-            case 1 -> exportLicense(trainerDTO); //! MODIFICAR METODO PAR QUE FUNCIONE CON EL DTO
-            case 2 -> Game.main(null);
-        }
+            while ((choice = sc.nextInt()) != 1 && choice != 2) {
+                System.out.println("------ Trainer menu ------");
+                System.out.println("1. Exportar carnet");
+                System.out.println("2. Logout");
+            }
+
+            switch(choice) {
+                case 1 -> exportLicense(trainerDTO);
+            }
+
+        } while (choice != 2);
+
+        Game.main(null);
     }
 
     private int retriveTournamentChoosed(List<TournamentDTO> tournaments) {
         Scanner sc = new Scanner(System.in);
-        int index = 1;
         int choice;
         do {
+        int index = 1;
             System.out.println("----- Your first tournament ---- \n");
             System.out.println("*-----* Send a request *-----*");
             for (TournamentDTO dto : tournaments) {

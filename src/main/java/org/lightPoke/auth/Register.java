@@ -65,9 +65,11 @@ public class Register {
      */
     public User register(final String username, final String password, final String type) {
         At_InTournamentService atInTournamentService = At_InTournamentService.getInstance();
+        TrainerService trainerService = TrainerService.getInstance();
+
         BufferedWriter writer = null;
         try {
-            if (userExistInFile(username) || atInTournamentService.userExistInDatabase(username)) {
+            if (userExistInFile(username) || atInTournamentService.userExistInDatabaseAsAT(username) || trainerService.userExistInDatabaseAsTR(username)) {
                 log.writeLog("User " + username + " already exist in credentialsFile or database");
                 return null;
             }
@@ -82,7 +84,6 @@ public class Register {
                 case "TR" -> {
                     user = requestInfo(username, password);
 
-                    TrainerService trainerService = TrainerService.getInstance();
                     trainerService.createTrainer(user);
 
                     System.out.println((TRUser)user);

@@ -55,4 +55,8 @@ public class TrainerService {
     public TrainerDTO getTrainerById(final int trainer_id) {
         return entityToDto(trainerDao.getTrainerById(trainer_id));
     }
+
+    public boolean userExistInDatabaseAsTR(String username) {
+        return trainerDao.getTrainerByUsername(username) != null;
+    }
 }

@@ -1,6 +1,7 @@
 package org.lightPoke.db.dao.services;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
+import org.lightPoke.db.ConnectionDB;
 import org.lightPoke.db.dao.interfaces.At_InTournamentDAO_IFACE;
 import org.lightPoke.db.entities.Entity_AT_InTournament;
 import org.lightPoke.log.LogManagement;
@@ -20,23 +21,9 @@ public class At_InTournamentDAO_IMPLE implements At_InTournamentDAO_IFACE {
     private DataSource source;
 
     private At_InTournamentDAO_IMPLE() {
-        Properties props = new Properties();
-        FileInputStream fis = null;
-        MysqlDataSource source = null;
         log = LogManagement.getInstance();
 
-        try {
-            fis = new FileInputStream("src/main/resources/db/DB_PROPS.txt");
-            props.load(fis);
-            source = new MysqlDataSource();
-            source.setURL(props.getProperty("MYSQL_DB_URL"));
-            source.setUser(props.getProperty("MYSQL_DB_USERNAME"));
-            source.setPassword(props.getProperty("MYSQL_DB_PASSWORD"));
-
-            this.source = source;
-        } catch (IOException e) {
-            log.writeLog("Unable to find file DB_PROPS.txt on the specified path");
-        }
+        this.source = ConnectionDB.getConnection();
     }
 
     public static At_InTournamentDAO_IMPLE getInstance() {
@@ -89,7 +76,7 @@ public class At_InTournamentDAO_IMPLE implements At_InTournamentDAO_IFACE {
     }
 
     @Override
-    public boolean userExistInDatabase(final String username) {
+    public boolean userExistInDatabaseAsAT(final String username) {
         try {
             Connection conn = source.getConnection();
             PreparedStatement st = conn.prepareStatement("SELECT * FROM AT_IN_TOURNAMENT WHERE USERNAME = ?");
@@ -105,7 +92,7 @@ public class At_InTournamentDAO_IMPLE implements At_InTournamentDAO_IFACE {
 
             return userFounded;
         } catch (SQLException e) {
-            log.writeLog("Unnable to establish a connection with the DataSource on CreateTrainer function");
+            log.writeLog("Unnable to establish a connection with the DataSource on userExistInDatabaseAsAT() function");
             throw new RuntimeException(e);
         }
     }

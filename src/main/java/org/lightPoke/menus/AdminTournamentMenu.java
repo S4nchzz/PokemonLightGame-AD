@@ -160,7 +160,7 @@ public class AdminTournamentMenu {
         try {
             DocumentBuilder builder = factory.newDocumentBuilder();
             DOMImplementation implementation = builder.getDOMImplementation();
-            Document document = implementation.createDocument(null, tournamentDTO.getName(), null);
+            Document document = implementation.createDocument(null, "torneos", null);
 
             insertData(document.getDocumentElement(), document, tournamentDTO);
 
@@ -213,9 +213,8 @@ public class AdminTournamentMenu {
         // Elemento T_WINNER
         Element eleWinner = document.createElement("winner");
 
-
         if (tournamentDTO.getTWinner() != null) {
-            Text eleWinnerText = document.createTextNode(String.valueOf(tournamentDTO.getTWinner()));
+            Text eleWinnerText = document.createTextNode(String.valueOf(tournamentDTO.getTWinner().getUsername()));
             eleWinner.appendChild(eleWinnerText);
         }
 
@@ -233,8 +232,21 @@ public class AdminTournamentMenu {
             Element winner = document.createElement("combatWinner");
 
             Text dateText = document.createTextNode(c.getDate());
-            Text trainer_1Text = document.createTextNode(c.getTrainer_1().getName());
-            Text trainer_2Text = document.createTextNode(c.getTrainer_2().getName());
+
+            String trainer_1Name = "";
+
+            if (c.getTrainer_1() != null) {
+                trainer_1Name = c.getTrainer_1().getName();
+            }
+
+            String trainer_2Name = "";
+
+            if (c.getTrainer_2() != null) {
+                trainer_2Name = c.getTrainer_2().getName();
+            }
+
+            Text trainer_1Text = document.createTextNode(trainer_1Name);
+            Text trainer_2Text = document.createTextNode(trainer_2Name);
 
             date.appendChild(dateText);
             trainer_1.appendChild(trainer_1Text);

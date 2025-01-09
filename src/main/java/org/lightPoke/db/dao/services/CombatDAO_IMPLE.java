@@ -2,6 +2,7 @@ package org.lightPoke.db.dao.services;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
 import com.mysql.cj.protocol.x.ReusableOutputStream;
+import org.lightPoke.db.ConnectionDB;
 import org.lightPoke.db.dao.interfaces.CombatDAO_IFACE;
 import org.lightPoke.db.entities.Entity_Combat;
 import org.lightPoke.log.LogManagement;
@@ -23,23 +24,9 @@ public class CombatDAO_IMPLE implements CombatDAO_IFACE {
     private DataSource source;
 
     private CombatDAO_IMPLE() {
-        Properties props = new Properties();
-        FileInputStream fis = null;
-        MysqlDataSource source = null;
         log = LogManagement.getInstance();
 
-        try {
-            fis = new FileInputStream("src/main/resources/db/DB_PROPS.txt");
-            props.load(fis);
-            source = new MysqlDataSource();
-            source.setURL(props.getProperty("MYSQL_DB_URL"));
-            source.setUser(props.getProperty("MYSQL_DB_USERNAME"));
-            source.setPassword(props.getProperty("MYSQL_DB_PASSWORD"));
-
-            this.source = source;
-        } catch (IOException e) {
-            log.writeLog("Unnable to find file DB_PROPS.txt on the specified path");
-        }
+        this.source = ConnectionDB.getConnection();
     }
 
     public static CombatDAO_IMPLE getInstance() {

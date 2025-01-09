@@ -1,5 +1,2 @@
 iyan a AG 12
-a a TR 13
-x x AT 14
-b b TR 15
-c c TR 16
+f f TR 13

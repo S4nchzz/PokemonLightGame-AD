@@ -1,6 +1,7 @@
 package org.lightPoke.db.dao.services;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
+import org.lightPoke.db.ConnectionDB;
 import org.lightPoke.db.dao.interfaces.TournamentDAO_IFACE;
 import org.lightPoke.db.entities.Entity_Tournament;
 import org.lightPoke.log.LogManagement;
@@ -22,23 +23,9 @@ public class TournamentDAO_IMPLE implements TournamentDAO_IFACE {
     private final LogManagement log;
 
     private TournamentDAO_IMPLE () {
-        Properties props = new Properties();
-        FileInputStream fis = null;
-        MysqlDataSource source = null;
         log = LogManagement.getInstance();
 
-        try {
-            fis = new FileInputStream("src/main/resources/db/DB_PROPS.txt");
-            props.load(fis);
-            source = new MysqlDataSource();
-            source.setURL(props.getProperty("MYSQL_DB_URL"));
-            source.setUser(props.getProperty("MYSQL_DB_USERNAME"));
-            source.setPassword(props.getProperty("MYSQL_DB_PASSWORD"));
-
-            this.source = source;
-        } catch (IOException e) {
-            log.writeLog("Unnable to find file DB_PROPS.txt on the specified path");
-        }
+        this.source = ConnectionDB.getConnection();
     }
 
     public static TournamentDAO_IMPLE getInstance() {

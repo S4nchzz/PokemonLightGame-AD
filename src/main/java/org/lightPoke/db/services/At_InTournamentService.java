@@ -35,7 +35,7 @@ public class At_InTournamentService {
         return entityToDto(atInTournamentDAO.getAt_InTournamentEntityByAdminUsername(username));
     }
 
-    public boolean userExistInDatabase(final String username) {
-        return atInTournamentDAO.userExistInDatabase(username);
+    public boolean userExistInDatabaseAsAT(final String username) {
+        return atInTournamentDAO.userExistInDatabaseAsAT(username);
     }
 }
