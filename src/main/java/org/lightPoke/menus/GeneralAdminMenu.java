@@ -2,25 +2,12 @@ package org.lightPoke.menus;
 
 import org.lightPoke.Game;
 import org.lightPoke.db.dao.services.TournamentDAO_IMPLE;
-import org.lightPoke.db.dto.CombatDTO;
-import org.lightPoke.db.dto.TournamentDTO;
-import org.lightPoke.db.services.TournamentService;
+import org.lightPoke.db.entity.Ent_Tournament;
+import org.lightPoke.db.services.Svice_Tournament;
 import org.lightPoke.log.LogManagement;
 import org.lightPoke.tournament.Tournament;
 import org.lightPoke.tournament.TournamentList;
-import org.w3c.dom.DOMImplementation;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Text;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.*;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-import java.io.File;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -31,7 +18,7 @@ import java.util.Scanner;
  * @author Iyan Sanchez da Costa
  */
 public class GeneralAdminMenu {
-    private final TournamentService tournamentService = TournamentService.getInstance();
+    private final Svice_Tournament tournamentService = Svice_Tournament.getInstance();
     public GeneralAdminMenu() {
         System.out.println("------ General Admin menu ------");
         System.out.println("1. Registrar nuevo torneo");
@@ -76,7 +63,7 @@ public class GeneralAdminMenu {
         boolean correctName = true;
         do {
             correctName = true;
-            if (!tournamentService.isTournamentAvailable(new TournamentDTO(tName, tCodReg))) {
+            if (!tournamentService.isTournamentAvailable(new Ent_Tournament(tName, tCodReg))) {
                 correctName = false;
             }
 
@@ -100,7 +87,7 @@ public class GeneralAdminMenu {
             t = new Tournament(tName, tCodReg, tVictoryPoints);
         }
 
-        tournamentService.createTournament(new TournamentDTO(tName, tCodReg, tVictoryPoints), t.getAdminTournament());
+        tournamentService.createTournament(new Ent_Tournament(tName, tCodReg, tVictoryPoints), t.getAdminTournament());
 
         TournamentList.getInstance().addTournament(t);
         new AdminTournamentMenu(t.getAdminTournament());

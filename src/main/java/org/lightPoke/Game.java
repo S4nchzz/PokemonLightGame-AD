@@ -2,8 +2,8 @@ package org.lightPoke;
 
 import org.lightPoke.auth.Login;
 import org.lightPoke.auth.Register;
-import org.lightPoke.db.dto.TrainerDTO;
-import org.lightPoke.db.services.TrainerService;
+import org.lightPoke.db.entity.Ent_Trainer;
+import org.lightPoke.db.services.Svice_Trainer;
 import org.lightPoke.log.LogManagement;
 import org.lightPoke.menus.AdminTournamentMenu;
 import org.lightPoke.menus.GeneralAdminMenu;
@@ -11,6 +11,9 @@ import org.lightPoke.menus.TrainerMenu;
 import org.lightPoke.users.ATUser;
 import org.lightPoke.users.TRUser;
 import org.lightPoke.users.User;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.Scanner;
 
@@ -20,10 +23,18 @@ import java.util.Scanner;
  *
  * @author Iyan Sanchez da Costa
  */
-public class Game {
+
+@SpringBootApplication
+public class Game implements CommandLineRunner {
     private static LogManagement log = LogManagement.getInstance();
+
     public static void main(String[] args) {
-       mainMenu();
+        SpringApplication.run(Game.class, args);
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        mainMenu();
     }
 
     /**
@@ -54,8 +65,8 @@ public class Game {
             case 1:
                 TRUser user = register();
                 if (user != null) {
-                    TrainerService trainerService = TrainerService.getInstance();
-                    TrainerDTO trainer = trainerService.getTrainerByUsername(user.getUsername());
+                    Svice_Trainer trainerService = Svice_Trainer.getInstance();
+                    Ent_Trainer trainer = trainerService.getTrainerByUsername(user.getUsername());
                     new TrainerMenu(trainer);
                 }
                 break;
@@ -99,7 +110,7 @@ public class Game {
                 case 1 -> {
                     System.out.println("Logged as Trainer");
 
-                    TrainerService trainerService = TrainerService.getInstance();
+                    Svice_Trainer trainerService = Svice_Trainer.getInstance();
                     new TrainerMenu(trainerService.getTrainerByUsername(username));
                 }
 

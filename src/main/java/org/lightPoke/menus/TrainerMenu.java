@@ -2,17 +2,13 @@ package org.lightPoke.menus;
 
 import org.lightPoke.Game;
 import org.lightPoke.db.dao.services.TrainerDAO_IMPLE;
-import org.lightPoke.db.dto.CombatDTO;
-import org.lightPoke.db.dto.TournamentDTO;
-import org.lightPoke.db.dto.TrainerDTO;
-import org.lightPoke.db.services.CombatService;
-import org.lightPoke.db.services.JoinTournamentRequestService;
-import org.lightPoke.db.services.TournamentService;
-import org.lightPoke.db.services.TrainerService;
+import org.lightPoke.db.entity.Ent_Combat;
+import org.lightPoke.db.entity.Ent_Tournament;
+import org.lightPoke.db.entity.Ent_Trainer;
+import org.lightPoke.db.services.Svice_Combat;
+import org.lightPoke.db.services.Svice_JoinTournamentRequest;
+import org.lightPoke.db.services.Svice_Tournament;
 import org.lightPoke.log.LogManagement;
-import org.lightPoke.tournament.Tournament;
-import org.lightPoke.tournament.TournamentList;
-import org.lightPoke.users.TRUser;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -50,7 +46,7 @@ public class TrainerMenu {
      *
      * @param trainerDTO Entrenador que se ha iniciado sesion
      */
-    public TrainerMenu(TrainerDTO trainerDTO) {
+    public TrainerMenu(Ent_Trainer trainerDTO) {
         log = LogManagement.getInstance();
         Scanner sc = new Scanner(System.in);
 
@@ -58,53 +54,49 @@ public class TrainerMenu {
             log.writeLog("Trainer " + trainerDTO.getName() + " log in succesfully");
 
             // Mostrar torneos y preguntar cual quiere para presentar una solicitud
-            TournamentService tournamentService = TournamentService.getInstance();
-            CombatService combatService = CombatService.getInstance();
-            JoinTournamentRequestService requestService = JoinTournamentRequestService.getInstance();
+            Svice_Tournament tournamentService = Svice_Tournament.getInstance();
+            Svice_Combat combatService = Svice_Combat.getInstance();
+            Svice_JoinTournamentRequest requestService = Svice_JoinTournamentRequest.getInstance();
 
             if (!combatService.isTrainerInAnyCombat(trainerDTO.getId()) && !requestService.trainerHasPendingRequests(trainerDTO.getId())) {
-                List<TournamentDTO> tournaments = tournamentService.getAllTournaments();
+                List<Ent_Tournament> tournaments = tournamentService.getAllTournaments();
 
                 if (!tournaments.isEmpty()) {
                     int choice = retriveTournamentChoosed(tournaments);
 
                     // Añadir request del torneo
-                    TournamentDTO tournamentChoiced = tournaments.get(choice - 1);
-                    JoinTournamentRequestService joinTournamentRequestService = JoinTournamentRequestService.getInstance();
+                    Ent_Tournament tournamentChoiced = tournaments.get(choice - 1);
+                    Svice_JoinTournamentRequest joinTournamentRequestService = Svice_JoinTournamentRequest.getInstance();
                     joinTournamentRequestService.addRequestFromTrainer(trainerDTO.getId(), tournamentChoiced.getId());
                 }
             }
         }
 
+        System.out.println("------ Trainer menu ------");
+        System.out.println("1. Exportar carnet");
+        System.out.println("2. Logout");
+
         int choice;
-        do {
+        while ((choice = sc.nextInt()) != 1 && choice != 2) {
             System.out.println("------ Trainer menu ------");
             System.out.println("1. Exportar carnet");
             System.out.println("2. Logout");
+        }
 
-            while ((choice = sc.nextInt()) != 1 && choice != 2) {
-                System.out.println("------ Trainer menu ------");
-                System.out.println("1. Exportar carnet");
-                System.out.println("2. Logout");
-            }
-
-            switch(choice) {
-                case 1 -> exportLicense(trainerDTO);
-            }
-
-        } while (choice != 2);
-
-        Game.main(null);
+        switch(choice) {
+            case 1 -> exportLicense(trainerDTO);
+            case 2 -> new Game();
+        }
     }
 
-    private int retriveTournamentChoosed(List<TournamentDTO> tournaments) {
+    private int retriveTournamentChoosed(List<Ent_Tournament> tournaments) {
         Scanner sc = new Scanner(System.in);
+        int index = 1;
         int choice;
         do {
-        int index = 1;
             System.out.println("----- Your first tournament ---- \n");
             System.out.println("*-----* Send a request *-----*");
-            for (TournamentDTO dto : tournaments) {
+            for (Ent_Tournament dto : tournaments) {
                 System.out.println(index + " - | " + dto.getName() + " | " + dto.getRegion() + " | " + dto.getVictoryPoints());
                 index++;
             }
@@ -121,7 +113,7 @@ public class TrainerMenu {
      *
      * @param trainerDTO Entrenador que ha iniciado sesion y ha solicitado que se le exporte el carnet
      */
-    private void exportLicense(TrainerDTO trainerDTO) {
+    private void exportLicense(Ent_Trainer trainerDTO) {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 
         try {
@@ -153,7 +145,7 @@ public class TrainerMenu {
      * @param docu Documento usado para la creacion de Elementos
      * @param trainer Entrenador con su informacion
      */
-    private void insertData(Element raiz, Document docu, TrainerDTO trainer) {
+    private void insertData(Element raiz, Document docu, Ent_Trainer trainer) {
         Element eleIdEntrenador = generateElement("id", String.valueOf(trainer.getId()), docu);
         raiz.appendChild(eleIdEntrenador);
 
@@ -178,8 +170,8 @@ public class TrainerMenu {
         Element eleTorneos = generateElement("torneos", null, docu);
         raiz.appendChild(eleTorneos);
 
-        TournamentService tournamentService = TournamentService.getInstance();
-        for (TournamentDTO tour : tournamentService.getTournamentsByUserId(trainer.getId())) {
+        Svice_Tournament tournamentService = Svice_Tournament.getInstance();
+        for (Ent_Tournament tour : tournamentService.getTournamentsByUserId(trainer.getId())) {
             Element eleTorneo = generateElement("torneo", null, docu);
 
             eleTorneo.appendChild(generateElement("nombre", tour.getName(), docu));
@@ -190,8 +182,8 @@ public class TrainerMenu {
 
         Element eleCombats = generateElement("combates", null, docu);
 
-        CombatService combatService = CombatService.getInstance();
-        for (CombatDTO c : combatService.getCombatsFinishedByTrainerId(trainer.getId())) {
+        Svice_Combat combatService = Svice_Combat.getInstance();
+        for (Ent_Combat c : combatService.getCombatsFinishedByTrainerId(trainer.getId())) {
             Element combat = generateElement("combat", null, docu);
 
             String oponentName = "none";

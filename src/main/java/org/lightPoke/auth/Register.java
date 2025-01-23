@@ -2,16 +2,14 @@ package org.lightPoke.auth;
 
 import org.lightPoke.auth.nacionality.Pais;
 import org.lightPoke.auth.nacionality.PaisesLoader;
-import org.lightPoke.db.dto.TrainerDTO;
-import org.lightPoke.db.services.At_InTournamentService;
-import org.lightPoke.db.services.TrainerService;
+import org.lightPoke.db.services.Svice_Admin_InTournament;
+import org.lightPoke.db.services.Svice_Trainer;
 import org.lightPoke.log.LogManagement;
 import org.lightPoke.users.ATUser;
 import org.lightPoke.users.TRUser;
 import org.lightPoke.users.User;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Stream;
@@ -64,12 +62,10 @@ public class Register {
      * @return Objeto de tipo User que engloba usuarios de tipo administrador de torneo y entrenadores
      */
     public User register(final String username, final String password, final String type) {
-        At_InTournamentService atInTournamentService = At_InTournamentService.getInstance();
-        TrainerService trainerService = TrainerService.getInstance();
-
+        Svice_Admin_InTournament atInTournamentService = Svice_Admin_InTournament.getInstance();
         BufferedWriter writer = null;
         try {
-            if (userExistInFile(username) || atInTournamentService.userExistInDatabaseAsAT(username) || trainerService.userExistInDatabaseAsTR(username)) {
+            if (userExistInFile(username) || atInTournamentService.userExistInDatabase(username)) {
                 log.writeLog("User " + username + " already exist in credentialsFile or database");
                 return null;
             }
@@ -84,6 +80,7 @@ public class Register {
                 case "TR" -> {
                     user = requestInfo(username, password);
 
+                    Svice_Trainer trainerService = Svice_Trainer.getInstance();
                     trainerService.createTrainer(user);
 
                     System.out.println((TRUser)user);

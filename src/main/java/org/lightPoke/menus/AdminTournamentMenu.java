@@ -1,14 +1,14 @@
 package org.lightPoke.menus;
 
 import org.lightPoke.Game;
-import org.lightPoke.db.dto.At_InTournamentDTO;
-import org.lightPoke.db.dto.CombatDTO;
-import org.lightPoke.db.dto.JoinTournamentRequestDTO;
-import org.lightPoke.db.dto.TournamentDTO;
-import org.lightPoke.db.services.At_InTournamentService;
-import org.lightPoke.db.services.CombatService;
-import org.lightPoke.db.services.JoinTournamentRequestService;
-import org.lightPoke.db.services.TournamentService;
+import org.lightPoke.db.entity.Ent_At_InTournament;
+import org.lightPoke.db.entity.Ent_Combat;
+import org.lightPoke.db.entity.Ent_JoinTournamentRequest;
+import org.lightPoke.db.entity.Ent_Tournament;
+import org.lightPoke.db.services.Svice_Admin_InTournament;
+import org.lightPoke.db.services.Svice_Combat;
+import org.lightPoke.db.services.Svice_JoinTournamentRequest;
+import org.lightPoke.db.services.Svice_Tournament;
 import org.lightPoke.users.ATUser;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
@@ -22,7 +22,6 @@ import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -38,7 +37,7 @@ public class AdminTournamentMenu {
         Scanner sc = new Scanner(System.in);
         this.tournamentAdmin = tournamentAdmin;
 
-        TournamentDTO tournament = getTournament();
+        Ent_Tournament tournament = getTournament();
         int choice;
         boolean correctChoice = true;
         boolean keepLooping = true;
@@ -75,7 +74,7 @@ public class AdminTournamentMenu {
                 case 4 -> {}
                 case 5 -> {
                     keepLooping = false; // La pila de ejecucion sigue ahi anque se entre a .main cuando la pilla acabe en este .main volvera a este loop
-                    Game.main(null);
+                    new Game();
                 }
             }
 
@@ -83,9 +82,9 @@ public class AdminTournamentMenu {
 
     }
 
-    private void viewTournamentRequest(TournamentDTO tournament) {
-        JoinTournamentRequestService joinTournamentRequestService = JoinTournamentRequestService.getInstance();
-        List<JoinTournamentRequestDTO> requests = joinTournamentRequestService.getRequestsFromTournament(tournament);
+    private void viewTournamentRequest(Ent_Tournament tournament) {
+        Svice_JoinTournamentRequest joinTournamentRequestService = Svice_JoinTournamentRequest.getInstance();
+        List<Ent_JoinTournamentRequest> requests = joinTournamentRequestService.getRequestsFromTournament(tournament);
 
         if (joinTournamentRequestService.tournamentRequestsIsEmpty(tournament.getId())) {
             System.out.println("Este torneo no tiene ninguna solicitud...");
@@ -97,7 +96,7 @@ public class AdminTournamentMenu {
         int choice = -1;
         do {
             int index = 1;
-            for (JoinTournamentRequestDTO dto : requests) {
+            for (Ent_JoinTournamentRequest dto : requests) {
                 System.out.println(index + " :" + dto.getTrainer().getName());
                 index++;
             }
@@ -123,9 +122,9 @@ public class AdminTournamentMenu {
             }
         } while (!operationMaded);
 
-        JoinTournamentRequestService requestService = JoinTournamentRequestService.getInstance();
+        Svice_JoinTournamentRequest requestService = Svice_JoinTournamentRequest.getInstance();
         if (operation.equalsIgnoreCase("Accept")) {
-            CombatService combatService = CombatService.getInstance();
+            Svice_Combat combatService = Svice_Combat.getInstance();
             combatService.addTrainerToTournamentCombat(requests.get(choice - 1).getTrainer().getId(), requests.get(choice - 1).getTournament().getId());
             requestService.deleteRequest(requests.get(choice - 1).getTrainer().getId(), tournament.getId());
         } else {
@@ -133,15 +132,15 @@ public class AdminTournamentMenu {
         }
     }
 
-    private TournamentDTO getTournament() {
-        At_InTournamentService atInTournamentService = At_InTournamentService.getInstance();
-        TournamentService tournamentService = TournamentService.getInstance();
+    private Ent_Tournament getTournament() {
+        Svice_Admin_InTournament atInTournamentService = Svice_Admin_InTournament.getInstance();
+        Svice_Tournament tournamentService = Svice_Tournament.getInstance();
 
-        At_InTournamentDTO atInTournamentDTO = atInTournamentService.getTournamentIdByAdminUsername(tournamentAdmin.getUsername());
+        Ent_At_InTournament atInTournamentDTO = atInTournamentService.getTournamentIdByAdminUsername(tournamentAdmin.getUsername());
         return tournamentService.getTournamentById(atInTournamentDTO.getTournamentDTO().getId());
     }
 
-    private void showTournamentData(TournamentDTO tournament) {
+    private void showTournamentData(Ent_Tournament tournament) {
         System.out.println("----- Tournament -----");
         System.out.println("Nombre: " + tournament.getName());
         System.out.println("COD REGION: " + tournament.getRegion());
@@ -154,13 +153,13 @@ public class AdminTournamentMenu {
         }
     }
 
-    private void exportDataOfTournament(TournamentDTO tournamentDTO) {
+    private void exportDataOfTournament(Ent_Tournament tournamentDTO) {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 
         try {
             DocumentBuilder builder = factory.newDocumentBuilder();
             DOMImplementation implementation = builder.getDOMImplementation();
-            Document document = implementation.createDocument(null, "torneos", null);
+            Document document = implementation.createDocument(null, tournamentDTO.getName(), null);
 
             insertData(document.getDocumentElement(), document, tournamentDTO);
 
@@ -178,7 +177,7 @@ public class AdminTournamentMenu {
         }
     }
 
-    private void insertData(Element raiz, Document document, TournamentDTO tournamentDTO) {
+    private void insertData(Element raiz, Document document, Ent_Tournament tournamentDTO) {
         Element eleTorneo = document.createElement("torneo");
         raiz.appendChild(eleTorneo);
 
@@ -213,17 +212,18 @@ public class AdminTournamentMenu {
         // Elemento T_WINNER
         Element eleWinner = document.createElement("winner");
 
+
         if (tournamentDTO.getTWinner() != null) {
-            Text eleWinnerText = document.createTextNode(String.valueOf(tournamentDTO.getTWinner().getUsername()));
+            Text eleWinnerText = document.createTextNode(String.valueOf(tournamentDTO.getTWinner()));
             eleWinner.appendChild(eleWinnerText);
         }
 
         eleTorneo.appendChild(eleWinner);
 
         Element eleCombats = document.createElement("combates");
-        CombatService combatService = CombatService.getInstance();
+        Svice_Combat combatService = Svice_Combat.getInstance();
 
-        for (CombatDTO c : combatService.getCombatsByTournamentId(tournamentDTO.getId())) {
+        for (Ent_Combat c : combatService.getCombatsByTournamentId(tournamentDTO.getId())) {
             Element combat = document.createElement("combate");
 
             Element date = document.createElement("date");
@@ -232,21 +232,8 @@ public class AdminTournamentMenu {
             Element winner = document.createElement("combatWinner");
 
             Text dateText = document.createTextNode(c.getDate());
-
-            String trainer_1Name = "";
-
-            if (c.getTrainer_1() != null) {
-                trainer_1Name = c.getTrainer_1().getName();
-            }
-
-            String trainer_2Name = "";
-
-            if (c.getTrainer_2() != null) {
-                trainer_2Name = c.getTrainer_2().getName();
-            }
-
-            Text trainer_1Text = document.createTextNode(trainer_1Name);
-            Text trainer_2Text = document.createTextNode(trainer_2Name);
+            Text trainer_1Text = document.createTextNode(c.getTrainer_1().getName());
+            Text trainer_2Text = document.createTextNode(c.getTrainer_2().getName());
 
             date.appendChild(dateText);
             trainer_1.appendChild(trainer_1Text);
