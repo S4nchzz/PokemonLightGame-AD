@@ -1,14 +1,15 @@
 package org.lightPoke.menus;
 
 import org.lightPoke.Game;
-import org.lightPoke.db.dao.services.TrainerDAO_IMPLE;
 import org.lightPoke.db.entity.Ent_Combat;
+import org.lightPoke.db.entity.Ent_JoinTournamentRequest;
 import org.lightPoke.db.entity.Ent_Tournament;
 import org.lightPoke.db.entity.Ent_Trainer;
 import org.lightPoke.db.services.Svice_Combat;
 import org.lightPoke.db.services.Svice_JoinTournamentRequest;
 import org.lightPoke.db.services.Svice_Tournament;
 import org.lightPoke.log.LogManagement;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -32,42 +33,36 @@ import java.util.Scanner;
 public class TrainerMenu {
     private final LogManagement log;
 
-    /**
-     * Constructor que le pasan por parametro un entrenador, este
-     * entrenador sera el entrenador con el que inicio sesion ya
-     * que el metodo que instancia esta clase es el que crea dicho
-     * objeto, la comparacion de NULL es hecha ya que si un usuario
-     * se registra automaticamente inicia sesion y se le pasa un
-     * objeto de tipo TRUser para proseguir con la informacion de
-     * este usuario, en cambio si el usuario se logea con este
-     * entrenador, al no tener guardado el nombre y la nacionalidad
-     * sera de tipo null, lo cual no permitira continuar con la
-     * configuracion de este entrenador.
-     *
-     * @param trainerDTO Entrenador que se ha iniciado sesion
-     */
-    public TrainerMenu(Ent_Trainer trainerDTO) {
-        log = LogManagement.getInstance();
+    @Autowired
+    private Svice_Tournament serviceTournament;
+
+    @Autowired
+    private Svice_Combat serviceCombat;
+
+    @Autowired
+    private Svice_JoinTournamentRequest serviceJoinTournamentRequest;
+
+    public TrainerMenu(Ent_Trainer trainerEntity) {
+        this.log = LogManagement.getInstance();
+        openMenu(trainerEntity);
+    }
+
+    public void openMenu(Ent_Trainer trainerEntity) {
         Scanner sc = new Scanner(System.in);
 
-        if (trainerDTO != null) {
-            log.writeLog("Trainer " + trainerDTO.getName() + " log in succesfully");
+        if (trainerEntity != null) {
+            log.writeLog("Trainer " + trainerEntity.getName() + " log in succesfully");
 
             // Mostrar torneos y preguntar cual quiere para presentar una solicitud
-            Svice_Tournament tournamentService = Svice_Tournament.getInstance();
-            Svice_Combat combatService = Svice_Combat.getInstance();
-            Svice_JoinTournamentRequest requestService = Svice_JoinTournamentRequest.getInstance();
-
-            if (!combatService.isTrainerInAnyCombat(trainerDTO.getId()) && !requestService.trainerHasPendingRequests(trainerDTO.getId())) {
-                List<Ent_Tournament> tournaments = tournamentService.getAllTournaments();
+            if (!serviceCombat.isTrainerInAnyCombat(trainerEntity.getId()) && !serviceJoinTournamentRequest.trainerHasPendingRequests(trainerEntity.getId())) {
+                List<Ent_Tournament> tournaments = serviceTournament.getAllTournaments();
 
                 if (!tournaments.isEmpty()) {
                     int choice = retriveTournamentChoosed(tournaments);
 
                     // Añadir request del torneo
                     Ent_Tournament tournamentChoiced = tournaments.get(choice - 1);
-                    Svice_JoinTournamentRequest joinTournamentRequestService = Svice_JoinTournamentRequest.getInstance();
-                    joinTournamentRequestService.addRequestFromTrainer(trainerDTO.getId(), tournamentChoiced.getId());
+                    serviceJoinTournamentRequest.addRequestFromTrainer(new Ent_JoinTournamentRequest(trainerEntity, tournamentChoiced));
                 }
             }
         }
@@ -84,7 +79,7 @@ public class TrainerMenu {
         }
 
         switch(choice) {
-            case 1 -> exportLicense(trainerDTO);
+            case 1 -> exportLicense(trainerEntity);
             case 2 -> new Game();
         }
     }
@@ -111,9 +106,9 @@ public class TrainerMenu {
      * Este metodo permitira exportar un License.class en formato XML
      * usando DOM
      *
-     * @param trainerDTO Entrenador que ha iniciado sesion y ha solicitado que se le exporte el carnet
+     * @param trainerEntity Entrenador que ha iniciado sesion y ha solicitado que se le exporte el carnet
      */
-    private void exportLicense(Ent_Trainer trainerDTO) {
+    private void exportLicense(Ent_Trainer trainerEntity) {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 
         try {
@@ -121,7 +116,7 @@ public class TrainerMenu {
             DOMImplementation implementation = builder.getDOMImplementation();
             Document document = implementation.createDocument(null, "carnet", null);
 
-            insertData(document.getDocumentElement(), document, trainerDTO);
+            insertData(document.getDocumentElement(), document, trainerEntity);
 
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
@@ -170,8 +165,7 @@ public class TrainerMenu {
         Element eleTorneos = generateElement("torneos", null, docu);
         raiz.appendChild(eleTorneos);
 
-        Svice_Tournament tournamentService = Svice_Tournament.getInstance();
-        for (Ent_Tournament tour : tournamentService.getTournamentsByUserId(trainer.getId())) {
+        for (Ent_Tournament tour : serviceTournament.getTournamentsByUserId(trainer.getId())) {
             Element eleTorneo = generateElement("torneo", null, docu);
 
             eleTorneo.appendChild(generateElement("nombre", tour.getName(), docu));
@@ -182,8 +176,7 @@ public class TrainerMenu {
 
         Element eleCombats = generateElement("combates", null, docu);
 
-        Svice_Combat combatService = Svice_Combat.getInstance();
-        for (Ent_Combat c : combatService.getCombatsFinishedByTrainerId(trainer.getId())) {
+        for (Ent_Combat c : serviceCombat.getCombatsFinishedByTrainerId(trainer.getId())) {
             Element combat = generateElement("combat", null, docu);
 
             String oponentName = "none";
@@ -211,7 +204,7 @@ public class TrainerMenu {
         raiz.appendChild(eleCombats);
 
         log.writeLog("License exported");
-        }
+    }
     /**
      * Metodo que generara un Elemento y lo importa a la raiz que se le pasa como parametro
      *

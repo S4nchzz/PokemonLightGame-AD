@@ -1,11 +1,8 @@
 package org.lightPoke.db.services;
 
-import org.lightPoke.db.dao.services.CombatDAO_IMPLE;
-import org.lightPoke.db.dao.services.TournamentDAO_IMPLE;
+import org.lightPoke.db.entity.Ent_At_InTournament;
 import org.lightPoke.db.entity.Ent_Combat;
 import org.lightPoke.db.entity.Ent_Tournament;
-import org.lightPoke.db.entity.Entity_Combat;
-import org.lightPoke.db.entity.Entity_Tournament;
 import org.lightPoke.db.repo.Repo_Combat;
 import org.lightPoke.db.repo.Repo_Tournament;
 import org.lightPoke.users.ATUser;
@@ -23,9 +20,15 @@ public class Svice_Tournament {
     private Repo_Tournament repoTournament;
     @Autowired
     private Repo_Combat repoCombat;
+    @Autowired
+    private final Svice_Combat serviceCombat;
+    @Autowired
+    private final Svice_Admin_InTournament serviceAdminInT;
 
-    private Svice_Tournament(Repo_Tournament repoTournament) {
+    private Svice_Tournament(Repo_Tournament repoTournament, Svice_Combat sviceCombat, Svice_Admin_InTournament serviceAdminInT) {
         this.repoTournament = repoTournament;
+        this.serviceCombat = sviceCombat;
+        this.serviceAdminInT = serviceAdminInT;
     }
 
     public List<Ent_Tournament> getAllTournaments() {
@@ -37,37 +40,28 @@ public class Svice_Tournament {
      * Convertimos el tournament DTO que tiene solo el nombre la region y los puntos de victoria
      * en una entidad y la enviamos a crear el torneo, esta creacion nos devolvera una entidad
      * nueva con el id, la reconvertimos a DTO ya que ahora tiene constancia en la base de datos
-     * @param tournamentDTO
+     * @param entTournament
      * @param atUser
      */
-    public void createTournament(final Ent_Tournament tournamentDTO, final ATUser atUser) {
-        Ent_Tournament tournament = entityToDto(tournamentDAO.createTournament(dtoToEntity(tournamentDTO)));
+    public void createTournament(final Ent_Tournament entTournament, final ATUser atUser) {
+        repoTournament.save(entTournament);
 
-        Svice_Combat combatService = Svice_Combat.getInstance();
-        combatService.addCombatsToTournament(tournament.getId());
+        serviceCombat.addCombatsToTournament(entTournament);
 
-        Svice_Admin_InTournament atInTournamentService = Svice_Admin_InTournament.getInstance();
-        atInTournamentService.addTournamentAdmin(atUser.getUsername(), tournament.getId());
+        serviceAdminInT.addTournamentAdmin(new Ent_At_InTournament(atUser.getUsername(), entTournament));
     }
 
-    public boolean isTournamentAvailable(Ent_Tournament tournamentDTO) {
-        return tournamentDAO.getTournamentByNameAndRegion(dtoToEntity(tournamentDTO)) == null;
+    public boolean isTournamentAvailable(Ent_Tournament enTournament) {
+        return repoTournament.findById(enTournament.getId()).isPresent();
     }
 
     public List<Ent_Tournament> getTournamentsByUserId(int id) {
-        List<Ent_Tournament> tournaments = new ArrayList<>();
-
-        for (Entity_Tournament e : tournamentDAO.getTournamentsFromUserById(id)) {
-            tournaments.add(entityToDto(e));
-        }
-
         List<Ent_Combat> combats =  repoCombat.findByTrainerId(id);
 
-        List<Ent_Tournament> tournaments = repoTournament.findAllById(
-                combats.forEach((e) -> {
-                    e.getTournament().getId();
-                });
-        );
+        List<Ent_Tournament> tournaments = new ArrayList<>();
+        for (Ent_Combat combat : combats) {
+            tournaments.add(repoTournament.findById(combat.getTournament().getId()).get());
+        }
 
         return tournaments;
     }

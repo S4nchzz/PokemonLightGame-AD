@@ -8,6 +8,7 @@ import org.lightPoke.log.LogManagement;
 import org.lightPoke.users.ATUser;
 import org.lightPoke.users.TRUser;
 import org.lightPoke.users.User;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.*;
 import java.util.List;
@@ -24,6 +25,12 @@ public class Register {
 
     private File credentialsFile;
     private final LogManagement log;
+
+    @Autowired
+    private Svice_Admin_InTournament serviceAdminInT;
+
+    @Autowired
+    private Svice_Trainer serviceTrainer;
 
     private Register() {
         credentialsFile = new File("./src/main/resources/users/credenciales.txt");
@@ -62,10 +69,9 @@ public class Register {
      * @return Objeto de tipo User que engloba usuarios de tipo administrador de torneo y entrenadores
      */
     public User register(final String username, final String password, final String type) {
-        Svice_Admin_InTournament atInTournamentService = Svice_Admin_InTournament.getInstance();
         BufferedWriter writer = null;
         try {
-            if (userExistInFile(username) || atInTournamentService.userExistInDatabase(username)) {
+            if (userExistInFile(username) || serviceAdminInT.userExistInDatabase(username)) {
                 log.writeLog("User " + username + " already exist in credentialsFile or database");
                 return null;
             }
@@ -80,8 +86,7 @@ public class Register {
                 case "TR" -> {
                     user = requestInfo(username, password);
 
-                    Svice_Trainer trainerService = Svice_Trainer.getInstance();
-                    trainerService.createTrainer(user);
+                    serviceTrainer.createTrainer(user);
 
                     System.out.println((TRUser)user);
                 }

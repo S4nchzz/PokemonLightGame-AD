@@ -7,26 +7,26 @@ import jakarta.persistence.*;
 public class Ent_Combat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private final int id;
+    private int id;
 
     @Column(name = "date")
-    private final String date;
+    private String date;
 
     @ManyToOne
     @JoinColumn(name = "tournament_id")
-    private final Ent_Tournament entTournament;
+    private Ent_Tournament entTournament;
 
     @ManyToOne
     @JoinColumn(name = "trainer_1")
-    private final Ent_Trainer trainer_1;
+    private Ent_Trainer trainer_1;
 
     @ManyToOne
     @JoinColumn(name = "trainer_2")
-    private final Ent_Trainer trainer_2;
+    private Ent_Trainer trainer_2;
 
     @ManyToOne
     @JoinColumn(name = "c_winner")
-    private final Ent_Trainer c_winner;
+    private Ent_Trainer c_winner;
 
     public Ent_Combat(int id, String date, Ent_Tournament entTournament, Ent_Trainer trainer1, Ent_Trainer trainer2, Ent_Trainer cWinner) {
         this.id = id;
@@ -35,6 +35,10 @@ public class Ent_Combat {
         this.trainer_1 = trainer1;
         this.trainer_2 = trainer2;
         this.c_winner = cWinner;
+    }
+
+    public Ent_Combat(Ent_Tournament entTournament) {
+        this.entTournament = entTournament;
     }
 
     public int getId() {

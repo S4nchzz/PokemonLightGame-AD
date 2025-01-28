@@ -1,7 +1,6 @@
 package org.lightPoke.db.entity;
 
 import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
 
 @Entity(name = "pkm_trainer")
 @Table(name = "pkm_trainer")

@@ -1,4 +1,4 @@
 #MYSQL DB PROPERTIES
-MYSQL_DB_URL=jdbc:mysql://localhost:3306/pokemon_lightgame_ad
-MYSQL_DB_USERNAME=root
-MYSQL_DB_PASSWORD=
+#MYSQL_DB_URL=jdbc:mysql://localhost:3306/pokemon_lightgame_ad
+#MYSQL_DB_USERNAME=root
+#MYSQL_DB_PASSWORD=

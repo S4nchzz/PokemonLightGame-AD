@@ -1,12 +1,12 @@
 package org.lightPoke.menus;
 
 import org.lightPoke.Game;
-import org.lightPoke.db.dao.services.TournamentDAO_IMPLE;
 import org.lightPoke.db.entity.Ent_Tournament;
 import org.lightPoke.db.services.Svice_Tournament;
 import org.lightPoke.log.LogManagement;
 import org.lightPoke.tournament.Tournament;
 import org.lightPoke.tournament.TournamentList;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Scanner;
 
@@ -18,7 +18,8 @@ import java.util.Scanner;
  * @author Iyan Sanchez da Costa
  */
 public class GeneralAdminMenu {
-    private final Svice_Tournament tournamentService = Svice_Tournament.getInstance();
+    @Autowired
+    private Svice_Tournament serviceTournament;
     public GeneralAdminMenu() {
         System.out.println("------ General Admin menu ------");
         System.out.println("1. Registrar nuevo torneo");
@@ -63,7 +64,7 @@ public class GeneralAdminMenu {
         boolean correctName = true;
         do {
             correctName = true;
-            if (!tournamentService.isTournamentAvailable(new Ent_Tournament(tName, tCodReg))) {
+            if (!serviceTournament.isTournamentAvailable(new Ent_Tournament(tName, tCodReg))) {
                 correctName = false;
             }
 
@@ -87,7 +88,7 @@ public class GeneralAdminMenu {
             t = new Tournament(tName, tCodReg, tVictoryPoints);
         }
 
-        tournamentService.createTournament(new Ent_Tournament(tName, tCodReg, tVictoryPoints), t.getAdminTournament());
+        serviceTournament.createTournament(new Ent_Tournament(tName, tCodReg, tVictoryPoints), t.getAdminTournament());
 
         TournamentList.getInstance().addTournament(t);
         new AdminTournamentMenu(t.getAdminTournament());

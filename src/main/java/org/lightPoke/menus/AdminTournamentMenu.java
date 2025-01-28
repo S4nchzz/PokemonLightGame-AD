@@ -10,6 +10,7 @@ import org.lightPoke.db.services.Svice_Combat;
 import org.lightPoke.db.services.Svice_JoinTournamentRequest;
 import org.lightPoke.db.services.Svice_Tournament;
 import org.lightPoke.users.ATUser;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -32,6 +33,18 @@ import java.util.Scanner;
  * @author Iyan Sanchez da Costa
  */
 public class AdminTournamentMenu {
+    @Autowired
+    private Svice_Tournament serviceTournament;
+
+    @Autowired
+    private Svice_Combat serviceCombat;
+
+    @Autowired
+    private Svice_JoinTournamentRequest serviceJoinTournamentRequest;
+
+    @Autowired
+    private Svice_Admin_InTournament serviceAdminInT;
+
     private final ATUser tournamentAdmin;
     public AdminTournamentMenu(final ATUser tournamentAdmin) {
         Scanner sc = new Scanner(System.in);
@@ -83,10 +96,9 @@ public class AdminTournamentMenu {
     }
 
     private void viewTournamentRequest(Ent_Tournament tournament) {
-        Svice_JoinTournamentRequest joinTournamentRequestService = Svice_JoinTournamentRequest.getInstance();
-        List<Ent_JoinTournamentRequest> requests = joinTournamentRequestService.getRequestsFromTournament(tournament);
+        List<Ent_JoinTournamentRequest> requests = serviceJoinTournamentRequest.getRequestsFromTournament(tournament);
 
-        if (joinTournamentRequestService.tournamentRequestsIsEmpty(tournament.getId())) {
+        if (serviceJoinTournamentRequest.tournamentRequestsIsEmpty(tournament.getId())) {
             System.out.println("Este torneo no tiene ninguna solicitud...");
             return;
         }
@@ -122,22 +134,17 @@ public class AdminTournamentMenu {
             }
         } while (!operationMaded);
 
-        Svice_JoinTournamentRequest requestService = Svice_JoinTournamentRequest.getInstance();
         if (operation.equalsIgnoreCase("Accept")) {
-            Svice_Combat combatService = Svice_Combat.getInstance();
-            combatService.addTrainerToTournamentCombat(requests.get(choice - 1).getTrainer().getId(), requests.get(choice - 1).getTournament().getId());
-            requestService.deleteRequest(requests.get(choice - 1).getTrainer().getId(), tournament.getId());
+            serviceCombat.addTrainerToTournamentCombat(requests.get(choice - 1).getTrainer().getId(), requests.get(choice - 1).getTournament().getId());
+            serviceJoinTournamentRequest.deleteRequest(new Ent_JoinTournamentRequest(requests.get(choice - 1).getTrainer(), tournament));
         } else {
-            requestService.deleteRequest(requests.get(choice - 1).getTrainer().getId(), tournament.getId());
+            serviceJoinTournamentRequest.deleteRequest(new Ent_JoinTournamentRequest(requests.get(choice - 1).getTrainer(), tournament));
         }
     }
 
     private Ent_Tournament getTournament() {
-        Svice_Admin_InTournament atInTournamentService = Svice_Admin_InTournament.getInstance();
-        Svice_Tournament tournamentService = Svice_Tournament.getInstance();
-
-        Ent_At_InTournament atInTournamentDTO = atInTournamentService.getTournamentIdByAdminUsername(tournamentAdmin.getUsername());
-        return tournamentService.getTournamentById(atInTournamentDTO.getTournamentDTO().getId());
+        Ent_At_InTournament atInTournamentDTO = serviceAdminInT.getTournamentIdByAdminUsername(tournamentAdmin.getUsername());
+        return serviceTournament.getTournamentById(atInTournamentDTO.getTournamentDTO().getId());
     }
 
     private void showTournamentData(Ent_Tournament tournament) {
@@ -221,9 +228,8 @@ public class AdminTournamentMenu {
         eleTorneo.appendChild(eleWinner);
 
         Element eleCombats = document.createElement("combates");
-        Svice_Combat combatService = Svice_Combat.getInstance();
 
-        for (Ent_Combat c : combatService.getCombatsByTournamentId(tournamentDTO.getId())) {
+        for (Ent_Combat c : serviceCombat.getCombatsByTournamentId(tournamentDTO.getId())) {
             Element combat = document.createElement("combate");
 
             Element date = document.createElement("date");

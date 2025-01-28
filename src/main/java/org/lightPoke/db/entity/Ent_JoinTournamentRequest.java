@@ -13,7 +13,7 @@ public class Ent_JoinTournamentRequest {
     @JoinColumn(name = "trainer_id")
     private final Ent_Trainer entTrainer;
 
-    @OneToMany
+    @OneToOne
     @JoinColumn(name = "tournament_id")
     private final Ent_Tournament entTournament;
 

@@ -3,7 +3,7 @@ package org.lightPoke.db.entity;
 import jakarta.persistence.*;
 
 @Entity(name = "pkm_admin_in_tournament")
-@Table(name = "pkm_Admni_in_tournament")
+@Table(name = "pkm_admin_in_tournament")
 public class Ent_At_InTournament {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

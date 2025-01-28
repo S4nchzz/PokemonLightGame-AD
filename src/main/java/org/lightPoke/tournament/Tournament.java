@@ -1,8 +1,6 @@
 package org.lightPoke.tournament;
 
 import org.lightPoke.auth.Register;
-import org.lightPoke.db.dao.services.TournamentDAO_IMPLE;
-import org.lightPoke.db.entity.Entity_Tournament;
 import org.lightPoke.users.ATUser;
 import org.lightPoke.users.TRUser;
 
