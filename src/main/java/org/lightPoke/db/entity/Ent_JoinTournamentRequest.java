@@ -17,12 +17,6 @@ public class Ent_JoinTournamentRequest {
     @JoinColumn(name = "tournament_id")
     private final Ent_Tournament entTournament;
 
-    public Ent_JoinTournamentRequest(int id, Ent_Trainer entTrainer, Ent_Tournament entTournament) {
-        this.id = id;
-        this.entTrainer = entTrainer;
-        this.entTournament = entTournament;
-    }
-
     public Ent_JoinTournamentRequest(Ent_Trainer entTrainer, Ent_Tournament entTournament) {
         this.entTrainer = entTrainer;
         this.entTournament = entTournament;

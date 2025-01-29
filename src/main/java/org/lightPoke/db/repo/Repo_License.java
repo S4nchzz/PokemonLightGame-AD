@@ -5,8 +5,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 public interface Repo_License extends JpaRepository<Ent_License, Integer> {
-    @Query()
-    Ent_License getLicenseByTrainerId(int trainerId);
-
-    Ent_License createLicense();
 }

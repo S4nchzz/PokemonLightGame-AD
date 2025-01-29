@@ -12,33 +12,33 @@ public class Ent_Combat {
     @Column(name = "date")
     private String date;
 
-    @ManyToOne
-    @JoinColumn(name = "tournament_id")
-    private Ent_Tournament entTournament;
+    @OneToOne
+    @JoinColumn(name = "tournament")
+    private Ent_Tournament tournament;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "trainer_1")
     private Ent_Trainer trainer_1;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "trainer_2")
     private Ent_Trainer trainer_2;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "c_winner")
     private Ent_Trainer c_winner;
 
-    public Ent_Combat(int id, String date, Ent_Tournament entTournament, Ent_Trainer trainer1, Ent_Trainer trainer2, Ent_Trainer cWinner) {
+    public Ent_Combat(int id, String date, Ent_Tournament tournament, Ent_Trainer trainer1, Ent_Trainer trainer2, Ent_Trainer cWinner) {
         this.id = id;
         this.date = date;
-        this.entTournament = entTournament;
+        this.tournament = tournament;
         this.trainer_1 = trainer1;
         this.trainer_2 = trainer2;
         this.c_winner = cWinner;
     }
 
-    public Ent_Combat(Ent_Tournament entTournament) {
-        this.entTournament = entTournament;
+    public Ent_Combat(Ent_Tournament tournament) {
+        this.tournament = tournament;
     }
 
     public int getId() {
@@ -49,7 +49,7 @@ public class Ent_Combat {
         return date;
     }
 
-    public Ent_Tournament getTournament() { return this.entTournament; }
+    public Ent_Tournament getTournament() { return this.tournament; }
 
     public Ent_Trainer getTrainer_1() {
         return trainer_1;

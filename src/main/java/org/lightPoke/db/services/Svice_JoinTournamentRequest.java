@@ -10,14 +10,8 @@ import java.util.List;
 
 @Service
 public class Svice_JoinTournamentRequest {
-    private static Svice_JoinTournamentRequest instance;
-
     @Autowired
-    private final Repo_JoinTournamentRequest repoJoinTournamentRequest;
-
-    private Svice_JoinTournamentRequest(Repo_JoinTournamentRequest repoJoinTournamentRequest) {
-        this.repoJoinTournamentRequest = repoJoinTournamentRequest;
-    }
+    private Repo_JoinTournamentRequest repoJoinTournamentRequest;
 
     public void addRequestFromTrainer(Ent_JoinTournamentRequest entJoinTournamentRequest) {
         repoJoinTournamentRequest.save(entJoinTournamentRequest);

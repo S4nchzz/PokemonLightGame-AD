@@ -18,18 +18,15 @@ public class Svice_Tournament {
 
     @Autowired
     private Repo_Tournament repoTournament;
+
     @Autowired
     private Repo_Combat repoCombat;
-    @Autowired
-    private final Svice_Combat serviceCombat;
-    @Autowired
-    private final Svice_Admin_InTournament serviceAdminInT;
 
-    private Svice_Tournament(Repo_Tournament repoTournament, Svice_Combat sviceCombat, Svice_Admin_InTournament serviceAdminInT) {
-        this.repoTournament = repoTournament;
-        this.serviceCombat = sviceCombat;
-        this.serviceAdminInT = serviceAdminInT;
-    }
+    @Autowired
+    private Svice_Combat serviceCombat;
+
+    @Autowired
+    private Svice_Admin_InTournament serviceAdminInT;
 
     public List<Ent_Tournament> getAllTournaments() {
         List<Ent_Tournament> tournaments = repoTournament.findAll();

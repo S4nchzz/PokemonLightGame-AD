@@ -12,18 +12,11 @@ import java.util.List;
 
 @Service
 public class Svice_Combat {
-    private static Svice_Combat instance;
+    @Autowired
+    private Repo_Combat repoCombat;
 
     @Autowired
-    private final Repo_Combat repoCombat;
-
-    @Autowired
-    private final Repo_Tournament repoTournament;
-
-    private Svice_Combat(Repo_Combat repoCombat, Repo_Tournament repoTournament) {
-        this.repoCombat = repoCombat;
-        this.repoTournament = repoTournament;
-    }
+    private Repo_Tournament repoTournament;
 
     public List<Ent_Combat> getCombatsByTournamentId(final int t_id) {
         return repoCombat.findByTournamentId(t_id);

@@ -9,22 +9,15 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class Svice_Trainer {
-    private static Svice_Trainer instance;
+    @Autowired
+    private Repo_Trainer repoTrainer;
 
     @Autowired
-    private final Repo_Trainer repoTrainer;
-
-    @Autowired
-    private final Svice_License serviceLicense;
-
-    private Svice_Trainer(Repo_Trainer repoTrainer, Svice_License serviceLicense) {
-        this.repoTrainer = repoTrainer;
-        this.serviceLicense = serviceLicense;
-    }
+    private Svice_License serviceLicense;
 
     public void createTrainer(User user) {
         Ent_License license = serviceLicense.createLicense();
-        repoTrainer.createTrainer(new Ent_Trainer(((TRUser)user).getUsername(), ((TRUser)user).getNombre(), ((TRUser)user).getNacionalidad(), license));
+        repoTrainer.save(new Ent_Trainer(((TRUser)user).getUsername(), ((TRUser)user).getNombre(), ((TRUser)user).getNacionalidad(), license));
     }
 
     public Ent_Trainer getTrainerByUsername(final String username) {

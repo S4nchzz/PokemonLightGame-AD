@@ -3,6 +3,7 @@ package org.lightPoke.tournament;
 import org.lightPoke.auth.Register;
 import org.lightPoke.users.ATUser;
 import org.lightPoke.users.TRUser;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -14,6 +15,8 @@ import java.util.Scanner;
  * @author Iyan Sanchez da Costa
  */
 public class Tournament implements Serializable {
+    @Autowired
+    private Register register;
     private final int id;
     private ArrayList<TRUser> trainers;
     private final String nombre;
@@ -22,7 +25,7 @@ public class Tournament implements Serializable {
     private final float puntosVictoria;
 
     public Tournament(String nombre, char codRegion, float puntosVictoria) {
-        this.id = Register.getInstance().getNextId();
+        this.id = register.getNextId();
         this.adminTournament = generateTournamentAdmin();
 
         this.nombre = nombre;
@@ -69,9 +72,7 @@ public class Tournament implements Serializable {
                 }
             }
 
-
-        Register reg = Register.getInstance();
-        return (ATUser) reg.register(username, password, "AT");
+        return (ATUser) register.register(username, password, "AT");
     }
 
     public int getId() {

@@ -9,23 +9,13 @@ import java.time.LocalDate;
 
 @Service
 public class Svice_License {
-    private static Svice_License instance;
-
     @Autowired
-    private final Repo_License repoLicense;
-
-    private Svice_License(Repo_License repoLicense) {
-        this.repoLicense = repoLicense;
-    }
+    private Repo_License repoLicense;
 
     public Ent_License createLicense() {
         LocalDate localdate = LocalDate.now();
         final String currentDate = localdate.getDayOfMonth() + "/" + localdate.getMonthValue() + "/" + localdate.getYear();
 
         return repoLicense.save(new Ent_License(currentDate, 0.0f, 0));
-    }
-
-    public Ent_License getLicenseByTrainerId(int trainerId) {
-        return repoLicense.getLicenseByTrainerId(trainerId);
     }
 }

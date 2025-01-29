@@ -7,14 +7,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class Svice_Admin_InTournament {
-    private static Svice_Admin_InTournament instance;
-
     @Autowired
-    private final Repo_At_InTournament repoAtInTournament;
-
-    private Svice_Admin_InTournament(Repo_At_InTournament repoAtInTournament) {
-        this.repoAtInTournament = repoAtInTournament;
-    }
+    private Repo_At_InTournament repoAtInTournament;
 
     public void addTournamentAdmin(Ent_At_InTournament entAtInTournament) {
         repoAtInTournament.save(entAtInTournament);
