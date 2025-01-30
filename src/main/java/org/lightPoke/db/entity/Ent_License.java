@@ -9,20 +9,15 @@ import jakarta.persistence.*;
     private int id;
 
     @Column(name = "expedition_Date")
-    private final String expedition_Date;
+    private String expedition_Date;
 
     @Column(name = "points")
-    private final float points;
+    private float points;
 
     @Column(name = "nVictories")
-    private final int nVictories;
+    private int nVictories;
 
-    public Ent_License(int id, String expeditionDate, float points, int nVictories) {
-        this.id = id;
-        expedition_Date = expeditionDate;
-        this.points = points;
-        this.nVictories = nVictories;
-    }
+    public Ent_License () {}
 
     public Ent_License(String expeditionDate, float points, int nVictories) {
         expedition_Date = expeditionDate;

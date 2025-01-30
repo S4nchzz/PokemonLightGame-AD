@@ -9,26 +9,20 @@ public class Ent_Trainer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "username")
-    private final String username;
+    @Column(name = "username", unique = true)
+    private String username;
 
     @Column(name = "name")
-    private final String name;
+    private String name;
 
     @Column(name = "nationality")
-    private final String nationality;
+    private String nationality;
 
     @OneToOne
     @JoinColumn(name = "license_id")
-    private final Ent_License entLicense;
+    private Ent_License entLicense;
 
-    public Ent_Trainer(final int id, final String username, final String name, final String nationality, Ent_License entLicense) {
-        this.id = id;
-        this.username = username;
-        this.name = name;
-        this.nationality = nationality;
-        this.entLicense = entLicense;
-    }
+    public Ent_Trainer(){}
 
     public Ent_Trainer(final String username, final String name, final String nationality, final Ent_License entLicense) {
         this.username = username;

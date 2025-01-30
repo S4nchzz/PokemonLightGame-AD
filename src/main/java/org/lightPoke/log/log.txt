@@ -1,0 +1,96 @@
+[30/1/2025 | 18:16:9] -- User asd has been registrated
+[30/1/2025 | 18:18:17] -- User tyt not found
+[30/1/2025 | 18:18:19] -- User a not found
+[30/1/2025 | 18:18:22] -- User iyan logged succesfully
+[30/1/2025 | 18:22:23] -- User iyan logged succesfully
+[30/1/2025 | 18:24:14] -- User asd already exist in credentialsFile or database
+[30/1/2025 | 18:24:36] -- User yu has been registrated
+[30/1/2025 | 19:3:2] -- User asd already exist in credentialsFile or database
+[30/1/2025 | 19:3:7] -- User das has been registrated
+[30/1/2025 | 19:4:50] -- User asd logged succesfully
+[30/1/2025 | 19:6:28] -- User asd logged succesfully
+[30/1/2025 | 19:6:28] -- Trainer asd log in succesfully
+[30/1/2025 | 19:10:35] -- User as not found
+[30/1/2025 | 19:10:39] -- User asd logged succesfully
+[30/1/2025 | 19:10:39] -- Trainer asd log in succesfully
+[30/1/2025 | 19:12:16] -- User asd logged succesfully
+[30/1/2025 | 19:12:16] -- Trainer asd log in succesfully
+[30/1/2025 | 19:14:19] -- User asd logged succesfully
+[30/1/2025 | 19:14:30] -- Trainer asd log in succesfully
+[30/1/2025 | 19:15:18] -- User asd logged succesfully
+[30/1/2025 | 19:15:53] -- Trainer asd log in succesfully
+[30/1/2025 | 19:17:48] -- User asd logged succesfully
+[30/1/2025 | 19:17:48] -- Trainer tyt log in succesfully
+[30/1/2025 | 19:18:45] -- User asd logged succesfully
+[30/1/2025 | 19:19:4] -- User asd not found
+[30/1/2025 | 19:19:6] -- User asd logged succesfully
+[30/1/2025 | 19:21:13] -- User asd logged succesfully
+[30/1/2025 | 19:22:0] -- User asd logged succesfully
+[30/1/2025 | 19:23:11] -- User asd not found
+[30/1/2025 | 19:23:14] -- User iyan logged succesfully
+[30/1/2025 | 19:27:2] -- User a has been registrated
+[30/1/2025 | 19:27:2] -- Trainer a log in succesfully
+[30/1/2025 | 19:30:48] -- User asd not found
+[30/1/2025 | 19:30:53] -- User a logged succesfully
+[30/1/2025 | 19:30:53] -- Trainer a log in succesfully
+[30/1/2025 | 19:35:41] -- User asd not found
+[30/1/2025 | 19:35:42] -- User a logged succesfully
+[30/1/2025 | 19:36:36] -- Trainer a log in succesfully
+[30/1/2025 | 19:37:30] -- User a logged succesfully
+[30/1/2025 | 19:38:17] -- Trainer a log in succesfully
+[30/1/2025 | 19:39:30] -- User a logged succesfully
+[30/1/2025 | 19:39:45] -- Trainer a log in succesfully
+[30/1/2025 | 19:41:57] -- User a logged succesfully
+[30/1/2025 | 19:42:1] -- Trainer a log in succesfully
+[30/1/2025 | 19:42:53] -- User A not found
+[30/1/2025 | 19:42:54] -- User a logged succesfully
+[30/1/2025 | 19:42:54] -- Trainer a log in succesfully
+[30/1/2025 | 19:43:18] -- User a logged succesfully
+[30/1/2025 | 19:43:18] -- Trainer a log in succesfully
+[30/1/2025 | 19:44:34] -- User a logged succesfully
+[30/1/2025 | 19:44:34] -- Trainer a log in succesfully
+[30/1/2025 | 19:56:24] -- User a logged succesfully
+[30/1/2025 | 19:56:24] -- Trainer a log in succesfully
+[30/1/2025 | 19:57:27] -- User a logged succesfully
+[30/1/2025 | 19:57:27] -- Trainer a log in succesfully
+[30/1/2025 | 20:4:40] -- User a logged succesfully
+[30/1/2025 | 20:4:40] -- Trainer a log in succesfully
+[30/1/2025 | 20:7:15] -- User a logged succesfully
+[30/1/2025 | 20:7:15] -- Trainer a log in succesfully
+[30/1/2025 | 20:7:41] -- User a logged succesfully
+[30/1/2025 | 20:7:41] -- Trainer a log in succesfully
+[30/1/2025 | 20:8:17] -- User a logged succesfully
+[30/1/2025 | 20:8:17] -- Trainer a log in succesfully
+[30/1/2025 | 20:10:28] -- User g has been registrated
+[30/1/2025 | 20:10:28] -- Trainer es log in succesfully
+[30/1/2025 | 20:13:5] -- User t has been registrated
+[30/1/2025 | 20:13:5] -- Trainer es log in succesfully
+[30/1/2025 | 20:16:30] -- User ty has been registrated
+[30/1/2025 | 20:19:11] -- Trainer es log in succesfully
+[30/1/2025 | 20:20:20] -- User a logged succesfully
+[30/1/2025 | 20:21:49] -- Trainer a log in succesfully
+[30/1/2025 | 20:22:0] -- User a logged succesfully
+[30/1/2025 | 20:22:18] -- Trainer a log in succesfully
+[30/1/2025 | 20:27:30] -- User a logged succesfully
+[30/1/2025 | 20:27:30] -- Trainer a log in succesfully
+[30/1/2025 | 20:27:55] -- User a logged succesfully
+[30/1/2025 | 20:28:6] -- Trainer a log in succesfully
+[30/1/2025 | 20:29:29] -- User g already exist in credentialsFile or database
+[30/1/2025 | 20:29:35] -- User y has been registrated
+[30/1/2025 | 20:29:35] -- Trainer es log in succesfully
+[30/1/2025 | 20:30:0] -- User gt has been registrated
+[30/1/2025 | 20:30:0] -- Trainer gt log in succesfully
+[30/1/2025 | 20:30:1] -- License exported
+[30/1/2025 | 20:33:56] -- User a logged succesfully
+[30/1/2025 | 20:33:56] -- Trainer a log in succesfully
+[30/1/2025 | 20:34:2] -- User gt already exist in credentialsFile or database
+[30/1/2025 | 20:34:5] -- User hy has been registrated
+[30/1/2025 | 20:34:5] -- Trainer hy log in succesfully
+[30/1/2025 | 20:34:14] -- User iyan logged succesfully
+[30/1/2025 | 20:40:5] -- User iyan logged succesfully
+[30/1/2025 | 20:43:41] -- User iyan logged succesfully
+[30/1/2025 | 20:45:1] -- User iyan logged succesfully
+[30/1/2025 | 20:45:31] -- User iyan logged succesfully
+[30/1/2025 | 20:48:8] -- User iyan logged succesfully
+[30/1/2025 | 20:50:12] -- User iyan logged succesfully
+[30/1/2025 | 20:51:8] -- User iyan logged succesfully

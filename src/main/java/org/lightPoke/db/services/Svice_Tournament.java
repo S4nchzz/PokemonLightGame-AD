@@ -14,8 +14,6 @@ import java.util.List;
 
 @Service
 public class Svice_Tournament {
-    private static Svice_Tournament instance;
-
     @Autowired
     private Repo_Tournament repoTournament;
 
@@ -48,7 +46,7 @@ public class Svice_Tournament {
         serviceAdminInT.addTournamentAdmin(new Ent_At_InTournament(atUser.getUsername(), entTournament));
     }
 
-    public boolean isTournamentAvailable(Ent_Tournament enTournament) {
+    public boolean tournamentAlreadyExists(Ent_Tournament enTournament) {
         return repoTournament.findById(enTournament.getId()).isPresent();
     }
 

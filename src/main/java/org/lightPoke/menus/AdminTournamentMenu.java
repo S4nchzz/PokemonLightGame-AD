@@ -11,6 +11,7 @@ import org.lightPoke.db.services.Svice_JoinTournamentRequest;
 import org.lightPoke.db.services.Svice_Tournament;
 import org.lightPoke.users.ATUser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -32,7 +33,11 @@ import java.util.Scanner;
  *
  * @author Iyan Sanchez da Costa
  */
+@Component
 public class AdminTournamentMenu {
+    @Autowired
+    private MainMenu mainMenu;
+
     @Autowired
     private Svice_Tournament serviceTournament;
 
@@ -45,8 +50,9 @@ public class AdminTournamentMenu {
     @Autowired
     private Svice_Admin_InTournament serviceAdminInT;
 
-    private final ATUser tournamentAdmin;
-    public AdminTournamentMenu(final ATUser tournamentAdmin) {
+    private ATUser tournamentAdmin;
+
+    public void openMenu(final ATUser tournamentAdmin) {
         Scanner sc = new Scanner(System.in);
         this.tournamentAdmin = tournamentAdmin;
 
@@ -87,12 +93,11 @@ public class AdminTournamentMenu {
                 case 4 -> {}
                 case 5 -> {
                     keepLooping = false; // La pila de ejecucion sigue ahi anque se entre a .main cuando la pilla acabe en este .main volvera a este loop
-                    new Game();
+                    mainMenu.openMainMenu();
                 }
             }
 
         } while (keepLooping);
-
     }
 
     private void viewTournamentRequest(Ent_Tournament tournament) {

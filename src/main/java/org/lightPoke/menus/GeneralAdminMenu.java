@@ -7,6 +7,8 @@ import org.lightPoke.log.LogManagement;
 import org.lightPoke.tournament.Tournament;
 import org.lightPoke.tournament.TournamentList;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.support.ManagedMap;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
@@ -17,10 +19,21 @@ import java.util.Scanner;
  *
  * @author Iyan Sanchez da Costa
  */
+@Component
 public class GeneralAdminMenu {
     @Autowired
+    private MainMenu mainMenu;
+
+    @Autowired
     private Svice_Tournament serviceTournament;
+
+    @Autowired
+    private AdminTournamentMenu adminTMenu;
     public GeneralAdminMenu() {
+
+    }
+
+    public void openMenu() {
         System.out.println("------ General Admin menu ------");
         System.out.println("1. Registrar nuevo torneo");
         System.out.println("2. Logout \n");
@@ -41,11 +54,10 @@ public class GeneralAdminMenu {
             }
 
             case 2 -> {
-                Game.main(null);
+                mainMenu.openMainMenu();
             }
         }
     }
-
     /**
      * Metodo que sera llamado en la fase de eleccion de opcion del menu
      * permitiendo crear un torneo con un nombre, codigo de region y
@@ -64,11 +76,11 @@ public class GeneralAdminMenu {
         boolean correctName = true;
         do {
             correctName = true;
-            if (!serviceTournament.isTournamentAvailable(new Ent_Tournament(tName, tCodReg))) {
+            if (!serviceTournament.tournamentAlreadyExists(new Ent_Tournament(tName, tCodReg))) {
                 correctName = false;
             }
 
-            if (!correctName) {
+            if (correctName) {
                 System.out.println("Nombre-Region (" + tName + " | " + tCodReg + ") utilziados ya existen: ");
                 System.out.print("Nombre del torneo: ");
                 tName = sc.next();
@@ -76,7 +88,7 @@ public class GeneralAdminMenu {
                 System.out.print("Codigo de la region: ");
                 tCodReg = sc.next().charAt(0);
             }
-        } while (!correctName);
+        } while (correctName);
 
         System.out.print("Puntos Max. para victoria: ");
         float tVictoryPoints = sc.nextFloat();
@@ -86,12 +98,13 @@ public class GeneralAdminMenu {
         while (t.getAdminTournament() == null) {
             System.out.println("El usuario ya existe.");
             t = new Tournament(tName, tCodReg, tVictoryPoints);
+            t.generateTournamentAdmin();
         }
 
         serviceTournament.createTournament(new Ent_Tournament(tName, tCodReg, tVictoryPoints), t.getAdminTournament());
 
         TournamentList.getInstance().addTournament(t);
-        new AdminTournamentMenu(t.getAdminTournament());
+        adminTMenu.openMenu(t.getAdminTournament());
 
         LogManagement.getInstance().writeLog("Tournament " + tName + " has been created");
     }

@@ -1,7 +1,4 @@
 package org.lightPoke.users;
-
-import org.lightPoke.trainerLicense.License;
-
 import java.time.LocalDate;
 
 /**
@@ -13,7 +10,6 @@ import java.time.LocalDate;
  */
 public class TRUser extends User{
     private long id;
-    private License carnet;
     private String nombre;
     private String nacionalidad;
 
@@ -25,8 +21,6 @@ public class TRUser extends User{
         this.id = id;
         this.nombre = nombre;
         this.nacionalidad = nacionalidad;
-
-        this.carnet = new License(id, LocalDate.now(), 0, 0);
     }
 
     @Override
@@ -46,10 +40,6 @@ public class TRUser extends User{
 
     public long getId() {
         return id;
-    }
-
-    public License getCarnet() {
-        return carnet;
     }
 
     public String getNombre() {

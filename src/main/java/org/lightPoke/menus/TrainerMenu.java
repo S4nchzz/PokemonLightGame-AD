@@ -10,6 +10,7 @@ import org.lightPoke.db.services.Svice_JoinTournamentRequest;
 import org.lightPoke.db.services.Svice_Tournament;
 import org.lightPoke.log.LogManagement;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -30,7 +31,11 @@ import java.util.Scanner;
  *
  * @author Iyan Sanchez da Costa
  */
+@Component
 public class TrainerMenu {
+    @Autowired
+    private MainMenu mainMenu;
+
     private final LogManagement log;
 
     @Autowired
@@ -42,9 +47,8 @@ public class TrainerMenu {
     @Autowired
     private Svice_JoinTournamentRequest serviceJoinTournamentRequest;
 
-    public TrainerMenu(Ent_Trainer trainerEntity) {
+    public TrainerMenu() {
         this.log = LogManagement.getInstance();
-        openMenu(trainerEntity);
     }
 
     public void openMenu(Ent_Trainer trainerEntity) {
@@ -53,7 +57,7 @@ public class TrainerMenu {
         if (trainerEntity != null) {
             log.writeLog("Trainer " + trainerEntity.getName() + " log in succesfully");
 
-            // Mostrar torneos y preguntar cual quiere para presentar una solicitud
+            // Mostrar torneos y preguntar cual quiere para presentar una solicitud, si estaba en algun combate querra decir que ya estaba en algun torneo
             if (!serviceCombat.isTrainerInAnyCombat(trainerEntity.getId()) && !serviceJoinTournamentRequest.trainerHasPendingRequests(trainerEntity.getId())) {
                 List<Ent_Tournament> tournaments = serviceTournament.getAllTournaments();
 
@@ -80,7 +84,9 @@ public class TrainerMenu {
 
         switch(choice) {
             case 1 -> exportLicense(trainerEntity);
-            case 2 -> new Game();
+            case 2 -> {
+                mainMenu.openMainMenu();
+            }
         }
     }
 

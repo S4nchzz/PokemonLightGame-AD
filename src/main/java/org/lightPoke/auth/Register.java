@@ -9,6 +9,9 @@ import org.lightPoke.users.ATUser;
 import org.lightPoke.users.TRUser;
 import org.lightPoke.users.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.util.List;
@@ -20,9 +23,9 @@ import java.util.stream.Stream;
  * del usuario invitado con el sistema Register
  * @author Iyan Sanchez da Costa
  */
-public class Register {
-    private static Register instance;
 
+@Component
+public class Register {
     private File credentialsFile;
     private final LogManagement log;
 
@@ -32,17 +35,9 @@ public class Register {
     @Autowired
     private Svice_Trainer serviceTrainer;
 
-    private Register() {
+    public Register() {
         credentialsFile = new File("./src/main/resources/users/credenciales.txt");
         log = LogManagement.getInstance();
-    }
-
-    /**
-     * Metodo que retorna una unica instancia de tipo Register.class
-     * @return Nueva instancia si no existia previamente
-     */
-    public static Register getInstance() {
-        return instance == null ? instance = new Register() : instance;
     }
 
     /**

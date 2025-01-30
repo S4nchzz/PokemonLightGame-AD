@@ -4,6 +4,7 @@ import org.lightPoke.auth.Register;
 import org.lightPoke.users.ATUser;
 import org.lightPoke.users.TRUser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -14,20 +15,20 @@ import java.util.Scanner;
  *
  * @author Iyan Sanchez da Costa
  */
+
+@Component
 public class Tournament implements Serializable {
     @Autowired
     private Register register;
-    private final int id;
+
+    private int id;
     private ArrayList<TRUser> trainers;
-    private final String nombre;
-    private final ATUser adminTournament;
-    private final char codRegion;
-    private final float puntosVictoria;
+    private String nombre;
+    private ATUser adminTournament;
+    private char codRegion;
+    private float puntosVictoria;
 
     public Tournament(String nombre, char codRegion, float puntosVictoria) {
-        this.id = register.getNextId();
-        this.adminTournament = generateTournamentAdmin();
-
         this.nombre = nombre;
         this.codRegion = codRegion;
         this.puntosVictoria = puntosVictoria;
@@ -41,7 +42,7 @@ public class Tournament implements Serializable {
      * y este sera responsable de gestionar este torneo
      * @return Usuario administrador de torneos creado por el usuario Admin general
      */
-    private ATUser generateTournamentAdmin() {
+    public void generateTournamentAdmin() {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("\n------Registro de administrador de torneo------");
@@ -72,10 +73,11 @@ public class Tournament implements Serializable {
                 }
             }
 
-        return (ATUser) register.register(username, password, "AT");
+        this.adminTournament = (ATUser) register.register(username, password, "AT");
     }
 
     public int getId() {
+        this.id = register.getNextId();
         return id;
     }
 

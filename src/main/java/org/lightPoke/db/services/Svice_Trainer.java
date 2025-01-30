@@ -17,11 +17,11 @@ public class Svice_Trainer {
 
     public void createTrainer(User user) {
         Ent_License license = serviceLicense.createLicense();
-        repoTrainer.save(new Ent_Trainer(((TRUser)user).getUsername(), ((TRUser)user).getNombre(), ((TRUser)user).getNacionalidad(), license));
+        repoTrainer.save(new Ent_Trainer((user).getUsername(), ((TRUser)user).getNombre(), ((TRUser)user).getNacionalidad(), license));
     }
 
     public Ent_Trainer getTrainerByUsername(final String username) {
-        return repoTrainer.findByUsername(username);
+        return repoTrainer.findByUsername(username).getFirst();
     }
 
     public Ent_Trainer getTrainerById(final int trainer_id) {

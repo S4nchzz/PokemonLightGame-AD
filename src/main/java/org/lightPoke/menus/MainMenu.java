@@ -8,17 +8,26 @@ import org.lightPoke.users.ATUser;
 import org.lightPoke.users.TRUser;
 import org.lightPoke.users.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
+@Component
 public class MainMenu {
     @Autowired
     private Svice_Trainer serviceTrainer;
 
-    public MainMenu() {
+    @Autowired
+    private Register reg;
 
-        openMainMenu();
-    }
+    @Autowired
+    private AdminTournamentMenu adminInTournamentMenu;
+
+    @Autowired
+    private TrainerMenu trainerMenu;
+
+    @Autowired
+    private GeneralAdminMenu generalAdminMenu;
 
     public void openMainMenu() {
         System.out.println("------ Welcome to LightPoke ------");
@@ -45,7 +54,7 @@ public class MainMenu {
                 TRUser user = register();
                 if (user != null) {
                     Ent_Trainer trainer = serviceTrainer.getTrainerByUsername(user.getUsername());
-                    new TrainerMenu(trainer);
+                    trainerMenu.openMenu(trainer);
                 }
                 break;
             case 2:
@@ -87,17 +96,17 @@ public class MainMenu {
             switch (user.getRole()) {
                 case 1 -> {
                     System.out.println("Logged as Trainer");
-                    new TrainerMenu(serviceTrainer.getTrainerByUsername(username));
+                    trainerMenu.openMenu(serviceTrainer.getTrainerByUsername(username));
                 }
 
                 case 2 -> {
                     System.out.println("Logged as Admin tournament");
-                    new AdminTournamentMenu((ATUser) user);
+                    adminInTournamentMenu.openMenu((ATUser) user);
                 }
 
                 case 3 -> {
                     System.out.println("Logged as General Admin");
-                    new GeneralAdminMenu();
+                    generalAdminMenu.openMenu();
                 }
             }
         } else {
@@ -112,11 +121,10 @@ public class MainMenu {
      * no existe.
      * @return Nuevo usuario de tipo entrenador
      */
-    private static TRUser register() {
+    private TRUser register() {
         Scanner sc = new Scanner(System.in);
         System.out.println("------ Registro ------");
 
-        Register reg = Register.getInstance();
         String username;
         String password;
 
