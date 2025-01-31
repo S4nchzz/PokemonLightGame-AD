@@ -12,19 +12,19 @@ public class Ent_Combat {
     @Column(name = "date")
     private String date;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "tournament")
     private Ent_Tournament tournament;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "trainer_1")
     private Ent_Trainer trainer_1;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "trainer_2")
     private Ent_Trainer trainer_2;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "c_winner")
     private Ent_Trainer c_winner;
 

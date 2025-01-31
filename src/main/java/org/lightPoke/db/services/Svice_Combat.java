@@ -28,7 +28,7 @@ public class Svice_Combat {
 
     public void addCombatsToTournament(Ent_Tournament tournament) {
         for (int i = 0; i < 3; i++) {
-            repoCombat.save(new Ent_Combat(tournament));
+            repoCombat.saveAndFlush(new Ent_Combat(tournament));
         }
     }
 

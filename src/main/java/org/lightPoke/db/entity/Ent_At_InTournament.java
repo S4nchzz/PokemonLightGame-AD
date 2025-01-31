@@ -10,16 +10,18 @@ public class Ent_At_InTournament {
     private int id;
 
     @Column(name = "admin")
-    private final String admin;
+    private String admin;
 
     @OneToOne
     @JoinColumn(name = "tournament_id")
-    private final Ent_Tournament entTournament;
+    private Ent_Tournament entTournament;
 
     public Ent_At_InTournament(String admin, Ent_Tournament entTournament) {
         this.admin = admin;
         this.entTournament = entTournament;
     }
+
+    public Ent_At_InTournament() {}
 
     public int getId() {
         return id;

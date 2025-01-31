@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.ServiceLoader;
 
 /**
  * Clase que gestiona los torneos con su informacion propia
@@ -35,6 +36,8 @@ public class Tournament implements Serializable {
 
         trainers = new ArrayList<>();
     }
+
+    public Tournament() {}
 
     /**
      * Metodo que es llamado por el Administrador General (AGUser)

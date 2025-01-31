@@ -10,10 +10,10 @@ public class Ent_Tournament {
     private int id;
 
     @Column(name = "name")
-    private final String name;
+    private String name;
 
     @Column(name = "region")
-    private final char region;
+    private char region;
 
     @Column(name = "victoryPoints")
     private float victoryPoints;
@@ -40,6 +40,8 @@ public class Ent_Tournament {
         this.name = name;
         this.region = region;
     }
+
+    public Ent_Tournament() {}
 
     public int getId() {
         return this.id;

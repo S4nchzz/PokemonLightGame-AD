@@ -1,6 +1,7 @@
 package org.lightPoke.menus;
 
 import org.lightPoke.Game;
+import org.lightPoke.auth.Register;
 import org.lightPoke.db.entity.Ent_Tournament;
 import org.lightPoke.db.services.Svice_Tournament;
 import org.lightPoke.log.LogManagement;
@@ -8,6 +9,7 @@ import org.lightPoke.tournament.Tournament;
 import org.lightPoke.tournament.TournamentList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.support.ManagedMap;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
@@ -22,6 +24,9 @@ import java.util.Scanner;
 @Component
 public class GeneralAdminMenu {
     @Autowired
+    private ApplicationContext applicationContext;
+
+    @Autowired
     private MainMenu mainMenu;
 
     @Autowired
@@ -29,6 +34,9 @@ public class GeneralAdminMenu {
 
     @Autowired
     private AdminTournamentMenu adminTMenu;
+
+    @Autowired
+    private Register register;
     public GeneralAdminMenu() {
 
     }
@@ -94,10 +102,9 @@ public class GeneralAdminMenu {
         float tVictoryPoints = sc.nextFloat();
 
 
-        Tournament t = new Tournament(tName, tCodReg, tVictoryPoints);
+        Tournament t = applicationContext.getBean(Tournament.class, tName, tCodReg, tVictoryPoints);
         while (t.getAdminTournament() == null) {
             System.out.println("El usuario ya existe.");
-            t = new Tournament(tName, tCodReg, tVictoryPoints);
             t.generateTournamentAdmin();
         }
 
