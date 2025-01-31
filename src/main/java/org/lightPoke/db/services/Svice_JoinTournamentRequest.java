@@ -27,7 +27,8 @@ public class Svice_JoinTournamentRequest {
     }
 
     public boolean trainerHasPendingRequests(int trainer_id) {
-        return repoJoinTournamentRequest.findByTrainerId(trainer_id) == null;
+        List<Ent_JoinTournamentRequest> requests = repoJoinTournamentRequest.findByTrainerId(trainer_id);
+        return requests != null && !requests.isEmpty();
     }
 
     public void deleteRequest(Ent_JoinTournamentRequest entJoinTournamentRequest) {

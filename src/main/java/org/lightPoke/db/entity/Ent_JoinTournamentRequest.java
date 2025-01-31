@@ -11,16 +11,18 @@ public class Ent_JoinTournamentRequest {
 
     @OneToOne
     @JoinColumn(name = "trainer_id")
-    private final Ent_Trainer entTrainer;
+    private Ent_Trainer entTrainer;
 
     @OneToOne
     @JoinColumn(name = "tournament_id")
-    private final Ent_Tournament entTournament;
+    private Ent_Tournament entTournament;
 
     public Ent_JoinTournamentRequest(Ent_Trainer entTrainer, Ent_Tournament entTournament) {
         this.entTrainer = entTrainer;
         this.entTournament = entTournament;
     }
+
+    public Ent_JoinTournamentRequest() {}
 
     public int getId() {
         return id;

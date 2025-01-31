@@ -81,14 +81,11 @@ public class GeneralAdminMenu {
         System.out.print("Codigo de la region: ");
         char tCodReg = sc.next().charAt(0);
 
-        boolean correctName = true;
+        boolean tournamentAlreadyExists = true;
         do {
-            correctName = true;
-            if (!serviceTournament.tournamentAlreadyExists(new Ent_Tournament(tName, tCodReg))) {
-                correctName = false;
-            }
+            tournamentAlreadyExists = serviceTournament.tournamentAlreadyExists(new Ent_Tournament(tName, tCodReg));
 
-            if (correctName) {
+            if (tournamentAlreadyExists) {
                 System.out.println("Nombre-Region (" + tName + " | " + tCodReg + ") utilziados ya existen: ");
                 System.out.print("Nombre del torneo: ");
                 tName = sc.next();
@@ -96,7 +93,7 @@ public class GeneralAdminMenu {
                 System.out.print("Codigo de la region: ");
                 tCodReg = sc.next().charAt(0);
             }
-        } while (correctName);
+        } while (tournamentAlreadyExists);
 
         System.out.print("Puntos Max. para victoria: ");
         float tVictoryPoints = sc.nextFloat();

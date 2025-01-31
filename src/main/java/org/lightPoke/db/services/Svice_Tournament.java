@@ -47,7 +47,7 @@ public class Svice_Tournament {
     }
 
     public boolean tournamentAlreadyExists(Ent_Tournament enTournament) {
-        return repoTournament.findById(enTournament.getId()).isPresent();
+        return !repoTournament.findByNameAndRegion(enTournament.getName(), enTournament.getRegion()).isEmpty();
     }
 
     public List<Ent_Tournament> getTournamentsByUserId(int id) {

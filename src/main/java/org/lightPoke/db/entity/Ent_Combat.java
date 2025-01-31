@@ -41,6 +41,8 @@ public class Ent_Combat {
         this.tournament = tournament;
     }
 
+    public Ent_Combat() {}
+
     public int getId() {
         return this.id;
     }

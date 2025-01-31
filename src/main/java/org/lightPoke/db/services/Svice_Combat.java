@@ -34,7 +34,7 @@ public class Svice_Combat {
 
     public boolean isTrainerInAnyCombat(int trainer_id) {
         List<Ent_Combat> combats = repoCombat.findByTrainerId(trainer_id);
-        return combats != null || !combats.isEmpty();
+        return combats != null && !combats.isEmpty();
     }
 
     public void addTrainerToTournamentCombat(int trainer_id, int tournament_id) {

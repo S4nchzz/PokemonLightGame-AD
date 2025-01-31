@@ -7,9 +7,9 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface Repo_JoinTournamentRequest extends JpaRepository<Ent_JoinTournamentRequest, Integer> {
-    @Query("select j from pkm_join_tournament_req j where j.entTournament = ?1")
+    @Query("select j from pkm_join_tournament_req j where j.entTournament.id = ?1")
     List<Ent_JoinTournamentRequest> findByTournamentId(int id);
 
-    @Query("select j from pkm_join_tournament_req j where j.entTrainer = ?1")
-    Repo_JoinTournamentRequest findByTrainerId(int trainerId);
+    @Query("select j from pkm_join_tournament_req j where j.entTrainer.id = ?1")
+    List<Ent_JoinTournamentRequest> findByTrainerId(int trainerId);
 }
