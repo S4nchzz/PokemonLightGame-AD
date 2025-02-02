@@ -24,7 +24,9 @@ import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -90,7 +92,9 @@ public class AdminTournamentMenu {
                 case 3 -> {
                     viewTournamentRequest(tournament);
                 }
-                case 4 -> {}
+                case 4 -> {
+                    fight(tournament);
+                }
                 case 5 -> {
                     keepLooping = false; // La pila de ejecucion sigue ahi anque se entre a .main cuando la pilla acabe en este .main volvera a este loop
                     mainMenu.openMainMenu();
@@ -98,6 +102,50 @@ public class AdminTournamentMenu {
             }
 
         } while (keepLooping);
+    }
+
+    private void fight(Ent_Tournament tournament) {
+        List<Ent_Combat> combats = removeUnreadyCombats(serviceCombat.getCombatsByTournamentId(tournament.getId()));
+
+        boolean choiced = false;
+        int choicePos = 0;
+
+        do {
+            int index = 1;
+            for (Ent_Combat c : combats) {
+                if (c.getTrainer_1() != null && c.getTrainer_2() != null) {
+                    System.out.println(index + " | " + c.getTrainer_1().getUsername() + " /vs/ " + c.getTrainer_2().getUsername());
+                    index++;
+                }
+            }
+
+            Scanner sc = new Scanner(System.in);
+            System.out.print("?: ");
+            choicePos = sc.nextInt() - 1;
+
+            if (choicePos >= 0 && choicePos < combats.size()) {
+                choiced = true;
+            } else {
+                System.out.println("No se ha encontrado la batalla...");
+            }
+        } while(!choiced);
+
+        Ent_Combat combatChoiced = combats.get(choicePos);
+
+        final int randomizedWinner = new Random().nextInt(2);
+        if (randomizedWinner == 0) {
+            combatChoiced.setC_winner(combatChoiced.getTrainer_1());
+        } else if (randomizedWinner == 1) {
+            combatChoiced.setC_winner(combatChoiced.getTrainer_2());
+        }
+
+        serviceCombat.updateCombat(combatChoiced);
+    }
+
+    private List<Ent_Combat> removeUnreadyCombats(List<Ent_Combat> combats) {
+        combats.removeIf(nextCombat -> nextCombat.getTrainer_1() == null || nextCombat.getTrainer_2() == null || nextCombat.getC_winner() != null);
+
+        return combats;
     }
 
     private void viewTournamentRequest(Ent_Tournament tournament) {
@@ -141,9 +189,9 @@ public class AdminTournamentMenu {
 
         if (operation.equalsIgnoreCase("Accept")) {
             serviceCombat.addTrainerToTournamentCombat(requests.get(choice - 1).getTrainer().getId(), requests.get(choice - 1).getTournament().getId());
-            serviceJoinTournamentRequest.deleteRequest(new Ent_JoinTournamentRequest(requests.get(choice - 1).getTrainer(), tournament));
-        } else {
-            serviceJoinTournamentRequest.deleteRequest(new Ent_JoinTournamentRequest(requests.get(choice - 1).getTrainer(), tournament));
+            serviceJoinTournamentRequest.deleteRequest(requests.get(choice - 1).getId());
+        } else if (operation.equalsIgnoreCase("Decline")){
+            serviceJoinTournamentRequest.deleteRequest(requests.get(choice - 1).getId());
         }
     }
 
@@ -226,7 +274,7 @@ public class AdminTournamentMenu {
 
 
         if (tournamentDTO.getTWinner() != null) {
-            Text eleWinnerText = document.createTextNode(String.valueOf(tournamentDTO.getTWinner()));
+            Text eleWinnerText = document.createTextNode(String.valueOf(tournamentDTO.getTWinner().getUsername()));
             eleWinner.appendChild(eleWinnerText);
         }
 

@@ -1,1 +1,30 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><t1><torneo><id>1</id><name>t1</name><cod_Region>1</cod_Region><victory_points>1.0</victory_points><winner/><combates><combate><date/><trainer_1/><trainer_2/><combatWinner/></combate><combate><date/><trainer_1/><trainer_2/><combatWinner/></combate><combate><date/><trainer_1/><trainer_2/><combatWinner/></combate></combates></torneo></t1>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<t1>
+    <torneo>
+        <id>1</id>
+        <name>t1</name>
+        <cod_Region>1</cod_Region>
+        <victory_points>1.0</victory_points>
+        <winner/>
+        <combates>
+            <combate>
+                <date/>
+                <trainer_1>a</trainer_1>
+                <trainer_2>b</trainer_2>
+                <combatWinner>b</combatWinner>
+            </combate>
+            <combate>
+                <date/>
+                <trainer_1>a</trainer_1>
+                <trainer_2>c</trainer_2>
+                <combatWinner>a</combatWinner>
+            </combate>
+            <combate>
+                <date/>
+                <trainer_1>b</trainer_1>
+                <trainer_2>c</trainer_2>
+                <combatWinner>c</combatWinner>
+            </combate>
+        </combates>
+    </torneo>
+</t1>

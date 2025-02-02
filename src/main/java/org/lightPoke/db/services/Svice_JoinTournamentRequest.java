@@ -23,7 +23,7 @@ public class Svice_JoinTournamentRequest {
 
     public boolean tournamentRequestsIsEmpty(final int t_id) {
         List<Ent_JoinTournamentRequest> requests = repoJoinTournamentRequest.findByTournamentId(t_id);
-        return requests == null;
+        return requests != null && requests.isEmpty();
     }
 
     public boolean trainerHasPendingRequests(int trainer_id) {
@@ -31,7 +31,7 @@ public class Svice_JoinTournamentRequest {
         return requests != null && !requests.isEmpty();
     }
 
-    public void deleteRequest(Ent_JoinTournamentRequest entJoinTournamentRequest) {
-        repoJoinTournamentRequest.delete(entJoinTournamentRequest);
+    public void deleteRequest(int id) {
+        repoJoinTournamentRequest.deleteById(id);
     }
 }

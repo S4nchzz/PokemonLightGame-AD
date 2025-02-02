@@ -101,7 +101,7 @@ public class GeneralAdminMenu {
 
         Tournament t = applicationContext.getBean(Tournament.class, tName, tCodReg, tVictoryPoints);
         while (t.getAdminTournament() == null) {
-            System.out.println("El usuario ya existe.");
+
             t.generateTournamentAdmin();
         }
 

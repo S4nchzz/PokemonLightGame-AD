@@ -44,24 +44,50 @@ public class Ent_Combat {
     public Ent_Combat() {}
 
     public int getId() {
-        return this.id;
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getDate() {
         return date;
     }
 
-    public Ent_Tournament getTournament() { return this.tournament; }
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public Ent_Tournament getTournament() {
+        return tournament;
+    }
+
+    public void setTournament(Ent_Tournament tournament) {
+        this.tournament = tournament;
+    }
 
     public Ent_Trainer getTrainer_1() {
         return trainer_1;
+    }
+
+    public void setTrainer_1(Ent_Trainer trainer_1) {
+        this.trainer_1 = trainer_1;
     }
 
     public Ent_Trainer getTrainer_2() {
         return trainer_2;
     }
 
+    public void setTrainer_2(Ent_Trainer trainer_2) {
+        this.trainer_2 = trainer_2;
+    }
+
     public Ent_Trainer getC_winner() {
         return c_winner;
+    }
+
+    public void setC_winner(Ent_Trainer c_winner) {
+        this.c_winner = c_winner;
     }
 }

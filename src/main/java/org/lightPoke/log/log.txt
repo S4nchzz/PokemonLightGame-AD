@@ -225,3 +225,54 @@
 [2/2/2025 | 22:20:42] -- User t1admin logged succesfully
 [2/2/2025 | 22:21:18] -- User iyan logged succesfully
 [2/2/2025 | 22:21:21] -- User t1admin logged succesfully
+[2/2/2025 | 22:37:29] -- User t1admin logged succesfully
+[2/2/2025 | 22:39:56] -- User iyan logged succesfully
+[2/2/2025 | 22:40:5] -- User t1admin already exist in credentialsFile or database
+[2/2/2025 | 22:40:26] -- User t1admin has been registrated
+[2/2/2025 | 22:40:26] -- Tournaments.dat not found or error on reading
+[2/2/2025 | 22:40:26] -- Tournament null added.
+[2/2/2025 | 22:40:45] -- User t1admin logged succesfully
+[2/2/2025 | 22:41:38] -- User t1admin logged succesfully
+[2/2/2025 | 22:41:45] -- User a has been registrated
+[2/2/2025 | 22:41:45] -- Trainer a log in succesfully
+[2/2/2025 | 22:41:49] -- User iyan logged succesfully
+[2/2/2025 | 22:41:52] -- User t1admin not found
+[2/2/2025 | 22:41:55] -- User t1admimn not found
+[2/2/2025 | 22:41:58] -- User t1admin logged succesfully
+[2/2/2025 | 22:42:44] -- User b has been registrated
+[2/2/2025 | 22:42:44] -- Trainer b log in succesfully
+[2/2/2025 | 22:42:49] -- User b logged succesfully
+[2/2/2025 | 22:42:49] -- Trainer b log in succesfully
+[2/2/2025 | 22:42:53] -- User iyan logged succesfully
+[2/2/2025 | 22:43:46] -- User t1admin logged succesfully
+[2/2/2025 | 22:44:2] -- User c has been registrated
+[2/2/2025 | 22:44:2] -- Trainer c log in succesfully
+[2/2/2025 | 22:44:6] -- User t1admin logged succesfully
+[2/2/2025 | 22:44:25] -- User t1admin logged succesfully
+[2/2/2025 | 22:45:42] -- User t1admin logged succesfully
+[2/2/2025 | 23:19:24] -- User t1admin logged succesfully
+[2/2/2025 | 23:21:32] -- User t1admin logged succesfully
+[2/2/2025 | 23:23:15] -- User t1admin logged succesfully
+[2/2/2025 | 23:28:12] -- User t1admin logged succesfully
+[2/2/2025 | 23:28:41] -- User t1admin logged succesfully
+[2/2/2025 | 23:31:52] -- User t1admin logged succesfully
+[2/2/2025 | 23:40:29] -- User t1admin logged succesfully
+[2/2/2025 | 23:48:17] -- User t1admin logged succesfully
+[2/2/2025 | 23:59:3] -- User iyan logged succesfully
+[2/2/2025 | 23:59:14] -- User t1admin has been registrated
+[2/2/2025 | 23:59:14] -- Tournaments.dat not found or error on reading
+[2/2/2025 | 23:59:14] -- Tournament null added.
+[2/2/2025 | 23:59:39] -- User a has been registrated
+[2/2/2025 | 23:59:39] -- Trainer a log in succesfully
+[2/2/2025 | 23:59:43] -- User b has been registrated
+[2/2/2025 | 23:59:43] -- Trainer b log in succesfully
+[2/2/2025 | 23:59:48] -- User c has been registrated
+[2/2/2025 | 23:59:48] -- Trainer c log in succesfully
+[2/2/2025 | 23:59:51] -- User a logged succesfully
+[2/2/2025 | 23:59:51] -- Trainer a log in succesfully
+[2/2/2025 | 23:59:54] -- User t1admin logged succesfully
+[3/2/2025 | 0:4:40] -- User iyan logged succesfully
+[3/2/2025 | 0:4:53] -- User t1admin already exist in credentialsFile or database
+[3/2/2025 | 0:4:59] -- User t2admin has been registrated
+[3/2/2025 | 0:4:59] -- Tournaments.dat not found or error on reading
+[3/2/2025 | 0:4:59] -- Tournament null added.

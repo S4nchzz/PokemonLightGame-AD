@@ -67,6 +67,7 @@ public class Register {
         BufferedWriter writer = null;
         try {
             if (userExistInFile(username) || serviceAdminInT.userExistInDatabase(username)) {
+                System.out.println("El usuario ya existe.");
                 log.writeLog("User " + username + " already exist in credentialsFile or database");
                 return null;
             }

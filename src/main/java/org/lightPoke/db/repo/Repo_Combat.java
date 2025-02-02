@@ -19,7 +19,6 @@ public interface Repo_Combat extends JpaRepository<Ent_Combat, Integer> {
     @Query("select c from pkm_combat c where c.c_winner.id = ?1")
     List<Ent_Combat> findByWinnerId(int trainerId);
 
-    // HARD QUERY
-    @Query("select c from pkm_combat c")
-    void addTrainerToTournamentCombat(int trainerId, int tournamentId);
+    @Query("select c from pkm_combat c where c.tournament.id = ?1")
+    List<Ent_Combat> findCombatsByTournamentId(int tournamentId);
 }
