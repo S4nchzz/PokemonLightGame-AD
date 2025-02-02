@@ -9,11 +9,11 @@ public class Ent_JoinTournamentRequest {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "trainer_id")
     private Ent_Trainer entTrainer;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "tournament_id")
     private Ent_Tournament entTournament;
 

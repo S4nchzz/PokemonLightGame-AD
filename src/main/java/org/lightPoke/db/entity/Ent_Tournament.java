@@ -18,7 +18,7 @@ public class Ent_Tournament {
     @Column(name = "victoryPoints")
     private float victoryPoints;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "t_winner")
     private Ent_Trainer t_winner;
 

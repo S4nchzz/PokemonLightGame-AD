@@ -243,16 +243,29 @@ public class AdminTournamentMenu {
             Element winner = document.createElement("combatWinner");
 
             Text dateText = document.createTextNode(c.getDate());
-            Text trainer_1Text = document.createTextNode(c.getTrainer_1().getName());
-            Text trainer_2Text = document.createTextNode(c.getTrainer_2().getName());
+
+            String trainer1NameNullSafety = "";
+            if (c.getTrainer_1() != null) {
+                trainer1NameNullSafety = c.getTrainer_1().getName();
+            }
+            Text trainer_1Text = document.createTextNode(trainer1NameNullSafety);
+
+            String trainer2NameNullSafety = "";
+            if (c.getTrainer_2() != null) {
+                trainer2NameNullSafety = c.getTrainer_2().getName();
+            }
+            Text trainer_2Text = document.createTextNode(trainer2NameNullSafety);
+
+            String winnerNameNullSafety = "";
+            if (c.getC_winner() != null) {
+                winnerNameNullSafety = c.getC_winner().getName();
+            }
+            Text winnerText = document.createTextNode(winnerNameNullSafety);
 
             date.appendChild(dateText);
             trainer_1.appendChild(trainer_1Text);
             trainer_2.appendChild(trainer_2Text);
-            if (c.getC_winner() != null) {
-                Text winnerText = document.createTextNode(c.getC_winner().getName());
-                winner.appendChild(winnerText);
-            }
+            winner.appendChild(winnerText);
 
             combat.appendChild(date);
             combat.appendChild(trainer_1);
