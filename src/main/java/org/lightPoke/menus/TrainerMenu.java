@@ -83,7 +83,10 @@ public class TrainerMenu {
         }
 
         switch(choice) {
-            case 1 -> exportLicense(trainerEntity);
+            case 1 -> {
+                exportLicense(trainerEntity);
+                openMenu(trainerEntity);
+            }
             case 2 -> {
                 mainMenu.openMainMenu();
             }

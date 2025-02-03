@@ -62,4 +62,8 @@ public class Ent_Tournament {
     public Ent_Trainer getTWinner() {
         return this.t_winner;
     }
+
+    public void setWinner(Ent_Trainer winner) {
+        this.t_winner = winner;
+    }
 }

@@ -37,6 +37,8 @@ import jakarta.persistence.*;
         return points;
     }
 
+    public void setPoints(final float points) { this.points = points; }
+
     public int getnVictories() {
         return nVictories;
     }

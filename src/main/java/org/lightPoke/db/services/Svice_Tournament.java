@@ -51,11 +51,11 @@ public class Svice_Tournament {
     }
 
     public List<Ent_Tournament> getTournamentsByUserId(int id) {
-        List<Ent_Combat> combats =  repoCombat.findByTrainerId(id);
-
+        List<Integer> tournamentsOnInt = repoCombat.findDistinctByTrainerId(id);
         List<Ent_Tournament> tournaments = new ArrayList<>();
-        for (Ent_Combat combat : combats) {
-            tournaments.add(repoTournament.findById(combat.getTournament().getId()).get());
+
+        for (Integer i : tournamentsOnInt) {
+            tournaments.add(repoTournament.findById(i).get());
         }
 
         return tournaments;

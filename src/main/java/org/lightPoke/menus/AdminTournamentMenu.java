@@ -1,16 +1,11 @@
 package org.lightPoke.menus;
 
 import org.lightPoke.Game;
-import org.lightPoke.db.entity.Ent_At_InTournament;
-import org.lightPoke.db.entity.Ent_Combat;
-import org.lightPoke.db.entity.Ent_JoinTournamentRequest;
-import org.lightPoke.db.entity.Ent_Tournament;
-import org.lightPoke.db.services.Svice_Admin_InTournament;
-import org.lightPoke.db.services.Svice_Combat;
-import org.lightPoke.db.services.Svice_JoinTournamentRequest;
-import org.lightPoke.db.services.Svice_Tournament;
+import org.lightPoke.db.entity.*;
+import org.lightPoke.db.services.*;
 import org.lightPoke.users.ATUser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Component;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
@@ -24,6 +19,7 @@ import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
+import java.time.LocalDate;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
@@ -107,6 +103,11 @@ public class AdminTournamentMenu {
     private void fight(Ent_Tournament tournament) {
         List<Ent_Combat> combats = removeUnreadyCombats(serviceCombat.getCombatsByTournamentId(tournament.getId()));
 
+        if (combats.isEmpty()) {
+            System.out.println("No existen combates listos en el torneo");
+            return;
+        }
+
         boolean choiced = false;
         int choicePos = 0;
 
@@ -139,7 +140,12 @@ public class AdminTournamentMenu {
             combatChoiced.setC_winner(combatChoiced.getTrainer_2());
         }
 
+        LocalDate ld = LocalDate.now();
+        final String currentDate = ld.getDayOfMonth() + "/" + ld.getMonthValue() + "/" + ld.getYear();
+
+        combatChoiced.setDate(currentDate);
         serviceCombat.updateCombat(combatChoiced);
+        serviceCombat.checkTournamentWinner(tournament);
     }
 
     private List<Ent_Combat> removeUnreadyCombats(List<Ent_Combat> combats) {

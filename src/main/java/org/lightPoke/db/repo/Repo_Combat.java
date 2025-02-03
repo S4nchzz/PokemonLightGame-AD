@@ -10,6 +10,9 @@ public interface Repo_Combat extends JpaRepository<Ent_Combat, Integer> {
     @Query("select c from pkm_combat c where c.trainer_1.id = ?1 OR c.trainer_2.id = ?1")
     List<Ent_Combat> findByTrainerId(int trainer_id);
 
+    @Query("select DISTINCT c.tournament.id from pkm_combat c where c.trainer_1.id = ?1 OR c.trainer_2.id = ?1")
+    List<Integer> findDistinctByTrainerId(int trainer_id);
+
     @Query("select c from pkm_combat c where c.tournament.id = ?1")
     List<Ent_Combat> findByTournamentId(int tId);
 

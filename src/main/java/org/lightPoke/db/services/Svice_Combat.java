@@ -1,10 +1,8 @@
 package org.lightPoke.db.services;
 
-import org.lightPoke.db.entity.Ent_At_InTournament;
-import org.lightPoke.db.entity.Ent_Combat;
-import org.lightPoke.db.entity.Ent_Tournament;
-import org.lightPoke.db.entity.Ent_Trainer;
+import org.lightPoke.db.entity.*;
 import org.lightPoke.db.repo.Repo_Combat;
+import org.lightPoke.db.repo.Repo_License;
 import org.lightPoke.db.repo.Repo_Tournament;
 import org.lightPoke.db.repo.Repo_Trainer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +20,9 @@ public class Svice_Combat {
 
     @Autowired
     private Repo_Trainer repoTrainer;
+
+    @Autowired
+    private Repo_License repoLicense;
 
     public List<Ent_Combat> getCombatsByTournamentId(final int t_id) {
         return repoCombat.findByTournamentId(t_id);
@@ -105,5 +106,53 @@ public class Svice_Combat {
 
     public void updateCombat(Ent_Combat combatChoiced) {
         repoCombat.saveAndFlush(combatChoiced);
+    }
+
+    public void checkTournamentWinner(Ent_Tournament tournament) {
+        List<Ent_Combat> combats = repoCombat.findCombatsByTournamentId(tournament.getId());
+
+        int nCombatsEnded = 0;
+
+        for (Ent_Combat c : combats) {
+            if (c.getTrainer_1() != null && c.getTrainer_2() != null && c.getC_winner() != null) {
+                nCombatsEnded++;
+            }
+        }
+
+        // Todos los combates han terminado
+        if (nCombatsEnded == combats.size()) {
+            if (combats.getFirst().getC_winner() == combats.get(1).getC_winner() || combats.getFirst().getC_winner() == combats.getLast().getC_winner()) {
+                tournament.setWinner(combats.getFirst().getC_winner());
+
+                Ent_License winnerLicense = combats.getFirst().getC_winner().getLicense();
+                winnerLicense.setPoints(tournament.getVictoryPoints());
+
+                repoLicense.save(winnerLicense);
+            } else if (combats.get(1).getC_winner() == combats.getFirst().getC_winner() || combats.get(1).getC_winner() == combats.getLast().getC_winner()) {
+                tournament.setWinner(combats.get(1).getC_winner());
+
+                Ent_License winnerLicense = combats.get(1).getC_winner().getLicense();
+                winnerLicense.setPoints(tournament.getVictoryPoints());
+
+                repoLicense.save(winnerLicense);
+            } else if (combats.getLast().getC_winner() == combats.get(1).getC_winner() || combats.getLast().getC_winner() == combats.getFirst().getC_winner()) {
+                tournament.setWinner(combats.getLast().getC_winner());
+
+                Ent_License winnerLicense = combats.getLast().getC_winner().getLicense();
+                winnerLicense.setPoints(tournament.getVictoryPoints());
+
+                repoLicense.save(winnerLicense);
+            } else {
+                for (Ent_Combat c : combats) {
+                    // No hubo un ganador se resetean los ganadores
+                    c.setC_winner(null);
+                    repoCombat.save(c);
+                }
+
+                return;
+            }
+
+            repoTournament.save(tournament);
+        }
     }
 }
