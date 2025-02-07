@@ -12,10 +12,10 @@ public class Ent_Trainer {
     @Column(name = "username", unique = true)
     private String username;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "nationality")
+    @Column(name = "nationality", nullable = false)
     private String nationality;
 
     @OneToOne

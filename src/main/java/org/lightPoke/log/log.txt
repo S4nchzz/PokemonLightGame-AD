@@ -511,3 +511,111 @@
 [3/2/2025 | 2:10:56] -- License exported
 [3/2/2025 | 2:10:56] -- Trainer a log in succesfully
 [3/2/2025 | 2:11:18] -- User t1admin logged succesfully
+[4/2/2025 | 18:20:51] -- User a has been registrated
+[4/2/2025 | 18:20:51] -- Trainer a log in succesfully
+[4/2/2025 | 18:20:51] -- License exported
+[4/2/2025 | 18:20:51] -- Trainer a log in succesfully
+[4/2/2025 | 18:21:31] -- User iyan logged succesfully
+[4/2/2025 | 18:21:57] -- User t1 has been registrated
+[4/2/2025 | 18:21:57] -- Tournaments.dat not found or error on reading
+[4/2/2025 | 18:21:57] -- Tournament null added.
+[4/2/2025 | 18:22:3] -- User a logged succesfully
+[4/2/2025 | 18:22:3] -- Trainer a log in succesfully
+[4/2/2025 | 18:22:10] -- License exported
+[4/2/2025 | 18:22:10] -- Trainer a log in succesfully
+[4/2/2025 | 18:22:14] -- License exported
+[4/2/2025 | 18:22:14] -- Trainer a log in succesfully
+[4/2/2025 | 18:22:28] -- User t1 logged succesfully
+[4/2/2025 | 18:22:36] -- User a logged succesfully
+[4/2/2025 | 18:22:36] -- Trainer a log in succesfully
+[4/2/2025 | 18:22:37] -- License exported
+[4/2/2025 | 18:22:37] -- Trainer a log in succesfully
+[4/2/2025 | 18:22:51] -- User b has been registrated
+[4/2/2025 | 18:22:51] -- Trainer b log in succesfully
+[4/2/2025 | 18:22:54] -- User c has been registrated
+[4/2/2025 | 18:22:54] -- Trainer c log in succesfully
+[4/2/2025 | 18:22:58] -- User t1 logged succesfully
+[4/2/2025 | 18:23:39] -- User a logged succesfully
+[4/2/2025 | 18:23:39] -- Trainer a log in succesfully
+[4/2/2025 | 18:23:39] -- License exported
+[4/2/2025 | 18:23:39] -- Trainer a log in succesfully
+[4/2/2025 | 18:23:55] -- User c logged succesfully
+[4/2/2025 | 18:23:55] -- Trainer c log in succesfully
+[4/2/2025 | 18:23:56] -- License exported
+[4/2/2025 | 18:23:56] -- Trainer c log in succesfully
+[6/2/2025 | 17:44:11] -- User a has been registrated
+[6/2/2025 | 17:44:11] -- Trainer a log in succesfully
+[6/2/2025 | 17:44:12] -- License exported
+[6/2/2025 | 17:44:12] -- Trainer a log in succesfully
+[6/2/2025 | 17:44:15] -- User iyan logged succesfully
+[6/2/2025 | 17:44:22] -- User t1admin has been registrated
+[6/2/2025 | 17:44:22] -- Tournaments.dat not found or error on reading
+[6/2/2025 | 17:44:22] -- Tournament null added.
+[6/2/2025 | 18:9:43] -- User iyan logged succesfully
+[6/2/2025 | 18:10:8] -- User t1admin has been registrated
+[6/2/2025 | 18:10:8] -- Tournaments.dat not found or error on reading
+[6/2/2025 | 18:10:8] -- Tournament null added.
+[6/2/2025 | 18:10:29] -- User a has been registrated
+[6/2/2025 | 18:10:29] -- Trainer a log in succesfully
+[6/2/2025 | 18:11:4] -- User b has been registrated
+[6/2/2025 | 18:11:4] -- Trainer b log in succesfully
+[6/2/2025 | 18:11:7] -- User c has been registrated
+[6/2/2025 | 18:11:7] -- Trainer c log in succesfully
+[6/2/2025 | 18:11:10] -- User iyan logged succesfully
+[6/2/2025 | 18:11:14] -- User t1admin logged succesfully
+[6/2/2025 | 18:12:59] -- User b logged succesfully
+[6/2/2025 | 18:12:59] -- Trainer b log in succesfully
+[6/2/2025 | 18:13:0] -- License exported
+[6/2/2025 | 18:13:0] -- Trainer b log in succesfully
+[7/2/2025 | 20:59:16] -- User a already exist in credentialsFile or database
+[7/2/2025 | 20:59:18] -- User a already exist in credentialsFile or database
+[7/2/2025 | 20:59:24] -- User a has been registrated
+[7/2/2025 | 20:59:24] -- Trainer a log in succesfully
+[7/2/2025 | 20:59:28] -- User a logged succesfully
+[7/2/2025 | 20:59:29] -- Trainer a log in succesfully
+[7/2/2025 | 20:59:30] -- License exported
+[7/2/2025 | 20:59:30] -- Trainer a log in succesfully
+[7/2/2025 | 20:59:34] -- User iyan logged succesfully
+[7/2/2025 | 20:59:48] -- User iyan logged succesfully
+[7/2/2025 | 21:0:4] -- User t1admin has been registrated
+[7/2/2025 | 21:0:4] -- Tournaments.dat not found or error on reading
+[7/2/2025 | 21:0:4] -- Tournament null added.
+[7/2/2025 | 21:0:9] -- User a logged succesfully
+[7/2/2025 | 21:0:9] -- Trainer a log in succesfully
+[7/2/2025 | 21:0:12] -- License exported
+[7/2/2025 | 21:0:12] -- Trainer a log in succesfully
+[7/2/2025 | 21:0:29] -- User t1admin logged succesfully
+[7/2/2025 | 21:1:27] -- User b has been registrated
+[7/2/2025 | 21:1:27] -- Trainer b log in succesfully
+[7/2/2025 | 21:1:33] -- User b logged succesfully
+[7/2/2025 | 21:1:33] -- Trainer b log in succesfully
+[7/2/2025 | 21:1:36] -- User c has been registrated
+[7/2/2025 | 21:1:36] -- Trainer c log in succesfully
+[7/2/2025 | 21:1:40] -- User b logged succesfully
+[7/2/2025 | 21:1:40] -- Trainer b log in succesfully
+[7/2/2025 | 21:1:46] -- User t1admin logged succesfully
+[7/2/2025 | 21:7:37] -- User a logged succesfully
+[7/2/2025 | 21:7:37] -- Trainer a log in succesfully
+[7/2/2025 | 21:7:37] -- License exported
+[7/2/2025 | 21:7:37] -- Trainer a log in succesfully
+[7/2/2025 | 21:7:47] -- User b logged succesfully
+[7/2/2025 | 21:7:47] -- Trainer b log in succesfully
+[7/2/2025 | 21:7:48] -- License exported
+[7/2/2025 | 21:7:48] -- Trainer b log in succesfully
+[7/2/2025 | 21:8:6] -- User c logged succesfully
+[7/2/2025 | 21:8:6] -- Trainer c log in succesfully
+[7/2/2025 | 21:8:16] -- License exported
+[7/2/2025 | 21:8:16] -- Trainer c log in succesfully
+[7/2/2025 | 21:10:26] -- User a logged succesfully
+[7/2/2025 | 21:10:26] -- Trainer a log in succesfully
+[7/2/2025 | 21:10:27] -- License exported
+[7/2/2025 | 21:10:27] -- Trainer a log in succesfully
+[7/2/2025 | 21:10:31] -- User c logged succesfully
+[7/2/2025 | 21:10:31] -- Trainer c log in succesfully
+[7/2/2025 | 21:10:33] -- License exported
+[7/2/2025 | 21:10:33] -- Trainer c log in succesfully
+[7/2/2025 | 21:11:12] -- User a logged succesfully
+[7/2/2025 | 21:11:12] -- Trainer a log in succesfully
+[7/2/2025 | 21:11:14] -- License exported
+[7/2/2025 | 21:11:14] -- Trainer a log in succesfully
+[7/2/2025 | 21:11:59] -- User t1admin logged succesfully

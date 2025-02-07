@@ -8,13 +8,13 @@ import jakarta.persistence.*;
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "expedition_Date")
+    @Column(name = "expedition_Date", nullable = false)
     private String expedition_Date;
 
-    @Column(name = "points")
+    @Column(name = "points", nullable = false)
     private float points;
 
-    @Column(name = "nVictories")
+    @Column(name = "nVictories", nullable = false)
     private int nVictories;
 
     public Ent_License () {}

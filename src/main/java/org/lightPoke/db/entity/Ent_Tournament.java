@@ -9,13 +9,13 @@ public class Ent_Tournament {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "region")
+    @Column(name = "region", nullable = false)
     private char region;
 
-    @Column(name = "victoryPoints")
+    @Column(name = "victoryPoints", nullable = false)
     private float victoryPoints;
 
     @ManyToOne

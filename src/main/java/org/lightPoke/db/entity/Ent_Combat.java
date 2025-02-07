@@ -13,7 +13,7 @@ public class Ent_Combat {
     private String date;
 
     @ManyToOne
-    @JoinColumn(name = "tournament")
+    @JoinColumn(name = "tournament", nullable = false)
     private Ent_Tournament tournament;
 
     @ManyToOne

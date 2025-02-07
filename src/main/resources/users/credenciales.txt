@@ -1,5 +1,1 @@
 iyan a AG 12
-a a TR 13
-b b TR 14
-c c TR 16
-t1admin t1 AT 17
