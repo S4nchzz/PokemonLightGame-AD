@@ -1,5 +1,7 @@
 package org.lightPoke.auth;
 
+import org.lightPoke.db.db4o.entities.UserEnt_db4o;
+import org.lightPoke.db.db4o.services.UserService_db4o;
 import org.lightPoke.log.LogManagement;
 import org.lightPoke.users.AGUser;
 import org.lightPoke.users.ATUser;
@@ -15,12 +17,13 @@ import java.io.*;
  */
 public class Login {
     private static Login instance;
-    private File credentialsFile;
     private final LogManagement log;
 
+    private UserService_db4o userServiceDb4o;
+
     private Login() {
-        credentialsFile = new File("./src/main/resources/users/credenciales.txt");
         log = LogManagement.getInstance();
+        this.userServiceDb4o = new UserService_db4o();
     }
 
     /**
@@ -51,26 +54,17 @@ public class Login {
      * @return Objecto de tipo User con los datos del usuario + su rol
      */
     public User login(final String username, final String password) {
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(credentialsFile));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String [] lineValue = line.split(" ");
-
-                if (username.equals(lineValue[0]) && password.equals(lineValue[1])) {
-                    log.writeLog("User " + username + " logged succesfully");
-                    switch (lineValue[2].toUpperCase()) {
-                        case "TR" -> {return new TRUser(username, password, 1);} // Entrenador
-                        case "AT" -> {return new ATUser(username, password, 2);} // Administrador de torneos
-                        case "AG" -> {return new AGUser(username, password, 3);} // Administrador general
-                    }
-                }
+        final UserEnt_db4o user = userServiceDb4o.findByCredentials(username, password);
+        if (user != null) {
+            log.writeLog("User " + username + " logged succesfully");
+            switch (user.getType().toUpperCase()) {
+                case "TR" -> {return new TRUser(username, password, 1);} // Entrenador
+                case "AT" -> {return new ATUser(username, password, 2);} // Administrador de torneos
+                case "AG" -> {return new AGUser(username, password, 3);} // Administrador general
             }
-
-            log.writeLog("User " + username + " not found");
-        } catch (IOException e) {
-            log.writeLog("Failed to read \"credenciales.txt\", make sure this file exist");
         }
+
+        log.writeLog("User " + username + " not found");
         return null;
     }
 }

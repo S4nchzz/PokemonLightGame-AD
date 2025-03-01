@@ -1,7 +1,9 @@
 package org.lightPoke.menus;
 
+import com.db4o.ObjectContainer;
 import org.lightPoke.auth.Login;
 import org.lightPoke.auth.Register;
+import org.lightPoke.db.db4o.DB4oInstance;
 import org.lightPoke.db.entity.Ent_Trainer;
 import org.lightPoke.db.services.Svice_Trainer;
 import org.lightPoke.users.ATUser;
@@ -10,6 +12,7 @@ import org.lightPoke.users.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
 import java.util.Scanner;
 
 @Component
@@ -46,7 +49,6 @@ public class MainMenu {
             System.out.println("3. Exit \n");
             System.out.print("Please select an option: ");
             choice = sc.nextInt();
-
         }
 
         switch (choice) {

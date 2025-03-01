@@ -2,6 +2,8 @@ package org.lightPoke.auth;
 
 import org.lightPoke.auth.nacionality.Pais;
 import org.lightPoke.auth.nacionality.PaisesLoader;
+import org.lightPoke.db.db4o.entities.UserEnt_db4o;
+import org.lightPoke.db.db4o.services.UserService_db4o;
 import org.lightPoke.db.services.Svice_Admin_InTournament;
 import org.lightPoke.db.services.Svice_Trainer;
 import org.lightPoke.log.LogManagement;
@@ -9,14 +11,11 @@ import org.lightPoke.users.ATUser;
 import org.lightPoke.users.TRUser;
 import org.lightPoke.users.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Stream;
 
 /**
  * Clase singelton que representa toda la interaccion
@@ -26,7 +25,6 @@ import java.util.stream.Stream;
 
 @Component
 public class Register {
-    private File credentialsFile;
     private final LogManagement log;
 
     @Autowired
@@ -35,9 +33,11 @@ public class Register {
     @Autowired
     private Svice_Trainer serviceTrainer;
 
+    private UserService_db4o userServiceDb4o;
+
     public Register() {
-        credentialsFile = new File("./src/main/resources/users/credenciales.txt");
         log = LogManagement.getInstance();
+        this.userServiceDb4o = new UserService_db4o();
     }
 
     /**
@@ -65,44 +65,33 @@ public class Register {
      */
     public User register(final String username, final String password, final String type) {
         BufferedWriter writer = null;
-        try {
-            if (userExistInFile(username) || serviceAdminInT.userExistInDatabase(username)) {
-                System.out.println("El usuario ya existe.");
-                log.writeLog("User " + username + " already exist in credentialsFile or database");
-                return null;
-            }
-
-            if (!type.equalsIgnoreCase("AT") && !type.equalsIgnoreCase("AG") && !type.equalsIgnoreCase("TR")) {
-                log.writeLog("Type on registration doesn't match the required types -- Provided: " + type);
-                return null;
-            }
-
-            User user = null;
-            switch(type.toUpperCase()) {
-                case "TR" -> {
-                    user = requestInfo(username, password);
-
-                    serviceTrainer.createTrainer(user);
-
-                    System.out.println((TRUser)user);
-                }
-                case "AT" -> {user = new ATUser(username, password, 2);}
-            }
-
-            writer = new BufferedWriter(new FileWriter(credentialsFile, true));
-
-            writer.write(username + " " + password + " " + type + " " + getNextId());
-
-            writer.newLine();
-            writer.close();
-
-            log.writeLog("User " + username + " has been registrated");
-            return user;
-        } catch (IOException e) {
-            log.writeLog("Error while reading credentialsFile -- err register");
+        if (userExistInDb4o(username) || serviceAdminInT.userExistInDatabase(username)) {
+            System.out.println("El usuario ya existe.");
+            log.writeLog("User " + username + " already exist in credentialsFile or database");
+            return null;
         }
 
-        return null;
+        if (!type.equalsIgnoreCase("AT") && !type.equalsIgnoreCase("AG") && !type.equalsIgnoreCase("TR")) {
+            log.writeLog("Type on registration doesn't match the required types -- Provided: " + type);
+            return null;
+        }
+
+        User user = null;
+        switch(type.toUpperCase()) {
+            case "TR" -> {
+                user = requestInfo(username, password);
+
+                serviceTrainer.createTrainer(user);
+
+                System.out.println((TRUser)user);
+            }
+            case "AT" -> {user = new ATUser(username, password, 2);}
+        }
+
+        userServiceDb4o.save(new UserEnt_db4o(username, password, type, getNextId()));
+
+        log.writeLog("User " + username + " has been registrated");
+        return user;
     }
 
     /**
@@ -112,32 +101,13 @@ public class Register {
      * @return Ultimo ID + 1
      */
     public int getNextId() {
-        BufferedReader reader = null;
+        List<UserEnt_db4o> user = userServiceDb4o.findAll();
 
-        try {
-            reader = new BufferedReader(new FileReader(credentialsFile));
-            Stream<String> lines = reader.lines();
-
-            String [] lineValues = new String[3];
-            int lineCount = 0;
-            List<String> lineList = lines.toList();
-
-            for (String line : lineList) {
-                if (lineCount + 1 == lineList.size()) {
-                    lineValues = line.split(" ");
-                }
-
-                lineCount++;
-            }
-
-            if (lineValues.length >= 3) {
-                return Integer.parseInt(lineValues[3]) + 1;
-            }
-        } catch (IOException e) {
-
+        if (user != null) {
+            return user.getLast().getId() + 1;
         }
 
-        return -1;
+        return 0;
     }
 
     /**
@@ -165,7 +135,7 @@ public class Register {
         System.out.print("?: ");
         String nacionality = sc.next();
 
-        while (!checkIfNacionalityExist(nacionality)){
+        while (!checkIfNationalityExist(nacionality)){
             System.out.println("La nacionaldad elegida no forma parte de la lista, intentelo de nuevo");
             System.out.println(nacionalityList());
             System.out.print("?: ");
@@ -200,7 +170,7 @@ public class Register {
      * @param userNacionality Nacionalidad proporcionada por el usuario
      * @return true si se ha encontrado una nacionalidad | false si no exise dicha nacionalidad
      */
-    private boolean checkIfNacionalityExist(final String userNacionality) {
+    private boolean checkIfNationalityExist(final String userNacionality) {
         for (Pais c : PaisesLoader.getCountriesList()) {
             if (userNacionality.equalsIgnoreCase(c.getId()) ||userNacionality.equalsIgnoreCase(c.getNombre())) {
                 return true;
@@ -227,25 +197,7 @@ public class Register {
      * @param username Usuario a verificar si existe o no
      * @return true si el usuario ya existe | false si el usuario no existe
      */
-    private boolean userExistInFile(final String username) {
-        BufferedReader reader = null;
-
-        try {
-            reader = new BufferedReader(new FileReader(credentialsFile));
-
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String [] lineValues = line.split(" ");
-                if (username.equals(lineValues[0])) {
-                    return true;
-                }
-            }
-
-            reader.close();
-        } catch (IOException e) {
-
-        }
-
-        return false;
+    private boolean userExistInDb4o(final String username) {
+        return userServiceDb4o.findByUsername(username) != null;
     }
 }
