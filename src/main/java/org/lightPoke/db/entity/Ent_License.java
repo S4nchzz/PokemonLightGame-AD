@@ -42,4 +42,8 @@ import jakarta.persistence.*;
     public int getnVictories() {
         return nVictories;
     }
+
+    public void addVictory(int newVictory) {
+        this.nVictories += newVictory;
+    }
 }

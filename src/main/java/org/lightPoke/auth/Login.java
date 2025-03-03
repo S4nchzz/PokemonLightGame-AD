@@ -1,5 +1,6 @@
 package org.lightPoke.auth;
 
+import org.lightPoke.db.db4o.DB4oInstance;
 import org.lightPoke.db.db4o.entities.UserEnt_db4o;
 import org.lightPoke.db.db4o.services.UserService_db4o;
 import org.lightPoke.log.LogManagement;
@@ -7,6 +8,8 @@ import org.lightPoke.users.AGUser;
 import org.lightPoke.users.ATUser;
 import org.lightPoke.users.TRUser;
 import org.lightPoke.users.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.io.*;
 
@@ -15,23 +18,16 @@ import java.io.*;
  * del usuario invitado con el sistema de Login
  * @author Iyan Sanchez da Costa
  */
+@Component
 public class Login {
     private static Login instance;
     private final LogManagement log;
 
+    @Autowired
     private UserService_db4o userServiceDb4o;
 
-    private Login() {
+    public Login() {
         log = LogManagement.getInstance();
-        this.userServiceDb4o = new UserService_db4o();
-    }
-
-    /**
-     * Metodo que retorna una unica instancia de tipo Login.class
-     * @return Nueva instancia si no existia previamente
-     */
-    public static Login getInstance() {
-        return instance == null ? instance = new Login() : instance;
     }
 
     /**

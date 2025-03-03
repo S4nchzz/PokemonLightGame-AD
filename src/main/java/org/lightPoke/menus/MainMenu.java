@@ -1,6 +1,5 @@
 package org.lightPoke.menus;
 
-import com.db4o.ObjectContainer;
 import org.lightPoke.auth.Login;
 import org.lightPoke.auth.Register;
 import org.lightPoke.db.db4o.DB4oInstance;
@@ -22,6 +21,9 @@ public class MainMenu {
 
     @Autowired
     private Register reg;
+
+    @Autowired
+    private Login log;
 
     @Autowired
     private AdminTournamentMenu adminInTournamentMenu;
@@ -88,8 +90,6 @@ public class MainMenu {
 
         System.out.print("Password: ");
         final String password = sc.next();
-
-        Login log = Login.getInstance();
 
         User user = log.login(username, password);
         if (user != null) {

@@ -39,6 +39,10 @@ public class Ent_Trainer {
         return username;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public String getName() {
         return name;
     }
@@ -50,6 +54,8 @@ public class Ent_Trainer {
     public Ent_License getLicense() {
         return entLicense;
     }
+
+
 
     @Override
     public String toString() {

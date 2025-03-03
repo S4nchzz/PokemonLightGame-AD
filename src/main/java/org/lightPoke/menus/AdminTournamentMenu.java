@@ -48,6 +48,9 @@ public class AdminTournamentMenu {
     @Autowired
     private Svice_Admin_InTournament serviceAdminInT;
 
+    @Autowired
+    private Svice_License serviceLicense;
+
     private ATUser tournamentAdmin;
 
     public void openMenu(final ATUser tournamentAdmin) {
@@ -92,7 +95,7 @@ public class AdminTournamentMenu {
                     fight(tournament);
                 }
                 case 5 -> {
-                    keepLooping = false; // La pila de ejecucion sigue ahi anque se entre a .main cuando la pilla acabe en este .main volvera a este loop
+                    keepLooping = false; // La pila de ejecucion sigue ahi aunque se entre a .main cuando la pila acabe en este .main volvera a este loop
                     mainMenu.openMainMenu();
                 }
             }
@@ -132,12 +135,21 @@ public class AdminTournamentMenu {
         } while(!choiced);
 
         Ent_Combat combatChoiced = combats.get(choicePos);
+        Ent_Trainer trainerWinner = null;
 
         final int randomizedWinner = new Random().nextInt(2);
         if (randomizedWinner == 0) {
             combatChoiced.setC_winner(combatChoiced.getTrainer_1());
-        } else if (randomizedWinner == 1) {
+            trainerWinner = combatChoiced.getTrainer_1();
+        } else {
             combatChoiced.setC_winner(combatChoiced.getTrainer_2());
+            trainerWinner = combatChoiced.getTrainer_2();
+        }
+
+        if (trainerWinner != null) {
+            trainerWinner.getLicense().addVictory(1);
+
+            serviceLicense.save(trainerWinner.getLicense());
         }
 
         LocalDate ld = LocalDate.now();

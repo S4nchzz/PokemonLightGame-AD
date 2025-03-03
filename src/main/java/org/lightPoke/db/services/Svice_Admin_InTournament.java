@@ -21,4 +21,8 @@ public class Svice_Admin_InTournament {
     public boolean userExistInDatabase(final String username) {
         return repoAtInTournament.findByAdmin(username) != null;
     }
+
+    public void save(Ent_At_InTournament adminInT) {
+        repoAtInTournament.save(adminInT);
+    }
 }

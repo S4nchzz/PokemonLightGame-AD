@@ -33,11 +33,11 @@ public class Register {
     @Autowired
     private Svice_Trainer serviceTrainer;
 
+    @Autowired
     private UserService_db4o userServiceDb4o;
 
     public Register() {
         log = LogManagement.getInstance();
-        this.userServiceDb4o = new UserService_db4o();
     }
 
     /**

@@ -34,4 +34,8 @@ public class Ent_At_InTournament {
     public Ent_Tournament getTournamentDTO() {
         return entTournament;
     }
+
+    public void setAdmin(String admin) {
+        this.admin = admin;
+    }
 }

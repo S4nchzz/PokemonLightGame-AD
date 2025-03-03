@@ -18,4 +18,8 @@ public class Svice_License {
 
         return repoLicense.save(new Ent_License(currentDate, 0.0f, 0));
     }
+
+    public void save(Ent_License license) {
+        repoLicense.save(license);
+    }
 }
