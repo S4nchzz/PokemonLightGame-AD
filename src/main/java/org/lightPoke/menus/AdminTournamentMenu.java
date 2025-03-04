@@ -19,6 +19,7 @@ import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Iterator;
 import java.util.List;
@@ -245,12 +246,16 @@ public class AdminTournamentMenu {
             Transformer transformer = transformerFactory.newTransformer();
 
             File resultFile = new File("./src/main/resources/src/exported_tournaments", "tournament" + tournamentDTO.getId() + ".xml");
+            if (!resultFile.exists()) {
+                resultFile.createNewFile();
+            }
+
             Source source = new DOMSource(document);
             Result resultXML = new StreamResult(resultFile);
 
             transformer.transform(source, resultXML);
 
-        } catch (ParserConfigurationException | TransformerException e) {
+        } catch (ParserConfigurationException | TransformerException | IOException e) {
             throw new RuntimeException(e);
         }
     }

@@ -1,5 +1,6 @@
 package org.lightPoke.db.services;
 
+import jakarta.transaction.Transactional;
 import org.lightPoke.db.entity.*;
 import org.lightPoke.db.repo.Repo_Trainer;
 import org.lightPoke.users.TRUser;
@@ -26,7 +27,7 @@ public class Svice_Trainer {
     }
 
     public Ent_Trainer getTrainerByUsername(final String username) {
-        return repoTrainer.findByUsername(username).getFirst();
+        return repoTrainer.findByUsername(username);
     }
 
     public Ent_Trainer getTrainerById(final int trainer_id) {
@@ -34,11 +35,9 @@ public class Svice_Trainer {
     }
 
     public void changeUsername(String username, String newUsername) {
-        List<Ent_Trainer> trainers = repoTrainer.findByUsername(username);
+        Ent_Trainer trainer = repoTrainer.findByUsername(username);
 
-        if (trainers != null && !trainers.isEmpty()) {
-            Ent_Trainer trainer = trainers.getFirst();
-
+        if (trainer != null) {
             trainer.setUsername(newUsername);
             repoTrainer.save(trainer);
         } else {

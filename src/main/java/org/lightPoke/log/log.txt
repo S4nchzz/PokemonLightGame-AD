@@ -808,3 +808,375 @@
 [3/3/2025 | 17:28:14] -- User t1admdin not found
 [3/3/2025 | 17:28:17] -- User t1admin logged succesfully
 [3/3/2025 | 17:29:26] -- User t1admin logged succesfully
+[4/3/2025 | 2:42:53] -- User iyan logged succesfully
+[4/3/2025 | 3:42:15] -- User iyan logged succesfully
+[4/3/2025 | 3:42:22] -- User t1admin has been registrated
+[4/3/2025 | 3:42:22] -- Tournaments.dat not found or error on reading
+[4/3/2025 | 3:42:22] -- Tournament null added.
+[4/3/2025 | 3:44:0] -- User iyan logged succesfully
+[4/3/2025 | 3:44:9] -- User t1admin has been registrated
+[4/3/2025 | 3:44:9] -- Tournaments.dat not found or error on reading
+[4/3/2025 | 3:44:9] -- Tournament null added.
+[4/3/2025 | 3:55:17] -- User a has been registrated
+[4/3/2025 | 3:55:17] -- Trainer a log in succesfully
+[4/3/2025 | 3:55:21] -- User iyan logged succesfully
+[4/3/2025 | 3:55:27] -- User t1admin has been registrated
+[4/3/2025 | 3:55:27] -- Tournaments.dat not found or error on reading
+[4/3/2025 | 3:55:27] -- Tournament null added.
+[4/3/2025 | 3:55:33] -- User b has been registrated
+[4/3/2025 | 3:55:33] -- Trainer b log in succesfully
+[4/3/2025 | 3:55:38] -- User c has been registrated
+[4/3/2025 | 3:55:38] -- Trainer c log in succesfully
+[4/3/2025 | 3:55:47] -- User t1admin logged succesfully
+[4/3/2025 | 3:56:1] -- User iyan logged succesfully
+[4/3/2025 | 3:56:15] -- User t1admin logged succesfully
+[4/3/2025 | 3:56:34] -- User a logged succesfully
+[4/3/2025 | 3:56:34] -- Trainer a log in succesfully
+[4/3/2025 | 3:56:37] -- User t1admin logged succesfully
+[4/3/2025 | 3:56:56] -- User iyan logged succesfully
+[4/3/2025 | 3:57:47] -- User iyan logged succesfully
+[4/3/2025 | 3:58:10] -- User iyan logged succesfully
+[4/3/2025 | 4:0:36] -- User a has been registrated
+[4/3/2025 | 4:0:36] -- Trainer a log in succesfully
+[4/3/2025 | 4:0:41] -- User b has been registrated
+[4/3/2025 | 4:0:41] -- Trainer b log in succesfully
+[4/3/2025 | 4:0:45] -- User c has been registrated
+[4/3/2025 | 4:0:45] -- Trainer c log in succesfully
+[4/3/2025 | 4:0:47] -- User iyan logged succesfully
+[4/3/2025 | 4:1:5] -- User t1admin has been registrated
+[4/3/2025 | 4:1:5] -- Tournaments.dat not found or error on reading
+[4/3/2025 | 4:1:5] -- Tournament null added.
+[4/3/2025 | 4:1:9] -- User a logged succesfully
+[4/3/2025 | 4:1:9] -- Trainer a log in succesfully
+[4/3/2025 | 4:1:12] -- User b logged succesfully
+[4/3/2025 | 4:1:12] -- Trainer b log in succesfully
+[4/3/2025 | 4:1:20] -- User b logged succesfully
+[4/3/2025 | 4:1:20] -- Trainer b log in succesfully
+[4/3/2025 | 4:1:23] -- User c logged succesfully
+[4/3/2025 | 4:1:23] -- Trainer c log in succesfully
+[4/3/2025 | 4:1:27] -- User t1admin logged succesfully
+[4/3/2025 | 4:1:54] -- User iyan logged succesfully
+[4/3/2025 | 4:2:27] -- User c has been registrated
+[4/3/2025 | 4:2:27] -- Trainer c log in succesfully
+[4/3/2025 | 4:2:31] -- User t1admin logged succesfully
+[4/3/2025 | 4:2:41] -- User t1admin logged succesfully
+[4/3/2025 | 4:2:50] -- User iyan logged succesfully
+[4/3/2025 | 4:3:12] -- User b not found
+[4/3/2025 | 4:3:13] -- User a logged succesfully
+[4/3/2025 | 4:3:13] -- Trainer a log in succesfully
+[4/3/2025 | 4:3:15] -- User iyan logged succesfully
+[4/3/2025 | 4:3:22] -- User b has been registrated
+[4/3/2025 | 4:3:22] -- Trainer b log in succesfully
+[4/3/2025 | 4:3:26] -- User iyan logged succesfully
+[4/3/2025 | 4:3:40] -- User t1admin logged succesfully
+[4/3/2025 | 4:4:5] -- User c logged succesfully
+[4/3/2025 | 4:4:5] -- Trainer c log in succesfully
+[4/3/2025 | 4:4:9] -- User t1admin logged succesfully
+[4/3/2025 | 4:4:43] -- User c logged succesfully
+[4/3/2025 | 4:4:43] -- Trainer c log in succesfully
+[4/3/2025 | 4:5:5] -- User b logged succesfully
+[4/3/2025 | 4:5:5] -- Trainer b log in succesfully
+[4/3/2025 | 4:5:9] -- User t1admin logged succesfully
+[4/3/2025 | 4:8:27] -- User iyan logged succesfully
+[4/3/2025 | 4:8:50] -- User t1admin has been registrated
+[4/3/2025 | 4:8:50] -- Tournaments.dat not found or error on reading
+[4/3/2025 | 4:8:50] -- Tournament null added.
+[4/3/2025 | 4:9:18] -- User a has been registrated
+[4/3/2025 | 4:9:18] -- Trainer a log in succesfully
+[4/3/2025 | 4:9:35] -- User b has been registrated
+[4/3/2025 | 4:9:35] -- Trainer b log in succesfully
+[4/3/2025 | 4:9:42] -- User c has been registrated
+[4/3/2025 | 4:9:42] -- Trainer c log in succesfully
+[4/3/2025 | 4:9:46] -- User t1admin logged succesfully
+[4/3/2025 | 4:10:13] -- User iyan logged succesfully
+[4/3/2025 | 4:11:58] -- User t has been registrated
+[4/3/2025 | 4:11:58] -- Trainer t log in succesfully
+[4/3/2025 | 4:12:2] -- User t1admin logged succesfully
+[4/3/2025 | 4:12:21] -- User iyan logged succesfully
+[4/3/2025 | 4:14:33] -- User iyan logged succesfully
+[4/3/2025 | 4:15:30] -- User o has been registrated
+[4/3/2025 | 4:15:30] -- Trainer o log in succesfully
+[4/3/2025 | 4:15:35] -- User t1admin logged succesfully
+[4/3/2025 | 4:15:51] -- User iyan logged succesfully
+[4/3/2025 | 4:16:57] -- User a has been registrated
+[4/3/2025 | 4:16:57] -- Trainer a log in succesfully
+[4/3/2025 | 4:18:45] -- User iyan logged succesfully
+[4/3/2025 | 4:19:11] -- User iyan logged succesfully
+[4/3/2025 | 4:19:14] -- User t1admin logged succesfully
+[4/3/2025 | 4:20:49] -- User a logged succesfully
+[4/3/2025 | 4:20:49] -- Trainer a log in succesfully
+[4/3/2025 | 4:21:47] -- User g has been registrated
+[4/3/2025 | 4:21:47] -- Trainer g log in succesfully
+[4/3/2025 | 4:21:51] -- User t1admin logged succesfully
+[4/3/2025 | 4:53:32] -- User iyan logged succesfully
+[4/3/2025 | 4:53:38] -- User t1admin has been registrated
+[4/3/2025 | 4:53:38] -- Tournaments.dat not found or error on reading
+[4/3/2025 | 4:53:38] -- Tournament null added.
+[4/3/2025 | 4:53:41] -- User a has been registrated
+[4/3/2025 | 4:53:41] -- Trainer a log in succesfully
+[4/3/2025 | 4:53:46] -- User b has been registrated
+[4/3/2025 | 4:53:46] -- Trainer b log in succesfully
+[4/3/2025 | 4:53:49] -- User c has been registrated
+[4/3/2025 | 4:53:49] -- Trainer c log in succesfully
+[4/3/2025 | 4:53:53] -- User t1admin logged succesfully
+[4/3/2025 | 4:54:15] -- User iyan logged succesfully
+[4/3/2025 | 4:56:49] -- User iyan logged succesfully
+[4/3/2025 | 4:56:53] -- User t1admin has been registrated
+[4/3/2025 | 4:56:53] -- Tournaments.dat not found or error on reading
+[4/3/2025 | 4:56:53] -- Tournament null added.
+[4/3/2025 | 4:56:57] -- User iyan logged succesfully
+[4/3/2025 | 4:56:59] -- User a has been registrated
+[4/3/2025 | 4:56:59] -- Trainer a log in succesfully
+[4/3/2025 | 4:57:11] -- User b not found
+[4/3/2025 | 4:57:12] -- User a logged succesfully
+[4/3/2025 | 4:57:12] -- Trainer a log in succesfully
+[4/3/2025 | 4:57:15] -- User b has been registrated
+[4/3/2025 | 4:57:15] -- Trainer b log in succesfully
+[4/3/2025 | 4:57:19] -- User c has been registrated
+[4/3/2025 | 4:57:19] -- Trainer c log in succesfully
+[4/3/2025 | 4:57:22] -- User t1admin logged succesfully
+[4/3/2025 | 4:57:54] -- User iyan logged succesfully
+[4/3/2025 | 4:58:6] -- User k has been registrated
+[4/3/2025 | 4:58:6] -- Trainer k log in succesfully
+[4/3/2025 | 4:58:9] -- User iyan logged succesfully
+[4/3/2025 | 4:58:14] -- User t1admin logged succesfully
+[4/3/2025 | 4:59:13] -- User iyan logged succesfully
+[4/3/2025 | 5:0:54] -- User iyan logged succesfully
+[4/3/2025 | 5:2:14] -- User iyan logged succesfully
+[4/3/2025 | 5:2:18] -- User iyan logged succesfully
+[4/3/2025 | 5:2:23] -- User t1admin has been registrated
+[4/3/2025 | 5:2:23] -- Tournaments.dat not found or error on reading
+[4/3/2025 | 5:2:23] -- Tournament null added.
+[4/3/2025 | 5:2:27] -- User a has been registrated
+[4/3/2025 | 5:2:27] -- Trainer a log in succesfully
+[4/3/2025 | 5:2:31] -- User b has been registrated
+[4/3/2025 | 5:2:31] -- Trainer b log in succesfully
+[4/3/2025 | 5:2:35] -- User c has been registrated
+[4/3/2025 | 5:2:35] -- Trainer c log in succesfully
+[4/3/2025 | 5:2:39] -- User t1admin logged succesfully
+[4/3/2025 | 5:3:3] -- User iyan logged succesfully
+[4/3/2025 | 5:5:21] -- User iyan logged succesfully
+[4/3/2025 | 5:5:30] -- User t1admin has been registrated
+[4/3/2025 | 5:5:30] -- Tournaments.dat not found or error on reading
+[4/3/2025 | 5:5:30] -- Tournament null added.
+[4/3/2025 | 5:5:32] -- User a has been registrated
+[4/3/2025 | 5:5:32] -- Trainer a log in succesfully
+[4/3/2025 | 5:5:35] -- User b has been registrated
+[4/3/2025 | 5:5:35] -- Trainer b log in succesfully
+[4/3/2025 | 5:5:39] -- User c has been registrated
+[4/3/2025 | 5:5:39] -- Trainer c log in succesfully
+[4/3/2025 | 5:5:45] -- User t1admin logged succesfully
+[4/3/2025 | 5:7:45] -- User iyan logged succesfully
+[4/3/2025 | 5:7:48] -- User iyan logged succesfully
+[4/3/2025 | 5:8:9] -- User a has been registrated
+[4/3/2025 | 5:8:9] -- Trainer a log in succesfully
+[4/3/2025 | 5:8:13] -- User t1admin logged succesfully
+[4/3/2025 | 5:19:38] -- User a has been registrated
+[4/3/2025 | 5:19:38] -- Trainer a log in succesfully
+[4/3/2025 | 5:19:41] -- User iyan logged succesfully
+[4/3/2025 | 5:19:46] -- User t1admin has been registrated
+[4/3/2025 | 5:19:46] -- Tournaments.dat not found or error on reading
+[4/3/2025 | 5:19:46] -- Tournament null added.
+[4/3/2025 | 5:19:50] -- User b has been registrated
+[4/3/2025 | 5:19:50] -- Trainer b log in succesfully
+[4/3/2025 | 5:19:52] -- User c has been registrated
+[4/3/2025 | 5:19:52] -- Trainer c log in succesfully
+[4/3/2025 | 5:19:55] -- User a logged succesfully
+[4/3/2025 | 5:19:55] -- Trainer a log in succesfully
+[4/3/2025 | 5:19:58] -- User t1admin logged succesfully
+[4/3/2025 | 5:20:57] -- User iyan logged succesfully
+[4/3/2025 | 5:36:14] -- User iyana not found
+[4/3/2025 | 5:36:16] -- User iyan logged succesfully
+[4/3/2025 | 5:38:57] -- User b not found
+[4/3/2025 | 5:38:59] -- User a logged succesfully
+[4/3/2025 | 5:38:59] -- Trainer a log in succesfully
+[4/3/2025 | 5:39:3] -- User n has been registrated
+[4/3/2025 | 5:39:3] -- Trainer n log in succesfully
+[4/3/2025 | 5:39:6] -- User t1admin logged succesfully
+[4/3/2025 | 5:39:56] -- User iyan logged succesfully
+[4/3/2025 | 5:40:50] -- User n has been registrated
+[4/3/2025 | 5:40:50] -- Trainer n log in succesfully
+[4/3/2025 | 5:40:54] -- User t1admin logged succesfully
+[4/3/2025 | 5:41:15] -- User iyan logged succesfully
+[4/3/2025 | 5:43:49] -- User iyan logged succesfully
+[4/3/2025 | 5:43:54] -- User t1admin has been registrated
+[4/3/2025 | 5:43:54] -- Tournaments.dat not found or error on reading
+[4/3/2025 | 5:43:54] -- Tournament null added.
+[4/3/2025 | 5:43:57] -- User a has been registrated
+[4/3/2025 | 5:43:57] -- Trainer a log in succesfully
+[4/3/2025 | 5:43:59] -- User b has been registrated
+[4/3/2025 | 5:43:59] -- Trainer b log in succesfully
+[4/3/2025 | 5:44:2] -- User c has been registrated
+[4/3/2025 | 5:44:2] -- Trainer c log in succesfully
+[4/3/2025 | 5:44:5] -- User t1admin logged succesfully
+[4/3/2025 | 5:44:23] -- User t1admin logged succesfully
+[4/3/2025 | 5:44:34] -- User iyan logged succesfully
+[4/3/2025 | 5:44:38] -- User t1admin logged succesfully
+[4/3/2025 | 5:44:45] -- User iyan logged succesfully
+[4/3/2025 | 5:45:44] -- User iyan logged succesfully
+[4/3/2025 | 5:46:12] -- User a has been registrated
+[4/3/2025 | 5:46:12] -- Trainer a log in succesfully
+[4/3/2025 | 5:46:15] -- User iyan logged succesfully
+[4/3/2025 | 5:46:18] -- User t1admin logged succesfully
+[4/3/2025 | 5:47:19] -- User iyan logged succesfully
+[4/3/2025 | 5:47:22] -- User iyan logged succesfully
+[4/3/2025 | 5:51:10] -- User a already exist in credentialsFile or database
+[4/3/2025 | 5:51:11] -- User a already exist in credentialsFile or database
+[4/3/2025 | 5:51:14] -- User h has been registrated
+[4/3/2025 | 5:51:14] -- Trainer h log in succesfully
+[4/3/2025 | 5:51:18] -- User t1admin logged succesfully
+[4/3/2025 | 5:51:36] -- User iyan logged succesfully
+[4/3/2025 | 5:53:14] -- User iyan logged succesfully
+[4/3/2025 | 5:53:19] -- User t1admin has been registrated
+[4/3/2025 | 5:53:19] -- Tournaments.dat not found or error on reading
+[4/3/2025 | 5:53:19] -- Tournament null added.
+[4/3/2025 | 5:53:22] -- User a has been registrated
+[4/3/2025 | 5:53:22] -- Trainer a log in succesfully
+[4/3/2025 | 5:53:25] -- User b has been registrated
+[4/3/2025 | 5:53:25] -- Trainer b log in succesfully
+[4/3/2025 | 5:53:28] -- User c has been registrated
+[4/3/2025 | 5:53:28] -- Trainer c log in succesfully
+[4/3/2025 | 5:53:31] -- User t1admin logged succesfully
+[4/3/2025 | 5:54:10] -- User a logged succesfully
+[4/3/2025 | 5:54:10] -- Trainer a log in succesfully
+[4/3/2025 | 5:54:11] -- License exported
+[4/3/2025 | 5:54:11] -- Trainer a log in succesfully
+[4/3/2025 | 5:54:33] -- User b logged succesfully
+[4/3/2025 | 5:54:33] -- Trainer b log in succesfully
+[4/3/2025 | 5:54:34] -- License exported
+[4/3/2025 | 5:54:34] -- Trainer b log in succesfully
+[4/3/2025 | 5:55:5] -- User c logged succesfully
+[4/3/2025 | 5:55:5] -- Trainer c log in succesfully
+[4/3/2025 | 5:55:5] -- License exported
+[4/3/2025 | 5:55:5] -- Trainer c log in succesfully
+[4/3/2025 | 5:55:11] -- User iyan logged succesfully
+[4/3/2025 | 5:55:33] -- User cv not found
+[4/3/2025 | 5:55:34] -- User c logged succesfully
+[4/3/2025 | 5:55:34] -- Trainer c log in succesfully
+[4/3/2025 | 5:55:34] -- License exported
+[4/3/2025 | 5:55:34] -- Trainer c log in succesfully
+[4/3/2025 | 6:0:31] -- User iyan logged succesfully
+[4/3/2025 | 6:1:47] -- User 2 not found
+[4/3/2025 | 6:1:49] -- User c logged succesfully
+[4/3/2025 | 6:1:49] -- Trainer c log in succesfully
+[4/3/2025 | 6:1:52] -- User iyan logged succesfully
+[4/3/2025 | 6:2:5] -- User a has been registrated
+[4/3/2025 | 6:2:5] -- Trainer a log in succesfully
+[4/3/2025 | 6:2:10] -- User b has been registrated
+[4/3/2025 | 6:2:10] -- Trainer b log in succesfully
+[4/3/2025 | 6:2:14] -- User c has been registrated
+[4/3/2025 | 6:2:14] -- Trainer c log in succesfully
+[4/3/2025 | 6:2:18] -- User t1admin logged succesfully
+[4/3/2025 | 6:2:57] -- User iyan logged succesfully
+[4/3/2025 | 6:15:44] -- User iyan logged succesfully
+[4/3/2025 | 6:15:49] -- User t1admin has been registrated
+[4/3/2025 | 6:15:49] -- Tournaments.dat not found or error on reading
+[4/3/2025 | 6:15:49] -- Tournament null added.
+[4/3/2025 | 6:15:55] -- User a has been registrated
+[4/3/2025 | 6:15:55] -- Trainer a log in succesfully
+[4/3/2025 | 6:15:59] -- User t1admin logged succesfully
+[4/3/2025 | 6:16:7] -- User b has been registrated
+[4/3/2025 | 6:16:7] -- Trainer b log in succesfully
+[4/3/2025 | 6:16:11] -- User iyan logged succesfully
+[4/3/2025 | 6:18:50] -- User iyan logged succesfully
+[4/3/2025 | 6:19:57] -- User iyan logged succesfully
+[4/3/2025 | 6:20:2] -- User t1admin has been registrated
+[4/3/2025 | 6:20:2] -- Tournaments.dat not found or error on reading
+[4/3/2025 | 6:20:2] -- Tournament null added.
+[4/3/2025 | 6:20:6] -- User a has been registrated
+[4/3/2025 | 6:20:6] -- Trainer a log in succesfully
+[4/3/2025 | 6:20:10] -- User t1admin logged succesfully
+[4/3/2025 | 6:20:16] -- User b has been registrated
+[4/3/2025 | 6:20:16] -- Trainer b log in succesfully
+[4/3/2025 | 6:20:19] -- User iyan logged succesfully
+[4/3/2025 | 6:21:54] -- User iyan logged succesfully
+[4/3/2025 | 6:22:1] -- User t1admin has been registrated
+[4/3/2025 | 6:22:1] -- Tournaments.dat not found or error on reading
+[4/3/2025 | 6:22:1] -- Tournament null added.
+[4/3/2025 | 6:22:4] -- User a has been registrated
+[4/3/2025 | 6:22:4] -- Trainer a log in succesfully
+[4/3/2025 | 6:22:7] -- User b has been registrated
+[4/3/2025 | 6:22:7] -- Trainer b log in succesfully
+[4/3/2025 | 6:22:11] -- User t1admin logged succesfully
+[4/3/2025 | 6:22:15] -- User iyan logged succesfully
+[4/3/2025 | 6:24:44] -- User iyan logged succesfully
+[4/3/2025 | 6:25:8] -- User iyan logged succesfully
+[4/3/2025 | 6:25:13] -- User t1admin has been registrated
+[4/3/2025 | 6:25:13] -- Tournaments.dat not found or error on reading
+[4/3/2025 | 6:25:13] -- Tournament null added.
+[4/3/2025 | 6:25:16] -- User a has been registrated
+[4/3/2025 | 6:25:16] -- Trainer a log in succesfully
+[4/3/2025 | 6:25:20] -- User b has been registrated
+[4/3/2025 | 6:25:20] -- Trainer b log in succesfully
+[4/3/2025 | 6:25:23] -- User t1admin logged succesfully
+[4/3/2025 | 6:25:39] -- User iyan logged succesfully
+[4/3/2025 | 6:26:52] -- User iyan logged succesfully
+[4/3/2025 | 6:27:0] -- User t1admin has been registrated
+[4/3/2025 | 6:27:0] -- Tournaments.dat not found or error on reading
+[4/3/2025 | 6:27:0] -- Tournament null added.
+[4/3/2025 | 6:27:5] -- User a has been registrated
+[4/3/2025 | 6:27:5] -- Trainer a log in succesfully
+[4/3/2025 | 6:27:8] -- User b has been registrated
+[4/3/2025 | 6:27:8] -- Trainer b log in succesfully
+[4/3/2025 | 6:27:10] -- User t1admin logged succesfully
+[4/3/2025 | 6:27:28] -- User iyan logged succesfully
+[4/3/2025 | 6:31:47] -- User iyan logged succesfully
+[4/3/2025 | 6:31:53] -- User t1admin has been registrated
+[4/3/2025 | 6:31:54] -- Tournaments.dat not found or error on reading
+[4/3/2025 | 6:31:54] -- Tournament null added.
+[4/3/2025 | 6:31:57] -- User a has been registrated
+[4/3/2025 | 6:31:57] -- Trainer a log in succesfully
+[4/3/2025 | 6:32:0] -- User b has been registrated
+[4/3/2025 | 6:32:0] -- Trainer b log in succesfully
+[4/3/2025 | 6:32:3] -- User t1admin logged succesfully
+[4/3/2025 | 6:32:13] -- User iyan logged succesfully
+[4/3/2025 | 6:34:27] -- User iyan logged succesfully
+[4/3/2025 | 6:34:35] -- User t1admin has been registrated
+[4/3/2025 | 6:34:35] -- Tournaments.dat not found or error on reading
+[4/3/2025 | 6:34:35] -- Tournament null added.
+[4/3/2025 | 6:34:37] -- User a has been registrated
+[4/3/2025 | 6:34:37] -- Trainer a log in succesfully
+[4/3/2025 | 6:34:40] -- User b has been registrated
+[4/3/2025 | 6:34:40] -- Trainer b log in succesfully
+[4/3/2025 | 6:34:44] -- User t1admibn not found
+[4/3/2025 | 6:34:45] -- User t1admin logged succesfully
+[4/3/2025 | 6:34:55] -- User iyan logged succesfully
+[4/3/2025 | 6:35:16] -- Tournaments.dat not found or error on reading
+[4/3/2025 | 6:35:16] -- Tournament null added.
+[4/3/2025 | 6:35:46] -- User a logged succesfully
+[4/3/2025 | 6:35:46] -- Trainer a log in succesfully
+[4/3/2025 | 6:35:50] -- User c not found
+[4/3/2025 | 6:35:51] -- User b logged succesfully
+[4/3/2025 | 6:35:51] -- Trainer b log in succesfully
+[4/3/2025 | 6:35:55] -- User c has been registrated
+[4/3/2025 | 6:35:55] -- Trainer c log in succesfully
+[4/3/2025 | 6:35:58] -- User t1admin not found
+[4/3/2025 | 6:37:46] -- User iyan logged succesfully
+[4/3/2025 | 6:37:56] -- User iyan logged succesfully
+[4/3/2025 | 6:38:10] -- User t1admin has been registrated
+[4/3/2025 | 6:38:10] -- Tournaments.dat not found or error on reading
+[4/3/2025 | 6:38:10] -- Tournament null added.
+[4/3/2025 | 6:39:23] -- User iyan logged succesfully
+[4/3/2025 | 6:40:21] -- User t1admin has been registrated
+[4/3/2025 | 6:40:24] -- Tournaments.dat not found or error on reading
+[4/3/2025 | 6:40:24] -- Tournament null added.
+[4/3/2025 | 6:40:37] -- User a has been registrated
+[4/3/2025 | 6:40:37] -- Trainer a log in succesfully
+[4/3/2025 | 6:40:40] -- User b has been registrated
+[4/3/2025 | 6:40:40] -- Trainer b log in succesfully
+[4/3/2025 | 6:40:42] -- User c has been registrated
+[4/3/2025 | 6:40:42] -- Trainer c log in succesfully
+[4/3/2025 | 6:40:46] -- User t1admin logged succesfully
+[4/3/2025 | 6:41:29] -- User iyan logged succesfully
+[4/3/2025 | 6:41:42] -- User a has been registrated
+[4/3/2025 | 6:41:42] -- Trainer a log in succesfully
+[4/3/2025 | 6:41:48] -- User iyan logged succesfully
+[4/3/2025 | 6:41:53] -- User t1admin logged succesfully
+[4/3/2025 | 6:42:5] -- User t1admin logged succesfully
+[4/3/2025 | 6:42:18] -- User iyan logged succesfully
+[4/3/2025 | 6:42:50] -- User t1admin logged succesfully
+[4/3/2025 | 6:43:3] -- User iyan logged succesfully
+[4/3/2025 | 6:43:25] -- User h has been registrated
+[4/3/2025 | 6:43:25] -- Trainer h log in succesfully
+[4/3/2025 | 6:43:27] -- User t1admin logged succesfully
+[4/3/2025 | 6:43:39] -- User iyan logged succesfully

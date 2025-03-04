@@ -22,4 +22,8 @@ public class Svice_License {
     public void save(Ent_License license) {
         repoLicense.save(license);
     }
+
+    public void removeLicenseFromUser(int id) {
+        repoLicense.deleteById(id);
+    }
 }

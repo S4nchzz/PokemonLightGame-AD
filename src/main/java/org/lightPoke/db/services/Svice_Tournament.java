@@ -64,4 +64,19 @@ public class Svice_Tournament {
     public Ent_Tournament getTournamentById(final int t_id) {
         return repoTournament.findById(t_id).get();
     }
+
+    public void setNullTournamentsWinnedByUsername(int w_id) {
+        Ent_Tournament tournament = repoTournament.findTournamentByWinner(w_id);
+
+        if (tournament == null) {
+            return;
+        }
+
+        tournament.setWinner(null);
+        repoTournament.save(tournament);
+    }
+
+    public void deleteTournamentById(int id) {
+        repoTournament.deleteById(id);
+    }
 }

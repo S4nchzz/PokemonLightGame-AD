@@ -8,6 +8,7 @@ import org.lightPoke.db.repo.Repo_Trainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -154,5 +155,81 @@ public class Svice_Combat {
 
             repoTournament.save(tournament);
         }
+    }
+
+    public void setNullCombatsByUsername(String username) {
+        final Ent_Trainer trainer = repoTrainer.findByUsername(username);
+        List<Ent_Combat> combats = repoCombat.findCombatsByUsername(trainer.getId());
+
+        for (Ent_Combat c : combats) {
+            if (c.getTrainer_1().getUsername().equals(username)) {
+                c.setTrainer_1(null);
+            } else if (c.getTrainer_2().getUsername().equals(username)) {
+                c.setTrainer_2(null);
+            }
+
+            c.setC_winner(null);
+            c.setDate(null);
+
+            repoCombat.save(c);
+        }
+
+        reOrganizeCombats(combats.getFirst().getTournament().getId());
+    }
+
+    private void reOrganizeCombats(int tId) {
+        List<Ent_Combat> combats = repoCombat.findCombatsByTournamentId(tId);
+
+        if (combats.getFirst().getTrainer_1() == null && combats.get(1).getTrainer_1() == null) {
+            // NULL, ?
+            // NULL, ?
+            // ?, ?
+            combats.getFirst().setTrainer_1(combats.getLast().getTrainer_2());
+
+            combats.getFirst().setC_winner(combats.getLast().getC_winner());
+            combats.getLast().setC_winner(null);
+
+            combats.getFirst().setDate(combats.getLast().getDate());
+            combats.getLast().setDate(null);
+
+            combats.get(1).setTrainer_1(combats.get(1).getTrainer_2());
+            combats.get(1).setC_winner(null);
+            combats.get(1).setDate(null);
+
+            combats.get(1).setTrainer_2(null);
+            combats.get(2).setTrainer_2(null);
+
+            updateCombats(combats);
+        } else if (combats.get(2).getTrainer_1() == null && combats.getFirst().getTrainer_2() == null) {
+            //  ?,  NULL
+            //  ?,   ?
+            // NULL, ?
+            combats.getLast().setTrainer_1(combats.getLast().getTrainer_2());
+            combats.getLast().setC_winner(null);
+            combats.getLast().setDate(null);
+
+            combats.getFirst().setTrainer_2(combats.get(1).getTrainer_2());
+
+            combats.getFirst().setDate(combats.get(1).getDate());
+            combats.get(1).setDate(null);
+
+            combats.getFirst().setC_winner(combats.get(1).getC_winner());
+            combats.get(1).setC_winner(null);
+
+            combats.get(1).setTrainer_2(null);
+            combats.get(2).setTrainer_2(null);
+
+            updateCombats(combats);
+        }
+    }
+
+    private void updateCombats(List<Ent_Combat> combats) {
+        for (Ent_Combat c : combats) {
+            repoCombat.saveAndFlush(c);
+        }
+    }
+
+    public void deleteCombatsByTournamentId(int id) {
+        repoCombat.deleteCombatsByTournamentId(id);
     }
 }

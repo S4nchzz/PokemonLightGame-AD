@@ -34,4 +34,10 @@ public class Svice_JoinTournamentRequest {
     public void deleteRequest(int id) {
         repoJoinTournamentRequest.deleteById(id);
     }
+
+    public void deleteAllRequestsFromTournament(int tId) {
+        for (Ent_JoinTournamentRequest req : repoJoinTournamentRequest.findByTournamentId(tId)) {
+            repoJoinTournamentRequest.deleteById(req.getId());
+        }
+    }
 }

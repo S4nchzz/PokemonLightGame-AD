@@ -5,6 +5,8 @@ import org.lightPoke.db.repo.Repo_At_InTournament;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class Svice_Admin_InTournament {
     @Autowired
@@ -24,5 +26,13 @@ public class Svice_Admin_InTournament {
 
     public void save(Ent_At_InTournament adminInT) {
         repoAtInTournament.save(adminInT);
+    }
+
+    public void deleteByAdminUsername(int id) {
+        repoAtInTournament.deleteById(id);
+    }
+
+    public List<Integer> getRequestsForTournament(int id) {
+        return repoAtInTournament.getRequestsForTournament(id);
     }
 }

@@ -224,10 +224,8 @@ public class GeneralAdminMenu {
         System.out.print("Puntos Max. para victoria: ");
         float tVictoryPoints = sc.nextFloat();
 
-
         Tournament t = applicationContext.getBean(Tournament.class, tName, tCodReg, tVictoryPoints);
         while (t.getAdminTournament() == null) {
-
             t.generateTournamentAdmin();
         }
 
