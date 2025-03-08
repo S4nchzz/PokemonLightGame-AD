@@ -6,6 +6,7 @@ import org.lightPoke.db.entity.Ent_Tournament;
 import org.bson.Document;
 import org.lightPoke.db.entity.Ent_Trainer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TournamentMongoDAO {
@@ -16,25 +17,26 @@ public class TournamentMongoDAO {
     }
 
     public void insertTournament(final Ent_Tournament tournament, final List<Ent_Combat> combatList) {
-        Document d = new Document("tournamentId", tournament.getId())
+        Document d = new Document("_id", tournament.getId())
                 .append("name", tournament.getName())
                 .append("region", tournament.getRegion())
-                .append("victoryPoints", tournament.getVictoryPoints())
+                .append("victory_points", tournament.getVictoryPoints())
                 .append("t_winner", parseTrainerToDocument(tournament.getTWinner()));
 
-        Document combatDocument = new Document("combats", combatList.size());
+        List<Document> documentCombats = new ArrayList<>();
         for (Ent_Combat c : combatList) {
+            Document combatDocument = new Document();
             combatDocument
+                .append("_id", c.getId())
+                .append("date", c.getDate())
                 .append("trainer_1", parseTrainerToDocument(c.getTrainer_1()))
                 .append("trainer_2", parseTrainerToDocument(c.getTrainer_2()))
                 .append("c_winner", parseTrainerToDocument(c.getC_winner()));
-            if (c.getDate() == null) {
-                combatDocument.append("date", c.getDate());
-            }
+
+            documentCombats.add(combatDocument);
         }
 
-        d.append("combats", combatDocument);
-
+        d.append("combats", documentCombats);
         mongoDatabase.getCollection("tournament").insertOne(d);
     }
 
@@ -44,9 +46,11 @@ public class TournamentMongoDAO {
         }
 
         return new Document()
+                .append("_id", trainer.getId())
                 .append("username", trainer.getUsername())
                 .append("nationality",trainer.getName())
-                .append("license", new Document("licenseId", trainer.getLicense())
+                .append("license", new Document()
+                        .append("_id", trainer.getLicense().getId())
                         .append("expedition_Date", trainer.getLicense().getExpedition_Date())
                         .append("points", trainer.getLicense().getPoints())
                         .append("nvictories", trainer.getLicense().getnVictories()));

@@ -63,7 +63,7 @@ public class AdminTournamentMenu {
         this.tournamentAdmin = tournamentAdmin;
 
         Ent_Tournament tournament = getTournament();
-        saveTournamentDataOnMongo(tournament);
+        injectTournamentDataIntoMongo(tournament);
 
         int choice;
         boolean correctChoice = true;
@@ -110,7 +110,7 @@ public class AdminTournamentMenu {
         } while (keepLooping);
     }
 
-    private void saveTournamentDataOnMongo(Ent_Tournament tournament) {
+    private void injectTournamentDataIntoMongo(Ent_Tournament tournament) {
         List<Ent_Combat> combatList = serviceCombat.getCombatsByTournamentId(tournament.getId());
 
         MongoDatabase mdb = MongoConnection.getInstance();
