@@ -1,7 +1,11 @@
 package org.lightPoke.menus;
 
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoDatabase;
 import org.lightPoke.Game;
 import org.lightPoke.db.entity.*;
+import org.lightPoke.db.mongo.MongoConnection;
+import org.lightPoke.db.mongo.dao.TournamentMongoDAO;
 import org.lightPoke.db.services.*;
 import org.lightPoke.users.ATUser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +63,8 @@ public class AdminTournamentMenu {
         this.tournamentAdmin = tournamentAdmin;
 
         Ent_Tournament tournament = getTournament();
+        saveTournamentDataOnMongo(tournament);
+
         int choice;
         boolean correctChoice = true;
         boolean keepLooping = true;
@@ -96,12 +102,19 @@ public class AdminTournamentMenu {
                     fight(tournament);
                 }
                 case 5 -> {
-                    keepLooping = false; // La pila de ejecucion sigue ahi aunque se entre a .main cuando la pila acabe en este .main volvera a este loop
+                    keepLooping = false;
                     mainMenu.openMainMenu();
                 }
             }
 
         } while (keepLooping);
+    }
+
+    private void saveTournamentDataOnMongo(Ent_Tournament tournament) {
+        List<Ent_Combat> combatList = serviceCombat.getCombatsByTournamentId(tournament.getId());
+
+        MongoDatabase mdb = MongoConnection.getInstance();
+        new TournamentMongoDAO(mdb).insertTournament(tournament, combatList);
     }
 
     private void fight(Ent_Tournament tournament) {
@@ -152,6 +165,8 @@ public class AdminTournamentMenu {
 
             serviceLicense.save(trainerWinner.getLicense());
         }
+
+        //! ACTUALIZAR TORNEO CON LOS COMBATES
 
         LocalDate ld = LocalDate.now();
         final String currentDate = ld.getDayOfMonth() + "/" + ld.getMonthValue() + "/" + ld.getYear();
