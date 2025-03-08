@@ -1,14 +1,13 @@
-package org.lightPoke.db.services;
+package org.lightPoke.db.mysql.services;
 
-import org.lightPoke.db.entity.*;
-import org.lightPoke.db.repo.Repo_Combat;
-import org.lightPoke.db.repo.Repo_License;
-import org.lightPoke.db.repo.Repo_Tournament;
-import org.lightPoke.db.repo.Repo_Trainer;
+import org.lightPoke.db.mysql.entity.*;
+import org.lightPoke.db.mysql.repo.Repo_Combat;
+import org.lightPoke.db.mysql.repo.Repo_License;
+import org.lightPoke.db.mysql.repo.Repo_Tournament;
+import org.lightPoke.db.mysql.repo.Repo_Trainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

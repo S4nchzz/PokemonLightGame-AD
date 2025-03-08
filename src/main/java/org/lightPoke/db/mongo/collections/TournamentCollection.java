@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.List;
 
-@Document(collation = "tournament")
+@Document(collection = "tournament")
 public class TournamentCollection {
     @Id
     private int id;
@@ -17,7 +17,7 @@ public class TournamentCollection {
     private String name;
 
     @Field("region")
-    private String region;
+    private char region;
 
     @Field("victory_points")
     private float victory_points;
@@ -30,7 +30,7 @@ public class TournamentCollection {
 
     public TournamentCollection() {}
 
-    public TournamentCollection(int id, String name, String region, float victory_points, TrainerModel t_winner, List<CombatModel> combats) {
+    public TournamentCollection(int id, String name, char region, float victory_points, TrainerModel t_winner, List<CombatModel> combats) {
         this.id = id;
         this.name = name;
         this.region = region;
@@ -55,11 +55,11 @@ public class TournamentCollection {
         this.name = name;
     }
 
-    public String getRegion() {
+    public char getRegion() {
         return region;
     }
 
-    public void setRegion(String region) {
+    public void setRegion(char region) {
         this.region = region;
     }
 

@@ -1,14 +1,11 @@
-package org.lightPoke.db.services;
+package org.lightPoke.db.mysql.services;
 
-import jakarta.transaction.Transactional;
-import org.lightPoke.db.entity.*;
-import org.lightPoke.db.repo.Repo_Trainer;
+import org.lightPoke.db.mysql.entity.*;
+import org.lightPoke.db.mysql.repo.Repo_Trainer;
 import org.lightPoke.users.TRUser;
 import org.lightPoke.users.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class Svice_Trainer {

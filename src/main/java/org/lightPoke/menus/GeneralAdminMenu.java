@@ -1,19 +1,16 @@
 package org.lightPoke.menus;
 
-import org.lightPoke.Game;
 import org.lightPoke.auth.Register;
 import org.lightPoke.db.db4o.entities.UserEnt_db4o;
 import org.lightPoke.db.db4o.services.UserService_db4o;
-import org.lightPoke.db.entity.Ent_Tournament;
-import org.lightPoke.db.services.Svice_Tournament;
+import org.lightPoke.db.mysql.entity.Ent_Tournament;
+import org.lightPoke.db.mysql.services.Svice_Tournament;
 import org.lightPoke.log.LogManagement;
 import org.lightPoke.tournament.Tournament;
 import org.lightPoke.tournament.TournamentList;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.support.ManagedMap;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Scanner;

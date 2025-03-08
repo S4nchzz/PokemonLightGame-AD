@@ -1,13 +1,11 @@
-package org.lightPoke.db.repo;
+package org.lightPoke.db.mysql.repo;
 
 import jakarta.transaction.Transactional;
-import org.lightPoke.db.entity.Ent_Trainer;
+import org.lightPoke.db.mysql.entity.Ent_Trainer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 public interface Repo_Trainer extends JpaRepository<Ent_Trainer, Integer> {

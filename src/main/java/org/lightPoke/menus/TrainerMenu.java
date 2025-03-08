@@ -1,13 +1,12 @@
 package org.lightPoke.menus;
 
-import org.lightPoke.Game;
-import org.lightPoke.db.entity.Ent_Combat;
-import org.lightPoke.db.entity.Ent_JoinTournamentRequest;
-import org.lightPoke.db.entity.Ent_Tournament;
-import org.lightPoke.db.entity.Ent_Trainer;
-import org.lightPoke.db.services.Svice_Combat;
-import org.lightPoke.db.services.Svice_JoinTournamentRequest;
-import org.lightPoke.db.services.Svice_Tournament;
+import org.lightPoke.db.mysql.entity.Ent_Combat;
+import org.lightPoke.db.mysql.entity.Ent_JoinTournamentRequest;
+import org.lightPoke.db.mysql.entity.Ent_Tournament;
+import org.lightPoke.db.mysql.entity.Ent_Trainer;
+import org.lightPoke.db.mysql.services.Svice_Combat;
+import org.lightPoke.db.mysql.services.Svice_JoinTournamentRequest;
+import org.lightPoke.db.mysql.services.Svice_Tournament;
 import org.lightPoke.log.LogManagement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

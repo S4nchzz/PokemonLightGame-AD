@@ -1,9 +1,10 @@
 package org.lightPoke.db.mongo.collections.models;
 
+import jakarta.persistence.Id;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 public class CombatModel {
-    @Field("_id")
+    @Id
     private int id;
 
     @Field("date")

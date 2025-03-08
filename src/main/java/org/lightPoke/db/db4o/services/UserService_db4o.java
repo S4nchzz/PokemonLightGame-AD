@@ -4,11 +4,10 @@ import com.db4o.ObjectContainer;
 import com.db4o.query.Query;
 import org.lightPoke.db.db4o.DB4oInstance;
 import org.lightPoke.db.db4o.entities.UserEnt_db4o;
-import org.lightPoke.db.entity.Ent_At_InTournament;
-import org.lightPoke.db.entity.Ent_Trainer;
-import org.lightPoke.db.services.*;
+import org.lightPoke.db.mysql.entity.Ent_At_InTournament;
+import org.lightPoke.db.mysql.entity.Ent_Trainer;
+import org.lightPoke.db.mysql.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

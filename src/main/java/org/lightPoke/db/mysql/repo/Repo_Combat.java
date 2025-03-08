@@ -1,7 +1,7 @@
-package org.lightPoke.db.repo;
+package org.lightPoke.db.mysql.repo;
 
 import jakarta.transaction.Transactional;
-import org.lightPoke.db.entity.Ent_Combat;
+import org.lightPoke.db.mysql.entity.Ent_Combat;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

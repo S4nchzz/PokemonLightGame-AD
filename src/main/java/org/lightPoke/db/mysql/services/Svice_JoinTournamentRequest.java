@@ -1,8 +1,8 @@
-package org.lightPoke.db.services;
+package org.lightPoke.db.mysql.services;
 
-import org.lightPoke.db.entity.Ent_JoinTournamentRequest;
-import org.lightPoke.db.entity.Ent_Tournament;
-import org.lightPoke.db.repo.Repo_JoinTournamentRequest;
+import org.lightPoke.db.mysql.entity.Ent_JoinTournamentRequest;
+import org.lightPoke.db.mysql.entity.Ent_Tournament;
+import org.lightPoke.db.mysql.repo.Repo_JoinTournamentRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

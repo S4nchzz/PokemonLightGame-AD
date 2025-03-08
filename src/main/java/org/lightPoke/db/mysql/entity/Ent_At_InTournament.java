@@ -1,4 +1,4 @@
-package org.lightPoke.db.entity;
+package org.lightPoke.db.mysql.entity;
 
 import jakarta.persistence.*;
 

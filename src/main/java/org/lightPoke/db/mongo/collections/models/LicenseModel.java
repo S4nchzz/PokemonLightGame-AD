@@ -1,9 +1,10 @@
 package org.lightPoke.db.mongo.collections.models;
 
+import jakarta.persistence.Id;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 public class LicenseModel {
-    @Field("id")
+    @Id
     private int id;
 
     @Field("expeditionDate")

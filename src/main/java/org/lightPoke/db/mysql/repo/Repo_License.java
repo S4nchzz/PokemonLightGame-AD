@@ -1,8 +1,7 @@
-package org.lightPoke.db.repo;
+package org.lightPoke.db.mysql.repo;
 
-import org.lightPoke.db.entity.Ent_License;
+import org.lightPoke.db.mysql.entity.Ent_License;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 
 public interface Repo_License extends JpaRepository<Ent_License, Integer> {
 }

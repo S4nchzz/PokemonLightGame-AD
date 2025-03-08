@@ -1,15 +1,11 @@
 package org.lightPoke.menus;
 
-import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
-import org.lightPoke.Game;
-import org.lightPoke.db.entity.*;
-import org.lightPoke.db.mongo.MongoConnection;
-import org.lightPoke.db.mongo.dao.TournamentMongoDAO;
-import org.lightPoke.db.services.*;
+import org.lightPoke.db.mongo.services.TournamentMongoService;
+import org.lightPoke.db.mysql.entity.*;
+import org.lightPoke.db.mysql.services.*;
 import org.lightPoke.users.ATUser;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Component;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
@@ -25,7 +21,6 @@ import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
@@ -55,6 +50,9 @@ public class AdminTournamentMenu {
 
     @Autowired
     private Svice_License serviceLicense;
+
+    @Autowired
+    private TournamentMongoService tournamentMongoService;
 
     private ATUser tournamentAdmin;
 
@@ -112,9 +110,7 @@ public class AdminTournamentMenu {
 
     private void injectTournamentDataIntoMongo(Ent_Tournament tournament) {
         List<Ent_Combat> combatList = serviceCombat.getCombatsByTournamentId(tournament.getId());
-
-        MongoDatabase mdb = MongoConnection.getInstance();
-        new TournamentMongoDAO(mdb).insertTournament(tournament, combatList);
+        tournamentMongoService.save(tournament, combatList);
     }
 
     private void fight(Ent_Tournament tournament) {
@@ -166,14 +162,14 @@ public class AdminTournamentMenu {
             serviceLicense.save(trainerWinner.getLicense());
         }
 
-        //! ACTUALIZAR TORNEO CON LOS COMBATES
-
         LocalDate ld = LocalDate.now();
         final String currentDate = ld.getDayOfMonth() + "/" + ld.getMonthValue() + "/" + ld.getYear();
 
         combatChoiced.setDate(currentDate);
         serviceCombat.updateCombat(combatChoiced);
         serviceCombat.checkTournamentWinner(tournament);
+
+        injectTournamentDataIntoMongo(serviceTournament.getTournamentById(tournament.getId()));
     }
 
     private List<Ent_Combat> removeUnreadyCombats(List<Ent_Combat> combats) {
