@@ -1,6 +1,7 @@
 package org.lightPoke.db.mongo.repository;
 
 import org.lightPoke.db.mongo.collections.TournamentCollection;
+import org.lightPoke.db.mongo.dto.TopWinner;
 import org.springframework.data.mongodb.repository.Aggregation;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;

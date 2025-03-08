@@ -5,6 +5,7 @@ import org.lightPoke.db.db4o.entities.UserEnt_db4o;
 import org.lightPoke.db.db4o.services.UserService_db4o;
 import org.lightPoke.db.mongo.collections.TournamentCollection;
 import org.lightPoke.db.mongo.collections.models.CombatModel;
+import org.lightPoke.db.mongo.dto.TopWinner;
 import org.lightPoke.db.mongo.mapper.TournamentMapper;
 import org.lightPoke.db.mongo.services.TournamentMongoService;
 import org.lightPoke.db.mysql.entity.Ent_Combat;
@@ -96,7 +97,7 @@ public class GeneralAdminMenu {
         Scanner sc = new Scanner(System.in);
         System.out.println("------ Gestion de torneos ------");
         System.out.println("1. Ver info torneo (Nombre, Region)");
-        System.out.println("2. Mostrar ganador ganador de un torneo");
+        System.out.println("2. Mostrar ganador de un torneo");
         System.out.println("3. Mostrar entrenadores que mas torneos han ganado");
         System.out.println("4. Listar todos los entrenadores con puntos");
         System.out.println("5. Mostrar puntos de un entrenador");
@@ -203,7 +204,28 @@ public class GeneralAdminMenu {
     }
 
     private void showTournamentWinner() {
+        Scanner sc = new Scanner(System.in);
 
+        System.out.println("Nombre del torneo: ");
+        final String tournamentName = sc.next();
+
+        System.out.println("Region del torneo: ");
+        final char tournamentRegion = sc.next().charAt(0);
+
+        TournamentCollection tournament = tournamentMongoService.findByNameAndRegion(tournamentName, tournamentRegion);
+
+        if (tournament == null) {
+            System.out.println("No se ha encontrado el torneo...");
+            return;
+        }
+
+        System.out.println(tournament.getName() + " | " + tournament.getRegion());
+        if (tournament.getT_winner() != null) {
+            System.out.println("Ganador: " + tournament.getT_winner().getUsername());
+            return;
+        }
+
+        System.out.println("Ganador: (?)");
     }
 
     private void showTwoMoreTournamentWinners() {
