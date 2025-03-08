@@ -3,7 +3,13 @@ package org.lightPoke.menus;
 import org.lightPoke.auth.Register;
 import org.lightPoke.db.db4o.entities.UserEnt_db4o;
 import org.lightPoke.db.db4o.services.UserService_db4o;
+import org.lightPoke.db.mongo.collections.TournamentCollection;
+import org.lightPoke.db.mongo.collections.models.CombatModel;
+import org.lightPoke.db.mongo.mapper.TournamentMapper;
+import org.lightPoke.db.mongo.services.TournamentMongoService;
+import org.lightPoke.db.mysql.entity.Ent_Combat;
 import org.lightPoke.db.mysql.entity.Ent_Tournament;
+import org.lightPoke.db.mysql.entity.Ent_Trainer;
 import org.lightPoke.db.mysql.services.Svice_Tournament;
 import org.lightPoke.log.LogManagement;
 import org.lightPoke.tournament.Tournament;
@@ -42,18 +48,22 @@ public class GeneralAdminMenu {
     @Autowired
     private UserService_db4o userServiceDb4o;
 
+    @Autowired
+    private TournamentMongoService tournamentMongoService;
+
     public GeneralAdminMenu() {}
 
     public void openMenu() {
         System.out.println("------ General Admin menu ------");
         System.out.println("1. Registrar nuevo torneo");
         System.out.println("2. Gestionar usuarios");
-        System.out.println("3. Logout \n");
+        System.out.println("3. Gestion torneos");
+        System.out.println("4. Logout \n");
         System.out.print("Please select an option: ");
 
         Scanner sc = new Scanner(System.in);
         int choice;
-        while((choice = sc.nextInt()) < 0 || choice > 3) {
+        while((choice = sc.nextInt()) < 0 || choice > 4) {
             System.out.println("------ General Admin menu ------");
             System.out.println("1. Registrar nuevo torneo");
             System.out.println("2. Gestionar usuarios");
@@ -71,11 +81,146 @@ public class GeneralAdminMenu {
             }
 
             case 3 -> {
+                tournamentManagement();;
+            }
+
+            case 4 -> {
                 mainMenu.openMainMenu();
             }
         }
 
         openMenu();
+    }
+
+    private void tournamentManagement() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("------ Gestion de torneos ------");
+        System.out.println("1. Ver info torneo (Nombre, Region)");
+        System.out.println("2. Mostrar ganador ganador de un torneo");
+        System.out.println("3. Mostrar entrenadores que mas torneos han ganado");
+        System.out.println("4. Listar todos los entrenadores con puntos");
+        System.out.println("5. Mostrar puntos de un entrenador");
+        System.out.println("6. Mostrar torneos de una region");
+        System.out.println("7. Salir \n");
+        System.out.print("Please select an option: ");
+
+        int choice;
+        while((choice = sc.nextInt()) < 0 || choice > 4) {
+            System.out.println("------ Gestion de torneos ------");
+            System.out.println("1. Ver info torneo (Nombre, Region)");
+            System.out.println("2. Mostrar ganador de un torneo");
+            System.out.println("3. Mostrar los 2 entrenadores que mas torneos han ganado");
+            System.out.println("4. Listar todos los entrenadores con puntos");
+            System.out.println("5. Mostrar puntos de un entrenador");
+            System.out.println("6. Mostrar torneos de una region");
+            System.out.println("7. Salir \n");
+            System.out.print("Please select an option: ");
+        }
+
+        switch (choice) {
+            case 1 -> {
+                showTournamentInfo();
+            }
+
+            case 2 -> {
+                showTournamentWinner();
+            }
+
+            case 3 -> {
+                showTwoMoreTournamentWinners();
+            }
+
+            case 4 -> {
+                showAlTrainerPoints();
+            }
+
+            case 5 -> {
+                showSpecifiTrainerPoints();
+            }
+
+            case 6 -> {
+                showTournamentsByRegion();
+            }
+            
+            case 7 -> {
+                openMenu();
+            }
+        }
+
+
+        tournamentManagement();
+    }
+
+    private void showTournamentInfo() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Nombre del torneo: ");
+        final String tournamentName = sc.next();
+
+        System.out.println("Region del torneo: ");
+        final char tournamentRegion = sc.next().charAt(0);
+
+        TournamentCollection tournament = tournamentMongoService.findByNameAndRegion(tournamentName, tournamentRegion);
+
+        if (tournament == null) {
+            System.out.println("No se ha encontrado el torneo...");
+            return;
+        }
+
+        System.out.println("Nombre: " + tournament.getName());
+        System.out.println("Region: " + tournament.getRegion());
+        System.out.println("Puntos de victoria: " + tournament.getVictory_points());
+        System.out.println("Ganador: " + tournament.getT_winner().getUsername());
+
+        int i = 1;
+
+        System.out.println("Combates: ");
+        for (CombatModel c : tournament.getCombats()) {
+            System.out.println(" -Combate " + i);
+
+            System.out.println("    Fecha: " + c.getDate());
+
+            if (c.getTrainer_1() != null) {
+                System.out.println("    Entrenador 1: " + c.getTrainer_1().getUsername());
+            } else {
+                System.out.println("    Entrenador 1: ?");
+            }
+
+            if (c.getTrainer_2() != null) {
+                System.out.println("    Entrenador 2: " + c.getTrainer_2().getUsername());
+            } else {
+                System.out.println("    Entrenador 2: ?");
+            }
+
+            if (c.getC_winner() != null) {
+                System.out.println("    Ganador: " + c.getC_winner().getUsername());
+            } else {
+                System.out.println("    Ganador: ?");
+            }
+
+            i++;
+        }
+    }
+
+    private void showTournamentWinner() {
+
+    }
+
+    private void showTwoMoreTournamentWinners() {
+
+    }
+
+    private void showAlTrainerPoints() {
+
+    }
+
+    private void showSpecifiTrainerPoints() {
+
+
+    }
+
+    private void showTournamentsByRegion() {
+
     }
 
     private void userManagement() {

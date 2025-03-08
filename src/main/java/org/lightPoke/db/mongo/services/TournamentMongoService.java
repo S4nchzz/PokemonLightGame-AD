@@ -16,6 +16,10 @@ public class TournamentMongoService {
     private TournamentMongoRepository tournamentMongoRepository;
 
     public void save(Ent_Tournament tournament, List<Ent_Combat> combatList) {
-        tournamentMongoRepository.save(TournamentMapper.mapEntityToCollection(tournament, combatList));
+        tournamentMongoRepository.save(TournamentMapper.mapTournamentEntityToCollection(tournament, combatList));
+    }
+
+    public TournamentCollection findByNameAndRegion(String tournamentName, char tournamentRegion) {
+        return tournamentMongoRepository.findByNameAndRegion(tournamentName, String.valueOf(tournamentRegion));
     }
 }

@@ -1,6 +1,5 @@
 package org.lightPoke.menus;
 
-import com.mongodb.client.MongoDatabase;
 import org.lightPoke.db.mongo.services.TournamentMongoService;
 import org.lightPoke.db.mysql.entity.*;
 import org.lightPoke.db.mysql.services.*;

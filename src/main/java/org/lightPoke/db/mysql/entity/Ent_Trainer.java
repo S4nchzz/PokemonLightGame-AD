@@ -24,6 +24,15 @@ public class Ent_Trainer {
 
     public Ent_Trainer(){}
 
+    public Ent_Trainer(final int id, final String username, final String nationality, final Ent_License entLicense) {
+
+        this.id = id;
+        this.username = username;
+        this.name = name;
+        this.entLicense = entLicense;
+        this.nationality = nationality;
+    }
+
     public Ent_Trainer(final String username, final String name, final String nationality, final Ent_License entLicense) {
         this.username = username;
         this.name = name;

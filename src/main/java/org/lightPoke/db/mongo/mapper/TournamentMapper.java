@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TournamentMapper {
-    public static TournamentCollection mapEntityToCollection(Ent_Tournament tournament, List<Ent_Combat> combatList) {
+    public static TournamentCollection mapTournamentEntityToCollection(Ent_Tournament tournament, List<Ent_Combat> combatList) {
         List<CombatModel> combatsModel = new ArrayList<>();
         for (Ent_Combat c : combatList) {
             combatsModel.add(mapEntityCombatToModel(c));
@@ -30,7 +30,7 @@ public class TournamentMapper {
         );
     }
 
-    public static TournamentCollection mapEntityToCollection(Ent_Tournament tournament) {
+    public static TournamentCollection mapTournamentEntityToCollection(Ent_Tournament tournament) {
         return new TournamentCollection(
                 tournament.getId(),
                 tournament.getName(),
