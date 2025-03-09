@@ -13,4 +13,7 @@ import java.util.List;
 public interface TournamentMongoRepository extends MongoRepository<TournamentCollection, Integer> {
     @Query("{ $and: [ { 'name': ?0 }, { 'region': ?1 } ] }")
     TournamentCollection findByNameAndRegion(String tournamentName, String tournamentRegion);
+
+    @Query("{ region: ?0 }")
+    List<TournamentCollection> findByRegion(String s);
 }

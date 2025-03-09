@@ -1,7 +1,6 @@
 package org.lightPoke.db.mongo.services;
 
 import org.lightPoke.db.mongo.collections.TournamentCollection;
-import org.lightPoke.db.mongo.dto.TopWinner;
 import org.lightPoke.db.mongo.mapper.TournamentMapper;
 import org.lightPoke.db.mongo.repository.TournamentMongoRepository;
 import org.lightPoke.db.mysql.entity.Ent_Combat;
@@ -26,5 +25,9 @@ public class TournamentMongoService {
 
     public List<TournamentCollection> findAll() {
         return tournamentMongoRepository.findAll();
+    }
+
+    public List<TournamentCollection> findByRegion(char tournamentRegion) {
+        return tournamentMongoRepository.findByRegion(String.valueOf(tournamentRegion));
     }
 }

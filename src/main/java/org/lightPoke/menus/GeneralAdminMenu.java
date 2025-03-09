@@ -106,7 +106,7 @@ public class GeneralAdminMenu {
         System.out.print("Please select an option: ");
 
         int choice;
-        while((choice = sc.nextInt()) < 0 || choice > 4) {
+        while((choice = sc.nextInt()) < 0 || choice > 7) {
             System.out.println("------ Gestion de torneos ------");
             System.out.println("1. Ver info torneo (Nombre, Region)");
             System.out.println("2. Mostrar ganador de un torneo");
@@ -128,7 +128,7 @@ public class GeneralAdminMenu {
             }
 
             case 3 -> {
-                showTwoMoreTournamentWinners();
+                showTopWinners();
             }
 
             case 4 -> {
@@ -136,7 +136,7 @@ public class GeneralAdminMenu {
             }
 
             case 5 -> {
-                showSpecifiTrainerPoints();
+                showSpecificTrainerPoints();
             }
 
             case 6 -> {
@@ -168,39 +168,7 @@ public class GeneralAdminMenu {
             return;
         }
 
-        System.out.println("Nombre: " + tournament.getName());
-        System.out.println("Region: " + tournament.getRegion());
-        System.out.println("Puntos de victoria: " + tournament.getVictory_points());
-        System.out.println("Ganador: " + tournament.getT_winner().getUsername());
-
-        int i = 1;
-
-        System.out.println("Combates: ");
-        for (CombatModel c : tournament.getCombats()) {
-            System.out.println(" -Combate " + i);
-
-            System.out.println("    Fecha: " + c.getDate());
-
-            if (c.getTrainer_1() != null) {
-                System.out.println("    Entrenador 1: " + c.getTrainer_1().getUsername());
-            } else {
-                System.out.println("    Entrenador 1: ?");
-            }
-
-            if (c.getTrainer_2() != null) {
-                System.out.println("    Entrenador 2: " + c.getTrainer_2().getUsername());
-            } else {
-                System.out.println("    Entrenador 2: ?");
-            }
-
-            if (c.getC_winner() != null) {
-                System.out.println("    Ganador: " + c.getC_winner().getUsername());
-            } else {
-                System.out.println("    Ganador: ?");
-            }
-
-            i++;
-        }
+        showTournamentCollection(tournament);
     }
 
     private void showTournamentWinner() {
@@ -228,21 +196,76 @@ public class GeneralAdminMenu {
         System.out.println("Ganador: (?)");
     }
 
-    private void showTwoMoreTournamentWinners() {
-
+    private void showTopWinners() {
     }
 
     private void showAlTrainerPoints() {
 
     }
 
-    private void showSpecifiTrainerPoints() {
-
+    private void showSpecificTrainerPoints() {
 
     }
 
     private void showTournamentsByRegion() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Region del torneo: ");
+        final char tournamentRegion = sc.next().charAt(0);
 
+        List<TournamentCollection> tournaments = tournamentMongoService.findByRegion(tournamentRegion);
+        if (tournaments == null || tournaments.isEmpty()) {
+            System.out.println("No se ha encontrado ningun torneo con la region " + tournamentRegion);
+            return;
+        }
+
+        for (TournamentCollection t : tournaments) {
+            showTournamentCollection(t);
+        }
+    }
+
+    private void showTournamentCollection(TournamentCollection tournament) {
+        System.out.println("\nNombre: " + tournament.getName());
+        System.out.println("Region: " + tournament.getRegion());
+        System.out.println("Puntos de victoria: " + tournament.getVictory_points());
+
+        if (tournament.getT_winner() != null) {
+            System.out.println("Ganador: " + tournament.getT_winner().getUsername());
+        } else {
+            System.out.println("Ganador: ?");
+        }
+
+        int i = 1;
+
+        System.out.println("Combates: ");
+        for (CombatModel c : tournament.getCombats()) {
+            System.out.println("\tCombate " + i);
+
+            if (c.getDate() != null) {
+                System.out.println("\t\tFecha: " + c.getDate());
+            } else {
+                System.out.println("\t\tFecha: ?");
+            }
+
+            if (c.getTrainer_1() != null) {
+                System.out.println("\t\tEntrenador 1: " + c.getTrainer_1().getUsername());
+            } else {
+                System.out.println("\t\tEntrenador 1: ?");
+            }
+
+            if (c.getTrainer_2() != null) {
+                System.out.println("\t\tEntrenador 2: " + c.getTrainer_2().getUsername());
+            } else {
+                System.out.println("\t\tEntrenador 2: ?");
+            }
+
+            if (c.getC_winner() != null) {
+                System.out.println("\t\tGanador: " + c.getC_winner().getUsername());
+            } else {
+                System.out.println("\t\tGanador: ?");
+            }
+
+            i++;
+        }
     }
 
     private void userManagement() {
