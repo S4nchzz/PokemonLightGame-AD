@@ -1,6 +1,8 @@
 package org.lightPoke.menus;
 
+import org.lightPoke.db.mongo.collections.TrainerCollection;
 import org.lightPoke.db.mongo.services.TournamentMongoService;
+import org.lightPoke.db.mongo.services.TrainerMongoService;
 import org.lightPoke.db.mysql.entity.*;
 import org.lightPoke.db.mysql.services.*;
 import org.lightPoke.users.ATUser;
@@ -52,6 +54,9 @@ public class AdminTournamentMenu {
 
     @Autowired
     private TournamentMongoService tournamentMongoService;
+
+    @Autowired
+    private TrainerMongoService trainerMongoService;
 
     private ATUser tournamentAdmin;
 
@@ -156,8 +161,6 @@ public class AdminTournamentMenu {
         }
 
         if (trainerWinner != null) {
-            trainerWinner.getLicense().addVictory(1);
-
             serviceLicense.save(trainerWinner.getLicense());
         }
 
@@ -219,6 +222,8 @@ public class AdminTournamentMenu {
         if (operation.equalsIgnoreCase("Accept")) {
             serviceCombat.addTrainerToTournamentCombat(requests.get(choice - 1).getTrainer().getId(), requests.get(choice - 1).getTournament().getId());
             serviceJoinTournamentRequest.deleteRequest(requests.get(choice - 1).getId());
+
+            trainerMongoService.addTrainer(requests.get(choice - 1).getTrainer());
         } else if (operation.equalsIgnoreCase("Decline")){
             serviceJoinTournamentRequest.deleteRequest(requests.get(choice - 1).getId());
         }

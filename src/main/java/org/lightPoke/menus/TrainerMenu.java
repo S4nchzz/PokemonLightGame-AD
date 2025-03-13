@@ -57,7 +57,7 @@ public class TrainerMenu {
             log.writeLog("Trainer " + trainerEntity.getName() + " log in succesfully");
 
             // Mostrar torneos y preguntar cual quiere para presentar una solicitud, si estaba en algun combate querra decir que ya estaba en algun torneo
-            if (!serviceCombat.isTrainerInAnyCombat(trainerEntity.getId()) && !serviceJoinTournamentRequest.trainerHasPendingRequests(trainerEntity.getId())) {
+            if (!serviceCombat.isTrainerInAnyCombat(trainerEntity.getId()) && !serviceJoinTournamentRequest.trainerHasPendingRequests(trainerEntity.getId()) || serviceTournament.isTrainerOnEndedTournament(trainerEntity.getId())) {
                 List<Ent_Tournament> tournaments = serviceTournament.getAllTournaments();
 
                 if (!tournaments.isEmpty()) {

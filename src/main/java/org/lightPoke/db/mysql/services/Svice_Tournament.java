@@ -1,6 +1,7 @@
 package org.lightPoke.db.mysql.services;
 
 import org.lightPoke.db.mysql.entity.Ent_At_InTournament;
+import org.lightPoke.db.mysql.entity.Ent_Combat;
 import org.lightPoke.db.mysql.entity.Ent_Tournament;
 import org.lightPoke.db.mysql.repo.Repo_Combat;
 import org.lightPoke.db.mysql.repo.Repo_Tournament;
@@ -77,5 +78,18 @@ public class Svice_Tournament {
 
     public void deleteTournamentById(int id) {
         repoTournament.deleteById(id);
+    }
+
+    public boolean isTrainerOnEndedTournament(int trainer_id) {
+        List<Ent_Combat> combats = repoCombat.findCombatsById(trainer_id);
+        boolean combatsAreFinished = true;
+
+        for (Ent_Combat c : combats) {
+            if (c.getTrainer_1() == null || c.getTrainer_2() == null || c.getC_winner() == null) {
+                combatsAreFinished = false;
+            }
+        }
+
+        return combatsAreFinished;
     }
 }

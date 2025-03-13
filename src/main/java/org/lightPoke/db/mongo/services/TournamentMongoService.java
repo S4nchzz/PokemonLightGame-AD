@@ -30,4 +30,8 @@ public class TournamentMongoService {
     public List<TournamentCollection> findByRegion(char tournamentRegion) {
         return tournamentMongoRepository.findByRegion(String.valueOf(tournamentRegion));
     }
+
+    public TournamentCollection trainersFromTournament(int id) {
+        return tournamentMongoRepository.trainersFromTournament(id);
+    }
 }

@@ -4,10 +4,11 @@ import org.lightPoke.auth.Register;
 import org.lightPoke.db.db4o.entities.UserEnt_db4o;
 import org.lightPoke.db.db4o.services.UserService_db4o;
 import org.lightPoke.db.mongo.collections.TournamentCollection;
+import org.lightPoke.db.mongo.collections.TrainerCollection;
 import org.lightPoke.db.mongo.collections.models.CombatModel;
-import org.lightPoke.db.mongo.dto.TopWinner;
 import org.lightPoke.db.mongo.mapper.TournamentMapper;
 import org.lightPoke.db.mongo.services.TournamentMongoService;
+import org.lightPoke.db.mongo.services.TrainerMongoService;
 import org.lightPoke.db.mysql.entity.Ent_Combat;
 import org.lightPoke.db.mysql.entity.Ent_Tournament;
 import org.lightPoke.db.mysql.entity.Ent_Trainer;
@@ -51,6 +52,9 @@ public class GeneralAdminMenu {
 
     @Autowired
     private TournamentMongoService tournamentMongoService;
+
+    @Autowired
+    private TrainerMongoService trainerMongoService;
 
     public GeneralAdminMenu() {}
 
@@ -197,14 +201,34 @@ public class GeneralAdminMenu {
     }
 
     private void showTopWinners() {
+        List<TrainerCollection> trainerCollectionList = trainerMongoService.findTopWinners();
+
+        for (TrainerCollection tc : trainerCollectionList) {
+            System.out.println("Nombre: " + tc.getUsername() + " | Victorias: " + tc.getLicense().getNVictories());
+        }
     }
 
     private void showAlTrainerPoints() {
+        List<TrainerCollection> trainerCollectionList = trainerMongoService.findAllTrainers();
 
+        for (TrainerCollection tc : trainerCollectionList) {
+            System.out.println("Nombre: " + tc.getUsername() + " | Puntos: " + tc.getLicense().getPoints());
+        }
     }
 
     private void showSpecificTrainerPoints() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Usuario: ");
+        final String userToFind = sc.next();
 
+        TrainerCollection collection = trainerMongoService.findSpecificTrainer(userToFind);
+
+        if (collection != null) {
+            System.out.println("Nombre: " + collection.getUsername() + " | Puntos: " + collection.getLicense().getPoints());
+            return;
+        }
+
+        System.out.println("No se ha encontrado el entrenador...");
     }
 
     private void showTournamentsByRegion() {

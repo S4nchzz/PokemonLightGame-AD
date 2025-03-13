@@ -1,5 +1,8 @@
 package org.lightPoke.db.mysql.services;
 
+import org.lightPoke.db.mongo.collections.TrainerCollection;
+import org.lightPoke.db.mongo.mapper.TrainerMapper;
+import org.lightPoke.db.mongo.services.TrainerMongoService;
 import org.lightPoke.db.mysql.entity.*;
 import org.lightPoke.db.mysql.repo.Repo_Combat;
 import org.lightPoke.db.mysql.repo.Repo_License;
@@ -23,6 +26,9 @@ public class Svice_Combat {
 
     @Autowired
     private Repo_License repoLicense;
+
+    @Autowired
+    private TrainerMongoService trainerMongoService;
 
     public List<Ent_Combat> getCombatsByTournamentId(final int t_id) {
         return repoCombat.findByTournamentId(t_id);
@@ -110,7 +116,6 @@ public class Svice_Combat {
 
     public void checkTournamentWinner(Ent_Tournament tournament) {
         List<Ent_Combat> combats = repoCombat.findCombatsByTournamentId(tournament.getId());
-
         int nCombatsEnded = 0;
 
         for (Ent_Combat c : combats) {
@@ -124,31 +129,38 @@ public class Svice_Combat {
             if (combats.getFirst().getC_winner() == combats.get(1).getC_winner() || combats.getFirst().getC_winner() == combats.getLast().getC_winner()) {
                 tournament.setWinner(combats.getFirst().getC_winner());
 
-                Ent_License winnerLicense = combats.getFirst().getC_winner().getLicense();
-                winnerLicense.setPoints(tournament.getVictoryPoints());
+                Ent_Trainer tWinner = combats.getFirst().getC_winner();
+                tWinner.getLicense().setPoints(tWinner.getLicense().getPoints() + tournament.getVictoryPoints());
+                tWinner.getLicense().addVictory();
+                updateMongoTrainer(tWinner);
+                trainerMongoService.updateTrainer(tWinner);
 
-                repoLicense.save(winnerLicense);
+                repoLicense.save(tWinner.getLicense());
             } else if (combats.get(1).getC_winner() == combats.getFirst().getC_winner() || combats.get(1).getC_winner() == combats.getLast().getC_winner()) {
                 tournament.setWinner(combats.get(1).getC_winner());
 
-                Ent_License winnerLicense = combats.get(1).getC_winner().getLicense();
-                winnerLicense.setPoints(tournament.getVictoryPoints());
+                Ent_Trainer tWinner = combats.get(1).getC_winner();
+                tWinner.getLicense().setPoints(tWinner.getLicense().getPoints() + tournament.getVictoryPoints());
+                tWinner.getLicense().addVictory();
+                updateMongoTrainer(tWinner);
+                trainerMongoService.updateTrainer(tWinner);
 
-                repoLicense.save(winnerLicense);
+                repoLicense.save(tWinner.getLicense());
             } else if (combats.getLast().getC_winner() == combats.get(1).getC_winner() || combats.getLast().getC_winner() == combats.getFirst().getC_winner()) {
                 tournament.setWinner(combats.getLast().getC_winner());
 
-                Ent_License winnerLicense = combats.getLast().getC_winner().getLicense();
-                winnerLicense.setPoints(tournament.getVictoryPoints());
+                Ent_Trainer tWinner = combats.getLast().getC_winner();
+                tWinner.getLicense().setPoints(tWinner.getLicense().getPoints() + tournament.getVictoryPoints());
+                tWinner.getLicense().addVictory();
+                updateMongoTrainer(tWinner);
 
-                repoLicense.save(winnerLicense);
+                repoLicense.save(tWinner.getLicense());
             } else {
                 for (Ent_Combat c : combats) {
                     // No hubo un ganador se resetean los ganadores
                     c.setC_winner(null);
                     repoCombat.save(c);
                 }
-
                 return;
             }
 
@@ -156,9 +168,15 @@ public class Svice_Combat {
         }
     }
 
+    private void updateMongoTrainer(Ent_Trainer trainer) {
+        if (trainer != null) {
+            trainerMongoService.updateTrainer(trainer);
+        }
+    }
+
     public void setNullCombatsByUsername(String username) {
         final Ent_Trainer trainer = repoTrainer.findByUsername(username);
-        List<Ent_Combat> combats = repoCombat.findCombatsByUsername(trainer.getId());
+        List<Ent_Combat> combats = repoCombat.findCombatsById(trainer.getId());
 
         for (Ent_Combat c : combats) {
             if (c.getTrainer_1().getUsername().equals(username)) {

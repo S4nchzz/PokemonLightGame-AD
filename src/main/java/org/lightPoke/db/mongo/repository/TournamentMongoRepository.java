@@ -1,7 +1,7 @@
 package org.lightPoke.db.mongo.repository;
 
 import org.lightPoke.db.mongo.collections.TournamentCollection;
-import org.lightPoke.db.mongo.dto.TopWinner;
+import org.lightPoke.db.mongo.collections.TrainerCollection;
 import org.springframework.data.mongodb.repository.Aggregation;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
@@ -16,4 +16,7 @@ public interface TournamentMongoRepository extends MongoRepository<TournamentCol
 
     @Query("{ region: ?0 }")
     List<TournamentCollection> findByRegion(String s);
+
+    @Query("{ name: ?0 }")
+    TournamentCollection trainersFromTournament(int id);
 }
